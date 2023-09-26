@@ -52,7 +52,7 @@ CREATE TABLE dados(
 
 CREATE TABLE sensor(
     idSensor int primary key auto_increment,
-    nome_sensor varchar(40)
+    nome_sensor varchar(40),
     pos_x_sensor int,
     pos_y_sensor int,
     pos_z_sensor int,
