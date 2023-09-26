@@ -20,12 +20,21 @@
 		</div>		
 	</div>
 	<div class="dashboard">
+		<h2>Sala 1</h2>
 		<div class="dashboard_container">
 			<div class="dashboard_chart_line">
 				<canvas id="myChart"></canvas>
 			</div>
 			<div class="dashboard_chart_line">
 				<canvas id="bar"></canvas>
+			</div>
+		</div>
+		<div class="dashboard_container">
+			<div class="dashboard_chart_line">
+				<canvas id="bar2"></canvas>
+			</div>
+			<div class="dashboard_chart_line">
+				<canvas id="bar3"></canvas>
 			</div>
 		</div>
 	</div>
@@ -37,6 +46,8 @@
 
     const ctx = document.getElementById("myChart");
 	const bar = document.getElementById("bar");
+	const bar2 = document.getElementById("bar2");
+	const bar3 = document.getElementById("bar3");
 
     new Chart(ctx, {
 		type : 'line',
@@ -57,15 +68,52 @@
 					}]
 		},
 		options : {
-			title : {
-				display : true,
-				text : 'Chart JS Line Chart Example'
-			}
-		}
+			plugins:{
+				title : {
+					display : true,
+					text : 'Medições em tempo real',
+					color: "black",
+					font: {
+						size: 16
+					}
+				}
+		}}
 	});
 
 
 	new Chart(bar, {
+		type: 'bar',
+		data: {
+			labels: ["21-09-2023"],
+			datasets: [
+				{
+					data: [25],
+					label: "Temperatura média",
+					backgroundColor: "#e43202",
+					fill: false
+				},
+				{
+					data: [25],
+					label: "Umidade Média",
+					backgroundColor: "#3cba9f",
+					fill: false
+				}
+			]
+		},
+		options : {
+			plugins:{
+				title : {
+					display : true,
+					text : 'Média Diária',
+					color: "black",
+					font: {
+						size: 16
+					}
+				}
+		}}
+	});
+
+	new Chart(bar2, {
 		type: 'bar',
 		data: {
 			labels: ["21-09-2023", "22-09-2023", "23-09-2023", "24-09-2023", "25-09-2023"],
@@ -83,7 +131,50 @@
 					fill: false
 				}
 			]
-		}
+		},
+		options : {
+			plugins:{
+				title : {
+					display : true,
+					text : 'Média Semanal',
+					color: "black",
+					font: {
+						size: 16
+					}
+				}
+		}}
+	});
+
+	new Chart(bar3, {
+		type: 'bar',
+		data: {
+			labels: ["21-09-2023", "22-09-2023", "23-09-2023", "24-09-2023", "25-09-2023"],
+			datasets: [
+				{
+					data: [25, 22, 23, 25, 20],
+					label: "Temperatura média",
+					backgroundColor: "#e43202",
+					fill: false
+				},
+				{
+					data: [25, 22, 23, 25, 20],
+					label: "Umidade Média",
+					backgroundColor: "#3cba9f",
+					fill: false
+				}
+			]
+		},
+		options : {
+			plugins:{
+				title : {
+					display : true,
+					text : 'Média Mensal',
+					color: "black",
+					font: {
+						size: 16
+					}
+				}
+		}}
 	});
 
 </script>
