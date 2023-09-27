@@ -25,7 +25,9 @@ CREATE TABLE administrador(
     nome_empresa varchar(50),
     razao_social varchar(100),
     email_empresa varchar(50),
-    telefone_empresa varchar(12)
+    telefone_empresa varchar(12),
+    qtdSala varchar(15),
+    qtdRacks varchar(70)
  );
 
  -- TABELA PARA CONTROLE E LOGIN DE CLEINTES --
@@ -43,12 +45,17 @@ CREATE TABLE funcionario_empresa(
 
 CREATE TABLE dados(
 	registro int primary key auto_increment,
-    nome_sensor varchar(40),
     id_empresa int,
+    id_sensor int,
+    data_hora dateTime default current_timestamp
+);
+
+CREATE TABLE sensor(
+    idSensor int primary key auto_increment,
+    nome_sensor varchar(40),
     pos_x_sensor int,
     pos_y_sensor int,
     pos_z_sensor int,
     temperatura double,
-    umidade double,
-    data_hora dateTime default current_timestamp
+    umidade double
 );
