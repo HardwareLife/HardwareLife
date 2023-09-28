@@ -35,20 +35,14 @@ CREATE TABLE administrador(
 CREATE TABLE funcionario_empresa(
 	id_funcionario_empresa int primary key auto_increment,
     email_funcionario_empresa varchar(50),
-    id_empresa int,
     nome_funcionario_empresa varchar(40),
-    cpf varchar(18),
-    senha varchar(40)
+    cpf char(14),
+    senha varchar(40),
+	fk_empresa int,
+     constraint foreign key (fk_empresa) references empresa(id_empresa)
 );
 
- -- TABELA DE DADOS DO SENSOR --
-
-CREATE TABLE dados(
-	registro int primary key auto_increment,
-    id_empresa int,
-    id_sensor int,
-    data_hora dateTime default current_timestamp
-);
+-- TABELA DO SENSOR
 
 CREATE TABLE sensor(
     idSensor int primary key auto_increment,
@@ -56,6 +50,21 @@ CREATE TABLE sensor(
     pos_x_sensor int,
     pos_y_sensor int,
     pos_z_sensor int,
-    temperatura double,
-    umidade double
+    numero_rack int,
+    fk_empresa_sensor int,
+    constraint foreign key (fk_empresa_sensor) references empresa(id_empresa)
 );
+
+ -- TABELA DE DADOS DO SENSOR --
+
+CREATE TABLE dados(
+	idDados int primary key auto_increment,
+    data_hora dateTime default current_timestamp,
+    temperatura double,
+    umidade double,
+    numero_sala int,
+    fk_sensor int,
+    constraint foreign key (fk_sensor) references sensor(idSensor)
+);
+
+DROP TABLE dados;
