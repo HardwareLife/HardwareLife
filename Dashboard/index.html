@@ -20,7 +20,14 @@
 		</div>		
 	</div>
 	<div class="dashboard">
-		<h2>Sala 1</h2>
+		<div class="dashboard_header">
+			<h2>Sala 1</h2>
+			<select name="" id="">
+				<option value="" selected>Todas</option>
+				<option value="sala1">Sala 1</option>
+				<option value="sala2">Sala 2</option>
+			</select>
+		</div>
 		<div class="dashboard_container">
 			<div class="dashboard_chart_line">
 				<canvas id="myChart"></canvas>
@@ -84,19 +91,17 @@
 	new Chart(bar, {
 		type: 'bar',
 		data: {
-			labels: ["21-09-2023"],
+			labels: [""],
 			datasets: [
 				{
 					data: [25],
 					label: "Temperatura média",
-					backgroundColor: "#e43202",
-					fill: false
+					backgroundColor: "#e43202"
 				},
 				{
 					data: [25],
 					label: "Umidade Média",
-					backgroundColor: "#2eb2ff",
-					fill: false
+					backgroundColor: "#2eb2ff"
 				}
 			]
 		},
