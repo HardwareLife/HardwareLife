@@ -79,6 +79,8 @@
             return
         }
 
+        resultado.innerHTML = ``;
+
         // var vetorServidore = [];
         // var vetorRack = [];
         // var vetorArea = [];
@@ -142,8 +144,8 @@
         var valorAresCondicionados = quantidadeArCondicionado * 30000;
         var precoTotal = valorAresCondicionados + valorDesumidificadores + valorPlacaSensor;
 
-        resultado.innerHTML += `O preço total será de R$${precoTotal}, composto por um total de ${quantidadeArCondicionado} ar(es) condicionado(s) que custará(ão) R$${valorAresCondicionados}, ${quantidadeDesumidificador} desumidificador(es) que custará(ão) R$${valorDesumidificadores},
-        ${quantidadeSensor} sensor(es) que custará(ão) R$${valorPlacaSensor}.`;
+        resultado.innerHTML += `O preço total será de R$${precoTotal.toLocaleString('pt-BR')}, composto por um total de ${quantidadeArCondicionado} ar(es) condicionado(s) que custará(ão) R$${valorAresCondicionados.toLocaleString('pt-BR')}, ${quantidadeDesumidificador} desumidificador(es) que custará(ão) R$${valorDesumidificadores.toLocaleString('pt-BR')},
+        ${quantidadeSensor} sensor(es) que custará(ão) R$${valorPlacaSensor.toLocaleString('pt-BR')}.`;
 
     }
 
