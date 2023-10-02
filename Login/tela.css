@@ -26,13 +26,11 @@ body {
     text-align: center;
     height: 50%;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.567);
-    margin: 2% 0 0 35%;
+    margin: 2% 0 0 38%;
 }
 
 .container{
-
     margin-top: 30px;
-
 }
 
 
@@ -59,9 +57,10 @@ body {
 .login-container button {
     background-color: #007BFF;
     color: #fff;
-    padding: 10px 20px;
+    margin-top: 5px;
+    padding: 15px 90px;
     border: none;
-    border-radius: 3px;
+    border-radius: 20px;
     cursor: pointer;
 }
 

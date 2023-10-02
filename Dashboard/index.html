@@ -31,15 +31,15 @@
 			<div class="dashboard_chart_line">
 				<canvas id="myChart"></canvas>
 			</div>
-			<!-- <div class="dashboard_chart_line">
+			<div class="dashboard_chart_line">
 				<canvas id="bar3"></canvas>
-			</div> -->
+			</div>
 		</div>
-		<!-- <div class="dashboard_container2">	
+		<div class="dashboard_container2">	
 			<div class="dashboard_chart_line">
 				<canvas id="bar2"></canvas>
 			</div>
-		</div> -->
+		</div>
 	</div>
 	<div class="dashboard2" onclick="aparecerSensor()">
 		<h3>Rack 1</h3>
@@ -86,7 +86,7 @@
     new Chart(ctx, {
 		type : 'line',
 		data : {
-			labels : [ "21-09-2023", "22-09-2023", "23-09-2023", "24-09-2023", "25-09-2023" ],
+			labels : [ "16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30" ],
 			datasets : [
                     {
 							data : [ 20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55 ],
@@ -95,7 +95,7 @@
 							fill : false
 					},
 					{
-						data : [ 60, 70, 80, 50, 50, 40, 30, 40, 30],
+						data : [ 60, 70, 80, 50, 50, 40, 30, 40, 30, 90],
 						label : "Umidade",
 						borderColor : "#2eb2ff",
 						fill : false
@@ -117,70 +117,70 @@
 
 	
 
-	// new Chart(bar2, {
-	// 	type: 'bar',
-	// 	data: {
-	// 		labels: ["Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-	// 		datasets: [
-	// 			{
-	// 				data: [20.5, 23.7, 24.6, 25.7, 27.8, 30.55],
-	// 				label: "Temperatura média",
-	// 				backgroundColor: "#e43202",
-	// 				fill: false
-	// 			},
-	// 			{
-	// 				data: [25, 20, 35, 30, 40, 50, 70],
-	// 				label: "Umidade Média",
-	// 				backgroundColor: "#2eb2ff",
-	// 				fill: false
-	// 			}
-	// 		]
-	// 	},
-	// 	options : {
-	// 		plugins:{
-	// 			title : {
-	// 				display : true,
-	// 				text : 'Média Anual',
-	// 				color: "black",
-	// 				font: {
-	// 					size: 16
-	// 				}
-	// 			}
-	// 	}}
-	// });
+	new Chart(bar2, {
+		type: 'bar',
+		data: {
+			labels: ["Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+			datasets: [
+				{
+					data: [20.5, 23.7, 24.6, 25.7, 27.8, 30.55],
+					label: "Temperatura média",
+					backgroundColor: "#e43202",
+					fill: false
+				},
+				{
+					data: [25, 20, 35, 30, 40, 50, 70],
+					label: "Umidade Média",
+					backgroundColor: "#2eb2ff",
+					fill: false
+				}
+			]
+		},
+		options : {
+			plugins:{
+				title : {
+					display : true,
+					text : 'Média Anual',
+					color: "black",
+					font: {
+						size: 16
+					}
+				}
+		}}
+	});
 
-	// new Chart(bar3, {
-	// 	type: 'line',
-	// 	data : {
-	// 		labels : [ "23-10-2023", "24-10-2023", "25-10-2023", "26-10-2023", "27-10-2023", "28-10-2023", "29-10-2023" ],
-	// 		datasets : [
-    //                 {
-	// 						data : [ 20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55 ],
-	// 						label : "Temperatura",
-	// 						borderColor : "#e43202",
-	// 						backgroundColor: "#e43202",
-	// 						fill : true
-	// 				},
-	// 				{
-	// 					data : [  60, 70, 60, 50, 50, 40, 35, 40, 35, 80],
-	// 					label : "Umidade",
-	// 					borderColor : "#2eb2ff",
-	// 					backgroundColor: "#2eb2ff",
-	// 					fill : true
-	// 				}]
-	// 	},
-	// 	options : {
-	// 		plugins:{
-	// 			title : {
-	// 				display : true,
-	// 				text : 'Média Semanal',
-	// 				color: "black",
-	// 				font: {
-	// 					size: 16
-	// 				}
-	// 			}
-	// 	}}
-	// });
+	new Chart(bar3, {
+		type: 'line',
+		data : {
+			labels : [ "23-10-2023", "24-10-2023", "25-10-2023", "26-10-2023", "27-10-2023", "28-10-2023", "29-10-2023" ],
+			datasets : [
+                    {
+							data : [ 20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55 ],
+							label : "Temperatura",
+							borderColor : "#e43202",
+							backgroundColor: "#e43202",
+							fill : true
+					},
+					{
+						data : [  60, 70, 60, 50, 50, 40, 35, 40, 35, 80],
+						label : "Umidade",
+						borderColor : "#2eb2ff",
+						backgroundColor: "#2eb2ff",
+						fill : true
+					}]
+		},
+		options : {
+			plugins:{
+				title : {
+					display : true,
+					text : 'Média Semanal',
+					color: "black",
+					font: {
+						size: 16
+					}
+				}
+		}}
+	});
 
 </script>
 </html>
