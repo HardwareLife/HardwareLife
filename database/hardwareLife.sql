@@ -1,17 +1,6 @@
 CREATE DATABASE HardwareLife;
 
-
-
 USE HardwareLife;
-
- -- TABELA PARA ADMINISTRAÇÃO -- 
- 
-CREATE TABLE administrador(
-	idAdmin int primary key auto_increment,
-    emailAdmin varchar(40),
-    nomeAdmin varchar(40),
-    senha varchar(40)
-);
 
  -- TABELA PARA CONTROLE E CADASTRO DE EMPRESAS CLIENTES --
  
@@ -26,6 +15,12 @@ CREATE TABLE administrador(
     qtdRacks varchar(70)
  );
  
+CREATE TABLE sala(
+	idSala INT PRIMARY KEY AUTO_INCREMENT,
+	nomeSala varchar(40),
+    fkEmpresa int,
+    CONSTRAINT fkEmpresaSala FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
+);
  CREATE TABLE endereco(
 	idEndereco int primary key auto_increment,
 	logradouro varchar(60),
@@ -46,9 +41,19 @@ CREATE TABLE funcionario_empresa(
     nomeFuncionario varchar(40),
     cpf char(14),
     senha varchar(40),
+    administrador boolean,
 	fk_empresa int,
-     constraint fkEmpresaFuncionario foreign key (fk_empresa) references empresa(idEmpresa)
+	constraint fkEmpresaFuncionario foreign key (fk_empresa) references empresa(idEmpresa)
 );
+
+
+CREATE TABLE rack(
+	idRack int primary key auto_increment,
+    numeroRack int,
+    fkSala int,
+    CONSTRAINT fkSala FOREIGN KEY (fkSala) REFERENCES sala(idSala)
+);
+
 
 -- TABELA DO SENSOR
 
@@ -58,10 +63,8 @@ CREATE TABLE sensor(
     pos_x_sensor int,
     pos_y_sensor int,
     pos_z_sensor int,
-    numero_rack int,
-	numeroSala int,
-    fkEmpresa int,
-    constraint fkEmpresaSensor foreign key (fkEmpresa) references empresa(idEmpresa)
+    fkRack int,
+    CONSTRAINT fkRack FOREIGN KEY (fkRack) REFERENCES rack(idRack)
 );
 
  -- TABELA DE DADOS DO SENSOR --
@@ -74,3 +77,4 @@ CREATE TABLE dados(
     fk_sensor int,
     constraint fkSensor foreign key (fk_sensor) references sensor(idSensor)
 );
+
