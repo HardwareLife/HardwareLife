@@ -14,17 +14,63 @@
             <h1>HardwareLife</h1>
         </div>
         <div class="login-container">
-            <div class="container">
+            <div id="div_resultado" class="container">
                 <h2>Login</h2>
                 <form action="../Dashboard/index.html" method="post">
-                    <input type="text" placeholder="Nome de usuário" required>
-                    <input type="password" placeholder="Senha" required><br>
+                    <input type="text" id="input_usuario" placeholder="Nome de usuário" required>
+
+                    <input type="password" id="input_senha" placeholder="Senha" maxlength="60" size="35"><br>
+
+                    <span class="lembrar">Lembrar meu usuário</span>
+                    <input type="checkbox" id="input_lembrar">
+
                     <span>Não possui uma conta? <a href="../file:///C:/Users/gfran/AppData/Local/Microsoft/Windows/INetCache/IE/BVTFZKDG/cadastroSprint_2[1].html">Cadastra-se</a></span>
-                    <button type="submit">Entrar</button>
+                    <button onclick="entrar()" type="submit">Entrar</button>
                 </form>
     
             </div>
         </div>
+        <div id="div_login"></div>
 </body>
 
 </html>
+<script>
+    function entrar() {
+        //Validando o usuário antes do @ e depois do @
+    usuario_antes = input_usuario.value.substring(0, input_usuario.value.indexOf("@"));
+    usuario_depois = input_usuario.value.substring(input_usuario.value.indexOf("@")+ 1, input_usuario.value.length);
+    
+    //Tamanho de usuário_antes maior ou igual a 1 caracter.
+    if ((usuario_antes.length >=1) &&
+
+    //Tamanho do usuario_depois maior ou igual a 3 caracteres.
+        (usuario_depois.length >=3) &&
+
+    //Usuário_antes não pode conter o @.
+        (usuario_antes.search("@")==-1) &&
+
+    //usuario_depois não pode conter o @.
+        (usuario_depois.search("@")==-1) &&
+
+    //Usuário_antes não pode conter o “ ” espaço em branco.
+        (usuario_antes.search(" ")==-1) &&
+
+    //usuario_depois não pode conter o “ ” espaço em branco.
+        (usuario_depois.search(" ")==-1) &&
+
+    //usuario_depois tem que possuir “.” Ponto.  
+        (usuario_depois.search(".")!=-1) &&
+
+    //A posição do primeiro ponto tem que ser maior ou igual a 1, a posição 0 deve ser ocupado por algum caracter após o @.
+        (usuario_depois.indexOf(".") >=1)&&
+
+    //A posição do ultimo ponto tem que ser menor que o ultimo caracter, deve ser finalizado o usuario_depois por um caracter.
+        (usuario_depois.lastIndexOf(".") < usuario_depois.length - 1)) {}
+    
+    else
+    
+    div_login.innerHTML="<span color='red'>E-mail inválido </span>";
+    alert("E-mail invalido");
+    }
+    
+    </script>
