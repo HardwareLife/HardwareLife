@@ -9,7 +9,7 @@
 <body>
 
     <div class="header">
-        <div class="container">
+        <div class="container_header">
 
             <div class="logo">
                 <img src="../Site-Institucional/imagens/logo.svg" alt="Logo da Empresa">
@@ -18,23 +18,46 @@
 
             <ul class="navbar">
                 <a href="../Site-Institucional/index.html">Home</a>
-                <li><a href="../Simulador Financeiro/Calculadora.html">Orçamento</a></li>
+                <!--<li><a href="../Simulador Financeiro/Calculadora.html">Orçamento</a></li>-->
                 <li><a href="../Login/tela_login.html">Login</a></li>
             </ul>
 
         </div>
     </div>
-    <div>
-        <label for="quantidade">Digite quantas salas de servidores tem no seu data center: </label>
-        <input type="number" id="quantidade" oninput="gerarInput()"><br><br>
+
+
+    <div class="content">
+        <div class="describe">
+            <h1>Calcule aqui o seu orçamento</h1>
+            <p>Aqui você poderá calcular o valor personalizado do projeto, vendo os recursos necessários para tornar o resfriamento e a desumidificação de seu datacenter mais eficiente e economico.
+            </p>
+            <div class="link-planos">
+                <img src="../Site-Institucional/imagens/Elipse.png" alt="">
+                <h3>Conheça também <a href="#planos">nossos Planos</a>!</h3>
+                
+            </div>
+        </div>
+        <div class="calculator">
+            <div id="parte1" class="parte1">
+                <label for="quantidade">Digite quantas salas de servidores tem no seu Data Center: </label>
+                <input type="number" id="quantidade" oninput="gerarInput()"><br>
+            </div>
+            
+            <div id="inputs" class="inputs"></div>
+            <div id="erro" style="color: red;"></div><br>
+            <button id="btnPreco" onclick="precificar()" class="btn" style="margin-top: 5%;">Calcule seu orçamento</button>
         
-        <div id="inputs"></div>
-        <div id="erro" style="color: red;"></div><br>
     
-        <button onclick="precificar()">Calcule seu orçamento</button><br><br>
-    
-        <div id="resultado"></div>
+            <div id="resultado" style="display: none;"></div><br>
+            <button id="btnRecalculo" onclick="recalcular()" class="btn" style="display: none; margin-bottom: 2.2%;">Recalcular</button>
+        </div>
     </div>
+
+    <!-- <div id="planos">
+        <div class="card">PLANO BASIC</div>
+        <div class="card">PLANO SILVER</div>
+        <div class="card">PLANO GOLD</div>
+    </div> -->
 
 </body>
 <script src="index.js"></script>

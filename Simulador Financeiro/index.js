@@ -15,14 +15,23 @@ var quantidadeSala = 0;
             resultado.innerHTML = ``;
         for(var i = 0; i<quantidadeSala; i++){
             inputs.innerHTML += `
-            <label for="area${i+1}">Digite a area da sala ${i+1}: </label>
-            <input type="number" id="area${i+1}"><br><br>
-            <label for="servidor${i+1}">Digite a quantidade de servidores da sala ${i+1}: </label>
-            <input type="number" id="servidor${i+1}"><br><br>
-            <label for="rack${i+1}">Digite a quantidade de rack da sala ${i+1}: </label>
-            <input type="number" id="rack${i+1}"><br><br>
-            <label for="funcionario${i+1}">Quantos funcionários trabalham na sala ${i+1}: </label>
-            <input type="number" id="funcionario${i+1}"><br><br>
+            <p><b>Informe os dados da ${i+1}° sala:</b></p>
+            <div class="box">
+                <div class="box-content">
+                    <label for="area${i+1}">Área da sala: </label>
+                    <input type="number" id="area${i+1}">
+                    <br><br>
+                    <label for="servidor${i+1}">Quantidade de servidores: </label>
+                    <input type="number" id="servidor${i+1}"><br><br>
+                </div>
+
+                <div class="box-content">
+                    <label for="rack${i+1}">Quantidade de rack da sala: </label>
+                    <input type="number" id="rack${i+1}"><br><br>
+                    <label for="funcionario${i+1}">Quantos funcionários trabalham nesta sala: </label>
+                    <input type="number" id="funcionario${i+1}"><br><br>
+                </div>
+            </div>
             `
         }
 
@@ -30,6 +39,12 @@ var quantidadeSala = 0;
 
     //Função para realizar os calculos
     function precificar(){
+
+        inputs.style.display = "none";
+        inputs.style.height= "auto";
+        btnPreco.style.display = "none";
+        resultado.style.display = "flex";
+        btnRecalculo.style.display = "flex";
         
         if(quantidadeSala == 0 || quantidadeSala < 0){
             erro.innerHTML = `O número de salas deve ser maior que 0`
@@ -104,4 +119,13 @@ var quantidadeSala = 0;
         resultado.innerHTML += `O preço total será de R$${precoTotal.toLocaleString('pt-BR')}, composto por um total de ${quantidadeArCondicionado} ar(es) condicionado(s) que custará(ão) R$${valorAresCondicionados.toLocaleString('pt-BR')}, ${quantidadeDesumidificador} desumidificador(es) que custará(ão) R$${valorDesumidificadores.toLocaleString('pt-BR')},
         ${quantidadeSensor} sensor(es) que custará(ão) R$${valorPlacaSensor.toLocaleString('pt-BR')}.`;
 
+    }
+
+    function recalcular() {
+        inputs.style.display = "flex";
+        btnPreco.style.display = "flex";
+        resultado.style.display = "none";
+        btnRecalculo.style.display = "none";
+
+        erro.innerHTML = ``;
     }
