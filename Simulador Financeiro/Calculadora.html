@@ -37,19 +37,21 @@
                 
             </div>
         </div>
-        <div class="calculator">
-            <div id="parte1" class="parte1">
-                <label for="quantidade">Digite quantas salas de servidores tem no seu Data Center: </label>
-                <input type="number" id="quantidade" oninput="gerarInput()"><br>
-            </div>
+        <div style="padding: 0 0 62px 20%;">
+            <div class="calculator">
+                <div id="parte1" class="parte1">
+                    <label for="quantidade">Digite quantas salas de servidores tem no seu Data Center: </label>
+                    <input type="number" id="quantidade" oninput="gerarInput()"><br>
+                </div>
+                
+                <div id="inputs" class="inputs"></div>
+                <div id="erro" style="color: red;"></div><br>
+                <button id="btnPreco" onclick="precificar()" class="btn" style="margin-top: 5%;">Calcule seu orçamento</button>
             
-            <div id="inputs" class="inputs"></div>
-            <div id="erro" style="color: red;"></div><br>
-            <button id="btnPreco" onclick="precificar()" class="btn" style="margin-top: 5%;">Calcule seu orçamento</button>
         
-    
-            <div id="resultado" style="display: none;"></div><br>
-            <button id="btnRecalculo" onclick="recalcular()" class="btn" style="display: none; margin-bottom: 2.2%;">Recalcular</button>
+                <div id="resultado" style="display: none;"></div><br>
+                <button id="btnRecalculo" onclick="recalcular()" class="btn" style="display: none; margin-bottom: 2.2%;">Recalcular</button>
+            </div>
         </div>
     </div>
 
