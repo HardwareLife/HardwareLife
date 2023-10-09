@@ -40,11 +40,7 @@ var quantidadeSala = 0;
     //Função para realizar os calculos
     function precificar(){
 
-        inputs.style.display = "none";
-        inputs.style.height= "auto";
-        btnPreco.style.display = "none";
-        resultado.style.display = "flex";
-        btnRecalculo.style.display = "flex";
+        
         
         if(quantidadeSala == 0 || quantidadeSala < 0){
             erro.innerHTML = `O número de salas deve ser maior que 0`
@@ -52,11 +48,6 @@ var quantidadeSala = 0;
         }
 
         resultado.innerHTML = ``;
-
-        // var vetorServidore = [];
-        // var vetorRack = [];
-        // var vetorArea = [];
-        // var vetorFuncionario = [];
 
         var somatorioArea = 0;
         var somatorioServidores = 0;
@@ -78,19 +69,31 @@ var quantidadeSala = 0;
             somatorioServidores += eval("servidor_sala" + (i+1));
             somatorioRacks += eval("racks_sala" + (i+1));
             somatorioFuncionarios += eval("funcionario_sala" + (i+1));
-            // vetorArea.push(eval("area_sala" + (i+1)));
-            // vetorServidore.push(eval("servidor_sala" + (i+1)));
-            // vetorRack.push(eval("racks_sala" + (i+1)));
-            // vetorFuncionario.push(eval("racks_sala" + (i+1)));
+            // if(eval("area_sala" + (i+1)) == ''){
+            //     erro.innerHTML = `O valor da área da sala ${i+1} não pode ser vazio`;
+            //     return
+            // }
+            // if(eval("racks_sala" + (i+1)) == ''){
+            //     erro.innerHTML = `O valor da quantidade de racks da sala ${i+1} não pode ser vazio`;
+            //     return 
+            // }
+            // if(eval("servidor_sala" + (i+1)) == ''){
+            //     erro.innerHTML = `O valor da quantidade de servidores da sala ${i+1} não pode ser vazio`;
+            //     return
+            // }
+            // if(eval("funcionario_sala" + (i+1)) == ''){
+            //     erro.innerHTML = `O número de funcionários que frequentam a sala ${i+1} não pode ser vazio`;
+            //     return
+            // }
         }
         
-        // for(var i = 0; i < quantidadeSala; i++){
-        //     if(vetorArea[i] == 0 || vetorArea[i] < 0){
-        //         console.log(`Sala ${i+1}`)
-        //         erro.innerHTML = `Todos os campos de área devem ser preenchidos`;
-        //         return
-        //     }
-        // }
+        // erro.innerHTML = ``
+
+        inputs.style.display = "none";
+        inputs.style.height= "auto";
+        btnPreco.style.display = "none";
+        resultado.style.display = "flex";
+        btnRecalculo.style.display = "flex";
 
 
 
