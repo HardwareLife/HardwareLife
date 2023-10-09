@@ -89,11 +89,13 @@ input{
 
 .describe img{
     width: 150px;
-    margin-left: 320px;
+    /* margin-left: 320px; */
 }
 
 .link-planos{
     display: flex;
+    justify-content: center;
+    margin-right: 30px;
 }
 
 .link-planos a{
@@ -164,3 +166,26 @@ input{
     margin-left: 70%;
 }
 
+#planos{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.card{
+    width: 20%;
+    height: 200px;
+    padding: 10px;
+    background-color: #3349ED;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+
+.card h4{
+    margin: 0;
+    /* background-color: #fff; */
+    /* color: #000; */
+    color: #fff;
+}
