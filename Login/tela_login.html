@@ -9,68 +9,124 @@
 </head>
 
 <body>
+    <div class="main">
         <div class="logo">
-            <a href="../Site-Institucional/index.html"><img src="../Site-Institucional/imagens/logo.svg" alt="Logo HardwareLife"></a>
-            <a href="../Site-Institucional/index.html"><h1>HardwareLife</h1></a>
+            <a href="../Site-Institucional/index.html"><img src="../Site-Institucional/imagens/logo.svg"
+                    alt="Logo HardwareLife"></a>
+            <a href="../Site-Institucional/index.html">
+                <h1>HardwareLife</h1>
+            </a>
         </div>
         <div class="login-container">
             <div id="div_resultado" class="container">
                 <h2>Login</h2>
                 <form action="../Dashboard/index.html" method="post">
-                    <input type="text" id="input_usuario" placeholder="Nome de usuário" required>
+                    <input type="text" id="input_usuario" placeholder="Nome de usuário" required oninput="validarEmail()">
+                    <div id="div_senha">
+                    <input type="password" id="input_senha" placeholder="Senha" maxlength="60" size="35"><br></div oninput="validarSenha()>
 
-                    <input type="password" id="input_senha" placeholder="Senha" maxlength="60" size="35"><br>
+                    <div class="senha">
+                        <div class="senha">
+                            <span class="lembrar">Lembrar meu usuário</span>
+                            <input class="checkbox" type="checkbox" id="input_lembrar">
+                            </div>
+                        <span><u>Esqueci a senha</u></span>
+                    </div>
 
-                    <span class="lembrar">Lembrar meu usuário</span>
-                    <input type="checkbox" id="input_lembrar">
-
-                    <span>Não possui uma conta? <a href="../file:///C:/Users/gfran/AppData/Local/Microsoft/Windows/INetCache/IE/BVTFZKDG/cadastroSprint_2[1].html">Cadastra-se</a></span>
+                    <span>Não possui uma conta? <a
+                            href="../file:///C:/Users/gfran/AppData/Local/Microsoft/Windows/INetCache/IE/BVTFZKDG/cadastroSprint_2[1].html">Cadastra-se</a></span>
                     <button onclick="entrar()" type="submit">Entrar</button>
                 </form>
-    
+
             </div>
         </div>
-        <div id="div_login"></div>
+    </div>
+    <div id="div_login"></div>
 </body>
 
 </html>
 <script>
-    function entrar() {
+    function validarEmail() {
         //Validando o usuário antes do @ e depois do @
-    usuario_antes = input_usuario.value.substring(0, input_usuario.value.indexOf("@"));
-    usuario_depois = input_usuario.value.substring(input_usuario.value.indexOf("@")+ 1, input_usuario.value.length);
-    
-    //Tamanho de usuário_antes maior ou igual a 1 caracter.
-    if ((usuario_antes.length >=1) &&
+        usuario_antes = input_usuario.value.substring(0, input_usuario.value.indexOf("@"));
+        usuario_depois = input_usuario.value.substring(input_usuario.value.indexOf("@") + 1, input_usuario.value.length);
 
-    //Tamanho do usuario_depois maior ou igual a 3 caracteres.
-        (usuario_depois.length >=3) &&
+        //Tamanho de usuário_antes maior ou igual a 1 caracter.
+        if ((usuario_antes.length >= 1) &&
 
-    //Usuário_antes não pode conter o @.
-        (usuario_antes.search("@")==-1) &&
+            //Tamanho do usuario_depois maior ou igual a 3 caracteres.
+            (usuario_depois.length >= 3) &&
 
-    //usuario_depois não pode conter o @.
-        (usuario_depois.search("@")==-1) &&
+            //Usuário_antes não pode conter o @.
+            (usuario_antes.search("@") == -1) &&
 
-    //Usuário_antes não pode conter o “ ” espaço em branco.
-        (usuario_antes.search(" ")==-1) &&
+            //usuario_depois não pode conter o @.
+            (usuario_depois.search("@") == -1) &&
 
-    //usuario_depois não pode conter o “ ” espaço em branco.
-        (usuario_depois.search(" ")==-1) &&
+            //Usuário_antes não pode conter o “ ” espaço em branco.
+            (usuario_antes.search(" ") == -1) &&
 
-    //usuario_depois tem que possuir “.” Ponto.  
-        (usuario_depois.search(".")!=-1) &&
+            //usuario_depois não pode conter o “ ” espaço em branco.
+            (usuario_depois.search(" ") == -1) &&
 
-    //A posição do primeiro ponto tem que ser maior ou igual a 1, a posição 0 deve ser ocupado por algum caracter após o @.
-        (usuario_depois.indexOf(".") >=1)&&
+            //usuario_depois tem que possuir “.” Ponto.  
+            (usuario_depois.search(".") != -1) &&
 
-    //A posição do ultimo ponto tem que ser menor que o ultimo caracter, deve ser finalizado o usuario_depois por um caracter.
-        (usuario_depois.lastIndexOf(".") < usuario_depois.length - 1)) {}
-    
-    else
-    
-    div_login.innerHTML="<span color='red'>E-mail inválido </span>";
-    alert("E-mail invalido");
+            //A posição do primeiro ponto tem que ser maior ou igual a 1, a posição 0 deve ser ocupado por algum caracter após o @.
+            (usuario_depois.indexOf(".") >= 1) &&
+
+            //A posição do ultimo ponto tem que ser menor que o ultimo caracter, deve ser finalizado o usuario_depois por um caracter.
+            (usuario_depois.lastIndexOf(".") < usuario_depois.length - 1)) { }
+
+        else
+
+            div_login.innerHTML = "<span color='red'>E-mail inválido </span>";
     }
-    
-    </script>
+
+    //validação senha
+    function validarSenha(){
+	var senha = input_senha.value;
+	var forca = 0;
+	div_senha.innerHTML = "Senha " + senha;
+
+    //tamanho da senha
+	if((senha.length >= 4) && (senha.length <= 7)){
+		forca += 10;
+	}else if(senha.length > 7){
+		forca += 25;
+	}
+
+	if((senha.length >= 5) && (senha.match(/[a-z]+/))){
+		forca += 10;
+	}
+
+	if((senha.length >= 6) && (senha.match(/[A-Z]+/))){
+		forca += 20;
+	}
+
+	if((senha.length >= 7) && (senha.match(/[@#$%&;*]/))){
+		forca += 25;
+	}
+
+	if(senha.match(/([1-9]+)\1{1,}/)){
+		forca += -25;
+	}
+
+	mostrarForca(forca);
+}
+
+function entrar(){
+	div_senha.innerHTML = "Força: " + forca;
+
+	if(forca < 30 ){
+		div_senha.innerHTML = "<span style='color: #ff0000'>Fraca</span>";
+	}else if((forca >= 30) && (forca < 50)){
+		div_senha.innerHTML = "<span style='color: #FFD700'>Média</span>";
+	}else if((forca >= 50) && (forca < 70)){
+		div_senha.innerHTML = "<span style='color: #7FFF00'>Forte</span>";
+	}else if((forca >= 70) && (forca < 100)){
+		div_senha.innerHTML = "<span style='color: #008000'>Excelente</span>";
+	}
+}
+
+</script>
