@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Istok+Web&family=Poppins:wght@100;300;400&display=swap');
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-.content{
+.content {
     background-image: url(imagens/Datacenter.png);
     background-repeat: no-repeat;
     height: 650px;
@@ -25,14 +25,16 @@ body {
     width: 100%;
 }
 
-h2, h6{
+h2,
+h6 {
     margin: 0;
 }
 
-.logo{
+.logo {
     display: flex;
     margin-top: 20px;
 }
+
 .logo h1 {
     color: #3349ED;
     margin-left: 3px;
@@ -44,13 +46,13 @@ h2, h6{
     justify-content: space-between;
     margin-left: 7%;
     margin-right: 7%;
-   /* margin: 0 10% 0 10%;*/
-   /* margin: 0 10;*/
-   /* margin: 0 10% 0; */
+    /* margin: 0 10% 0 10%;*/
+    /* margin: 0 10;*/
+    /* margin: 0 10% 0; */
 }
 
-.container img{
-        width: 75px;
+.container img {
+    width: 75px;
 }
 
 .navbar {
@@ -59,43 +61,44 @@ h2, h6{
     margin-top: 40px;
 }
 
-.navbar a{
-   margin-right: 12px;
-   text-decoration: none;
-   color: #3349ED;
-   font-size: 20px;
+.navbar a {
+    margin-right: 12px;
+    text-decoration: none;
+    color: #3349ED;
+    font-size: 20px;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     color: #76004a;
     transition: 0.5s;
 }
 
-.container2{
+.container2 {
     display: flex;
     flex-direction: column;
 }
 
-.container2 h2{
+.container2 h2 {
     width: 70%;
     padding: 20% 0 0 20%;
-    font-size: 30px; 
-    color: #FFE9E9;
-}
-.container2 h6{
-    width: 70%;
-    margin: 0;
-    padding: 10px 0 0 22%;
-    font-size: 16px; 
+    font-size: 30px;
     color: #FFE9E9;
 }
 
-.imagens .esfera{
+.container2 h6 {
+    width: 70%;
+    margin: 0;
+    padding: 10px 0 0 22%;
+    font-size: 16px;
+    color: #FFE9E9;
+}
+
+.imagens .esfera {
     padding: 0 0 0 43%;
     width: 150px;
 }
 
-.imagens a{
+.imagens a {
     padding-top: 25px;
     margin-left: -58px;
     color: #FFE9E9;
@@ -103,38 +106,39 @@ h2, h6{
     text-decoration: none;
 }
 
-.content-orcamento{
+.content-orcamento {
     margin: 0;
     height: 350px;
     background-color: #e4e6ef;
     padding: 5% 10% 0 20%;
 }
 
-.orcamento{
+
+.orcamento {
     width: 85%;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
 }
 
-.orcamento h2{
+.orcamento h2 {
     color: #3349ED;
     text-align: center;
     font-size: 30px;
     padding-top: 30px;
 }
 
-.orcamento p{
+.orcamento p {
     font-size: 18;
     text-align: center;
     padding: 0 25px 0 25px;
 }
 
-.orcamento img{
+.orcamento img {
     width: 200px;
     padding: 0 0 0 35%;
     margin-top: -30px;
 }
 
-.orcamento a{
+.orcamento a {
     margin-left: -90px;
     text-decoration: none;
     margin-top: 12px;
@@ -142,7 +146,61 @@ h2, h6{
     font-size: 18px;
 }
 
-.content-sobre-nos{
+.content-contato {
+    margin: 0;
+    height: 350px;
+    background-color: #e4e6ef;
+    padding: 5% 10% 0 20%;
+
+}
+
+.contato {
+    width: 85%;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
+    padding: 10px;
+    text-align: center;
+}
+
+.cont-contato {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.endereco {
+    background-color: #3349ED;
+    width: fit-content;
+    padding: 20px;
+    color: white;
+    border-radius: 15px;
+    height: fit-content;
+    margin-right: 8%;
+}
+
+.div_inp{
+    border-left: 1px #3349ED solid;
+}
+
+.inp_contato {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.btn-contato {
+    background-color: #3349ED;
+    color: #fff;
+    margin-top: 5px;
+    padding: 15px 90px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.content-sobre-nos {
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
     height: 600px;
     padding-top: 30px;
@@ -152,7 +210,7 @@ h2, h6{
     text-align: center;
 }
 
-.sobre-nos{
+.sobre-nos {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.567);
     border-radius: 15px;
     background-color: #e4e6efda;
@@ -161,39 +219,39 @@ h2, h6{
     height: 450px;
 }
 
-.sobre-nos img{
+.sobre-nos img {
     margin-top: 25px;
 }
 
-.sobre-nos p{
+.sobre-nos p {
     color: black;
     font-size: 24px;
     padding: 0 15px;
 }
 
-.footer{
+.footer {
     width: 100%;
     height: 100px;
     border-bottom: 1px solid white;
     display: flex;
 }
 
-.footer img{
+.footer img {
     margin-left: 10px;
 }
 
-.footer p{
+.footer p {
     margin-left: 30px;
 }
 
 footer {
     background-color: #333;
-   
+
     padding: 20px 0;
 }
 
-footer p{
+footer p {
     margin-top: 30px;
-     color: #fff;
+    color: #fff;
     text-align: center;
 }
