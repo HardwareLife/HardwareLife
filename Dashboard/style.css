@@ -41,9 +41,10 @@ body{
 }
 
 .dashboard{
-    margin: 8% 7% 3% 4%;
+    margin: 3% 7% 3% 4%;
     background-color: #FFFF;
     border-radius: 18px;
+    width: 1200px;
 }
 
 .dashboard2{
@@ -51,7 +52,7 @@ body{
     background-color: #FFFF;
     border-radius: 18px;
     padding-bottom: 3px;
-    cursor: pointer;
+    width: 1200px;
 }
 
 .dashboard2 h3{
@@ -59,16 +60,22 @@ body{
     padding-left: 25px;
 }
 
+.dashboard2 p{
+    font-size: 18px;
+}
+
 .dashboard_header{
     display: flex;
     justify-content: space-between;
 }
 
-.dashboard_header select{
-    width: 15%;
-    height: 15%;
+.dashboard_header .select select{
     margin-top: 25px;
-    margin-right: 20px;
+    margin-right: 12px;
+}
+
+.dashboard_header .select button{
+    margin-right: 15px;
 }
 
 .dashboard h2{
@@ -103,6 +110,7 @@ body{
     background-color: green;
     border-radius: 50%;
     margin-left: 22px;
+    margin-top: 2px;
 }
 
 #racks{
@@ -113,3 +121,37 @@ body{
     margin-top: 2px;
     margin-left: 8px;
 }
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    padding: 10px 0;
+    justify-content: center;
+  }
+  
+  .pagination-number,
+  .pagination-button{
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    margin: 0.25rem 0.25rem;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: .2rem;
+  }
+  
+  .pagination-number:hover,
+  .pagination-button:not(.disabled):hover {
+    background: #fff;
+  }
+  
+  .pagination-number.active {
+    color: #fff;
+    background: #3349ED;
+  }
+
+  .hidden{
+    display: none;
+  }
