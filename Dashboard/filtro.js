@@ -4,6 +4,9 @@ function filtroSelect(){
     var numeroRack = Number(rack.value);
     var numeroSensor = Number(sensor.value);
 
+    var titulo = document.getElementsByClassName("dashboard_header");
+    var racks = document.getElementsByClassName("racks");
+
     if(numeroSala == 1){
         myLine2.destroy();
         myBar.destroy();     
@@ -293,6 +296,36 @@ function filtroSelect(){
 
 //Sala 2
 if(numeroSala == 2){
+
+    titulo[0].childNodes[1].innerHTML = `Sala 2`;
+    racks[0].innerHTML = `<div class="esfera_ideal"></div>
+    <p>Sensor 12</p>
+    <div class="esfera_irregular"></div>
+    <p>Sensor 2</p> 
+    <div class="esfera_irregular"></div>
+    <p>Sensor 3</p> 
+    <div class="esfera_ideal"></div>
+    <p>Sensor 4</p> 
+    <div class="esfera_ideal"></div>
+    <p>Sensor 5</p> 
+    <div class="esfera_ideal"></div>
+    <p>Sensor 6</p>`
+
+    racks[1].innerHTML = `
+    <div class="esfera_ideal"></div>
+				<p>Sensor 1</p>
+				<div class="esfera_critica"></div>
+				<p>Sensor 2</p> 
+				<div class="esfera_critica"></div>
+				<p>Sensor 3</p> 
+				<div class="esfera_ideal"></div>
+				<p>Sensor 4</p> 
+				<div class="esfera_ideal"></div>
+				<p>Sensor 5</p> 
+				<div class="esfera_irregular"></div>
+				<p>Sensor 6</p>
+                `
+
     myLine2.destroy();
     myBar.destroy();
 

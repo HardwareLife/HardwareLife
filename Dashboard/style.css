@@ -69,9 +69,14 @@ body{
     justify-content: space-between;
 }
 
+.dashboard_header .select{
+    width: 40%;
+}
+
 .dashboard_header .select select{
     margin-top: 25px;
     margin-right: 12px;
+    width: 25%;
 }
 
 .dashboard_header .select button{
@@ -113,11 +118,29 @@ body{
     margin-top: 2px;
 }
 
-#racks{
+.esfera_irregular{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(243, 197, 14);
+    border-radius: 50%;
+    margin-left: 22px;
+    margin-top: 2px;
+}
+
+.esfera_critica{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(176, 2, 2);
+    border-radius: 50%;
+    margin-left: 22px;
+    margin-top: 2px;
+}
+
+.racks{
     display: flex;
 }
 
-#racks p{
+.racks p{
     margin-top: 2px;
     margin-left: 8px;
 }
