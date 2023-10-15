@@ -8,6 +8,37 @@ function filtroSelect(){
     var racks = document.getElementsByClassName("racks");
 
     if(numeroSala == 1){
+
+        racks[0].innerHTML = `
+        <div class="esfera_ideal"></div>
+        <p>Sensor 1</p>
+        <div class="esfera_ideal"></div>
+        <p>Sensor 2</p> 
+        <div class="esfera_ideal"></div>
+        <p>Sensor 3</p> 
+        <div class="esfera_ideal"></div>
+        <p>Sensor 4</p> 
+        <div class="esfera_ideal"></div>
+        <p>Sensor 5</p> 
+        <div class="esfera_ideal"></div>
+        <p>Sensor 6</p>
+        `;
+
+        racks[1].innerHTML = `
+        <div class="esfera_ideal"></div>
+				<p>Sensor 1</p>
+				<div class="esfera_ideal"></div>
+				<p>Sensor 2</p> 
+				<div class="esfera_ideal"></div>
+				<p>Sensor 3</p> 
+				<div class="esfera_ideal"></div>
+				<p>Sensor 4</p> 
+				<div class="esfera_ideal"></div>
+				<p>Sensor 5</p> 
+				<div class="esfera_ideal"></div>
+				<p>Sensor 6</p>
+        `;
+
         myLine2.destroy();
         myBar.destroy();     
         

@@ -1,6 +1,5 @@
 CREATE DATABASE HardwareLife;
 
-DROP DATABASE HardwareLife;
 USE HardwareLife;
 
  -- TABELA PARA CONTROLE E CADASTRO DE EMPRESAS CLIENTES --
@@ -71,11 +70,12 @@ CREATE TABLE sensor(
  -- TABELA DE DADOS DO SENSOR --
 
 CREATE TABLE dados(
-	idDados int primary key auto_increment,
+	idDados int,
     dataHora dateTime default current_timestamp,
     temperatura double,
     umidade double,
     fk_sensor int,
+    primary key(idDados, fk_sensor),
     constraint fkSensor foreign key (fk_sensor) references sensor(idSensor)
 );
 
