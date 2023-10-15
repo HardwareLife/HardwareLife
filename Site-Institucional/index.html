@@ -21,7 +21,7 @@
             <ul class="navbar">
                 <li><a href="../Simulador Financeiro/Calculadora.html">Orçamento</a></li>
                 <li><a href="#sobre">Sobre nós</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#contato">Contato</a></li>
                 <li><a href="../Login/tela_login.html">Login</a></li>
             </ul>
 
@@ -84,24 +84,34 @@
         </div>
     </div>
 
-    <div class="content-contato">
+    <div class="content-contato" id="contato">
         <div class="contato">
-            <h2>Quer falar com a gente?</h2>
+
             <div class="cont-contato">
                 <div class="endereco">
                     hello@sptech.school <br>
                     R. Haddock Lobo, 505 <br>
                     Paulista, São Paulo - SP
                 </div>
+
                 <div class="div_inp">
-                    <form action="#" method="post">
-                        <input type="text" placeholder="Nome" required class="inp_contato">
-                        <input type="text" placeholder="Email" required class="inp_contato">
-                        <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
+                    <h2>Quer falar com a gente?</h2><br>
+                    
+                    <label for="modalExemplo" class="abrirModal">Entre em contato</label>
+                    <input type="checkbox" id="modalExemplo" class="checkboxModal">
 
-                        <button type="submit" class="btn-contato">Enviar</button>
+                    <div class="modal">
+                        <label for="modalExemplo" class="fecharModal">X</label>
+                        <div class="conteudoModal">
+                        <form action="#" method="post">
+                            <input type="text" placeholder="Nome" required class="inp_contato">
+                            <input type="text" placeholder="Email" required class="inp_contato">
+                            <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
 
-                    </form>
+                            <button type="submit" class="btn-contato">Enviar</button>
+                        </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

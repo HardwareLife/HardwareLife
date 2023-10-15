@@ -148,13 +148,16 @@ h6 {
 
 .content-contato {
     margin: 0;
-    height: 350px;
-    background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
+    height: 250px;
+    background-color: #333;
     padding: 5% 10% 0 20%;
+    border-bottom: 1px solid #e4e6ef;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
 }
 
 .contato {
     width: 85%;
+    height: 65%;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
     padding: 10px;
     text-align: center;
@@ -163,42 +166,97 @@ h6 {
 
 .cont-contato {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    /*align-items: center;*/
     margin-top: 25px;
 }
 
 .endereco {
-    background-color: #3349ED;
-    width: fit-content;
+    height: 100%;
     padding: 20px;
-    color: white;
-    border-radius: 15px;
-    height: fit-content;
+    /*border-radius: 15px;*/
     margin-right: 8%;
+    flex-direction: row;
 }
 
 .div_inp{
     border-left: 1px #3349ED solid;
-}
+    padding: 0 0 0 10%;
+    flex-direction: row-reverse;
+} 
 
+.abrirModal:hover {
+    cursor: pointer;
+  }
+  
+.abrirModal {
+    background-color: #3349ED;
+    color: #fff;
+    margin-top: 5px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+  
+.checkboxModal {
+    display: none;
+}
+  
+#modalExemplo:checked + .modal {
+    display: flex;
+}
+  
+.modal {
+    display: none;
+    /*position: fixed;*/
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    /*background-color: rgba(0,0,0,0.5);*/
+}
+  
+.modal .fecharModal {
+    /*position: absolute;*/
+    top: 10px;
+    right: 10px;
+}
+  
+.fecharModal:hover {
+    cursor: pointer;
+    color: red;
+} 
+  
+.conteudoModal {
+    width: 100%;
+    height: 60%;
+    padding: 20px;
+    /*border: 1px solid lighgray;*/
+    border-radius: 10px;
+    background-color: #333;
+    box-shadow: 5px 5px 15px black;
+}
+  
 .inp_contato {
-    width: 60%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
+      width: 65%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      align-items: center;
+} 
+  
 .btn-contato {
     background-color: #3349ED;
     color: #fff;
     margin-top: 5px;
-    padding: 15px 90px;
+    padding: 15px 30px;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
-}
+    font-family: 'Poppins', sans-serif;
+ }
 
 .content-sobre-nos {
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
