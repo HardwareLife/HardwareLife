@@ -21,6 +21,7 @@ CREATE TABLE sala(
     fkEmpresa int,
     CONSTRAINT fkEmpresaSala FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
+
  CREATE TABLE endereco(
 	idEndereco int primary key auto_increment,
 	logradouro varchar(60),
@@ -46,14 +47,12 @@ CREATE TABLE funcionario_empresa(
 	constraint fkEmpresaFuncionario foreign key (fk_empresa) references empresa(idEmpresa)
 );
 
-
 CREATE TABLE rack(
 	idRack int primary key auto_increment,
     numeroRack int,
     fkSala int,
     CONSTRAINT fkSala FOREIGN KEY (fkSala) REFERENCES sala(idSala)
 );
-
 
 -- TABELA DO SENSOR
 
