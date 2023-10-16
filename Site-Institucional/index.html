@@ -10,6 +10,22 @@
 
 <body>
 
+    <div class="modal">
+        <div class="conteudoModal">
+        <div style="display: flex;">
+            <label for="modalExemplo" class="fecharModal">X</label>
+            <h3>Contato</h3>
+        </div>
+        <form action="" method="post" onsubmit="redirect()">
+            <input type="text" placeholder="Nome" required class="inp_contato">
+            <input type="text" placeholder="Email" required class="inp_contato">
+            <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
+
+            <button type="submit" class="btn-contato">Enviar</button>
+        </form>
+        </div>
+    </div>
+
     <div class="header">
         <div class="container">
 
@@ -85,18 +101,6 @@
     </div>
 
     <div class="content-contato" id="contato">
-        <div class="modal">
-            <label for="modalExemplo" class="fecharModal">X</label>
-            <div class="conteudoModal">
-            <form action="#" method="post">
-                <input type="text" placeholder="Nome" required class="inp_contato">
-                <input type="text" placeholder="Email" required class="inp_contato">
-                <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
-    
-                <button type="submit" class="btn-contato">Enviar</button>
-            </form>
-            </div>
-        </div>
         <div class="contato">
             <div class="cont-contato">
                 <div class="endereco">
@@ -118,6 +122,7 @@
             
     </div>    
 
+
     <footer>
         <div class="footer">
             <img src="../Dashboard/logo.svg" alt="Logo">
@@ -135,11 +140,16 @@
         var checked = modalExemplo.checked;
         var meuModal = document.querySelector(".modal");
         if(checked){
-            meuModal.style.display = `flex`
+            meuModal.style.display = `block`
         }else{
             meuModal.style.display = `none`
         }
 
+    }
+    function redirect(){
+        var checked = modalExemplo.checked;
+        var meuModal = document.querySelector(".modal");
+        meuModal.style.display = `none`
     }
 
 </script>
