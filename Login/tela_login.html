@@ -21,21 +21,24 @@
             <div id="div_resultado" class="container">
                 <h2>Login</h2>
                 <form action="../Dashboard/index.html" method="post">
-                    <input type="text" id="input_usuario" placeholder="Nome de usuário" required oninput="validarEmail()">
+                    <input type="text" id="input_usuario" placeholder="Usuário" required oninput="validarEmail()">
                     <div id="div_senha">
-                    <input type="password" id="input_senha" placeholder="Senha" maxlength="60" size="35"><br></div oninput="validarSenha()>
-
+                    <input type="password" id="input_senha" placeholder="Senha" maxlength="60" size="35"><br></div oninput="validarSenha()">
+                    
                     <div class="senha">
-                        <div class="senha">
-                            <span class="lembrar">Lembrar meu usuário</span>
+                        <div class="box-manterLog">
                             <input class="checkbox" type="checkbox" id="input_lembrar">
-                            </div>
-                        <span><u>Esqueci a senha</u></span>
+                            <span class="lembrar">Lembrar-me</span>
+                        </div>
+
+                        <span class="span1"><a href="#">Esqueci a senha</a></span>     
                     </div>
 
-                    <span>Não possui uma conta? <a
-                            href="../file:///C:/Users/gfran/AppData/Local/Microsoft/Windows/INetCache/IE/BVTFZKDG/cadastroSprint_2[1].html">Cadastra-se</a></span>
+                    
                     <button onclick="entrar()" type="submit">Entrar</button>
+<br>
+                    <span class="box-cadastro" >Não possui uma conta? <a
+                        href="../file:///C:/Users/gfran/AppData/Local/Microsoft/Windows/INetCache/IE/BVTFZKDG/cadastroSprint_2[1].html">Cadastra-se</a></span>
                 </form>
 
             </div>
