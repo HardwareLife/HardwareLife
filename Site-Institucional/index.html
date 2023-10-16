@@ -85,8 +85,19 @@
     </div>
 
     <div class="content-contato" id="contato">
+        <div class="modal">
+            <label for="modalExemplo" class="fecharModal">X</label>
+            <div class="conteudoModal">
+            <form action="#" method="post">
+                <input type="text" placeholder="Nome" required class="inp_contato">
+                <input type="text" placeholder="Email" required class="inp_contato">
+                <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
+    
+                <button type="submit" class="btn-contato">Enviar</button>
+            </form>
+            </div>
+        </div>
         <div class="contato">
-
             <div class="cont-contato">
                 <div class="endereco">
                     hello@sptech.school <br>
@@ -98,24 +109,14 @@
                     <h2>Quer falar com a gente?</h2><br>
                     
                     <label for="modalExemplo" class="abrirModal">Entre em contato</label>
-                    <input type="checkbox" id="modalExemplo" class="checkboxModal">
+                    <input type="checkbox" id="modalExemplo" class="checkboxModal" onclick="mostrarModal()">
 
-                    <div class="modal">
-                        <label for="modalExemplo" class="fecharModal">X</label>
-                        <div class="conteudoModal">
-                        <form action="#" method="post">
-                            <input type="text" placeholder="Nome" required class="inp_contato">
-                            <input type="text" placeholder="Email" required class="inp_contato">
-                            <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
-
-                            <button type="submit" class="btn-contato">Enviar</button>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    
+                </div>    
+            </div>    
         </div>
-    </div>
+            
+    </div>    
 
     <footer>
         <div class="footer">
@@ -128,5 +129,18 @@
         <p>&copy; 2023 HardwareLife - Todos os direitos reservados</p>
     </footer>
 </body>
+<script>
 
+    function mostrarModal(){
+        var checked = modalExemplo.checked;
+        var meuModal = document.querySelector(".modal");
+        if(checked){
+            meuModal.style.display = `flex`
+        }else{
+            meuModal.style.display = `none`
+        }
+
+    }
+
+</script>
 </html>
