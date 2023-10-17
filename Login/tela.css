@@ -1,25 +1,18 @@
-<<<<<<< HEAD
-* {
-=======
 @import url('https://fonts.googleapis.com/css2?family=Istok+Web&family=Poppins:wght@100;300;400&display=swap');
 
 *{
->>>>>>> cfd659b4ced9d548f63be917a5d108fa2e90e78d
     margin: 0;
-    padding: 0;
-}
+    padding: 0;}
 
 body {
-    /* font-family: Arial, sans-serif; */
-    /* background-color: #f4f4f4; */
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
-    /* background: linear-gradient(80deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 40%, rgb(85, 130, 242) 100%); */
     margin: 0;
     padding: 0;
     height: 100vh;
 }
 
-.logo {
+.logo{
     display: flex;
     justify-content: center;
     color: white;
@@ -27,12 +20,12 @@ body {
     margin-top: 15px;
 }
 
-.logo h1 {
+.logo h1{
     margin-top: 25px;
     font-size: 50px;
 }
 
-.logo a {
+.logo a{
     text-decoration: none;
     color: #fff;
 }
@@ -50,7 +43,7 @@ body {
     margin: 4% 0 0 36%;
 }
 
-.container {
+.container{
     margin-top: 30px;
 }
 
@@ -87,13 +80,13 @@ body {
     font-size: 15px;
 }
 
-.senha {
+.senha{
     display: flex;
     justify-content: space-between;
     margin: 0 30px 20px 27px;
 }
 
-.senha .span1 {
+.senha .span1{
     display: flex;
     /* justify-content: end; */
     font-size: 14px;
@@ -101,11 +94,11 @@ body {
     /* margin-right: 43px; */
 }
 
-.senha .span1 a {
+.senha .span1 a{
     color: black;
 }
 
-.box-manterLog {
+.box-manterLog{
     display: flex;
     justify-content: center;
     /* margin-bottom: 10px; */
@@ -115,18 +108,13 @@ body {
 }
 
 
-<<<<<<< HEAD
-.lembrar {
-    font-size: 11.2px;
-=======
 .lembrar{
     font-size: 14px;
->>>>>>> cfd659b4ced9d548f63be917a5d108fa2e90e78d
     margin-top: 2px;
 }
 
 
-.main {
+.main{
     width: 100%;
     height: 100%;
     display: flex;
@@ -137,15 +125,10 @@ body {
 }
 
 .checkbox {
-<<<<<<< HEAD
-    height: 10px;
-=======
      height: 13px;
->>>>>>> cfd659b4ced9d548f63be917a5d108fa2e90e78d
     flex-direction: column;
     display: flex;
-    margin-top: 0;
-}
+    margin-top: 0;}
 
 input[type="checkbox" i] {
     background-color: initial;
@@ -154,231 +137,4 @@ input[type="checkbox" i] {
     box-sizing: border-box;
     margin: 3px 3px 3px 4px;
     padding: initial;
-    border: initial;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    background: #f6f5f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family:
-        'Montserrat';
-    height: 100vh;
-    margin: -20px 0 50px;
-}
-
-h1 {
-    font-weight: bold;
-    margin: 0;
-    text-align: center;
-    font-size:
-        14px;
-    font-weight: 100;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    margin: 20px 0 30px;
-}
-
-span {
-    font-size:
-        12px;
-}
-
-a {
-    color: #333;
-    font-size: 14px;
-    text-decoration:
-        none;
-    margin: 15px 0;
-}
-
-button {
-    border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-button:focus {
-    outline: none;
-}
-
-button.ghost {
-    background-color: transparent;
-    border-color: #FFFFFF;
-}
-
-.container {
-    background-color: #fff;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
-}
-
-form {
-    background-color: #FFFFFF;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 0 50px;
-    height: 100%;
-    text-align: center;
-}
-
-.form-container {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
-}
-
-input {
-    background-color:
-        #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 100%;
-}
-
-sign-in-container {
-    left: 0;
-    width:
-        50%;
-    z-index: 2;
-}
-
-.container.right-panel-active .sign-in-container {
-    transform: translateX (100%);
-}
-
-.overlay-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 100;
-}
-
-.sign-up-container {
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
-}
-
-.container.right-panel-active .sign-up-container {
-    transform: translateX (100%);
-    opacity: 1;
-    z-index:
-        5;
-    animation: show 0.6s;
-}
-
-@keyframes show {
-
-    0%,
-    49.99% {
-        opacity: 0;
-        z-index: 1;
-    }
-
-    50%,
-    100% {
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-.container.right-panel-active .overlay-container {
-    transform: translateX (-100%);
-}
-
-.overlay {
-    background: #17046a;
-    background-repeat:
-        no-repeat;
-    background-size:
-        cover;
-    background-position: 0 0;
-    color: #FFFFFF;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-}
-
-.container.right-panel-active .overlay {
-    transform: translateX (50%);
-}
-
-
-.overlay-panel {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    text-align: center;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    transform: translatex (0);
-}
-
-.overlay-left {
-    transform: translatex (-20%);
-}
-
-.container.right-panel-active .overlay-left {
-    transform: translate(0);
-}
-
-.overlay-right {
-    right: 0;
-    transform: translate(0);
-}
-
-.container.right-panel-active .overlay-right {
-    transform: translateX (20%);
-}
-
-.social-container {
-    margin: 20px 0;
-}
-
-.social-container a {
-    border: 1px solid #DDDDDD;
-    border-radius:
-        50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-}
+    border: initial;}
