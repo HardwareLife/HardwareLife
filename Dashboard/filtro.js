@@ -62,6 +62,7 @@ function filtroSelect(){
                 ]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -95,6 +96,7 @@ function filtroSelect(){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -129,6 +131,7 @@ function filtroSelect(){
                             }]
                 },
                 options : {
+                    maintainAspectRatio: false,
                     plugins:{
                         title : {
                             display : true,
@@ -165,6 +168,7 @@ function filtroSelect(){
                             }]
                 },
                 options : {
+                    maintainAspectRatio: false,
                     plugins:{
                         title : {
                             display : true,
@@ -200,6 +204,7 @@ function filtroSelect(){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -238,6 +243,7 @@ function filtroSelect(){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -273,6 +279,7 @@ function filtroSelect(){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -308,6 +315,7 @@ function filtroSelect(){
                     }]
         },
         options : {
+            maintainAspectRatio: false,
             plugins:{
                 title : {
                     display : true,
@@ -381,6 +389,7 @@ if(numeroSala == 2){
                     }]
         },
         options : {
+            maintainAspectRatio: false,
             plugins:{
                 title : {
                     display : true,
@@ -414,6 +423,7 @@ if(numeroSala == 2){
             ]
         },
         options : {
+            maintainAspectRatio: false,
             plugins:{
                 title : {
                     display : true,
@@ -450,6 +460,7 @@ if(numeroSala == 2){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -488,6 +499,7 @@ if(numeroSala == 2){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -525,6 +537,7 @@ if(numeroSala == 2){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -562,6 +575,7 @@ if(numeroSala == 2){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -599,6 +613,7 @@ if(numeroSala == 2){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,
@@ -636,6 +651,7 @@ if(numeroSala == 2){
                         }]
             },
             options : {
+                maintainAspectRatio: false,
                 plugins:{
                     title : {
                         display : true,

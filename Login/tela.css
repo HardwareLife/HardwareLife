@@ -14,9 +14,8 @@ body {
 
 .logo{
     display: flex;
-    justify-content: center;
+    margin-left: 35%;
     color: white;
-    margin-right: 2%;
     margin-top: 15px;
 }
 

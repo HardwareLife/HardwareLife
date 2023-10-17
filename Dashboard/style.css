@@ -94,18 +94,20 @@ body{
 
 .dashboard_container{
    display: flex;  
-
+    height: 35vh;
 }
 .dashboard_container2{
     margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 35vh;
 }
 
 .dashboard_chart_line{
     display: flex;
     width: 50%;
+    height: 100%;
     /* width: 100%; */
     margin-left: 3%;
     /* margin-right: 10px;*/
@@ -189,10 +191,10 @@ body{
     width:70%;
     height:70%;
     left: 15%;
-    top: 100px;
+    top: 10%;
     background-color: rgba(0, 0, 0, 0.932);
     border-radius: 15px;
-    padding: 25px;
+    padding: 25px 25px 4% 25px;
 }
 
  .conteudoModal{
