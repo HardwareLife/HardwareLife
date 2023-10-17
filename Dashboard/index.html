@@ -8,6 +8,15 @@
 </head>
 <body>
 
+	<div class="modal">
+		<div class="conteudoModal">
+			<img src="../Site-Institucional/imagens/alerta-icon.png" alt="Ícone de alerta">
+			<p>O rack 2 da sua Sala 2 está com dois sensores em temperatura crítica e um sensor em temperatura irregular, por favor verifique a situação dos equipamentos</p>
+			<button class="fecharModal">Fechar</button>
+		</div>
+
+	</div>
+
 	<div class="header">
 		<div class="container">
 			<div class="logo">
@@ -16,6 +25,7 @@
 			</div>
 			<ul class="navbar">
 				<a href="../Login/tela_login.html">Sair</a>
+				<a onclick="aparecerModal()" style="margin-left: 20px; cursor: pointer;">Alerta</a>
 			</ul>
 		</div>		
 	</div>
@@ -106,6 +116,16 @@
 <script src="filtro.js"></script>
 <script src="pagination.js"></script>
 <script>
+
+		var modal = document.querySelector(".modal");
+		var modalButton = document.querySelector(".fecharModal");
+		modalButton.addEventListener("click", function(){
+			modal.style.display = `none`
+		})
+
+		function aparecerModal(){
+			modal.style.display = `block`
+		}
 
     const ctx = document.getElementById("myChart");
 	const bar2 = document.getElementById("bar2");

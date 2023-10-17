@@ -5,10 +5,8 @@
     padding: 0;}
 
 body {
-    /* font-family: Arial, sans-serif; */
-    /* background-color: #f4f4f4; */
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
-    /* background: linear-gradient(80deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 40%, rgb(85, 130, 242) 100%); */
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -24,7 +22,6 @@ body {
 
 .logo h1{
     margin-top: 25px;
-    font-family: Arial, sans-serif;
     font-size: 50px;
 }
 
