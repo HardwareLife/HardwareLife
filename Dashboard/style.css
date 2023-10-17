@@ -48,7 +48,7 @@ body{
     margin: 3% 7% 3% 4%;
     background-color: #FFFF;
     border-radius: 18px;
-    width: 1200px;
+    width: 90%;
 }
 
 .dashboard2{
@@ -56,7 +56,7 @@ body{
     background-color: #FFFF;
     border-radius: 18px;
     padding-bottom: 3px;
-    width: 1200px;
+    width: 90%;
 }
 
 .dashboard2 h3{
@@ -188,7 +188,7 @@ body{
     display: none;
     width:70%;
     height:70%;
-    left: 200px;
+    left: 15%;
     top: 100px;
     background-color: rgba(0, 0, 0, 0.932);
     border-radius: 15px;
@@ -217,7 +217,6 @@ body{
     background-color: yellow;
     padding: 20px 90px 20px 90px;
     cursor: pointer;
-    margin-top: -20px;
     border: none;
     font-weight: bold;
     font-size: 20px;

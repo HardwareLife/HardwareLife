@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: center;
     color: white;
-    margin-right: 4%;
+    margin-right: 2%;
     margin-top: 15px;
 }
 
@@ -40,7 +40,7 @@ body {
     text-align: center;
     height: 50%;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.567);
-    margin: 4% 0 0 36%;
+    margin: 4% 0 0 40%;
 }
 
 .container{

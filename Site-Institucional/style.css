@@ -149,9 +149,8 @@ h6 {
 .content-contato {
     margin: 0;
     height: 250px;
-    background-color: #333;
+    background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
     padding: 5% 10% 0 20%;
-    border-bottom: 1px solid #e4e6ef;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
 }
 
@@ -210,7 +209,7 @@ h6 {
     /*position: fixed;*/
     width:50%;
     height:50%;
-    left: 320px;
+    left: 25%;
     top: 160px;
     /*background-color: rgba(0,0,0,0.5);*/
 }
@@ -309,13 +308,13 @@ h6 {
 }
 
 footer {
-    background-color: #333;
+    background-color: #e4e6ef;
 
     padding: 20px 0;
 }
 
 footer p {
     margin-top: 30px;
-    color: #fff;
+    color: black;
     text-align: center;
 }
