@@ -26,7 +26,7 @@ float dht11_umidade = dht.readHumidity();
 //float luminosidade = analogRead(LUMIPIN);
 Serial.print(dht11_umidade);
 Serial.print(",");
-Serial.print(lm35_temperatura);
+Serial.println(lm35_temperatura);
 //Serial.print(",");
 // Serial.print(dht11_temperatura);
 // Serial.print(",");
