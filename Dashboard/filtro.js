@@ -9,6 +9,8 @@ function filtroSelect(){
 
     if(numeroSala == 1){
 
+        titulo[0].childNodes[1].innerHTML = `Sala 1`; 
+
         racks[0].innerHTML = `
         <div class="esfera_ideal"></div>
         <p>Sensor 1</p>

@@ -37,7 +37,7 @@ body {
     max-width: max-content;
     width: 30%;
     text-align: center;
-    height: 50%;
+    height: 55%;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.567);
     margin: 4% 0 0 40%;
 }
@@ -52,17 +52,18 @@ body {
 
 .login-container input[type="text"],
 .login-container input[type="password"] {
-    width: 67%;
+    width: 74%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    font-size: 14px;
 }
 
 .login-container button {
     background-color: #007BFF;
     color: #fff;
-    margin-top: 5px;
+    margin-top: 0;
     margin-bottom: 20px;
     padding: 15px 90px;
     border: none;
@@ -76,16 +77,17 @@ body {
 }
 
 .login-container .box-cadastro {
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .senha{
     display: flex;
     justify-content: space-between;
-    margin: 0 30px 20px 27px;
+    margin: 2% 30px 20px 27px;
 }
 
 .senha .span1{
+    margin-top: 2px;
     display: flex;
     /* justify-content: end; */
     font-size: 14px;
@@ -124,7 +126,6 @@ body {
 }
 
 .checkbox {
-     height: 13px;
     flex-direction: column;
     display: flex;
     margin-top: 0;}
