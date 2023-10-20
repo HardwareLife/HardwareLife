@@ -57,12 +57,13 @@ CREATE TABLE rack(
 -- TABELA DO SENSOR
 
 CREATE TABLE sensor(
-    idSensor int primary key auto_increment,
+    idSensor int auto_increment,
     nome_sensor varchar(40),
     pos_x_sensor int,
     pos_y_sensor int,
     pos_z_sensor int,
     fkRack int,
+    primary key(idSensor, fkRack),
     CONSTRAINT fkRack FOREIGN KEY (fkRack) REFERENCES rack(idRack)
 );
 
