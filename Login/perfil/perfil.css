@@ -67,10 +67,19 @@ body {
     margin: 6px 0;
 }
 
+.chips a{
+    color: black;
+    text-decoration: none;
+}
+
 
 .action-buttons {
+    display: flex;
+    justify-content: end;
+    margin-left: 250px;
     padding-top: 16px;
     gap: 12px;
+    width: 20%;
     display: flex;
     margin-top: auto;
     flex-wrap: wrap;
@@ -90,6 +99,7 @@ body {
     white-space: nowrap;
     flex: 1 0 240px;
     max-width: 100%;
+    list-style: none;
 }
 
 .action-buttons a:hover {
