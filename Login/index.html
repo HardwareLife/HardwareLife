@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login e Cadastro</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+	<link rel="stylesheet" href="login.css">
+
+</head>
+
+<body>
+
+	<div class="logo">
+		<a href="../Site-Institucional/index.html"><img src="../Site-Institucional/imagens/logo.svg"
+				alt="Logo HardwareLife"></a>
+		<a href="../Site-Institucional/index.html">
+			<h1>HardwareLife</h1>
+		</a>
+	</div>
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form action="">
+				<h2 style="margin-bottom: 5px;">Cadastre-se</h2>
+				<input id="nome_cad" type="text" placeholder="Nome da Empresa">
+				<input id="email_cad" type="text" placeholder="Email da Empresa">
+				<input id="senha_cad" type="password" placeholder="Senha">
+				<input id="confirmar_cad" type="password" placeholder="Confirmar Senha">
+				<input id="cnpj_cad" type="number" placeholder="CNPJ">
+				<input id="tel_cad" type="number" placeholder="Telefone da Empresa">
+				<button onclick="cadastro()" style="margin-top: 5px;">Cadastro</button>
+
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+
+				<div class="overlay-panel overlay-left">
+					<h2>Bem Vindo!</h2>
+					<p>Entre com seu Email e Senha para continuar</p>
+					<button onclick="signin()" id="logar">Entrar</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h2>Olá, Bem Vindo!</h2>
+					<p>Conecte-se conosco para uma experiência incrível!</p>
+					<button onclick="signup()" id="cadastrar">Cadastrar</button>
+				</div>
+			</div>
+		</div>
+		<div class="form-container entrar">
+			<form action="#">
+				<h2>Entrar</h2>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>Entre com sua conta</span>
+				<input type="email" placeholder="Email" />
+				<input type="password" placeholder="Password" />
+				<a href="#">Esqueceu a senha?</a>
+				<button class="logar">Entrar</button>
+			</form>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>
+<script>
+
+	var conectar = document.getElementById("container");
+
+	function signup() {
+		var buttonCadatro = document.getElementById("cadastrar");
+		conectar.classList.add("right-panel-active")
+
+	}
+
+	function signin() {
+		var login = document.getElementById("logar");
+		conectar.classList.remove("right-panel-active");
+	}
+</script>
