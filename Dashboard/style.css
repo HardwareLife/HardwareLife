@@ -64,7 +64,7 @@ body{
 }
 
 .sidebar a{
-    padding-bottom: 70px;
+    margin-bottom: 70px;
     text-decoration: none;
     color: #3349ED;
     font-size: 22px;

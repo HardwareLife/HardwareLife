@@ -1,28 +1,28 @@
 USE HardwareLife;
 
 INSERT INTO empresa VALUES
-(null, '06.990.590/0001-23' ,'Google Brasil','Google Brasil Internet LTDA','GOOGLEBRASIL@GOOGLE.COM', '11 23958400', '5', '25'),
-(null, '00.623.904/0001-73','Apple Brasil','Apple Computer Brasil Ltda.','FISCAL@APPLE.COM','11 55030000', '4', '20');
+(null, '06.990.590/0001-23' ,'Google Brasil','Google Brasil Internet LTDA','GOOGLEBRASIL@GOOGLE.COM', '11 23958400'),
+(null, '00.623.904/0001-73','Apple Brasil','Apple Computer Brasil Ltda.','FISCAL@APPLE.COM','11 55030000');
 
 INSERT INTO endereco VALUES 
 (null, 'AV. Brigadeiro Faria Lima','3900','Pinheiros','São Paulo','SP','04538-133', 1),
 (null, 'Rodovia Vice-Prefeito Hermenegildo Tonolli','1500','Distrito Industrial','Jundiaí','SP','13213-086', 2);
 
-INSERT INTO funcionario_empresa VALUES
-(null, 'leonardo.arakaki@hardwarelife.com','Leonardo Arakaki', '951.403.008-76', true,'123', null),
-(null, 'willians.vinicius@hardwarelife.com','Willians Vinicius', '951.403.008-75',  true,'123', null),
-(null, 'giovanna.franca@hardwarelife.com','Giovanna França','951.403.008-74', true,'123', null),
-(null, 'ian.silva@hardwarelife.com','Ian Silva', '951.403.008-73', true,'123', null),
-(null, 'julia.camargo@hardwarelife.com', 'Julia Camargo','951.403.008-72', true,'123', null),
-(null, 'ana.beatriz@hardwarelife.com', 'Ana Beatriz','951.403.008-71', true,'123', null),
-(null, 'joão.henrique@GOOGLE.COM','João Henrique','951.403.008-77', false,'123', 2),
-(null, 'maria.eduarda@APPLE.COM','Maria Eduarda','328.587.718-98', false,'123', 1);
+INSERT INTO usuario VALUES
+(null, 'leonardo.arakaki@hardwarelife.com','123',true ,null),
+(null, 'willians.vinicius@hardwarelife.com','123', true, null),
+(null, 'giovanna.franca@hardwarelife.com','123', true, null),
+(null, 'ian.silva@hardwarelife.com','123', true, null),
+(null, 'julia.camargo@hardwarelife.com','123', true, null),
+(null, 'ana.beatriz@hardwarelife.com','123', true, null),
+(null, 'joão.henrique@GOOGLE.COM','123', false, 2),
+(null, 'maria.eduarda@APPLE.COM','123', false, 1);
 
 INSERT INTO sala VALUES 
-(null, 'Google_SP_Pinheiros01', 1), 
-(null, 'Apple_SP_Jundiaí01', 2), 
-(null, 'Google_SP_Pinheiros02', 1), 
-(null, 'Apple_SP_Jundiaí02', 2);
+(null, 1, 1), 
+(null, 1, 2), 
+(null, 2, 1), 
+(null, 2, 2);
 
 INSERT INTO rack VALUES 
 (null, 1, 1), (null, 2, 1),
@@ -46,7 +46,8 @@ INSERT INTO sensor VALUES
 (1, 'LM35',7, 1, 1, 7),(2, 'LM35',7, 2, 1, 7),(3, 'LM35',7, 1, 2, 7),(4, 'LM35',7, 2, 2, 7),(5, 'LM35',7, 1, 3, 7),(6, 'LM35',7, 2, 3, 7),
 
 (1, 'LM35',8, 1, 1, 8),(2, 'LM35',8, 2, 1, 8),(3, 'LM35',8, 1, 2, 8),(4, 'LM35',8, 2, 2, 8),(5, 'LM35',8, 1, 3, 8),(6, 'LM35',8, 2, 3, 8);
-
+INSERT INTO sensor VALUES (null, 'DHT11', null, null, null, 1),
+(null, 'DHT11', null, null, null, 2);
 
 INSERT INTO dados VALUES
 (1, '2023-09-12 10:00:00', 27.3, null,1),
@@ -75,4 +76,7 @@ INSERT INTO dados VALUES
 (21, '2023-09-12 10:02:00',  36.3, null, 4),
 (22, '2023-09-12 10:03:00',  37, null, 4),
 (23, '2023-09-12 10:04:00',  36.2, null, 4),
-(24, '2023-09-12 10:05:00',  35.7, null,4);
+(24, '2023-09-12 10:05:00',  35.7, null,4),
+(25, '2023-09-12 10:15:00', null, 50.2, 7),
+(26, '2023-09-12 10:25:00', null, 52, 7),
+(27, '2023-09-12 10:35:00', null, 51.5, 7);

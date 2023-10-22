@@ -10,14 +10,12 @@ USE HardwareLife;
     nomeEmpresa varchar(50),
     razaoSocial varchar(100),
     emailEmpresa varchar(50),
-    telefoneEmpresa varchar(12),
-    qtdSala varchar(15),
-    qtdRacks varchar(70)
- );
+    telefoneEmpresa varchar(12)
+);
  
 CREATE TABLE sala(
 	idSala INT PRIMARY KEY AUTO_INCREMENT,
-	nomeSala varchar(40),
+	numeroSala int,
     fkEmpresa int,
     CONSTRAINT fkEmpresaSala FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
@@ -36,15 +34,13 @@ CREATE TABLE sala(
 
  -- TABELA PARA CONTROLE E LOGIN DE CLEINTES --
  
-CREATE TABLE funcionario_empresa(
-	idFuncionario int primary key auto_increment,
-    emailFuncionario varchar(50),
-    nomeFuncionario varchar(40),
-    cpf char(14),
+CREATE TABLE usuario(
+	idUsuario int primary key auto_increment,
+    email varchar(50),
     senha varchar(40),
     administrador boolean,
-	fk_empresa int,
-	constraint fkEmpresaFuncionario foreign key (fk_empresa) references empresa(idEmpresa)
+	fkEmpresa int,
+	constraint fkEmpresaFuncionario foreign key (fkEmpresa) references empresa(idEmpresa)
 );
 
 CREATE TABLE rack(
@@ -70,7 +66,7 @@ CREATE TABLE sensor(
  -- TABELA DE DADOS DO SENSOR --
 
 CREATE TABLE dados(
-	idDados int,
+	idDados int auto_increment,
     dataHora dateTime default current_timestamp,
     temperatura double,
     umidade double,
