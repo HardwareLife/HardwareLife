@@ -55,7 +55,7 @@ input{
 }
 
 .navbar a{
-   margin-right: 12px;
+   margin-right: 16px;
    text-decoration: none;
    color: #3349ED;
    font-size: 20px;
@@ -69,6 +69,7 @@ input{
 
 .content{
     padding-top: 5%;
+    padding-bottom: 3%;
     display: block;
     height: auto;
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
@@ -109,7 +110,7 @@ input{
 }
 
 .link-planos h3{
-    margin-top: 30px;
+    margin-top: 27px;
     margin-left: -60px;
     color: white;
     font-size: 16px;
@@ -127,6 +128,7 @@ input{
 
 .calculator_container{
     background-color: #000000b4;
+    box-shadow: 10px 10px 5px 1px rgba(0, 0, 0, 0.347);
     margin: 5% 7% 0 7%;
     border-radius: 20px;
 }
@@ -175,28 +177,83 @@ input{
     margin-left: 70%;
 }
 
-#planos{
+.planos{
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 60px;
+    margin-left: 5%;
+    width: 90%;
+    height: auto;
+    color: white;
+}
+
+#planos{
+    color: white;
+    font-size: 34px;
     text-align: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 60px;
+    font-weight: bold;
 }
 
 .card{
+    background-color: #000000b4;
+    box-shadow: 10px 10px 5px 1px rgba(0, 0, 0, 0.347);
+    border-radius: 15px;
     width: 20%;
-    height: 200px;
-    padding: 10px;
-    background-color: #3349ED;
-    border-radius: 10px;
-    border: 2px solid #000;
+    height: 500px;
+    text-align: center;
+    padding: 10px 0 25px 0;
+    transition: transform 0.5s;
 }
 
-.card h4{
-    margin: 0;
-    /* background-color: #fff; */
-    /* color: #000; */
-    color: #fff;
+.card:hover{
+    transform: scale(1.050);
+}
+
+.card .card_title{
+    padding: 5px 20px;
+    border-bottom: 0.5px solid #00eeff;
+}
+
+.card .card_title h2{
+    font-size: 28px;
+}
+
+.card .card_title p{
+    font-size: 18px;
+    padding: 0 5px;
+}
+
+.card .card_title p i{
+    margin-right: 5px;
+}
+
+.card .card_content ul{
+    padding: 10px 30px;
+    padding-bottom: 2%;
+
+}
+
+.card .card_content ul li{
+    font-size: 16px;
+    list-style: none;
+    padding: 10px 0;
+}
+
+.card .card_content ul li i{
+    margin-right: 9px;
+}
+
+.card .card_content button{
+    width: 60%;
+    font-size: 16px;
+    background-color: #3349ED;
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 .nossa-solucao{

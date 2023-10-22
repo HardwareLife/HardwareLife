@@ -11,11 +11,17 @@ body{
 
 .header{
     background-color: #E4E6EF;
+    
+}
+
+.side-bar i{
+    margin: 25px 15px 0 -25px;
+    font-size: 24px;
+    color: #3349ED;
 }
 
 .container{
     display: flex;
-    justify-content: space-between;
     margin: 0 7% 0 4%;
 }
 
@@ -33,14 +39,40 @@ body{
     width: 75px;
 }
 
+.container span{
+    font-size: 30px;
+    color: #3349ED;
+    margin: 13px 15px 0 15px;
+    cursor: pointer;
+}
+
 .navbar{
-    list-style: none;
-    margin-top: 25px;
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+    width: 25%;
+    position: fixed;
+    background-color: #E4E6EF;
+
+}
+
+.sidebar{
+    margin-top: 130px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar a{
+    padding-bottom: 70px;
+    text-decoration: none;
+    color: #3349ED;
+    font-size: 22px;
 }
 
 .container h1{
     color: #3349ED;
-    margin-top: 25px;
+    margin-top: 20px;
     font-size: 25px;
 }
 
@@ -185,7 +217,7 @@ body{
     display: none;
   }
 
- .modal{
+ /* .modal{
     position: fixed;
     display: none;
     width:70%;
@@ -223,4 +255,4 @@ body{
     font-weight: bold;
     font-size: 20px;
     border-radius: 15px;
- }
+ } */

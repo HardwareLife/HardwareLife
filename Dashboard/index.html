@@ -5,28 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-	<div class="modal">
+	<!-- <div class="modal">
 		<div class="conteudoModal">
 			<img src="../Site-Institucional/imagens/alerta-icon.png" alt="Ícone de alerta">
 			<p>O rack 2 da sua Sala 2 está com dois sensores em temperatura crítica e um sensor em temperatura irregular, por favor verifique a situação dos equipamentos</p>
 			<button class="fecharModal">Fechar</button>
 		</div>
-
+	</div> -->
+	
+	<div class="navbar" id="navbar">
+		<div class="container">
+			<span id="side-bar-deactive">X</span>
+			<div class="logo">
+				<img src="logo.svg" alt="Logo HardwareLife">
+					<h1>HardwareLife</h1>
+			</div>
+		</div>
+		<div class="sidebar">
+			<a href="../Login/perfil/perfil.html">Perfil</a>
+			<a href="../Dashboard/index.html">Dashboard</a>
+			<a href="../Login/index.html">Sair</a>
+		</div>
+		<!-- <a onclick="aparecerModal()" style="margin-left: 20px; cursor: pointer;">Alerta</a> -->
 	</div>
-
 	<div class="header">
 		<div class="container">
+			<div class="side-bar" id="side-bar-active">
+				<i class="fa fa-align-justify"></i>
+			</div>
 			<div class="logo">
 				<img src="logo.svg" alt="Logo HardwareLife">
 				<h1>HardwareLife</h1>
 			</div>
-			<ul class="navbar">
-				<a href="../Login/tela_login.html">Sair</a>
-				<a onclick="aparecerModal()" style="margin-left: 20px; cursor: pointer;">Alerta</a>
-			</ul>
 		</div>		
 	</div>
 	<div class="dashboard">
@@ -117,15 +131,26 @@
 <script src="pagination.js"></script>
 <script>
 
-		var modal = document.querySelector(".modal");
-		var modalButton = document.querySelector(".fecharModal");
-		modalButton.addEventListener("click", function(){
-			modal.style.display = `none`
+		var activeSideBar = document.getElementById("side-bar-active");
+		var deactiveSideBar = document.getElementById("side-bar-deactive");
+
+		activeSideBar.addEventListener("click", function(){
+			navbar.style.display = "flex"
 		})
 
-		function aparecerModal(){
-			modal.style.display = `block`
-		}
+		deactiveSideBar.addEventListener("click", function(){
+			navbar.style.display = "none"
+		});
+
+		// var modal = document.querySelector(".modal");
+		// var modalButton = document.querySelector(".fecharModal");
+		// modalButton.addEventListener("click", function(){
+		// 	modal.style.display = `none`
+		// })
+
+		// function aparecerModal(){
+		// 	modal.style.display = `block`
+		// }
 
     const ctx = document.getElementById("myChart");
 	const bar2 = document.getElementById("bar2");
