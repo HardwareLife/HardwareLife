@@ -50,10 +50,9 @@ body{
     display: none;
     flex-direction: column;
     height: 100vh;
-    width: 25%;
+    width: 0%;
     position: fixed;
     background-color: #E4E6EF;
-
 }
 
 .sidebar{
@@ -80,7 +79,7 @@ body{
     margin: 3% 7% 3% 4%;
     background-color: #FFFF;
     border-radius: 18px;
-    width: 90%;
+    width: 93%;
 }
 
 .dashboard2{
@@ -102,22 +101,50 @@ body{
 
 .dashboard_header{
     display: flex;
+    width: 100%;
     justify-content: space-between;
 }
 
 .dashboard_header .select{
+    display: flex;
+    align-items: center;
     width: 40%;
+    border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-radius: 15px;
+    padding: 0 20px 5px;
 }
 
-.dashboard_header .select select{
-    margin-top: 25px;
+.dashboard_header .select .box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 14px;
+}
+
+
+.dashboard_header .select .box select{
+    /* margin-top: 25px; */
     margin-right: 12px;
-    width: 25%;
+    width: 90%;
 }
 
-.dashboard_header .select button{
-    margin-right: 15px;
+.dashboard_header .select .btn_filter{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 35%;
+    height: 35%;
+    /* margin-right: 15px; */
+    /* border-radius: 20%; */
+    /* border: 1px solid #000000; */
 }
+
+.dashboard_header .select .btn_filter img{
+    width: 35px;
+    cursor: pointer;
+}
+
 
 .dashboard h2{
     margin: 0 0 20px 5%;

@@ -47,21 +47,35 @@
 		<div class="dashboard_header">
 			<h2>Sala 1</h2>
 			<div class="select">
+				<div class="box">
+					<label for="sala">Sala</label>
+					<select id="sala">
+						<option value="0"></option>
+						<option value="1">Sala 1</option>
+						<option value="2">Sala 2</option>
+					</select>
+				</div>
+				<div class="box">
+					<label for="rack">Rack</label>
+					<select id="rack">
+						<option value="0"></option>
+						<option value="1">Rack 1</option>
+						<option value="2">Rack 2</option>
+					</select>
+				</div>
+				<div class="box">
+					<label for="sensor">Sensor</label>
+					<select id="sensor">
+						<option value="0"></option>
+						<option value="1">Sensor 1</option>
+						<option value="2">Sensor 2</option>
+						<option value="3">Sensor 3</option>
+					</select>
+				</div>
+				<div class="btn_filter" onclick="filtroSelect()">
+					<img src="../src/dashboard/filtro_funil.svg" alt="">
+				</div>
 				
-				<select id="sala">
-					<option value="1">Sala 1</option>
-					<option value="2">Sala 2</option>
-				</select>
-				<select id="rack">
-					<option value="1">Rack 1</option>
-					<option value="2">Rack 2</option>
-				</select>
-				<select id="sensor">
-					<option value="1">Sensor 1</option>
-					<option value="2">Sensor 2</option>
-					<option value="3">Sensor 3</option>
-				</select>
-				<button onclick="filtroSelect()">Filtrar</button>
 			</div>
 		</div>
 		<div class="dashboard_container">
@@ -167,6 +181,7 @@
                     {
 							data : [ 20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55 ],
 							label : "Temperatura",
+							fontSize: 15,
 							borderColor : "#ffa500",
 							fill : false,
 							fontSize: 160
