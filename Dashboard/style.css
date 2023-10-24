@@ -5,23 +5,132 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F0F2FC;
+    /* background-color: #F0F2FC; */
+    background-color: #ddd9ce;
     font-family: 'Poppins', sans-serif;
 }
 
+/* cabeçalho */
+
 .header{
-    background-color: #E4E6EF;
+    background-color: #ddd9ce;
 }
 
+/* barra lateral */
 .side-bar i{
-    margin: 25px 15px 0 -25px;
+    margin: 25px 15px 0 0px;
     font-size: 24px;
     color: #3349ED;
 }
 
+.navbar{
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+    width: 20%;
+    position: fixed;
+    background-color: #E4E6EF;
+
+}
+
+/* conteudo barra lateral */
+
+.container_sidebar{
+    display: flex;
+}
+
+.container_sidebar span{
+    font-size: 25px;
+    color: #000000;
+    margin: 15px 10px 0 15px;
+    cursor: pointer;
+}
+
+.container_sidebar h1{
+    color: #3349ED;
+    margin-top: 20px;
+    font-size: 23px;
+}
+
+.container_sidebar .logo{
+    display: flex;
+    width: 30px;
+}
+
+.container_sidebar img{
+    width: 45px;
+}
+
+.sidebar{
+    /* margin-top: 30px; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil img {
+    border-radius: 50%;
+    width: 100%;
+    height: 50%;
+    /* object-fit: cover; */
+}
+
+.perfil span{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.link_part{
+    align-items: center;
+}
+
+.link_part .link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    font-size: 20px;
+    width: 200px;
+    transition: .2s;
+}
+
+.link_part .link a{
+    text-decoration: none;
+    color: #3349ED;
+}
+
+.link_part .link:hover{
+    background-color: #3349ED;
+    border-radius: 5px;
+}
+
+.link_part .link a:hover{
+    color: #000000;
+}
+
+
+
+
+/* conteudo do cabeçalho */
+
 .container{
     display: flex;
-    margin: 0 7% 0 4%;
+    /* justify-content: space-between; */
+    margin: 0 2% 0 4%;
+}
+
+.container h1{
+    color: #3349ED;
+    margin-top: 20px;
+    font-size: 25px;
 }
 
 .container a{
@@ -45,41 +154,59 @@ body{
     cursor: pointer;
 }
 
-.navbar{
-    display: none;
-    flex-direction: column;
-    height: 100vh;
-    width: 25%;
-    position: fixed;
-    background-color: #E4E6EF;
+/* conteudo do cabeçalho - filtro */
 
+.select{
+    display: flex;
+    align-items: center;
+    margin-left: 30%;
+    width: 100%;
+    /* border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-radius: 15px; */
+    padding: 0 20px 5px;
 }
 
-.sidebar{
-    margin-top: 130px;
-    align-items: center;
+.select .box{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    font-size: 14px;
 }
 
-.sidebar a{
-    margin-bottom: 70px;
-    text-decoration: none;
-    color: #3349ED;
-    font-size: 22px;
+
+.select .box select{
+    /* margin-top: 25px; */
+    margin-right: 10px;
+    width: 90%;
+    height: 23px;
+    border-radius: 5px;
+    box-shadow: 3px 2px 10px -1px rgba(26,26,26,1);
 }
 
-.container h1{
-    color: #3349ED;
-    margin-top: 20px;
-    font-size: 25px;
+.select .btn_filter{
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    width: 38%;
+    height: 38%;
+    /* margin-right: 15px; */
+    /* border-radius: 20%; */
+    /* border: 1px solid #000000; */
 }
+
+.select .btn_filter img{
+    width: 50px;
+    cursor: pointer;
+}
+
+/* conteudo da pagina */
 
 .dashboard{
     margin: 3% 7% 3% 4%;
     background-color: #FFFF;
     border-radius: 18px;
-    width: 93%;
+    width: 95%;
 }
 
 .dashboard2{
@@ -103,48 +230,8 @@ body{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
-
-.dashboard_header .select{
-    display: flex;
-    align-items: center;
-    width: 40%;
-    border-left: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    border-radius: 15px;
-    padding: 0 20px 5px;
-}
-
-.dashboard_header .select .box{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    font-size: 14px;
-}
-
-
-.dashboard_header .select .box select{
-    /* margin-top: 25px; */
-    margin-right: 12px;
-    width: 90%;
-}
-
-.dashboard_header .select .btn_filter{
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    width: 35%;
-    height: 35%;
-    /* margin-right: 15px; */
-    /* border-radius: 20%; */
-    /* border: 1px solid #000000; */
-}
-
-.dashboard_header .select .btn_filter img{
-    width: 35px;
-    cursor: pointer;
-}
-
 
 .dashboard h2{
     margin: 0 0 20px 5%;

@@ -18,7 +18,7 @@
 	</div> -->
 	
 	<div class="navbar" id="navbar">
-		<div class="container">
+		<div class="container_sidebar">
 			<span id="side-bar-deactive">X</span>
 			<div class="logo">
 				<img src="logo.svg" alt="Logo HardwareLife">
@@ -26,12 +26,20 @@
 			</div>
 		</div>
 		<div class="sidebar">
-			<a href="../Login/perfil/perfil.html">Perfil</a>
-			<a href="../Dashboard/index.html">Dashboard</a>
-			<a href="../Login/index.html">Sair</a>
+			<div class='perfil'>
+				<img src="../src/dashboard/perfil_usuario.png" alt="profile">
+				<span>Nome Empresa</span>
+			</div>
+			<div class="link_part">
+				<span class="link"><a href="../Login/perfil/perfil.html">Configurações</a></span>
+				<span class="link"><a href="../Dashboard/index.html">Dashboard</a></span>
+				<span class="link"><a href="../Login/index.html">Sair</a></span>
+
+			</div>
 		</div>
 		<!-- <a onclick="aparecerModal()" style="margin-left: 20px; cursor: pointer;">Alerta</a> -->
 	</div>
+
 	<div class="header">
 		<div class="container">
 			<div class="side-bar" id="side-bar-active">
@@ -41,11 +49,7 @@
 				<img src="logo.svg" alt="Logo HardwareLife">
 				<h1>HardwareLife</h1>
 			</div>
-		</div>		
-	</div>
-	<div class="dashboard">
-		<div class="dashboard_header">
-			<h2>Sala 1</h2>
+
 			<div class="select">
 				<div class="box">
 					<label for="sala">Sala</label>
@@ -77,6 +81,12 @@
 				</div>
 				
 			</div>
+		</div>		
+	</div>
+	<div class="dashboard">
+		<div class="dashboard_header">
+			<h2>Sala 1</h2>
+			
 		</div>
 		<div class="dashboard_container">
 			<div class="dashboard_chart_line">
