@@ -31,9 +31,18 @@
 				<span>Nome Empresa</span>
 			</div>
 			<div class="link_part">
-				<span class="link"><a href="../Login/perfil/perfil.html">Configurações</a></span>
-				<span class="link"><a href="../Dashboard/index.html">Dashboard</a></span>
-				<span class="link"><a href="../Login/index.html">Sair</a></span>
+				<span class="link">
+					<img src="../src/dashboard/icon_config.svg" alt="configurações">
+					<a href="../Login/perfil/perfil.html">Configurações</a>
+				</span>
+				<span class="link">
+					<img src="../src/dashboard/icon_dashboard.svg" alt="dashboard">
+					<a href="../Dashboard/index.html">Dashboard</a>
+				</span>
+				<span class="link">
+					<img src="../src/dashboard/icon_logout.svg" alt="logo">
+					<a href="../Login/index.html">Sair</a>
+				</span>
 
 			</div>
 		</div>
@@ -160,12 +169,14 @@
 
 		activeSideBar.addEventListener("click", function(){
 			navbar.style.display = "flex";
-			container.style.display = "none";
+			container.style.visibility = "hidden";
+			// container.style.display = "flex";
 		})
 
 		deactiveSideBar.addEventListener("click", function(){
 			navbar.style.display = "none";
-			container.style.display = "flex"
+			container.style.visibility = "visible";
+			// container.style.display = "flex"
 		});
 
 		// var modal = document.querySelector(".modal");
