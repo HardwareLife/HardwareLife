@@ -5,7 +5,7 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F0F2FC;
+    background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -87,7 +87,7 @@ body{
     background-color: #FFFF;
     border-radius: 18px;
     padding-bottom: 3px;
-    width: 90%;
+    width: 93%;
 }
 
 .dashboard2 h3{

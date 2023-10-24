@@ -55,6 +55,7 @@ CREATE TABLE rack(
 CREATE TABLE sensor(
     idSensor int auto_increment,
     nome_sensor varchar(40),
+    tipoSensor varchar(40),
     pos_x_sensor int,
     pos_y_sensor int,
     pos_z_sensor int,
@@ -63,15 +64,22 @@ CREATE TABLE sensor(
     CONSTRAINT fkRack FOREIGN KEY (fkRack) REFERENCES rack(idRack)
 );
 
+
+CREATE TABLE unidade(
+    idUnidade int primary key auto_increment,
+    unidadeDeMedida varchar(45)
+);
+
  -- TABELA DE DADOS DO SENSOR --
 
 CREATE TABLE dados(
 	idDados int auto_increment,
     dataHora dateTime default current_timestamp,
-    temperatura double,
-    umidade double,
+	valor double,
     fk_sensor int,
+    fkUnidade int,
     primary key(idDados, fk_sensor),
-    constraint fkSensor foreign key (fk_sensor) references sensor(idSensor)
+    constraint fkSensor foreign key (fk_sensor) references sensor(idSensor),
+	constraint fkUnidade foreign key (fkUnidade) references unidade(idUnidade)
 );
 
