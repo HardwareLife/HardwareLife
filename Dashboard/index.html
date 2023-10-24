@@ -37,7 +37,7 @@
 			<div class="side-bar" id="side-bar-active">
 				<i class="fa fa-align-justify"></i>
 			</div>
-			<div class="logo">
+			<div class="logo" id="container">
 				<img src="logo.svg" alt="Logo HardwareLife">
 				<h1>HardwareLife</h1>
 			</div>
@@ -135,11 +135,13 @@
 		var deactiveSideBar = document.getElementById("side-bar-deactive");
 
 		activeSideBar.addEventListener("click", function(){
-			navbar.style.display = "flex"
+			navbar.style.display = "flex";
+			container.style.display = "none";
 		})
 
 		deactiveSideBar.addEventListener("click", function(){
-			navbar.style.display = "none"
+			navbar.style.display = "none";
+			container.style.display = "flex"
 		});
 
 		// var modal = document.querySelector(".modal");
@@ -166,7 +168,8 @@
 							data : [ 20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55 ],
 							label : "Temperatura",
 							borderColor : "#ffa500",
-							fill : false
+							fill : false,
+							fontSize: 160
 					},
 					{
 						data : [ 60, 70, 80, 50, 50, 40, 30, 40, 30, 90],
@@ -177,19 +180,33 @@
 		},
 		options : {
 			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
 			plugins:{
 				title : {
 					display : true,
 					text : 'Medições em tempo real',
 					color: "black",
 					font: {
-						size: 16
+						size: 20
 					}
 				}
 		}}
 	});
-
-
 	
 
 	var myBar = new Chart(bar2, {
@@ -213,13 +230,29 @@
 		},
 		options : {
 			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
 			plugins:{
 				title : {
 					display : true,
 					text : 'Média Mensal',
 					color: "black",
 					font: {
-						size: 16
+						size: 20
 					}
 				}
 		}}
@@ -247,13 +280,29 @@
 		},
 		options : {
 			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
 			plugins:{
 				title : {
 					display : true,
 					text : 'Média Semanal',
 					color: "black",
 					font: {
-						size: 16
+						size: 20
 					}
 				}
 		}}

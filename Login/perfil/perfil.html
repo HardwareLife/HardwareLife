@@ -9,9 +9,38 @@
             href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
             rel="stylesheet"
         >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="perfil.css">
     </head>
     <body>
+
+        <div class="navbar" id="navbar">
+            <div class="container2">
+                <span id="side-bar-deactive">X</span>
+                <div class="logo">
+                    <img src="../../Dashboard/logo.svg" alt="Logo HardwareLife">
+                        <h1>HardwareLife</h1>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="../../Dashboard/index.html">Dashboard</a>
+                <a href="perfil.html">Perfil</a>
+                <a href="../index.html">Sair</a>
+            </div>
+            <!-- <a onclick="aparecerModal()" style="margin-left: 20px; cursor: pointer;">Alerta</a> -->
+        </div>
+        <div class="header">
+            <div class="container2">
+                <div class="side-bar" id="side-bar-active">
+                    <i class="fa fa-align-justify"></i>
+                </div>
+                <div class="logo" id="container">
+                    <img src="../../Dashboard/logo.svg" alt="Logo HardwareLife">
+                    <h1>HardwareLife</h1>
+                </div>
+            </div>		
+        </div>
         <div class="container">       
             <article class="card">
                 <div class='background'>
@@ -35,4 +64,18 @@
             </article>
         </div>
     </body>
+    <script>
+        var activeSideBar = document.getElementById("side-bar-active");
+		var deactiveSideBar = document.getElementById("side-bar-deactive");
+
+		activeSideBar.addEventListener("click", function(){
+			navbar.style.display = "flex";
+			container.style.display = "none";
+		})
+
+		deactiveSideBar.addEventListener("click", function(){
+			navbar.style.display = "none";
+			container.style.display = "flex"
+		});
+    </script>
 </html>

@@ -1,17 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web&family=Poppins:wght@100;300;400&display=swap');
+
 
 body {
-    background-color: var(--background);
-    display: grid;
-    place-items: center;
     height: 100vh;
-    padding: 24px;
     font-size: 16px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 * {
     margin: 0px;
     padding: 0px;
+}
+
+.header{
+    background-color: #E4E6EF;
+}
+
+.side-bar i{
+    margin: 25px 15px 0 -25px;
+    font-size: 24px;
+    color: #3349ED;
+}
+
+.container2{
+    display: flex;
+    margin: 0 7% 0 4%;
+}
+
+.container2 a{
+    text-decoration: none;
+    color: #3349ED;
+    font-size: 20px;
+}
+
+.container2 .logo{
+    display: flex;
+}
+
+.container2 img{
+    width: 75px;
+}
+
+.container2 span{
+    font-size: 30px;
+    color: #3349ED;
+    margin: 13px 15px 0 15px;
+    cursor: pointer;
+}
+
+.navbar{
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+    width: 25%;
+    position: fixed;
+    background-color: #E4E6EF;
+
+}
+
+.sidebar{
+    margin-top: 130px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar a{
+    margin-bottom: 70px;
+    text-decoration: none;
+    color: #3349ED;
+    font-size: 22px;
+}
+
+.container2 h1{
+    color: #3349ED;
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.container{
+    display: flex;
+    margin-top: 7%;
+    justify-content: center;
 }
 
 .card {
