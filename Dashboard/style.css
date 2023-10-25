@@ -5,12 +5,9 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-<<<<<<< HEAD
     /* background-color: #F0F2FC; */
     background-color: #ddd9ce;
-=======
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
->>>>>>> 250b2a7771ec0345e18731a50ed46f3d3d933fcb
     font-family: 'Poppins', sans-serif;
 }
 
