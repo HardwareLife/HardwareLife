@@ -16,8 +16,8 @@ USE HardwareLife;
 CREATE TABLE sala(
 	idSala INT PRIMARY KEY AUTO_INCREMENT,
 	numeroSala int,
-    fkEmpresa int,
-    CONSTRAINT fkEmpresaSala FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
+    fkEndereco int,
+    CONSTRAINT fkEnderecoSala FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
 );
 
  CREATE TABLE endereco(
