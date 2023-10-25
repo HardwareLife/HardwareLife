@@ -211,8 +211,18 @@ h6 {
     height:50%;
     left: 25%;
     top: 160px;
+    animation: down 2s;
     /*background-color: rgba(0,0,0,0.5);*/
 }
+
+@keyframes down {
+    from {
+      transform: translateY(-500px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  } 
   
 .modal .fecharModal {
     /*position: absolute;*/
@@ -244,7 +254,7 @@ h6 {
 }
   
 .inp_contato {
-      width: 90%;
+      width: 95%;
       padding: 10px;
       margin-bottom: 20px;
       border: 1px solid #ccc;
@@ -254,11 +264,12 @@ h6 {
 .btn-contato {
     background-color: #3349ED;
     color: #fff;
+    margin-left: 25%;
     margin-top: 5px;
     padding: 15px 30px;
     border: none;
     border-radius: 25px;
-    width: 94%;
+    width: 50%;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
  }
