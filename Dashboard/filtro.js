@@ -65,13 +65,29 @@ function filtroSelect(){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Média Mensal',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -99,13 +115,29 @@ function filtroSelect(){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Média Semanal',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -134,13 +166,29 @@ function filtroSelect(){
                 },
                 options : {
                     maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks:{
+                                font:{
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
                     plugins:{
                         title : {
                             display : true,
                             text : 'Medições em tempo real',
                             color: "black",
                             font: {
-                                size: 16
+                                size: 20
                             }
                         }
                 }}
@@ -171,13 +219,29 @@ function filtroSelect(){
                 },
                 options : {
                     maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks:{
+                                font:{
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
                     plugins:{
                         title : {
                             display : true,
                             text : 'Medições em tempo real',
                             color: "black",
                             font: {
-                                size: 16
+                                size: 20
                             }
                         }
                 }}
@@ -207,13 +271,29 @@ function filtroSelect(){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -246,13 +326,29 @@ function filtroSelect(){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -282,13 +378,29 @@ function filtroSelect(){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -318,13 +430,29 @@ function filtroSelect(){
         },
         options : {
             maintainAspectRatio: false,
+            scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
             plugins:{
                 title : {
                     display : true,
                     text : 'Medições em tempo real',
                     color: "black",
                     font: {
-                        size: 16
+                        size: 20
                     }
                 }
         }}
@@ -392,13 +520,29 @@ if(numeroSala == 2){
         },
         options : {
             maintainAspectRatio: false,
+            scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
             plugins:{
                 title : {
                     display : true,
                     text : 'Média Semanal',
                     color: "black",
                     font: {
-                        size: 16
+                        size: 20
                     }
                 }
         }}
@@ -426,13 +570,29 @@ if(numeroSala == 2){
         },
         options : {
             maintainAspectRatio: false,
+            scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
             plugins:{
                 title : {
                     display : true,
                     text : 'Média Mensal',
                     color: "black",
                     font: {
-                        size: 16
+                        size: 20
                     }
                 }
         }}
@@ -463,13 +623,29 @@ if(numeroSala == 2){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -502,13 +678,29 @@ if(numeroSala == 2){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -540,13 +732,29 @@ if(numeroSala == 2){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -578,13 +786,29 @@ if(numeroSala == 2){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -616,13 +840,29 @@ if(numeroSala == 2){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}
@@ -654,13 +894,29 @@ if(numeroSala == 2){
             },
             options : {
                 maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                            }
+                        }
+                    },
+                    y: {
+                        ticks:{
+                            font:{
+                                size: 14
+                            }
+                        }
+                    }
+                },
                 plugins:{
                     title : {
                         display : true,
                         text : 'Medições em tempo real',
                         color: "black",
                         font: {
-                            size: 16
+                            size: 20
                         }
                     }
             }}

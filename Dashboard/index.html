@@ -18,7 +18,7 @@
 	</div> -->
 	
 	<div class="navbar" id="navbar">
-		<div class="container">
+		<div class="container_sidebar">
 			<span id="side-bar-deactive">X</span>
 			<div class="logo">
 				<img src="logo.svg" alt="Logo HardwareLife">
@@ -26,43 +26,75 @@
 			</div>
 		</div>
 		<div class="sidebar">
-			<a href="../Login/perfil/perfil.html">Perfil</a>
-			<a href="../Dashboard/index.html">Dashboard</a>
-			<a href="../Login/index.html">Sair</a>
+			<div class='perfil'>
+				<img src="../src/dashboard/perfil_usuario.png" alt="profile">
+				<span>Nome Empresa</span>
+			</div>
+			<div class="link_part">
+				<span class="link">
+					<img src="../src/dashboard/icon_config.svg" alt="configurações">
+					<a href="../Login/perfil/perfil.html">Configurações</a>
+				</span>
+				<span class="link">
+					<img src="../src/dashboard/icon_dashboard.svg" alt="dashboard">
+					<a href="../Dashboard/index.html">Dashboard</a>
+				</span>
+				<span class="link">
+					<img src="../src/dashboard/icon_logout.svg" alt="logo">
+					<a href="../Login/index.html">Sair</a>
+				</span>
+
+			</div>
 		</div>
 		<!-- <a onclick="aparecerModal()" style="margin-left: 20px; cursor: pointer;">Alerta</a> -->
 	</div>
+
 	<div class="header">
 		<div class="container">
 			<div class="side-bar" id="side-bar-active">
 				<i class="fa fa-align-justify"></i>
 			</div>
-			<div class="logo">
+			<div class="logo" id="container">
 				<img src="logo.svg" alt="Logo HardwareLife">
 				<h1>HardwareLife</h1>
+			</div>
+
+			<div class="select">
+				<div class="box">
+					<label for="sala">Sala</label>
+					<select id="sala">
+						<option value=""></option>
+						<option value="1">Sala 1</option>
+						<option value="2">Sala 2</option>
+					</select>
+				</div>
+				<div class="box">
+					<label for="rack">Rack</label>
+					<select id="rack">
+						<option value=""></option>
+						<option value="1">Rack 1</option>
+						<option value="2">Rack 2</option>
+					</select>
+				</div>
+				<div class="box">
+					<label for="sensor">Sensor</label>
+					<select id="sensor">
+						<option value=""></option>
+						<option value="1">Sensor 1</option>
+						<option value="2">Sensor 2</option>
+						<option value="3">Sensor 3</option>
+					</select>
+				</div>
+				<div class="btn_filter" onclick="filtroSelect()">
+					<img src="../src/dashboard/filtro_funil.svg" alt="">
+				</div>
+				
 			</div>
 		</div>		
 	</div>
 	<div class="dashboard">
 		<div class="dashboard_header">
 			<h2>Sala 1</h2>
-			<div class="select">
-				
-				<select id="sala">
-					<option value="1">Sala 1</option>
-					<option value="2">Sala 2</option>
-				</select>
-				<select id="rack">
-					<option value="1">Rack 1</option>
-					<option value="2">Rack 2</option>
-				</select>
-				<select id="sensor">
-					<option value="1">Sensor 1</option>
-					<option value="2">Sensor 2</option>
-					<option value="3">Sensor 3</option>
-				</select>
-				<button onclick="filtroSelect()">Filtrar</button>
-			</div>
 		</div>
 		<div class="dashboard_container">
 			<div class="dashboard_chart_line">
@@ -72,7 +104,48 @@
 				<canvas id="bar3"></canvas>
 			</div>
 		</div>
-		<div class="dashboard_container2">	
+		<div class="dashboard_container2">
+			<div class="legend">
+				<h4>Tabela de medidas</h4>
+				
+				<table class="tabela">
+					  <thead >
+						<tr class="linha">
+							<th style="border-left: none;">&nbsp;</th>
+							<th class="red">Mínima</th>
+							<th class="yellow">Alerta</th>
+							<th class="green">Média</th>
+							<th class="green">Mediana</th>
+							<th class="yellow">Alerta</th>
+							<th class="red">Máxima</th>
+						</tr>
+					  </thead>
+					
+					  <tbody>
+						<tr>
+							<td>Temperatura</td>
+							<td class="red">18°C</td>
+							<td>18,5°C</td>
+							<td>23,8°C</td>
+							<td>24°C</td>
+							<td>27°C</td>
+							<td>30°C</td>
+						</tr>
+
+						<tr>
+							<td>Umidade</td>
+							<td>20%</td>
+							<td>30%</td>
+							<td>50%</td>
+							<td>45%</td>
+							<td>55%</td>
+							<td>60%</td>
+						</tr>
+
+					  </tbody>
+				</table>
+
+			</div>
 			<div class="dashboard_chart_line">
 				<canvas id="bar2"></canvas>
 			</div>
@@ -135,11 +208,15 @@
 		var deactiveSideBar = document.getElementById("side-bar-deactive");
 
 		activeSideBar.addEventListener("click", function(){
-			navbar.style.display = "flex"
+			navbar.style.display = "flex";
+			// navbar.style.animation = "abrir 1s";
+			container.style.visibility = "hidden";
 		})
 
 		deactiveSideBar.addEventListener("click", function(){
-			navbar.style.display = "none"
+			navbar.style.display = "none";
+			// navbar.style.animation = "fechar 1s";
+			container.style.visibility = "visible";
 		});
 
 		// var modal = document.querySelector(".modal");
@@ -165,8 +242,10 @@
                     {
 							data : [ 20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55 ],
 							label : "Temperatura",
+							fontSize: 15,
 							borderColor : "#ffa500",
-							fill : false
+							fill : false,
+							fontSize: 160
 					},
 					{
 						data : [ 60, 70, 80, 50, 50, 40, 30, 40, 30, 90],
@@ -177,19 +256,33 @@
 		},
 		options : {
 			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
 			plugins:{
 				title : {
 					display : true,
 					text : 'Medições em tempo real',
 					color: "black",
 					font: {
-						size: 16
+						size: 20
 					}
 				}
 		}}
 	});
-
-
 	
 
 	var myBar = new Chart(bar2, {
@@ -213,13 +306,29 @@
 		},
 		options : {
 			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
 			plugins:{
 				title : {
 					display : true,
 					text : 'Média Mensal',
 					color: "black",
 					font: {
-						size: 16
+						size: 20
 					}
 				}
 		}}
@@ -247,13 +356,29 @@
 		},
 		options : {
 			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks:{
+						font:{
+							size: 14
+						}
+					}
+				}
+			},
 			plugins:{
 				title : {
 					display : true,
 					text : 'Média Semanal',
 					color: "black",
 					font: {
-						size: 16
+						size: 20
 					}
 				}
 		}}

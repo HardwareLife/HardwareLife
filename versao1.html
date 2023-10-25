@@ -10,14 +10,6 @@
 </head>
 
 <body>
-
-	<div class="logo">
-		<a href="../Site-Institucional/index.html"><img src="../Site-Institucional/imagens/logo.svg"
-				alt="Logo HardwareLife"></a>
-		<a href="../Site-Institucional/index.html">
-			<h1>HardwareLife</h1>
-		</a>
-	</div>
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
 			<form id="form_cadastro">
@@ -25,31 +17,27 @@
 				<div class="input-container" style="display: flex; flex-direction: column;">
 					<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
 						oninput="NomeValidacao()">
-					<span class="span-required">Nome devere ter no mínimo 3 caracteres</span>
+					<span class="span-required">Nome devere ter no mínimo 3 caracteres</span>				
 				</div>
 
 				<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" required
 					onblur="validarEmail()">
 				<span class="span-required">Digite um email válido</span>
 
-				<input class="inputs" id="senha_cad" type="password" maxlength="20" placeholder="Senha" required
-					onblur="ValidarSenha()">
+				<input class="inputs" id="senha_cad" type="password" maxlength="20" placeholder="Senha" required onblur="ValidarSenha()">
 				<span class="span-required">A senha deve ter no mínimo 8 caracteres, uma letra maiúscula e um caracter
 					especial</span>
 
-				<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required
-					onblur="Comparar_senhas()">
+				<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>
 				<span class="span-required">As senhas devem ser compatíveis</span>
 
-				<input class="inputs" id="cnpj_cad" type="text" maxlength="14" placeholder="CNPJ" required
-					onblur="ValidarCNPJ()">
+				<input class="inputs" id="cnpj_cad" type="text" maxlength="14" placeholder="CNPJ" required>
 				<span class="span-required">O CNPJ deve ter 14 dígitos</span>
 
-				<input class="inputs" id="tel_cad" type="number" placeholder="Telefone da Empresa" required
-					onblur="ValidarTel()">
+				<input class="inputs" id="tel_cad" type="number" placeholder="Telefone da Empresa" required>
 				<span class="span-required">Telefone Inválido</span>
 
-				<button id="cad" onclick="cadastro()">Cadastro</button>
+				<button onclick="cadastro()">Cadastro</button>
 
 			</form>
 		</div>
@@ -69,15 +57,6 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="modal" class="modal-container">
-		<div class="modal">
-			<button class="fechar" id="fechar">X</button>
-			<h1>Cadastro Realizado com sucesso</h1>
-			<p>Você receberá um email de nossa equipe em breve</p>
-		</div>
-	</div>
-
 	<div class="form-container entrar">
 		<form id="form_login">
 			<h1>Entrar</h1>
@@ -98,7 +77,9 @@
 		</form>
 	</div>
 	</div>
-	<div class="form-container entrar"></div>
+	<div class="form-container entrar">
+
+	</div>
 </body>
 
 </html>
@@ -108,22 +89,9 @@
 
 	function signup() {
 		var buttonCadatro = document.getElementById("cadastrar");
-		conectar.classList.add("right-panel-active");
+		conectar.classList.add("right-panel-active")
 
-    var modal = document.getElementById('cad')
-    modal.classList.add('mostrar')
-
-
-
-    modal.addEventListener('click')
-        if (id == 'cad' || id == "fechar"){
-            modal.classList.remove('mostrar')
-            localStorage.fechaModal = 'modal-container'
-        }
-    
-}
-
-	
+	}
 
 	function singin() {
 		var login = document.getElementById("entrar");
@@ -135,8 +103,6 @@
 	var campos = document.querySelectorAll('.inputs');
 	var spans = document.querySelectorAll('.span-required');
 	var emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/;
-	var CNPJregex = /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/
-	var Telregex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/;
 
 
 	function erro(index) {
@@ -179,38 +145,10 @@
 
 		} else {
 			removerErro(2);
-			Comparar_senhas();
 		}
 
 	}
 
-	function Comparar_senhas() {
-		if (campos[2].value == campos[3].value && campos[3].value.length >= 8) {
-			removerErro(3);
-		} else {
-			erro(3);
-		}
-	}
 
-
-	function ValidarCNPJ() {
-		if (CNPJregex.test(campos[4].value)) {
-			erro(4);
-
-		} else {
-			removerErro(4);
-		}
-
-	}
-
-	function ValidarTel() {
-		if (Telregex.test(campos[5].value)) {
-			erro(5);
-
-		} else {
-			removerErro(5);
-		}
-
-	}
 
 </script>
