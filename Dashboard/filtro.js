@@ -468,7 +468,7 @@ if(numeroSala == 2){
 
     titulo[0].childNodes[1].innerHTML = `Sala 2`;
     racks[0].innerHTML = `<div class="esfera_ideal"></div>
-    <p>Sensor 12</p>
+    <p>Sensor 1</p>
     <div class="esfera_irregular"></div>
     <p>Sensor 2</p> 
     <div class="esfera_irregular"></div>
