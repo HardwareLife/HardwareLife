@@ -63,6 +63,7 @@
 				<div class="box">
 					<label for="sala">Sala</label>
 					<select id="sala">
+						<option value=""></option>
 						<option value="1">Sala 1</option>
 						<option value="2">Sala 2</option>
 					</select>
@@ -70,6 +71,7 @@
 				<div class="box">
 					<label for="rack">Rack</label>
 					<select id="rack">
+						<option value=""></option>
 						<option value="1">Rack 1</option>
 						<option value="2">Rack 2</option>
 					</select>
@@ -77,6 +79,7 @@
 				<div class="box">
 					<label for="sensor">Sensor</label>
 					<select id="sensor">
+						<option value=""></option>
 						<option value="1">Sensor 1</option>
 						<option value="2">Sensor 2</option>
 						<option value="3">Sensor 3</option>
@@ -102,7 +105,48 @@
 				<canvas id="bar3"></canvas>
 			</div>
 		</div>
-		<div class="dashboard_container2">	
+		<div class="dashboard_container2">
+			<div class="legend">
+				<h4>Tabela de medidas</h4>
+				
+				<table class="tabela">
+					  <thead >
+						<tr class="linha">
+							<th style="border-left: none;">&nbsp;</th>
+							<th class="red">Mínima</th>
+							<th class="yellow">Alerta</th>
+							<th class="green">Média</th>
+							<th class="green">Mediana</th>
+							<th class="yellow">Alerta</th>
+							<th class="red">Máxima</th>
+						</tr>
+					  </thead>
+					
+					  <tbody>
+						<tr>
+							<td>Temperatura</td>
+							<td class="red">18°C</td>
+							<td>18,5°C</td>
+							<td>23,8°C</td>
+							<td>24°C</td>
+							<td>27°C</td>
+							<td>30°C</td>
+						</tr>
+
+						<tr>
+							<td>Umidade</td>
+							<td>20%</td>
+							<td>30%</td>
+							<td>50%</td>
+							<td>45%</td>
+							<td>55%</td>
+							<td>60%</td>
+						</tr>
+
+					  </tbody>
+				</table>
+
+			</div>
 			<div class="dashboard_chart_line">
 				<canvas id="bar2"></canvas>
 			</div>
