@@ -32,7 +32,27 @@ body{
     position: fixed;
     background-color: #E4E6EF;
     box-shadow: 3px 0 0 #0f0f0f;
+    animation: abrir 1s;
 }
+
+ @keyframes abrir{
+    from{
+        transform: translateX(-230px)
+    } 
+    to{
+        transform: translateX(0px);
+    }
+}
+/* 
+
+@keyframes fechar{
+    from{
+        transform: translateX(0px);
+    }
+    to{
+        transform: translateX(-230px);
+    }
+} */
 
 /* conteudo barra lateral */
 
