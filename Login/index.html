@@ -20,15 +20,36 @@
 	</div>
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
-			<form action="">
-				<h2 style="margin-bottom: 5px;">Cadastre-se</h2>
-				<input id="nome_cad" type="text" placeholder="Nome da Empresa">
-				<input id="email_cad" type="text" placeholder="Email da Empresa">
-				<input id="senha_cad" type="password" placeholder="Senha">
-				<input id="confirmar_cad" type="password" placeholder="Confirmar Senha">
-				<input id="cnpj_cad" type="number" placeholder="CNPJ">
-				<input id="tel_cad" type="number" placeholder="Telefone da Empresa">
-				<button onclick="cadastro()" style="margin-top: 5px;">Cadastro</button>
+			<form id="form_cadastro">
+				<h1>Cadastre-se</h1>
+				<div class="input-container" style="display: flex; flex-direction: column;">
+					<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
+						oninput="NomeValidacao()">
+					<span class="span-required">Nome devere ter no mínimo 3 caracteres</span>
+				</div>
+
+				<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" required
+					onblur="validarEmail()">
+				<span class="span-required">Digite um email válido</span>
+
+				<input class="inputs" id="senha_cad" type="password" maxlength="20" placeholder="Senha" required
+					onblur="ValidarSenha()">
+				<span class="span-required">A senha deve ter no mínimo 8 caracteres, uma letra maiúscula e um caracter
+					especial</span>
+
+				<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required
+					onblur="Comparar_senhas()">
+				<span class="span-required">As senhas devem ser compatíveis</span>
+
+				<input class="inputs" id="cnpj_cad" type="text" maxlength="14" placeholder="CNPJ" required
+					onblur="ValidarCNPJ()">
+				<span class="span-required">O CNPJ deve ter 14 dígitos</span>
+
+				<input class="inputs" id="tel_cad" type="number" placeholder="Telefone da Empresa" required
+					onblur="ValidarTel()">
+				<span class="span-required">Telefone Inválido</span>
+
+				<button id="cad" onclick="cadastro()">Cadastro</button>
 
 			</form>
 		</div>
@@ -36,34 +57,48 @@
 			<div class="overlay">
 
 				<div class="overlay-panel overlay-left">
-					<h2>Bem Vindo!</h2>
+					<h1>Bem Vindo!</h1>
 					<p>Entre com seu Email e Senha para continuar</p>
 					<button onclick="signin()" id="logar">Entrar</button>
 				</div>
 				<div class="overlay-panel overlay-right">
-					<h2>Olá, Bem Vindo!</h2>
+					<h1>Olá, Bem Vindo!</h1>
 					<p>Conecte-se conosco para uma experiência incrível!</p>
 					<button onclick="signup()" id="cadastrar">Cadastrar</button>
 				</div>
 			</div>
 		</div>
-		<div class="form-container entrar">
-			<form action="../Dashboard/index.html">
-				<h2>Entrar</h2>
-				<div class="social-container">
-					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-				</div>
-				<span>Entre com sua conta</span>
-				<input type="email" placeholder="Email" />
-				<input type="password" placeholder="Password" />
-				<a href="#">Esqueceu a senha?</a>
-				<button class="logar">Entrar</button>
-			</form>
+	</div>
+
+	<div id="modal" class="modal-container">
+		<div class="modal">
+			<button class="fechar" id="fechar">X</button>
+			<h1>Cadastro Realizado com sucesso</h1>
+			<p>Você receberá um email de nossa equipe em breve</p>
 		</div>
 	</div>
+
+	<div class="form-container entrar">
+		<form id="form_login">
+			<h1>Entrar</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span class="span-required">Entre com sua conta</span class="span-required">
+			<input class="inputs" type="email" placeholder="Email" required oninput="validarEmail()">
+
+			<span class="span-required">Digite um Email válido</span class="span-required">
+			<input class="inputs" type="password" placeholder="Password" required oninput="ValidarSenha()">
+
+			<span class="span-required">Senha inválida </span class="span-required">
+			<a href="#">Esqueceu a senha?</a>
+			<button id="logar">Entrar</button>
+		</form>
 	</div>
+	</div>
+	<div class="form-container entrar"></div>
 </body>
 
 </html>
@@ -73,12 +108,109 @@
 
 	function signup() {
 		var buttonCadatro = document.getElementById("cadastrar");
-		conectar.classList.add("right-panel-active")
+		conectar.classList.add("right-panel-active");
 
-	}
+    var modal = document.getElementById('cad')
+    modal.classList.add('mostrar')
 
-	function signin() {
-		var login = document.getElementById("logar");
+
+
+    modal.addEventListener('click')
+        if (id == 'cad' || id == "fechar"){
+            modal.classList.remove('mostrar')
+            localStorage.fechaModal = 'modal-container'
+        }
+    
+}
+
+	
+
+	function singin() {
+		var login = document.getElementById("entrar");
 		conectar.classList.remove("right-panel-active");
+
 	}
+
+	var form = document.getElementById('form');
+	var campos = document.querySelectorAll('.inputs');
+	var spans = document.querySelectorAll('.span-required');
+	var emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/;
+	var CNPJregex = /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/
+	var Telregex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/;
+
+
+	function erro(index) {
+		campos[index].style.border = '2px solid #e63636';
+		spans[index].style.display = 'block';
+	}
+
+	function removerErro(index) {
+		campos[index].style.border = '';
+		spans[index].style.display = 'none';
+	}
+
+
+
+	function NomeValidacao() {
+		if (campos[0].value.length < 3) {
+			erro(0);
+
+		} else {
+
+			removerErro(0)
+		}
+
+	}
+
+	function validarEmail() {
+
+		if (!emailRegex.test(campos[1].value)) {
+			erro(1);
+
+		} else {
+			removerErro(1);
+		}
+	}
+
+	function ValidarSenha() {
+
+		if (campos[2].value.length < 8) {
+			erro(2);
+
+		} else {
+			removerErro(2);
+			Comparar_senhas();
+		}
+
+	}
+
+	function Comparar_senhas() {
+		if (campos[2].value == campos[3].value && campos[3].value.length >= 8) {
+			removerErro(3);
+		} else {
+			erro(3);
+		}
+	}
+
+
+	function ValidarCNPJ() {
+		if (CNPJregex.test(campos[4].value)) {
+			erro(4);
+
+		} else {
+			removerErro(4);
+		}
+
+	}
+
+	function ValidarTel() {
+		if (Telregex.test(campos[5].value)) {
+			erro(5);
+
+		} else {
+			removerErro(5);
+		}
+
+	}
+
 </script>
