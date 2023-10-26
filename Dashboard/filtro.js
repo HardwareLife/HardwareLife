@@ -788,11 +788,16 @@ function filtroSelect() {
 
 
 
+<<<<<<< HEAD
     //Sala 2
     if (numeroSala == 2) {
 
         titulo[0].childNodes[1].innerHTML = `Sala 2`;
         racks[0].innerHTML = `<div class="esfera_ideal"></div>
+=======
+    titulo[0].childNodes[1].innerHTML = `Sala 2`;
+    racks[0].innerHTML = `<div class="esfera_ideal"></div>
+>>>>>>> 697b8cb4699f1cc2c23e6db64600d88f96a527ad
     <p>Sensor 1</p>
     <div class="esfera_irregular"></div>
     <p>Sensor 2</p> 
