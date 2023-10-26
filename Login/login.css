@@ -51,9 +51,9 @@ p {
 	margin: 20px 0 30px;
 }
 
-span {
+/* span {
 	font-size: 12px;
-}
+} */
 
 a {
 	color: #333;
@@ -77,7 +77,12 @@ button {
 }
 
 
-
+.span-required{
+	font-size: 12px;
+	margin: 3px 0 0 1px;
+	color: red;
+	display: none;
+}
 
 
 form {
@@ -124,7 +129,7 @@ input {
 }
 
 .entrar {
-	margin-top: -50%;
+	margin-top: -35%;
 	margin-left: 6%;
 	width: 530px;
 	z-index: 2;
