@@ -788,16 +788,11 @@ function filtroSelect() {
 
 
 
-<<<<<<< HEAD
     //Sala 2
     if (numeroSala == 2) {
 
         titulo[0].childNodes[1].innerHTML = `Sala 2`;
         racks[0].innerHTML = `<div class="esfera_ideal"></div>
-=======
-    titulo[0].childNodes[1].innerHTML = `Sala 2`;
-    racks[0].innerHTML = `<div class="esfera_ideal"></div>
->>>>>>> 697b8cb4699f1cc2c23e6db64600d88f96a527ad
     <p>Sensor 1</p>
     <div class="esfera_irregular"></div>
     <p>Sensor 2</p> 
@@ -1095,6 +1090,171 @@ function filtroSelect() {
                 }
             });
 
+        }  
+
+        if (numeroRack == 1 && numeroSensor == 4) {
+
+            myLine.destroy();
+
+            myLine = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+                    datasets: [
+                        {
+                            data: [28, 26, 25, 26, 24, 24, 23, 23],
+                            label: "Temperatura",
+                            borderColor: "#ffa500",
+                            fill: false
+                        },
+                        {
+                            data: [55, 54, 55, 55, 56, 57, 57, 56, 58, 60],
+                            label: "Umidade",
+                            borderColor: "#2eb2ff",
+                            fill: false
+                        }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Medições em tempo real',
+                            color: "black",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        if (numeroRack == 1 && numeroSensor == 5) {
+
+            myLine.destroy();
+
+            myLine = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+                    datasets: [
+                        {
+                            data: [27, 27, 28, 29, 29, 30, 30, 31],
+                            label: "Temperatura",
+                            borderColor: "#ffa500",
+                            fill: false
+                        },
+                        {
+                            data: [56, 57, 54, 52, 51, 51, 49, 48, 45, 45],
+                            label: "Umidade",
+                            borderColor: "#2eb2ff",
+                            fill: false
+                        }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Medições em tempo real',
+                            color: "black",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        if (numeroRack == 1 && numeroSensor == 6) {
+
+            myLine.destroy();
+
+            myLine = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+                    datasets: [
+                        {
+                            data: [27, 25, 25, 24, 22, 24, 24, 23],
+                            label: "Temperatura",
+                            borderColor: "#ffa500",
+                            fill: false
+                        },
+                        {
+                            data: [50, 55, 45, 55, 45, 50, 50, 50, 55, 60],
+                            label: "Umidade",
+                            borderColor: "#2eb2ff",
+                            fill: false
+                        }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Medições em tempo real',
+                            color: "black",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                }
+            });
+
         }
 
         if (numeroRack == 2 && numeroSensor == 1) {
@@ -1224,6 +1384,171 @@ function filtroSelect() {
                         },
                         {
                             data: [50, 52, 45, 55, 40, 40, 45, 50, 55, 90],
+                            label: "Umidade",
+                            borderColor: "#2eb2ff",
+                            fill: false
+                        }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Medições em tempo real',
+                            color: "black",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        if (numeroRack == 2 && numeroSensor == 4) {
+
+            myLine.destroy();
+
+            myLine = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+                    datasets: [
+                        {
+                            data: [25, 24, 24, 25, 25, 25, 26, 26],
+                            label: "Temperatura",
+                            borderColor: "#ffa500",
+                            fill: false
+                        },
+                        {
+                            data: [50, 50, 48, 45, 45, 46, 45, 49, 50, 50],
+                            label: "Umidade",
+                            borderColor: "#2eb2ff",
+                            fill: false
+                        }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Medições em tempo real',
+                            color: "black",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        if (numeroRack == 2 && numeroSensor == 5) {
+
+            myLine.destroy();
+
+            myLine = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+                    datasets: [
+                        {
+                            data: [25, 26, 29, 31, 32, 30, 27, 26],
+                            label: "Temperatura",
+                            borderColor: "#ffa500",
+                            fill: false
+                        },
+                        {
+                            data: [50, 49, 46, 47, 45, 40, 45, 40, 45, 40],
+                            label: "Umidade",
+                            borderColor: "#2eb2ff",
+                            fill: false
+                        }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Medições em tempo real',
+                            color: "black",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        if (numeroRack == 2 && numeroSensor == 6) {
+
+            myLine.destroy();
+
+            myLine = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+                    datasets: [
+                        {
+                            data: [27, 27, 25, 24, 22, 20, 20, 18],
+                            label: "Temperatura",
+                            borderColor: "#ffa500",
+                            fill: false
+                        },
+                        {
+                            data: [58, 60, 60, 58, 58, 58, 55, 60, 65, 65],
                             label: "Umidade",
                             borderColor: "#2eb2ff",
                             fill: false
