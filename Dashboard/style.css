@@ -264,7 +264,7 @@ body{
 .legend{
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 50%;
     height: 63%;
     margin-bottom: 20px; 
     border-radius: 5px;
@@ -272,8 +272,11 @@ body{
     padding: 0 15px;
 }
 
+
 .tabela{
     border-spacing: 0px;
+    margin-right: -23px;
+    padding-right: 13px;
 }
 
  th, td{
@@ -295,6 +298,9 @@ body{
     color: green;
 }
 
+.orange{
+    color: rgb(255, 166, 0);
+}
 
 /* titulo primeiro quadro */
 
@@ -332,11 +338,11 @@ body{
 /* segundo quadro */
 
 .dashboard2{
-    margin:  3% 7% 3% 4%;
+    margin:  3% 7% 3% 2%;
     background-color: #FFFF;
     border-radius: 18px;
     padding-bottom: 3px;
-    width: 93%;
+    width: 95%;
 }
 
 /* titulo segundo quadro */

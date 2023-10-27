@@ -26,7 +26,7 @@
 				<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required onblur="NomeValidacao()">
 				<span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
 
-				<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" required onblur="validarEmail()">
+				<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" onblur="validarEmail()">
 				<span class="span-required">Digite um email válido</span>
 
 				<!--<input class="inputs" id="senha_cad" type="password" placeholder="Senha" required>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div class="form-container entrar">
-			<form action="../Dashboard/index.html">
+			<form onsubmit="return false">
 				<h2>Entrar</h2>
 				<div class="social-container">
 					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -67,21 +67,35 @@
 					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span class="span-required">Entre com sua conta</span class="span-required">
-				<input type="email" placeholder="Email" />
-				<input type="password" placeholder="Password" />
+				<input type="email" placeholder="Email" id="email"/>
+				<input type="password" placeholder="Password" id="senha" />
 				<a href="#">Esqueceu a senha?</a>
-				<button class="logar" style="cursor: pointer
+				<button onclick="autenticar()" class="logar" style="cursor: pointer
 				;">Entrar</button>
 			</form>
 		</div>
 	</div>
 	</div>
+	
 </body>
 
 </html>
 <script>
 
 	var conectar = document.getElementById("container");
+
+	function autenticar(){
+		var emailUsuario = email.value;
+		var senhaUsuario = senha.value;
+		console.log(emailUsuario, senhaUsuario)
+
+		if(emailUsuario == "amazon.jundiai@hardwarelife.com" && senhaUsuario == "amazon@123"){
+			window.location.href = "../Dashboard/index.html"
+		}else{
+			alert("Usuário ou senha inválidos");
+		}
+
+	}
 
 	function signup() {
 		var buttonCadatro = document.getElementById("cadastrar");
@@ -96,36 +110,38 @@
 	var form = document.getElementById('form');
 	var campos = document.querySelectorAll('.inputs');
 	var spans = document.querySelectorAll('.span-required');
-	var emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/;
-	var CNPJregex = /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/
-	var Telregex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/;
+	var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
+	var CNPJregex = /^\d{2}.\d{3}.\d{3}\/\d{4}-\d{2}$/;
+	var cnpj = /[^\d]+/g;
+	
+	var Telregex = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/;
 
 	function erro(index) {
 		campos[index].style.border = '2px solid #e63636';
 		spans[index].style.display = 'block';
 	}
-
+	
 	function removerErro(index) {
-		campos[index].style.border = '';
+		campos[index].style.border = 'none';
 		spans[index].style.display = 'none';
 	}
-
-
-
+	
+	
+	
 	function NomeValidacao() {
 		if (campos[0].value.length < 3) {
 			erro(0);
-
+			
 		} else {
-
+			
 			removerErro(0)
 		}
-
+		
 	}
-
+	
 	function validarEmail() {
-
+		
 		if (!emailRegex.test(campos[1].value)) {
 			erro(1);
 
@@ -150,7 +166,7 @@
 
 
 	function ValidarCNPJ() {
-		if (CNPJregex.test(campos[4].value)) {
+		if (CNPJregex.test(campos[4])) {
 			erro(4);
 
 		} else {
@@ -160,7 +176,7 @@
 	}
 
 	function ValidarTel() {
-		if (Telregex.test(campos[5].value)) {
+		if (Telregex.test(campos[5])) {
 			erro(5);
 
 		} else {
