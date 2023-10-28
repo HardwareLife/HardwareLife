@@ -12,15 +12,8 @@ USE HardwareLife;
     emailEmpresa varchar(50),
     telefoneEmpresa varchar(12)
 );
- 
-CREATE TABLE sala(
-	idSala INT PRIMARY KEY AUTO_INCREMENT,
-	numeroSala int,
-    fkEndereco int,
-    CONSTRAINT fkEnderecoSala FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
-);
 
- CREATE TABLE endereco(
+CREATE TABLE endereco(
 	idEndereco int primary key auto_increment,
 	logradouro varchar(60),
     numero varchar(10),
@@ -31,6 +24,13 @@ CREATE TABLE sala(
     fkEmpresa int,
     CONSTRAINT fkEmpresaEndereco FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
  );
+ 
+CREATE TABLE sala(
+	idSala INT PRIMARY KEY AUTO_INCREMENT,
+	numeroSala int,
+    fkEndereco int,
+    CONSTRAINT fkEnderecoSala FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
+);
 
  -- TABELA PARA CONTROLE E LOGIN DE CLEINTES --
  
