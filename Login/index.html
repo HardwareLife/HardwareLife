@@ -32,10 +32,10 @@
 				<!--<input class="inputs" id="senha_cad" type="password" placeholder="Senha" required>
 				<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>!-->
 
-				<input class="inputs" id="cnpj_cad" type="number" placeholder="CNPJ" required onblur="ValidarCNPJ()">
+				<input class="inputs" id="cnpj_cad" type="text" maxlength="18" placeholder="CNPJ" required onblur="ValidarCNPJ()" maxlength="18">
 				<Span class="span-required">O CNPJ deve ter 14 dígitos</Span>
 
-				<input class="inputs" id="tel_cad" type="number" placeholder="Telefone da Empresa" required onblur="ValidarTel()">
+				<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa" required onblur="ValidarTel()">
 				<span class="span-required">Telefone Inválido</span>
 
 
@@ -83,6 +83,33 @@
 <script>
 
 	var conectar = document.getElementById("container");
+	var cnpjValor = document.getElementById("cnpj_cad");
+	var telefoneValor = document.getElementById("tel_cad");
+
+	cnpjValor.addEventListener('keypress', () =>{
+		var tamanho = cnpjValor.value.length;
+
+		if (tamanho === 2 || tamanho === 6) {
+			cnpjValor.value += '.';
+		}else if (tamanho === 10) {
+			cnpjValor.value += '/';
+		}else if (tamanho === 15) {
+			cnpjValor.value += '-';
+		}
+	})
+		
+	telefoneValor.addEventListener('keypress', () =>{
+		var tamanho = telefoneValor.value.length;
+
+		if (tamanho === 0) {
+			telefoneValor.value += '(';
+		}else if (tamanho === 3) {
+			telefoneValor.value += ')';
+		}else if (tamanho === 9) {
+			telefoneValor.value += '-';
+		}
+	})
+
 
 	function autenticar(){
 		var emailUsuario = email.value;
