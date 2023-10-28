@@ -64,7 +64,6 @@ CREATE TABLE sensor(
     CONSTRAINT fkRack FOREIGN KEY (fkRack) REFERENCES rack(idRack)
 );
 
-
 CREATE TABLE unidade(
     idUnidade int primary key auto_increment,
     unidadeDeMedida varchar(45)
@@ -78,8 +77,10 @@ CREATE TABLE dados(
 	valor double,
     fk_sensor int,
     fkUnidade int,
-    primary key(idDados, fk_sensor),
+    fkRack int,
+    primary key(idDados, fk_sensor, fkRack),
     constraint fkSensor foreign key (fk_sensor) references sensor(idSensor),
-	constraint fkUnidade foreign key (fkUnidade) references unidade(idUnidade)
+	constraint fkUnidade foreign key (fkUnidade) references unidade(idUnidade),
+    constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
