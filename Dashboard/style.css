@@ -319,6 +319,10 @@ body{
     color: rgb(255, 166, 0);
 }
 
+.blue{
+    color: rgb(16, 184, 214)
+}
+
 /* titulo primeiro quadro */
 
 .dashboard .dashboard_header{
@@ -335,22 +339,23 @@ body{
 
 .dashboard_header .btn_analitic{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 3% 2% 0;
-    border: 1px solid #000;
-    border-radius: 15%;
-    width: 6%;
-    height: 45px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    border-bottom: 1px solid #3b3b3bc0;
+    width: 10%;
+    height: 35px;
     cursor: pointer;
+    gap: 5px;
     
 }
 
 .btn_analitic:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color:#3349ed57;;
-    border: 2px solid #000;
+    
+    background-color:#727272bb;;
+    border: 2px solid #3b3b3bc0;
 }
 
 .dashboard_header .btn_analitic > a{
@@ -441,6 +446,41 @@ body{
     border-radius: 50%;
     margin-left: 22px;
     margin-top: 2px;
+}
+
+.esfera_umidade_ideal{
+    width: 24px;
+    height: 24px;
+    background-image: url(./scr/gota-de-agua.png);
+    border-radius: 50%;
+    margin-left: 22px;
+    /* margin-top: 0px; */
+}
+
+.esfera_umidade_alerta{
+    width: 24px;
+    height: 24px;
+    background-image: url(./scr/gota-de-agua-alerta.png);
+    border-radius: 50%;
+    margin-left: 22px;
+    /* margin-top: 2px; */
+}
+
+.esfera_umidade_emergencia{
+    width: 24px;
+    height: 24px;
+    background-image: url(./scr/gota-de-agua-emer.png);
+    border-radius: 50%;
+    margin-left: 22px;
+    /* margin-top: 2px; */
+}
+.esfera_umidade_critico{
+    width: 24px;
+    height: 24px;
+    background-image: url(./scr/gota-de-agua-critica.png);
+    border-radius: 50%;
+    margin-left: 22px;
+    /* margin-top: 2px; */
 }
 
 /* paginação */

@@ -24,6 +24,8 @@ function filtroSelect() {
         <p>Sensor 5</p> 
         <div class="esfera_ideal"></div>
         <p>Sensor 6</p>
+        <div class="esfera_umidade_ideal"></div>
+		<p>Umidade</p>
         `;
 
         racks[1].innerHTML = `
@@ -39,6 +41,8 @@ function filtroSelect() {
 				<p>Sensor 5</p> 
 				<div class="esfera_ideal"></div>
 				<p>Sensor 6</p>
+                <div class="esfera_umidade_emergencia"></div>
+				<p>Umidade</p>
         `;
 
         myLine2.destroy();
@@ -803,7 +807,11 @@ function filtroSelect() {
     <div class="esfera_ideal"></div>
     <p>Sensor 5</p> 
     <div class="esfera_ideal"></div>
-    <p>Sensor 6</p>`
+    <p>Sensor 6</p>
+    <div class="esfera_umidade_emergencia"></div>
+	<p>Umidade</p>
+    `
+    
 
         racks[1].innerHTML = `
     <div class="esfera_ideal"></div>
@@ -818,6 +826,8 @@ function filtroSelect() {
 				<p>Sensor 5</p> 
 				<div class="esfera_irregular"></div>
 				<p>Sensor 6</p>
+                <div class="esfera_umidade_critico"></div>
+				<p>Umidade</p>
                 `
 
         myLine2.destroy();
