@@ -16,32 +16,48 @@
     <body>
 
         <div class="navbar" id="navbar">
-            <div class="container2">
+            <div class="container_sidebar">
                 <span id="side-bar-deactive">X</span>
                 <div class="logo">
-                    <img src="../../Dashboard/logo.svg" alt="Logo HardwareLife">
+                    <img src="../../Dashboard/scr/logo.svg" alt="Logo HardwareLife">
                         <h1>HardwareLife</h1>
                 </div>
             </div>
             <div class="sidebar">
-                <a href="../../Dashboard/index.html">Dashboard</a>
-                <a href="perfil.html">Perfil</a>
-                <a href="../index.html">Sair</a>
+                <!-- <div class='perfil'>
+                    <div class="img_perfil"><img src="../../src/perfil/amazon.jfif" alt="profile"></div>
+                    <span>Amazon.com, Inc</span>
+                </div> -->
+                <div class="link_part">
+                    <span class="link">
+                        <img src="../../src/dashboard/icon_config.svg" alt="configurações">
+                        <a href="">Perfil</a>
+                    </span>
+                    <span class="link">
+                        <img src="../../src/dashboard/icon_dashboard.svg" alt="dashboard">
+                        <a href="../../Dashboard/index.html">Dashboard</a>
+                    </span>
+                    <span class="link">
+                        <img src="../../src/dashboard/icon_logout.svg" alt="logo">
+                        <a href="../index.html">Sair</a>
+                    </span>
+    
+                </div>
             </div>
             <!-- <a onclick="aparecerModal()" style="margin-left: 20px; cursor: pointer;">Alerta</a> -->
         </div>
         <div class="header">
-            <div class="container2">
+            <div class="container">
                 <div class="side-bar" id="side-bar-active">
                     <i class="fa fa-align-justify"></i>
                 </div>
                 <div class="logo" id="container">
-                    <img src="../../Dashboard/logo.svg" alt="Logo HardwareLife">
+                    <img src="../../Dashboard/scr/logo.svg" alt="Logo HardwareLife">
                     <h1>HardwareLife</h1>
                 </div>
             </div>		
         </div>
-        <div class="container">       
+        <div class="container2">       
             <article class="card">
                 <div class='background'>
                     <img src="../../src/perfil/amazon.jfif" alt="profile">
@@ -85,12 +101,12 @@
 
 		activeSideBar.addEventListener("click", function(){
 			navbar.style.display = "flex";
-			container.style.display = "none";
+			container.style.visibility = "hidden";
 		})
 
 		deactiveSideBar.addEventListener("click", function(){
 			navbar.style.display = "none";
-			container.style.display = "flex"
+			container.style.visibility = "visible";
 		});
     </script>
 </html>

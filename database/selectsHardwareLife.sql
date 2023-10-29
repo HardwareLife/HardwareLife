@@ -13,8 +13,8 @@ JOIN sala ON r.fkSala = sala.idSala WHERE sala.idSala = r.fkSala AND d.fkUnidade
 -- Consulta para pegar os sensores do rack
 SELECT * FROM sensor JOIN rack ON sensor.fkRack = rack.idRack WHERE idRack = 1;
 
--- CONSULTAS PARA LOGIN
-SELECT email, senha FROM usuario;
-
 -- CONSULTAS PARA CADASTRAR USUARIOS;
-INSERT INTO usuario VALUES (null, 'AmazonJundiai@hardwarelife.com', '123@',false, 2);
+INSERT INTO usuario VALUES (null, 'amazon.jundiai@hardwarelife.com', 'amazon@123', false, 2);
+
+-- CONSULTAS PARA LOGIN
+SELECT email, senha FROM usuario WHERE email = 'amazon.jundiai@hardwarelife.com' AND senha = 'amazon@123';

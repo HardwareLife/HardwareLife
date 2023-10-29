@@ -46,6 +46,7 @@ INSERT INTO sensor VALUES
 (1, 'LM35','Temperatura',7, 1, 1, 7),(2, 'LM35','Temperatura',7, 2, 1, 7),(3, 'LM35','Temperatura',7, 1, 2, 7),(4, 'LM35','Temperatura',7, 2, 2, 7),(5, 'LM35','Temperatura',7, 1, 3, 7),(6, 'LM35','Temperatura',7, 2, 3, 7),
 
 (1, 'LM35','Temperatura',8, 1, 1, 8),(2, 'LM35','Temperatura',8, 2, 1, 8),(3, 'LM35','Temperatura',8, 1, 2, 8),(4, 'LM35','Temperatura',8, 2, 2, 8),(5, 'LM35','Temperatura',8, 1, 3, 8),(6, 'LM35','Temperatura',8, 2, 3, 8);
+
 INSERT INTO sensor VALUES (null, 'DHT11', 'Umidade', null, null, null, 1),
 (null, 'DHT11', 'Umidade', null, null, null, 2);
 

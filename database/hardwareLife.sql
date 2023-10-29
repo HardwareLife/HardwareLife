@@ -12,15 +12,8 @@ USE HardwareLife;
     emailEmpresa varchar(50),
     telefoneEmpresa varchar(12)
 );
- 
-CREATE TABLE sala(
-	idSala INT PRIMARY KEY AUTO_INCREMENT,
-	numeroSala int,
-    fkEndereco int,
-    CONSTRAINT fkEnderecoSala FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
-);
 
- CREATE TABLE endereco(
+CREATE TABLE endereco(
 	idEndereco int primary key auto_increment,
 	logradouro varchar(60),
     numero varchar(10),
@@ -31,6 +24,13 @@ CREATE TABLE sala(
     fkEmpresa int,
     CONSTRAINT fkEmpresaEndereco FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
  );
+ 
+CREATE TABLE sala(
+	idSala INT PRIMARY KEY AUTO_INCREMENT,
+	numeroSala int,
+    fkEndereco int,
+    CONSTRAINT fkEnderecoSala FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
+);
 
  -- TABELA PARA CONTROLE E LOGIN DE CLEINTES --
  
@@ -64,7 +64,6 @@ CREATE TABLE sensor(
     CONSTRAINT fkRack FOREIGN KEY (fkRack) REFERENCES rack(idRack)
 );
 
-
 CREATE TABLE unidade(
     idUnidade int primary key auto_increment,
     unidadeDeMedida varchar(45)
@@ -78,8 +77,10 @@ CREATE TABLE dados(
 	valor double,
     fk_sensor int,
     fkUnidade int,
-    primary key(idDados, fk_sensor),
+    fkRack int,
+    primary key(idDados, fk_sensor, fkRack),
     constraint fkSensor foreign key (fk_sensor) references sensor(idSensor),
-	constraint fkUnidade foreign key (fkUnidade) references unidade(idUnidade)
+	constraint fkUnidade foreign key (fkUnidade) references unidade(idUnidade),
+    constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
