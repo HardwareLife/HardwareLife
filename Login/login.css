@@ -104,6 +104,7 @@ input {
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
+	margin-right: 12px;
 }
 
 
@@ -240,4 +241,8 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+
+.message{
+	display: none;
 }
