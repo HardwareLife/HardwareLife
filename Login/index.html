@@ -22,28 +22,29 @@
 		<div class="form-container sign-up-container">
 			<form id="form_cadastro">
 				<h2 style="margin-bottom: 5px;">Cadastre-se</h2>
-
-				<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
+				<div style="width: 60%;">
+					<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
 					onblur="NomeValidacao()">
-				<span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+					<span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+					
+					<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" onblur="validarEmail()">
+					<span class="span-required">Digite um email válido</span>
+					
+					<!--<input class="inputs" id="senha_cad" type="password" placeholder="Senha" required>
+						<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>!-->
 
-				<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" onblur="validarEmail()">
-				<span class="span-required">Digite um email válido</span>
+					<input class="inputs" id="cnpj_cad" type="text" maxlength="18" placeholder="CNPJ" required
+						onblur="ValidarCNPJ()" maxlength="18">
+					<span class="span-required">O CNPJ deve ter 14 dígitos</Span>
 
-				<!--<input class="inputs" id="senha_cad" type="password" placeholder="Senha" required>
-				<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>!-->
+					<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa" required
+						onblur="ValidarTel()">
+					<span class="span-required">Telefone Inválido</span>
 
-				<input class="inputs" id="cnpj_cad" type="text" maxlength="18" placeholder="CNPJ" required
-					onblur="ValidarCNPJ()" maxlength="18">
-				<Span class="span-required">O CNPJ deve ter 14 dígitos</Span>
-
-				<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa" required
-					onblur="ValidarTel()">
-				<span class="span-required">Telefone Inválido</span>
-
-				<div class="message" id="successMessage">
-					Cadastro feito com sucesso, em breve entraremos em contato!
-				</div>
+					<div class="message" id="successMessage">
+						Cadastro feito com sucesso, em breve entraremos em contato!
+					</div>
+			</div>
 
 
 				<button onclick="cadastro(event)" style="margin-top: 5px; cursor: pointer;">Cadastro</button>
@@ -231,8 +232,11 @@
 
 			var successMessage = document.getElementById("successMessage");
 			successMessage.style.display = "block";
+			setInterval(()=>{
+				successMessage.style.display = "none";
+			}, 3000)
 		} 
-		//vai impedir de regaregar a página
+		//vai impedir de recarregar a página
 		event.preventDefault();
 	}
 

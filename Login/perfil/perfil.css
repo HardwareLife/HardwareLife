@@ -320,7 +320,6 @@ body {
     align-items: center;
     border-radius: 24px;
     background-color: white;
-    cursor: pointer;
     max-width: clamp(320px, 100vw, 740px);
     min-width: 320px;
     min-height: 500px;
@@ -329,10 +328,19 @@ body {
     padding: 2px;
 }
 
+.card-secund a{
+    text-decoration: none;
+    color: black;
+}
+
+.card-secund h1{
+    margin-top: 110px;
+}
+
 .configuracoes{
-    margin: 20%;
     padding: 0;
     list-style: none;
+    margin: 0 0 0 50px;
 } 
 
 
