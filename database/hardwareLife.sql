@@ -13,23 +13,23 @@ USE HardwareLife;
     telefoneEmpresa varchar(12)
 );
 
-CREATE TABLE endereco(
-	idEndereco int primary key auto_increment,
+CREATE TABLE datacenter(
+	idDatacenter int primary key auto_increment,
 	logradouro varchar(60),
     numero varchar(10),
     bairro varchar(60),
     cidade varchar(60),
     uf char(2),
     cep char(9),
-    fkEmpresa int,
-    CONSTRAINT fkEmpresaEndereco FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+    fkEmpresa int not null,
+    CONSTRAINT fkEmpresaDatacenter FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
  );
  
 CREATE TABLE sala(
 	idSala INT PRIMARY KEY AUTO_INCREMENT,
 	numeroSala int,
-    fkEndereco int,
-    CONSTRAINT fkEnderecoSala FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
+    fkDatacenter int not null,
+    CONSTRAINT fkDatacenterSala FOREIGN KEY (fkDatacenter) REFERENCES datacenter(idDatacenter)
 );
 
  -- TABELA PARA CONTROLE E LOGIN DE CLEINTES --
@@ -39,14 +39,14 @@ CREATE TABLE usuario(
     email varchar(50),
     senha varchar(40),
     administrador boolean,
-	fkEmpresa int,
-	constraint fkEmpresaFuncionario foreign key (fkEmpresa) references empresa(idEmpresa)
+	fkDatacenter int,
+	constraint fkDatacenter foreign key (fkDatacenter) references datacenter(idDatacenter)
 );
 
 CREATE TABLE rack(
 	idRack int primary key auto_increment,
     numeroRack int,
-    fkSala int,
+    fkSala int not null,
     CONSTRAINT fkSala FOREIGN KEY (fkSala) REFERENCES sala(idSala)
 );
 
@@ -64,23 +64,17 @@ CREATE TABLE sensor(
     CONSTRAINT fkRack FOREIGN KEY (fkRack) REFERENCES rack(idRack)
 );
 
-CREATE TABLE unidade(
-    idUnidade int primary key auto_increment,
-    unidadeDeMedida varchar(45)
-);
-
  -- TABELA DE DADOS DO SENSOR --
-
+ 
 CREATE TABLE dados(
 	idDados int auto_increment,
     dataHora dateTime default current_timestamp,
-	valor double,
+	temperatura float,
+    umidade float,
     fk_sensor int,
-    fkUnidade int,
     fkRack int,
     primary key(idDados, fk_sensor, fkRack),
     constraint fkSensor foreign key (fk_sensor) references sensor(idSensor),
-	constraint fkUnidade foreign key (fkUnidade) references unidade(idUnidade),
     constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
