@@ -11,17 +11,17 @@
 <body>
     <div class="modal">
         <div class="conteudoModal">
-        <div style="display: flex;">
-            <label for="modalExemplo" class="fecharModal">X</label>
-            <h3>Contato</h3>
-        </div>
-        <form action="" method="post" onsubmit="redirect()">
-            <input type="text" placeholder="Nome" required class="inp_contato">
-            <input type="text" placeholder="Email" required class="inp_contato">
-            <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
+            <div class="fecharModal">
+                <label for="modalExemplo" class="">X</label>
+                <h3>Contato</h3>
+            </div>
+            <form action="" method="post" onsubmit="redirect()">
+                <input type="text" placeholder="Nome" required class="inp_contato">
+                <input type="text" placeholder="Email" required class="inp_contato">
+                <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
 
-            <button type="submit" class="btn-contato">Enviar</button>
-        </form>
+                <button type="submit" class="btn-contato">Enviar</button>
+            </form>
         </div>
     </div>
 
@@ -57,9 +57,10 @@
     <div class="content-orcamento">
         <div class="orcamento">
             <h2>Faça seu orçamento</h2>
-            <p>Veja os recursos necessários para tornar o resfriamento e a desumidificação de seu datacenter mais eficientes e economicos.</p>
-            <div style="display: flex;">
-                <img src="imagens/Elipse_Azul.png" alt="Esfera_Azul">
+            <p>Veja os recursos necessários para tornar o resfriamento e a desumidificação de seu datacenter mais
+                eficientes e economicos.</p>
+            <div class="imagens">
+                <img class="esfera" src="imagens/Elipse_Azul.png" alt="Esfera_Azul">
                 <a href="../Simulador Financeiro/Calculadora.html#calculadora">Orçamento</a>
             </div>
         </div>
@@ -67,22 +68,25 @@
 
     <div class="content-sobre-nos" id="sobre">
         <h3>Sobre Nós</h3>
-        <div style="display: flex;">
+        <div class="imgs">
             <div class="sobre-nos">
                 <img src="imagens/International_logo.png" alt="Logo da Sptech" style="width: 120px;">
-                <p>Somos uma empresa de consultoria, formada por alunos da SpTech, dedicada a criar soluções que transformam o mundo digital.</p>
+                <p>Somos uma empresa de consultoria, formada por alunos da SpTech, dedicada a criar soluções que
+                    transformam o mundo digital.</p>
             </div>
 
             <div class="sobre-nos">
                 <img src="imagens/segurança-hardware.png" alt="Segurança do hardware"
                     style="width: 75px; margin-top: 15px;">
-                <p>Prezamos pela segurança dos dados armazenados em sua infraestrutura de forma economica e eficiente</p>
+                <p>Prezamos pela segurança dos dados armazenados em sua infraestrutura de forma economica e eficiente
+                </p>
             </div>
 
             <div class="sobre-nos">
                 <img src="imagens/economia_icon-PhotoRoom.png-PhotoRoom.png" alt="Segurança do hardware"
                     style="width: 75px; margin-top: 15px;">
-                <p>Nos preocupamos com seu datacenter, agimos na redução de downtimes e na preservação da vida útil do seu hardware.</p>
+                <p>Nos preocupamos com seu datacenter, agimos na redução de downtimes e na preservação da vida útil do
+                    seu hardware.</p>
             </div>
         </div>
     </div>
@@ -91,7 +95,7 @@
         <div class="orcamento">
             <h2>Conheça nosso serviço</h2>
             <p>Eleve o desempenho do seu datacenter com nossas soluções de tecnologia de ponta.</p>
-            <div style="display: flex;">
+            <div class="imagens">
                 <img src="imagens/Elipse_Azul.png" alt="Esfera_Azul">
                 <a href="../Simulador Financeiro/Calculadora.html#solucao">Serviços</a>
             </div>
@@ -100,54 +104,55 @@
 
     <div class="content-contato" id="contato">
         <div class="contato">
-            <div class="cont-contato">
-                <div class="endereco">
-                    hello@sptech.school <br>
-                    R. Haddock Lobo, 505 <br>
-                    Paulista, São Paulo - SP
-                </div>
+            <div class="endereco">
+                hello@sptech.school <br>
+                R. Haddock Lobo, 505 <br>
+                Paulista, São Paulo - SP
+            </div>
 
-                <div class="div_inp">
-                    <h2>Quer falar com a gente?</h2><br>
-                    <label for="modalExemplo" class="abrirModal">Entre em contato</label>
-                    <input type="checkbox" id="modalExemplo" class="checkboxModal" onclick="mostrarModal()">
-                </div>    
-            </div>    
-        </div>  
-    </div>    
+            <div class="div_inp">
+                <h2>Quer falar com a gente?</h2><br>
+                <label for="modalExemplo" class="abrirModal">Entre em contato</label>
+                <input type="checkbox" id="modalExemplo" class="checkboxModal" onclick="mostrarModal()">
+            </div>
+        </div>
+    </div>
 
     <!-- <footer> -->
-        <div class="footer">
+    <div class="footer">
+        <div class="footer_itens">
             <img src="imagens/logo.svg" class="logo_footer" alt="Logo">
             <p>SOBRE NÓS</p>
             <p>CONTATO</p>
             <p>LOCALIDADE</p>
-            <div class="footer" id="redes_sociais">
-                <a href="#"><img src="imagens/github.svg" alt=""></a>
-				<a href="#"><img src="imagens/linkedin.svg" alt=""></a>
-				<a href="#"><img src="imagens/instagram.svg" alt=""></a>
-            </div>
         </div>
-        <p class="direitos">&copy; 2023 HardwareLife - Todos os direitos reservados</p>
+        <div class="footer_itens" id="redes_sociais">
+            <a href="#"><img src="imagens/github.svg" alt=""></a>
+            <a href="#"><img src="imagens/linkedin.svg" alt=""></a>
+            <a href="#"><img src="imagens/instagram.svg" alt=""></a>
+        </div>
+    </div>
+    <p class="direitos">&copy; 2023 HardwareLife - Todos os direitos reservados</p>
     <!-- </footer> -->
 </body>
 <script>
 
-    function mostrarModal(){
+    function mostrarModal() {
         var checked = modalExemplo.checked;
         var meuModal = document.querySelector(".modal");
-        if(checked){
+        if (checked) {
             meuModal.style.display = `flex`
-        }else{
+        } else {
             meuModal.style.display = `none`
         }
 
     }
-    function redirect(){
+    function redirect() {
         var checked = modalExemplo.checked;
         var meuModal = document.querySelector(".modal");
         meuModal.style.display = `none`
     }
 
 </script>
+
 </html>
