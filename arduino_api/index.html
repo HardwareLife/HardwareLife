@@ -16,21 +16,25 @@
 </head>
 
 <body>
-    <div>
-        <h1>Sensor DHT 11 - Umidade</h1>
-        <section style="width:100%">
-            <canvas id="dht11Umidade"></canvas>
-        </section>
-        <h1>LM35 - Temperatura</h1>
-        <section style="width: 100%;">
-            <canvas id="lm35Temperatura"></canvas>
-        </section>
+    <div style="display: flex;">
+        <div>
+            <h1 style="margin-left: 25px;">Sensor DHT 11 - Umidade</h1>
+            <section style="width:100%">
+                <canvas id="dht11Umidade"></canvas>
+            </section>
+        </div>
+        <div>
+            <h1 style="margin-left: 25px;">Sensor LM 35 - Temperatura</h1>
+            <section style="width: 100%;">
+                <canvas id="lm35Temperatura"></canvas>
+            </section>
+        </div>
     </div>
 
     <script>
         /* -- dht11Umidade -- */
         var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
-        contextoDht11Umidade.canvas.width = 1000;
+        contextoDht11Umidade.canvas.width = 680;
         contextoDht11Umidade.canvas.height = 300;
         var dht11Umidade = new Chart(
             contextoDht11Umidade,
@@ -71,7 +75,7 @@
         
         /* -- lm35Temperatura */
         var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
-        contextoLm35Temperatura.canvas.width = 1000;
+        contextoLm35Temperatura.canvas.width = 680;
         contextoLm35Temperatura.canvas.height = 300;
         var lm35Temperatura = new Chart(
             contextoLm35Temperatura,
@@ -109,7 +113,48 @@
                 }
             }
         );
-    
+        /* -- chave */
+        var contextoChave = document.getElementById('chave').getContext('2d');
+        contextoChave.canvas.width = 1000;
+        // contextoChave.canvas.display = "none";
+        contextoChave.canvas.height = 300;
+        var chave = new Chart(
+            contextoChave,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Chave',
+                        type: 'line',
+                        borderColor: ['#ffd902'],
+                        backgroundColor: ['#ffe135']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Chave'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
         var paginacao = {};
         var tempo = {};
         function obterDados(grafico, endpoint) {
