@@ -18,10 +18,24 @@
 			<h1>HardwareLife</h1>
 		</a>
 	</div>
+
+	<div class="modal">
+        <div class="conteudoModal" id="mensagemCadastro" style="display: flex;">
+            <div class="message" id="successMessage" style="display: none;">
+				Cadastro feito com sucesso, em breve entraremos em contato!
+			</div>
+			<div class="message" id="erroMessage"
+			style="display: none;">
+				Preencha todos os campos antes de cadastrar.
+			</div>
+        </div>
+    </div>
+
+
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
 			<form id="form_cadastro">
-				<h2 style="margin-bottom: 5px;">Cadastre-se</h2>
+				<h2 style="margin-bottom: 15px;">Cadastre-se</h2>
 				<div style="width: 60%;">
 					<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
 					onblur="NomeValidacao()">
@@ -41,12 +55,9 @@
 						onblur="ValidarTel()">
 					<span class="span-required">Telefone Inválido</span>
 
-					<div class="message" id="successMessage">
-						Cadastro feito com sucesso, em breve entraremos em contato!
-					</div>
 			</div>
 
-				<button onclick="cadastro(event)" style="margin-top: 5px; cursor: pointer;">Cadastro</button>
+				<button onclick="cadastro(event)" style="margin-top: 20px; cursor: pointer;">Cadastro</button>
 
 			</form>
 		</div>
@@ -220,20 +231,32 @@
 	}
 	function cadastro() {
 
+		var meuModal = document.querySelector(".modal");
 		var nomeCad = document.getElementById("nome_cad").value;
 		var emailCad = document.getElementById("email_cad").value;
 		var cnpjCad = document.getElementById("cnpj_cad").value;
 		var telCad = document.getElementById("tel_cad").value;
+		var erroMessage = document.getElementById("erroMessage");
+		var successMessage = document.getElementById("successMessage");
 
 		if (nomeCad === "" || emailCad === "" || cnpjCad === "" || telCad === "") {
-			alert("Preencha todos os campos antes de cadastrar.");
+
+			meuModal.style.display = "flex";
+			successMessage.style.display = "none";
+			erroMessage.style.display = "flex";
+			setInterval(()=>{
+				meuModal.style.display = "none";
+			}, 4000);
+	
 		} else {
 
-			var successMessage = document.getElementById("successMessage");
-			successMessage.style.display = "block";
+			meuModal.style.display = "flex";
+			erroMessage.style.display = "none";
+			successMessage.style.display = "flex";
 			setInterval(()=>{
-				successMessage.style.display = "none";
-			}, 3000)
+				meuModal.style.display = "none";
+			}, 6000);
+
 		} 
 		//vai impedir de recarregar a página
 		event.preventDefault();
