@@ -303,8 +303,12 @@ h6 {
     padding: 0 15px;
 }
 
+/* footer */
+
 .footer {
     width: 100%;
+    /* background-color: red; */
+
     height: 100px;
     border-bottom: 1px solid rgb(51, 73, 237);
     display: flex;
@@ -320,12 +324,40 @@ h6 {
 
 footer {
     background-color: #e4e6ef;
-
     padding: 20px 0;
 }
 
 footer p {
-    margin-top: 30px;
+    margin-top: 40px;
     color: black;
     text-align: center;
+}
+
+.footer p{
+    width: 170px;
+    /* background-color: green; */
+    margin-top: 35px;
+}
+
+#redes_sociais{
+    width: 100%;
+/* background-color: blue; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+#redes_sociais img{
+    width: 25px;
+    margin-top: 17px;
+    padding: 20px;
+}
+
+.logo_footer{
+    width: 70px;
+}
+
+.direitos{
+    display: flex;
+   justify-content: center;
+    
 }
