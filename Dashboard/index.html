@@ -27,8 +27,8 @@
 		</div>
 		<div class="sidebar">
 			<div class='perfil'>
-				<img src="../src/dashboard/perfil_usuario.png" alt="profile">
-				<span>Nome Empresa</span>
+				<div class="img_perfil"><img src="../src/perfil/amazon.jfif" alt="profile"></div>
+				<span>Amazon.com, Inc</span>
 			</div>
 			<div class="link_part">
 				<span class="link">
@@ -55,7 +55,7 @@
 				<i class="fa fa-align-justify"></i>
 			</div>
 			<div class="logo" id="container">
-				<img src="logo.svg" alt="Logo HardwareLife">
+				<img src="./scr/logo.svg" alt="Logo HardwareLife">
 				<h1>HardwareLife</h1>
 			</div>
 
@@ -98,6 +98,10 @@
 	<div class="dashboard">
 		<div class="dashboard_header">
 			<h2>Sala 1</h2>
+			<span class="btn_analitic">
+				<img src=".././src/dashboard/relatorio.svg" alt="Relatório">
+				<a href="">Relatório</a>
+			</span>
 		</div>
 		<div class="dashboard_container">
 			<div class="dashboard_chart_line">
@@ -115,12 +119,14 @@
 					  <thead >
 						<tr class="linha">
 							<th style="border-left: none;">&nbsp;</th>
-							<th class="red">Mínima</th>
+							<th class="red">Crítico</th>
+							<th class="orange">Emergência</th>
 							<th class="yellow">Alerta</th>
-							<th class="green">Média</th>
-							<th class="green">Mediana</th>
+							<th colspan="2" class="green">Ideal</th>
+							<!-- <th class="green">Ideal</th> -->
 							<th class="yellow">Alerta</th>
-							<th class="red">Máxima</th>
+							<th class="orange">Emergência</th>
+							<th class="red">Crítico</th>
 						</tr>
 					  </thead>
 					
@@ -128,21 +134,25 @@
 						<tr>
 							<td>Temperatura</td>
 							<td class="red">18°C</td>
-							<td>18,5°C</td>
-							<td>23,8°C</td>
-							<td>24°C</td>
-							<td>27°C</td>
-							<td>30°C</td>
+							<td class="orange">19,5°C</td>
+							<td class="yellow">23,8°C</td>
+							<td class="green">24°C</td>
+							<td class="green">27°C</td>
+							<td class="yellow">30°C</td>
+							<td class="orange">34ºC</td>
+							<td class="red">40ºC</td>
 						</tr>
 
 						<tr>
 							<td>Umidade</td>
-							<td>20%</td>
-							<td>30%</td>
-							<td>50%</td>
-							<td>45%</td>
-							<td>55%</td>
-							<td>60%</td>
+							<td class="red">20%</td>
+							<td class="orange">30%</td>
+							<td class="yellow">40%</td>
+							<td class="blue">45%</td>
+							<td class="blue">55%</td>
+							<td class="yellow">60%</td>
+							<td class="orange">70%</td>
+							<td class="red">80%</td>
 						</tr>
 
 					  </tbody>
@@ -170,6 +180,8 @@
 				<p>Sensor 5</p> 
 				<div class="esfera_ideal"></div>
 				<p>Sensor 6</p>
+				<div class="esfera_umidade_ideal"></div>
+				<p>Umidade</p>
 			</div>
 		</div>
 		<div class="pagination">
@@ -187,6 +199,8 @@
 				<p>Sensor 5</p> 
 				<div class="esfera_ideal"></div>
 				<p>Sensor 6</p>
+				<div class="esfera_umidade_emergencia"></div>
+				<p>Umidade</p>
 			</div>
 		</div>
 		<nav class="pagination-container">

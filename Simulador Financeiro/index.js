@@ -99,7 +99,7 @@ var quantidadeSala = 0;
 
         var btuSala;
         //precisamos decidir um padrão para utilização dos sensores de umidade
-        var quantidadeSensor =  somatorioRacks * 6;
+        var quantidadeSensor =  somatorioRacks * 7;
         var quantidadeDesumidificador = Math.ceil( somatorioArea / 90);
         var quantidadeArCondicionado = 0;
         var valorDesumidificadores = quantidadeDesumidificador * 5000;
@@ -111,7 +111,7 @@ var quantidadeSala = 0;
             quantidadeArCondicionado += Math.ceil(btuSala/120000)
             resultado.innerHTML += `Sua ${i+1}º sala de datacenter tem ${eval("area_sala" + (i+1))} m² de área, ${eval("servidor_sala" + (i+1))} servidores e ${eval("funcionario_sala" + (i+1))} funcionários, o que resulta na necessidade de ${btuSala} BTUs de potência para refrigerar efetivamente o ambiente, devido a esse fato iremos fornecer ${Math.ceil(btuSala/120000)} ar(es)-condicionado(s).<br> <br>
             Devido à área de ${eval("area_sala" + (i+1))}m², a sala ${i+1} precisará de ${Math.ceil(eval("area_sala" + (i+1))/90)} desumidificador(es), já que nossos desumidificadores atuam efetivamente em uma área de 90m². <br>
-            Devido à quantidade de ${eval("racks_sala" + (i+1))} racks na sala ${i+1}, será necessário ${(eval("racks_sala" + (i+1)) * 6)} sensores de temperatura<br><br>
+            Devido à quantidade de ${eval("racks_sala" + (i+1))} racks na sala ${i+1}, será necessário ${(eval("racks_sala" + (i+1)) * 6)} sensores de temperatura e ${eval("racks_sala" + (i+1))} de umidade<br><br>
             `; 
         }
 

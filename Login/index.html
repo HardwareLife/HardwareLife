@@ -18,38 +18,46 @@
 			<h1>HardwareLife</h1>
 		</a>
 	</div>
+
+	<div class="modal">
+        <div class="conteudoModal" id="mensagemCadastro" style="display: flex;">
+            <div class="message" id="successMessage" style="display: none;">
+				Cadastro feito com sucesso, em breve entraremos em contato!
+			</div>
+			<div class="message" id="erroMessage"
+			style="display: none;">
+				Preencha todos os campos antes de cadastrar.
+			</div>
+        </div>
+    </div>
+
+
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
 			<form id="form_cadastro">
-				<h1>Cadastre-se</h1>
-				<div class="input-container" style="display: flex; flex-direction: column;">
+				<h2 style="margin-bottom: 15px;">Cadastre-se</h2>
+				<div style="width: 60%;">
 					<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
-						oninput="NomeValidacao()">
-					<span class="span-required">Nome devere ter no mínimo 3 caracteres</span>
-				</div>
+					onblur="NomeValidacao()">
+					<span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+					
+					<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" onblur="validarEmail()">
+					<span class="span-required">Digite um email válido</span>
+					
+					<!--<input class="inputs" id="senha_cad" type="password" placeholder="Senha" required>
+						<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>!-->
 
-				<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" required
-					onblur="validarEmail()">
-				<span class="span-required">Digite um email válido</span>
+					<input class="inputs" id="cnpj_cad" type="text" maxlength="18" placeholder="CNPJ" required
+						onblur="ValidarCNPJ()" maxlength="18">
+					<span class="span-required">O CNPJ deve ter 14 dígitos</Span>
 
-				<input class="inputs" id="senha_cad" type="password" maxlength="20" placeholder="Senha" required
-					onblur="ValidarSenha()">
-				<span class="span-required">A senha deve ter no mínimo 8 caracteres, uma letra maiúscula e um caracter
-					especial</span>
+					<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa" required
+						onblur="ValidarTel()">
+					<span class="span-required">Telefone Inválido</span>
 
-				<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required
-					onblur="Comparar_senhas()">
-				<span class="span-required">As senhas devem ser compatíveis</span>
+			</div>
 
-				<input class="inputs" id="cnpj_cad" type="text" maxlength="14" placeholder="CNPJ" required
-					onblur="ValidarCNPJ()">
-				<span class="span-required">O CNPJ deve ter 14 dígitos</span>
-
-				<input class="inputs" id="tel_cad" type="number" placeholder="Telefone da Empresa" required
-					onblur="ValidarTel()">
-				<span class="span-required">Telefone Inválido</span>
-
-				<button id="cad" onclick="cadastro()">Cadastro</button>
+				<button onclick="cadastro(event)" style="margin-top: 20px; cursor: pointer;">Cadastro</button>
 
 			</form>
 		</div>
@@ -57,87 +65,103 @@
 			<div class="overlay">
 
 				<div class="overlay-panel overlay-left">
-					<h1>Bem Vindo!</h1>
+					<h2>Bem Vindo!</h2>
 					<p>Entre com seu Email e Senha para continuar</p>
-					<button onclick="signin()" id="logar">Entrar</button>
+					<button onclick="signin()" id="logar" style="cursor: pointer;">Entrar</button>
 				</div>
 				<div class="overlay-panel overlay-right">
-					<h1>Olá, Bem Vindo!</h1>
+					<h2>Olá, Bem Vindo!</h2>
 					<p>Conecte-se conosco para uma experiência incrível!</p>
-					<button onclick="signup()" id="cadastrar">Cadastrar</button>
+					<button onclick="signup()" id="cadastrar" style="cursor: pointer;">Cadastrar</button>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div id="modal" class="modal-container">
-		<div class="modal">
-			<button class="fechar" id="fechar">X</button>
-			<h1>Cadastro Realizado com sucesso</h1>
-			<p>Você receberá um email de nossa equipe em breve</p>
+		<div class="form-container entrar">
+			<form onsubmit="return false">
+				<h2>Entrar</h2>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span class="span-required">Entre com sua conta</span class="span-required">
+				<input type="email" placeholder="Email" id="email" />
+				<input type="password" placeholder="Password" id="senha" />
+				<a href="#">Esqueceu a senha?</a>
+				<button onclick="autenticar()" class="logar" style="cursor: pointer
+				;">Entrar</button>
+			</form>
 		</div>
 	</div>
-
-	<div class="form-container entrar">
-		<form id="form_login">
-			<h1>Entrar</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span class="span-required">Entre com sua conta</span class="span-required">
-			<input class="inputs" type="email" placeholder="Email" required oninput="validarEmail()">
-
-			<span class="span-required">Digite um Email válido</span class="span-required">
-			<input class="inputs" type="password" placeholder="Password" required oninput="ValidarSenha()">
-
-			<span class="span-required">Senha inválida </span class="span-required">
-			<a href="#">Esqueceu a senha?</a>
-			<button id="logar">Entrar</button>
-		</form>
 	</div>
-	</div>
-	<div class="form-container entrar"></div>
+
 </body>
 
 </html>
 <script>
 
-	var conectar = document.getElementById("container");
-
-	function signup() {
-		var buttonCadatro = document.getElementById("cadastrar");
-		conectar.classList.add("right-panel-active");
-
-    var modal = document.getElementById('cad')
-    modal.classList.add('mostrar')
-
-
-
-    modal.addEventListener('click')
-        if (id == 'cad' || id == "fechar"){
-            modal.classList.remove('mostrar')
-            localStorage.fechaModal = 'modal-container'
-        }
-    
-}
-
-	
-
-	function singin() {
-		var login = document.getElementById("entrar");
-		conectar.classList.remove("right-panel-active");
-
-	}
-
 	var form = document.getElementById('form');
 	var campos = document.querySelectorAll('.inputs');
 	var spans = document.querySelectorAll('.span-required');
-	var emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/;
-	var CNPJregex = /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/
-	var Telregex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/;
+	var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
+	var CNPJregex = /^\d{2}.\d{3}.\d{3}\/\d{4}-\d{2}$/;
+
+	var Telregex = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/;
+	var conectar = document.getElementById("container");
+	var cnpjValor = document.getElementById("cnpj_cad");
+	var telefoneValor = document.getElementById("tel_cad");
+
+	cnpjValor.addEventListener('keypress', () => {
+		var tamanho = cnpjValor.value.length;
+
+		if (tamanho === 2 || tamanho === 6) {
+			cnpjValor.value += '.';
+		} else if (tamanho === 10) {
+			cnpjValor.value += '/';
+		} else if (tamanho === 15) {
+			cnpjValor.value += '-';
+		}
+	})
+
+	telefoneValor.addEventListener('keypress', () => {
+		var tamanho = telefoneValor.value.length;
+
+		if (tamanho === 0) {
+			telefoneValor.value += '(';
+		} else if (tamanho === 3) {
+			telefoneValor.value += ')';
+		} else if (tamanho === 9) {
+			telefoneValor.value += '-';
+		}
+	})
+
+
+
+
+	function autenticar() {
+		var emailUsuario = email.value;
+		var senhaUsuario = senha.value;
+		console.log(emailUsuario, senhaUsuario)
+
+		if (emailUsuario == "amazon.jundiai@hardwarelife.com" && senhaUsuario == "amazon@123") {
+			window.location.href = "../Dashboard/index.html"
+		} else {
+			alert("Usuário ou senha inválidos");
+		}
+
+	}
+
+	function signup() {
+		var buttonCadatro = document.getElementById("cadastrar");
+		conectar.classList.add("right-panel-active")
+
+	}
+
+	function signin() {
+		var login = document.getElementById("logar");
+		conectar.classList.remove("right-panel-active");
+	}
 
 	function erro(index) {
 		campos[index].style.border = '2px solid #e63636';
@@ -145,7 +169,7 @@
 	}
 
 	function removerErro(index) {
-		campos[index].style.border = '';
+		campos[index].style.border = 'none';
 		spans[index].style.display = 'none';
 	}
 
@@ -179,38 +203,107 @@
 
 		} else {
 			removerErro(2);
-			Comparar_senhas();
+
 		}
 
 	}
 
-	function Comparar_senhas() {
-		if (campos[2].value == campos[3].value && campos[3].value.length >= 8) {
-			removerErro(3);
-		} else {
-			erro(3);
-		}
-	}
 
 
-	function ValidarCNPJ() {
-		if (CNPJregex.test(campos[4].value)) {
-			erro(4);
+	function validarCNPJ(cnpj) {
+ 
+ cnpj = cnpj.replace(/[^\d]+/g,'');
 
-		} else {
-			removerErro(4);
-		}
+ if(cnpj == '') return false;
+  
+ if (cnpj.length != 14)
+	 return false;
 
-	}
+ // Elimina CNPJs invalidos conhecidos
+ if (cnpj == "00000000000000" || 
+	 cnpj == "11111111111111" || 
+	 cnpj == "22222222222222" || 
+	 cnpj == "33333333333333" || 
+	 cnpj == "44444444444444" || 
+	 cnpj == "55555555555555" || 
+	 cnpj == "66666666666666" || 
+	 cnpj == "77777777777777" || 
+	 cnpj == "88888888888888" || 
+	 cnpj == "99999999999999")
+	 return false;
+	  
+
+ tamanho = cnpj.length - 2
+ numeros = cnpj.substring(0,tamanho);
+ digitos = cnpj.substring(tamanho);
+ soma = 0;
+ pos = tamanho - 7;
+ for (i = tamanho; i >= 1; i--) {
+   soma += numeros.charAt(tamanho - i) * pos--;
+   if (pos < 2)
+		 pos = 9;
+ }
+ resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+ if (resultado != digitos.charAt(0))
+	 return false;
+	  
+ tamanho = tamanho + 1;
+ numeros = cnpj.substring(0,tamanho);
+ soma = 0;
+ pos = tamanho - 7;
+ for (i = tamanho; i >= 1; i--) {
+   soma += numeros.charAt(tamanho - i) * pos--;
+   if (pos < 2)
+		 pos = 9;
+ }
+ resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+ if (resultado != digitos.charAt(1))
+	   return false;
+		
+ return true;
+ 
+}
 
 	function ValidarTel() {
-		if (Telregex.test(campos[5].value)) {
+		if (Telregex.test(campos[5])) {
 			erro(5);
 
 		} else {
 			removerErro(5);
 		}
 
+	}
+	function cadastro() {
+
+		var meuModal = document.querySelector(".modal");
+		var nomeCad = document.getElementById("nome_cad").value;
+		var emailCad = document.getElementById("email_cad").value;
+		var cnpjCad = document.getElementById("cnpj_cad").value;
+		var telCad = document.getElementById("tel_cad").value;
+		var erroMessage = document.getElementById("erroMessage");
+		var successMessage = document.getElementById("successMessage");
+
+		if (nomeCad === "" || emailCad === "" || cnpjCad === "" || telCad === "") {
+
+			meuModal.style.display = "flex";
+			successMessage.style.display = "none";
+			erroMessage.style.display = "flex";
+			setInterval(()=>{
+				meuModal.style.display = "none";
+			}, 4000);
+	
+		} else {
+
+			meuModal.style.display = "flex";
+			erroMessage.style.display = "none";
+			successMessage.style.display = "flex";
+			setInterval(()=>{
+				meuModal.style.display = "none";
+			}, 6000);
+
+		} 
+		//vai impedir de recarregar a página
+		event.preventDefault();
 	}
 
 </script>
