@@ -17,6 +17,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    background-color: #e4e6ef;
 }
 
 .header {
@@ -106,13 +107,13 @@ h6 {
     text-decoration: none;
 }
 
+/* orcamento */
 .content-orcamento {
     margin: 0;
     height: 350px;
     background-color: #e4e6ef;
     padding: 5% 10% 0 20%;
 }
-
 
 .orcamento {
     width: 85%;
@@ -146,6 +147,7 @@ h6 {
     font-size: 18px;
 }
 
+/* contato */
 .content-contato {
     margin: 0;
     height: 250px;
@@ -182,8 +184,31 @@ h6 {
     border-left: 1px #3349ED solid;
     padding: 0 0 0 10%;
     flex-direction: row-reverse;
+}
+
+.inp_contato {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 } 
 
+.btn-contato {
+  background-color: #3349ED;
+  color: #fff;
+  margin-left: 25%;
+  margin-top: 5px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  width: 50%;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* modal contato */
 .abrirModal:hover {
     cursor: pointer;
   }
@@ -252,28 +277,8 @@ h6 {
     border-radius: 10px;
     background-color: #333333;
 }
-  
-.inp_contato {
-      width: 95%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-} 
-  
-.btn-contato {
-    background-color: #3349ED;
-    color: #fff;
-    margin-left: 25%;
-    margin-top: 5px;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 25px;
-    width: 50%;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
- }
 
+ /* sobre nos */
 .content-sobre-nos {
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
     height: 600px;
@@ -304,11 +309,8 @@ h6 {
 }
 
 /* footer */
-
 .footer {
     width: 100%;
-    /* background-color: red; */
-
     height: 100px;
     border-bottom: 1px solid rgb(51, 73, 237);
     display: flex;
@@ -322,11 +324,6 @@ h6 {
     margin-left: 30px;
 }
 
-footer {
-    background-color: #e4e6ef;
-    padding: 20px 0;
-}
-
 footer p {
     margin-top: 40px;
     color: black;
@@ -335,13 +332,11 @@ footer p {
 
 .footer p{
     width: 170px;
-    /* background-color: green; */
     margin-top: 35px;
 }
 
 #redes_sociais{
     width: 100%;
-/* background-color: blue; */
     display: flex;
     justify-content: flex-end;
 }
@@ -359,5 +354,4 @@ footer p {
 .direitos{
     display: flex;
    justify-content: center;
-    
 }
