@@ -113,7 +113,47 @@
                 }
             }
         );
-        
+        /* -- chave */
+        var contextoChave = document.getElementById('chave').getContext('2d');
+        contextoChave.canvas.width = 1000;
+        // contextoChave.canvas.display = "none";
+        contextoChave.canvas.height = 300;
+        var chave = new Chart(
+            contextoChave,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Chave',
+                        type: 'line',
+                        borderColor: ['#ffd902'],
+                        backgroundColor: ['#ffe135']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Chave'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
 
         var paginacao = {};
         var tempo = {};
