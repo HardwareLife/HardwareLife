@@ -78,3 +78,4 @@ CREATE TABLE dados(
     constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
+DROP DATABASE HardwareLife;
