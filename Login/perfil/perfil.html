@@ -50,10 +50,14 @@
             <div class="container">
                 <div class="side-bar" id="side-bar-active">
                     <i class="fa fa-align-justify"></i>
+                    <div class="logo" id="container">
+                        <img src="../../Dashboard/scr/logo.svg" alt="Logo HardwareLife">
+                        <h1>HardwareLife</h1>
+                    </div>
                 </div>
-                <div class="logo" id="container">
-                    <img src="../../Dashboard/scr/logo.svg" alt="Logo HardwareLife">
-                    <h1>HardwareLife</h1>
+                
+                <div class="usuario_perfil">
+                    <h1>Olá, Gestora Ana Beatriz</h1>
                 </div>
             </div>		
         </div>
@@ -77,16 +81,57 @@
                 </div>
             </article>
             <article class="card-secund">
-                <h1>Conferir:</h1>
+                <!-- <h1>Conferir:</h1>
                     <ul class="configuracoes">
                         <li><a href="../../Dashboard/index.html">Salas Cadastradas</a>
                         </li>
                         <li><a href="#">Fale Conosco</a></li>
                         <li>Privacidade e Segurança</li>
                         <li>Minha Conta</li>
-                         <li>Configurações</li>
+                        <li>Configurações</li>
                     </ul>
-                
+                 -->
+                 <form action="" class="formulario_cadastro">
+                    <span class="titulo_cadastro">Cadastrar Novo Funcionário:</span>
+                    <span class="campos_cadastros">
+                        <div class="campo">
+                            <label for="nome_funcionario">Nome:</label>
+                            <input type="text" id="nome_funcionario" placeholder="Nome Funcionario">
+                        </div>
+                        <div class="campo">
+                            <label for="nome_funcionario">Sobrenome:</label>
+                            <input type="text" id="sobrenome_funcionario" placeholder="Sobrenome Funcionario">
+                        </div>
+                        <div class="campo">
+                            <label for="nome_funcionario">CPF:</label>
+                            <input type="text" id="cpf_funcionario" placeholder="Cpf Funcionario">
+                        </div>
+                        <div class="campo">
+                            <label for="nome_funcionario">Email:</label>
+                            <input type="email" id="email_funcionario" placeholder="Email Funcionario">
+                        </div>
+                        <div class="campo">
+                            <label for="nome_funcionario">Senha:</label>
+                            <input type="password" id="senha_funcionario" placeholder="Senha Funcionario">
+                        </div>
+                    </span>
+                    <button class="btn_form_cadastro" onclick="cadastrar()">Cadastrar</button>
+                 </form>
+                 <div class="lista_funcionario">
+                    <div class="legendas">
+                        <p>ID</p>
+                        <p>Nome</p>
+                        <p>Email</p>
+                        <p>CPF</p>
+                    </div>
+                    <span class="lista_item">
+                        <div class="item_id">1</div>
+                        <div class="item_nome">Giovana França</div>
+                        <div class="item_nome">Giovana@hardwarelife.com</div>
+                        <div class="item_nome">678.098.098-98</div>
+                    </span>
+                 </div>
+
             </article>
         </div>
     </body>
@@ -103,5 +148,7 @@
 			navbar.style.display = "none";
 			container.style.visibility = "visible";
 		});
+
+        
     </script>
 </html>

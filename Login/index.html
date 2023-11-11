@@ -20,16 +20,15 @@
 	</div>
 
 	<div class="modal">
-        <div class="conteudoModal" id="mensagemCadastro" style="display: flex;">
-            <div class="message" id="successMessage" style="display: none;">
+		<div class="conteudoModal" id="mensagemCadastro" style="display: flex;">
+			<div class="message" id="successMessage" style="display: none;">
 				Cadastro feito com sucesso, em breve entraremos em contato!
 			</div>
-			<div class="message" id="erroMessage"
-			style="display: none;">
+			<div class="message" id="erroMessage" style="display: none;">
 				Preencha todos os campos antes de cadastrar.
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
@@ -37,12 +36,13 @@
 				<h2 style="margin-bottom: 15px;">Cadastre-se</h2>
 				<div style="width: 60%;">
 					<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
-					onblur="NomeValidacao()">
+						onblur="NomeValidacao()">
 					<span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
-					
-					<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa" onblur="validarEmail()">
+
+					<input class="inputs" id="email_cad" type="text" placeholder="Email da Empresa"
+						onblur="validarEmail()">
 					<span class="span-required">Digite um email válido</span>
-					
+
 					<!--<input class="inputs" id="senha_cad" type="password" placeholder="Senha" required>
 						<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>!-->
 
@@ -50,11 +50,11 @@
 						onblur="ValidarCNPJ()" maxlength="18">
 					<span class="span-required">O CNPJ deve ter 14 dígitos</Span>
 
-					<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa" required
-						onblur="ValidarTel()">
+					<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa"
+						required onblur="ValidarTel()">
 					<span class="span-required">Telefone Inválido</span>
 
-			</div>
+				</div>
 
 				<button onclick="cadastro(event)" style="margin-top: 20px; cursor: pointer;">Cadastro</button>
 
@@ -210,58 +210,58 @@
 
 
 	function validarCNPJ(cnpj) {
- 
- cnpj = cnpj.replace(/[^\d]+/g,'');
 
- if(cnpj == '') return false;
-  
- if (cnpj.length != 14)
-	 return false;
+		cnpj = cnpj.replace(/[^\d]+/g, '');
 
- // Elimina CNPJs invalidos conhecidos
- if (cnpj == "00000000000000" || 
-	 cnpj == "11111111111111" || 
-	 cnpj == "22222222222222" || 
-	 cnpj == "33333333333333" || 
-	 cnpj == "44444444444444" || 
-	 cnpj == "55555555555555" || 
-	 cnpj == "66666666666666" || 
-	 cnpj == "77777777777777" || 
-	 cnpj == "88888888888888" || 
-	 cnpj == "99999999999999")
-	 return false;
-	  
+		if (cnpj == '') return false;
 
- tamanho = cnpj.length - 2
- numeros = cnpj.substring(0,tamanho);
- digitos = cnpj.substring(tamanho);
- soma = 0;
- pos = tamanho - 7;
- for (i = tamanho; i >= 1; i--) {
-   soma += numeros.charAt(tamanho - i) * pos--;
-   if (pos < 2)
-		 pos = 9;
- }
- resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
- if (resultado != digitos.charAt(0))
-	 return false;
-	  
- tamanho = tamanho + 1;
- numeros = cnpj.substring(0,tamanho);
- soma = 0;
- pos = tamanho - 7;
- for (i = tamanho; i >= 1; i--) {
-   soma += numeros.charAt(tamanho - i) * pos--;
-   if (pos < 2)
-		 pos = 9;
- }
- resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
- if (resultado != digitos.charAt(1))
-	   return false;
-		
- return true;
- 
-}
+		if (cnpj.length != 14)
+			return false;
+
+		// Elimina CNPJs invalidos conhecidos
+		if (cnpj == "00000000000000" ||
+			cnpj == "11111111111111" ||
+			cnpj == "22222222222222" ||
+			cnpj == "33333333333333" ||
+			cnpj == "44444444444444" ||
+			cnpj == "55555555555555" ||
+			cnpj == "66666666666666" ||
+			cnpj == "77777777777777" ||
+			cnpj == "88888888888888" ||
+			cnpj == "99999999999999")
+			return false;
+
+
+		tamanho = cnpj.length - 2
+		numeros = cnpj.substring(0, tamanho);
+		digitos = cnpj.substring(tamanho);
+		soma = 0;
+		pos = tamanho - 7;
+		for (i = tamanho; i >= 1; i--) {
+			soma += numeros.charAt(tamanho - i) * pos--;
+			if (pos < 2)
+				pos = 9;
+		}
+		resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+		if (resultado != digitos.charAt(0))
+			return false;
+
+		tamanho = tamanho + 1;
+		numeros = cnpj.substring(0, tamanho);
+		soma = 0;
+		pos = tamanho - 7;
+		for (i = tamanho; i >= 1; i--) {
+			soma += numeros.charAt(tamanho - i) * pos--;
+			if (pos < 2)
+				pos = 9;
+		}
+		resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+		if (resultado != digitos.charAt(1))
+			return false;
+
+		return true;
+
+	}
 
 	function ValidarTel() {
 		if (Telregex.test(campos[5])) {
@@ -287,20 +287,20 @@
 			meuModal.style.display = "flex";
 			successMessage.style.display = "none";
 			erroMessage.style.display = "flex";
-			setInterval(()=>{
+			setInterval(() => {
 				meuModal.style.display = "none";
 			}, 4000);
-	
+
 		} else {
 
 			meuModal.style.display = "flex";
 			erroMessage.style.display = "none";
 			successMessage.style.display = "flex";
-			setInterval(()=>{
+			setInterval(() => {
 				meuModal.style.display = "none";
 			}, 6000);
 
-		} 
+		}
 		//vai impedir de recarregar a página
 		event.preventDefault();
 	}
