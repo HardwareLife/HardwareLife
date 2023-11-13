@@ -29,9 +29,13 @@
                     <span>Amazon.com, Inc</span>
                 </div> -->
                 <div class="link_part">
-                    <span class="link">
+                    <span class="link" style="display: none;">
                         <img src="../../src/dashboard/icon_config.svg" alt="configurações">
                         <a href="">Perfil</a>
+                    </span>
+                    <span class="link">
+                        <img src="../../src/dashboard/icon_dashboard.svg" alt="dashboard">
+                        <a href="../../Dashboard/dash.html">Salas</a>
                     </span>
                     <span class="link">
                         <img src="../../src/dashboard/icon_dashboard.svg" alt="dashboard">
@@ -57,7 +61,7 @@
                 </div>
                 
                 <div class="usuario_perfil">
-                    <h1>Olá, Gestora Ana Beatriz</h1>
+                    <h1>Olá, Ana Beatriz</h1>
                 </div>
             </div>		
         </div>
@@ -75,7 +79,7 @@
                         <span><img src="../../src/perfil/location.svg" alt="icone">Jundiai - São Paulo</span>
                         <span><img src="../../src/perfil/phone.svg" alt="icone">(11) 4296-2589</span>
                         <span><img src="../../src/perfil/emai.svg" alt="icone">amazon@hardwarelife.com</span>
-                        <button class="button-perfil">Editar Perfil</button>
+                        <!-- <button class="button-perfil">Editar Perfil</button> -->
                     </div>
                     
                 </div>
@@ -92,8 +96,8 @@
                     </ul>
                  -->
                  <form action="" class="formulario_cadastro">
-                    <span class="titulo_cadastro">Cadastrar Novo Funcionário:</span>
-                    <span class="campos_cadastros">
+                    <span class="titulo_cadastro" id="titulo_cadastro">Cadastrar Novo Funcionário:</span>
+                    <span class="campos_cadastros" id="campos_cadastros">
                         <div class="campo">
                             <label for="nome_funcionario">Nome:</label>
                             <input type="text" id="nome_funcionario" placeholder="Nome Funcionario">
@@ -113,6 +117,14 @@
                         <div class="campo">
                             <label for="nome_funcionario">Senha:</label>
                             <input type="password" id="senha_funcionario" placeholder="Senha Funcionario">
+                        </div>
+                        <div class="campo" id="campo_unidade">
+                            <label for="unidade">Unidade:</label>
+                            <select name="escolha_unidade" id="escolha_unidade">
+                                <option value="0"></option>
+                                <option value="1">Jundiai</option>
+                                <option value="2">Campo</option>
+                            </select>
                         </div>
                     </span>
                     <button class="btn_form_cadastro" onclick="cadastrar()">Cadastrar</button>
@@ -149,6 +161,10 @@
 			container.style.visibility = "visible";
 		});
 
+        // if (sessaoLogin == 'CEO') {
+        //     titulo_cadastro.innerHTML = "Cadastrar Gestor: ";
+        //     campo_unidade.style.display = 'flex';
+        // }
         
     </script>
 </html>

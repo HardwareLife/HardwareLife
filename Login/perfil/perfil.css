@@ -346,6 +346,19 @@ body {
     text-indent: 20px;
 }
 
+.formulario_cadastro .campos_cadastros .campo:nth-child(6){
+    display: none;
+}
+
+.formulario_cadastro .campos_cadastros .campo select{
+    width: 50%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background-color: rgb(255, 255, 255);
+    text-indent: 20px;
+}
+
 
 .formulario_cadastro .btn_form_cadastro{
     display: flex;
@@ -353,13 +366,18 @@ body {
     align-items: center;
     align-self: flex-end;
     margin-right: 6px;
-    width: 170px;
-    height: 25px;
-    border-radius: 6px;
+    width: 20%;
+    height: 30px;
+    border-radius: 7px;
     border: 1px solid #000000;
-    background-color: #364ae4;
+    background-color: #5064ff;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.formulario_cadastro .btn_form_cadastro:hover{
+    background-color: #4458f0;
+    cursor: pointer;
 }
 
 .lista_funcionario{
@@ -398,7 +416,7 @@ body {
     background-color: #E4E6EF;
     height: 40px;
     max-height: 40px;
-    border-radius: 10px 0;
+    border-radius: 10px 10px 0 0 ;
     scroll-snap-align: start;
     margin-bottom: 10px;
 }
