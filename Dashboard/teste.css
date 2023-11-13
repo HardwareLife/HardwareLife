@@ -293,19 +293,20 @@ body {
 }
 
 /* graficos sala - inicio */
+/* junção grafico e tabela */
 .dash_sala {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    height: 40%;
-    width: 97%;
+    height: 50%;
+    width: 100%;
     margin: 20px;
 }
 
 /* grafico mediçoes */
 .grafico_chart_line{
     display: flex;
-
     width: 40%;
     background-color: white;
     border-radius: 5px;
@@ -313,31 +314,31 @@ body {
 }
 
 /* junção tabela de consumo com tabela de medias */
-.dash_sala2 {
+/* .dash_sala2 {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
+} */
 
 /* div consumo energia */
-.consumo_energia {
+/* .consumo_energia {
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 20%;
+    height: 20%; */
     /* width: 95%; */
     /* margin: 30px;  */
-    border-radius: 5px;
+    /* border-radius: 5px;
     box-shadow: 0px 0px 11px -1px rgba(26,26,26,1);
-}
+} */
 
 /* tabela de medidas */
 .tab_medidas {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 20%;
+    /* height: 50%; */
     
 }
 
@@ -401,4 +402,81 @@ body {
 
 .div_rack {
     margin: 20px;
+}
+
+/* tela: racks */
+.dashboard_rack {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    background-color: #ddd9ce;
+    margin-top: 20px;
+    border-radius: 18px;
+    height: 70%;
+    margin: 20px;   
+}
+
+.titulo_rack {
+    background-color: brown;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.temp_umid {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.graficos_direita{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* height: 80%; */
+}
+
+.dashboard_chart_line{
+    display: flex;
+    width: 50%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 11px -1px rgba(26,26,26,1);
+}
+
+.alerta_rack {
+    background-color: brown;
+    width: fit-content;
+}
+
+.dashboard2{
+    display: flex;
+    width: 50%;
+    /* margin:  3% 7% 3% 2%; */
+    background-color: #FFFF;
+    border-radius: 18px;
+    padding-bottom: 3px;
+    /* width: 95%; */
+}
+
+.pagination {
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+}
+
+.racks{
+    display: flex;
+}
+
+.racks p{
+    margin-top: -2px;
+    margin-left: 8px;
+}
+
+.rack_esquerda {
+    display: flex;
+    flex-direction: column;
+    
 }
