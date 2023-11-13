@@ -14,4 +14,6 @@ JOIN sala ON r.fkSala = sala.idSala WHERE sala.idSala = r.fkSala AND d.umidade <
 SELECT * FROM sensor JOIN rack ON sensor.fkRack = rack.idRack WHERE idRack = 1;
 
 -- CONSULTAS PARA LOGIN
-SELECT email, senha FROM usuario WHERE email = 'amazon.jundiai@hardwarelife.com' AND senha = 'amazon@123';
+SELECT email, senha FROM funcionario WHERE email = 'willians.vinicius@hardwarelife.com' AND senha = '123';
+
+SELECT concat(nome, '', sobrenome) nome, cpf, email, senha, tipoNivel from funcionario WHERE tipoNivel = 'CEO';
