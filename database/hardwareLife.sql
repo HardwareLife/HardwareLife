@@ -34,12 +34,18 @@ CREATE TABLE sala(
 
  -- TABELA PARA CONTROLE E LOGIN DE CLEINTES --
  
-CREATE TABLE usuario(
-	idUsuario int primary key auto_increment,
+CREATE TABLE funcionario (
+	idFuncionario int primary key auto_increment,
+    nome varchar(50),
+    sobrenome varchar(50),
+    cpf char(14),
     email varchar(50),
     senha varchar(40),
-    administrador boolean,
-	fkDatacenter int,
+    tipoNivel varchar(45),
+    fkSuperior int,
+    constraint fkSuperior foreign key (fkSuperior) references funcionario (idFuncionario),
+    check (tipoNivel in('CEO', 'Gestor', 'Funcionario')),
+    fkDatacenter int,
 	constraint fkDatacenter foreign key (fkDatacenter) references datacenter(idDatacenter)
 );
 
@@ -78,4 +84,3 @@ CREATE TABLE dados(
     constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
-DROP DATABASE HardwareLife;

@@ -8,15 +8,14 @@ INSERT INTO datacenter VALUES
 (null, 'AV. Brigadeiro Faria Lima','3900','Pinheiros','São Paulo','SP','04538-133', 1),
 (null, 'Rodovia Vice-Prefeito Hermenegildo Tonolli','1500','Distrito Industrial','Jundiaí','SP','13213-086', 2);
 
-INSERT INTO usuario VALUES
-(null, 'leonardo.arakaki@hardwarelife.com','123',true ,null),
-(null, 'willians.vinicius@hardwarelife.com','123', true, null),
-(null, 'giovanna.franca@hardwarelife.com','123', true, null),
-(null, 'ian.silva@hardwarelife.com','123', true, null),
-(null, 'julia.camargo@hardwarelife.com','123', true, null),
-(null, 'ana.beatriz@hardwarelife.com','123', true, null),
-(null, 'google@hardwarelife.com','123', false, 2),
-(null, 'apple@hardwarelife.com','123', false, 1);
+INSERT INTO funcionario VALUES
+(null, 'Leonardo', 'Arakaki', '12345678910123', 'leonardo.arakaki@hardwarelife.com','123', 'CEO' , null, 1),
+(null, 'Willians', 'Vinicius', '12345768910123', 'willians.vinicius@hardwarelife.com','123', 'CEO', null, 2),
+(null, 'Giovanna', 'Franca', '12354678910123', 'giovanna.franca@hardwarelife.com','123', 'Gestor', null, 2),
+(null, 'Ian', 'Silva', '12254678910133', 'ian.silva@hardwarelife.com','123', 'Gestor', null, 1),
+(null, 'Julia', 'Camargo', '12345678911123', 'julia.camargo@hardwarelife.com','123', 'Funcionario', null, 2),
+(null, 'Ana', 'Beatriz', '12354768910123', 'ana.beatriz@hardwarelife.com','123', 'Funcionario', null, 1);
+
 
 INSERT INTO sala VALUES 
 (null, 1, 1), 
