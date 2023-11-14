@@ -84,3 +84,9 @@ CREATE TABLE dados(
     constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
+<<<<<<< HEAD
+=======
+GRANT ALL PRIVILEGES ON HardwareLife.* TO 'ceo'@'localhost';
+GRANT SELECT, UPDATE, INSERT, DELETE ON HardwareLife.* TO 'gestor'@'localhost';
+GRANT SELECT ON HardwareLife.* TO 'funcionario'@'localhost';
+>>>>>>> ba3ecca7e6f3182f7b10e23576389fe05064f484

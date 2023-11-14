@@ -14,6 +14,7 @@ body {
     background-color: #e4e6ef;
 }
 
+/* header inicio */
 .header {
     background-color: #e4e6ef;
     position: fixed;
@@ -67,6 +68,7 @@ body {
     color: #76004a;
     transition: 0.5s;
 }
+/* header fim */
 
 .content {
     background-image: url(imagens/Datacenter.png);
