@@ -262,50 +262,66 @@
 			</div>
 		</div>
 
-		<div class="graficos_direita">
-			<!-- grafico mensal -->
-			<div class="dashboard_chart_line">
-				<canvas id="bar2"></canvas>
-			</div>
+		<div id="centroDiv" \>
 
-			<!-- grafico semanal -->
-			<div class="dashboard_chart_line">
-				<canvas id="bar3"></canvas>
-			</div>
-		</div>
+			<!-- junção dois graficos -->
+			<div class="graficos_direita">
+				<!-- grafico mensal -->
+				<div class="dashboard_chart_line">
+					<canvas id="bar2"></canvas>
+				</div>
 
-		<div class="rack_esquerda">
-			<!-- alerta -->
-			<div class="alerta_rack">
-				<p>Temperatura muito acima do esperado</p>
-
-			</div>
-
-			<!-- status sensores -->
-			<div class="dashboard2" id="paginated-racks">
-				<div class="pagination">
-					<h3>Rack 1</h3>
-					<div class="racks">
-						<div class="esfera_ideal"></div>
-						<p>Sensor 1</p>
-						<div class="esfera_ideal"></div>
-						<p>Sensor 2</p>
-						<div class="esfera_ideal"></div>
-						<p>Sensor 3</p>
-						<div class="esfera_ideal"></div>
-						<p>Sensor 4</p>
-						<div class="esfera_ideal"></div>
-						<p>Sensor 5</p>
-						<div class="esfera_ideal"></div>
-						<p>Sensor 6</p>
-						<div class="esfera_umidade_ideal"></div>
-						<p>Umidade</p>
-					</div>
+				<!-- grafico semanal -->
+				<div class="dashboard_chart_line">
+					<canvas id="bar3"></canvas>
 				</div>
 			</div>
 
+			<!-- junção alerta, status sensores, grafico -->
+			<div class="rack_esquerda">
+
+				<!-- alerta -->
+				<div class="alerta_rack">
+					<img src="scr/triangle-alerta.svg" alt="" style="width: 40px;">
+
+					<div class="alerta_juncao">
+						<img src="scr/circle-alerta.svg" alt="" style="width: 40px;">
+						<p>Temperatura muito <br> acima do esperado</p>
+					</div>
+
+				</div>
+
+				<!-- status sensores -->
+				<div class="dashboard2" id="paginated-racks">
+					<div class="pagination">
+						<h3>Rack 1</h3>
+						<div class="racks">
+							<div class="esfera_ideal"></div>
+							<p>Sensor 1</p>
+							<div class="esfera_ideal"></div>
+							<p>Sensor 2</p>
+							<div class="esfera_ideal"></div>
+							<p>Sensor 3</p>
+							<div class="esfera_ideal"></div>
+							<p>Sensor 4</p>
+							<div class="esfera_ideal"></div>
+							<p>Sensor 5</p>
+							<div class="esfera_ideal"></div>
+							<p>Sensor 6</p>
+							<!-- <div class="esfera_umidade_ideal"></div>
+							<p>Umidade</p> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="dashboard_chart_line">
+					<canvas id="bar3"></canvas>
+				</div>
+			</div>
 		</div>
 
+
+	</div>
 
 
 </body>
