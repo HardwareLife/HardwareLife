@@ -1,8 +1,8 @@
 USE HardwareLife;
 
 INSERT INTO empresa VALUES
-(null, '06.990.590/0001-23' ,'Google Brasil','Google Brasil Internet LTDA','GOOGLEBRASIL@GOOGLE.COM', '11 23958400'),
-(null, '00.623.904/0001-73','Apple Brasil','Apple Computer Brasil Ltda.','FISCAL@APPLE.COM','11 55030000');
+(null, '06.990.590/0001-23' ,'Google Brasil','Google Brasil Internet LTDA','GOOGLEBRASIL@GOOGLE.COM', '(11)2395-8400'),
+(null, '00.623.904/0001-73','Apple Brasil','Apple Computer Brasil Ltda.','FISCAL@APPLE.COM','(11)5503-0000');
 
 INSERT INTO datacenter VALUES 
 (null, 'AV. Brigadeiro Faria Lima','3900','Pinheiros','São Paulo','SP','04538-133', 1),
@@ -10,11 +10,12 @@ INSERT INTO datacenter VALUES
 
 INSERT INTO funcionario VALUES
 (null, 'Leonardo', 'Arakaki', '12345678910123', 'leonardo.arakaki@hardwarelife.com','123', 'CEO' , null, 1),
-(null, 'Willians', 'Vinicius', '12345768910123', 'willians.vinicius@hardwarelife.com','123', 'CEO', null, 2),
-(null, 'Giovanna', 'Franca', '12354678910123', 'giovanna.franca@hardwarelife.com','123', 'Gestor', null, 2),
-(null, 'Ian', 'Silva', '12254678910133', 'ian.silva@hardwarelife.com','123', 'Gestor', null, 1),
-(null, 'Julia', 'Camargo', '12345678911123', 'julia.camargo@hardwarelife.com','123', 'Funcionario', null, 2),
-(null, 'Ana', 'Beatriz', '12354768910123', 'ana.beatriz@hardwarelife.com','123', 'Funcionario', null, 1);
+(null, 'Willians', 'Vinicius', '12345768910123', 'willians.vinicius@hardwarelife.com','123', 'CEO', null, 2);
+INSERT INTO funcionario VALUES
+(null, 'Giovanna', 'Franca', '12354678910123', 'giovanna.franca@hardwarelife.com','123', 'Gestor', 2, 2),
+(null, 'Ian', 'Silva', '12254678910133', 'ian.silva@hardwarelife.com','123', 'Gestor', 1, 1),
+(null, 'Julia', 'Camargo', '12345678911123', 'julia.camargo@hardwarelife.com','123', 'Funcionario', 3, 2),
+(null, 'Ana', 'Beatriz', '12354768910123', 'ana.beatriz@hardwarelife.com','123', 'Funcionario', 4, 1);
 
 
 INSERT INTO sala VALUES 

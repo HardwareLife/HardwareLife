@@ -2,6 +2,7 @@ CREATE DATABASE HardwareLife;
 
 USE HardwareLife;
 
+
  -- TABELA PARA CONTROLE E CADASTRO DE EMPRESAS CLIENTES --
  
  CREATE TABLE empresa(
@@ -10,7 +11,7 @@ USE HardwareLife;
     nomeEmpresa varchar(50),
     razaoSocial varchar(100),
     emailEmpresa varchar(50),
-    telefoneEmpresa varchar(12)
+    telefoneEmpresa varchar(14)
 );
 
 CREATE TABLE datacenter(
@@ -43,7 +44,7 @@ CREATE TABLE funcionario (
     senha varchar(40),
     tipoNivel varchar(45),
     fkSuperior int,
-    constraint fkSuperior foreign key (fkSuperior) references funcionario (idFuncionario),
+    constraint fkSuperior foreign key (fkSuperior) references funcionario(idFuncionario),
     check (tipoNivel in('CEO', 'Gestor', 'Funcionario')),
     fkDatacenter int,
 	constraint fkDatacenter foreign key (fkDatacenter) references datacenter(idDatacenter)
@@ -84,9 +85,8 @@ CREATE TABLE dados(
     constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
-<<<<<<< HEAD
-=======
-GRANT ALL PRIVILEGES ON HardwareLife.* TO 'ceo'@'localhost';
-GRANT SELECT, UPDATE, INSERT, DELETE ON HardwareLife.* TO 'gestor'@'localhost';
-GRANT SELECT ON HardwareLife.* TO 'funcionario'@'localhost';
->>>>>>> ba3ecca7e6f3182f7b10e23576389fe05064f484
+DROP DATABASE hardwarelife;
+-- GRANT ALL PRIVILEGES ON HardwareLife.* TO 'ceo'@'localhost';
+-- GRANT SELECT, UPDATE, INSERT, DELETE ON HardwareLife.* TO 'gestor'@'localhost';
+-- GRANT SELECT ON HardwareLife.* TO 'funcionario'@'localhost';
+

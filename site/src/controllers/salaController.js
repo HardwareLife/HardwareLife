@@ -1,9 +1,9 @@
-var aquarioModel = require("../models/aquarioModel");
+var salaModel = require("../models/salaModel");
 
-function buscarAquariosPorEmpresa(req, res) {
-  var idUsuario = req.params.idUsuario;
+function buscarSalasPorDataCenter(req, res) {
+  var DatacenterID = req.params.DatacenterID;
 
-  aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+  salaModel.buscarSalasPorDataCenter(DatacenterID).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -11,7 +11,7 @@ function buscarAquariosPorEmpresa(req, res) {
     }
   }).catch(function (erro) {
     console.log(erro);
-    console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
+    console.log("Houve um erro ao buscar as salas: ", erro.sqlMessage);
     res.status(500).json(erro.sqlMessage);
   });
 }
@@ -44,6 +44,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarSalasPorDataCenter,
   cadastrar
 }
