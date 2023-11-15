@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../css/styleDashboard.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -21,31 +21,32 @@
 		<div class="container_sidebar">
 			<span id="side-bar-deactive">X</span>
 			<div class="logo">
-				<img src="logo.svg" alt="Logo HardwareLife">
+				<img src="../assets/dashboard/logo.svg" alt="Logo HardwareLife">
 					<h1>HardwareLife</h1>
 			</div>
 		</div>
 		<div class="sidebar">
 			<div class='perfil'>
-				<div class="img_perfil"><img src="../src/perfil/amazon.jfif" alt="profile"></div>
+				<div class="img_perfil"><img 
+					src="../assets/perfil/amazon.jfif" alt="profile"></div>
 				<span>Amazon.com, Inc</span>
 			</div>
 			<div class="link_part">
 				<span class="link">
-					<img src="../src/dashboard/icon_config.svg" alt="configurações">
-					<a href="../Login/perfil/perfil.html">Funcionários</a>
+					<img src="../assets/dashboard/icon_config.svg" alt="configurações">
+					<a href="perfil/perfil.html">Funcionários</a>
 				</span>
 				<span class="link">
-					<img src="../src/dashboard/icon_dashboard.svg" alt="dashboard">
-					<a href="../Dashboard/dash.html">Salas</a>
+					<img src="../assets/dashboard/icon_dashboard.svg" alt="dashboard">
+					<a href="">Salas</a>
 				</span>
 				<span class="link" style="display: none;">
-					<img src="../src/dashboard/icon_dashboard.svg" alt="dashboard">
-					<a href="../Dashboard/index.html">Dashboard</a>
+					<img src="../assets/dashboard/icon_dashboard.svg" alt="dashboard">
+					<a href="dashboard.html">Dashboard</a>
 				</span>
 				<span class="link">
-					<img src="../src/dashboard/icon_logout.svg" alt="logo">
-					<a href="../Login/index.html">Sair</a>
+					<img src="../assets/dashboard/icon_logout.svg" alt="logo">
+					<a href="../loginCadastro.html">Sair</a>
 				</span>
 
 			</div>
@@ -59,7 +60,7 @@
 				<i class="fa fa-align-justify"></i>
 			</div>
 			<div class="logo" id="container">
-				<img src="./scr/logo.svg" alt="Logo HardwareLife">
+				<img src="../assets/dashboard/logo.svg" alt="Logo HardwareLife">
 				<h1>HardwareLife</h1>
 			</div>
 
@@ -93,7 +94,7 @@
 					</select>
 				</div>
 				<div class="btn_filter" onclick="filtroSelect()">
-					<img src="../src/dashboard/filtro_funil.svg" alt="">
+					<img src="../assets/dashboard/filtro_funil.svg" alt="">
 				</div>
 				
 			</div>
@@ -103,7 +104,7 @@
 		<div class="dashboard_header">
 			<h2>Sala 1</h2>
 			<span class="btn_analitic" id="btn_analitic">
-				<img src=".././src/dashboard/relatorio.svg" alt="Relatório">
+				<img src="../assets/dashboard/relatorio.svg" alt="Relatório">
 				<a href="">Relatório</a>
 			</span>
 		</div>
@@ -231,8 +232,8 @@
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
-<script src="filtro.js"></script>
-<script src="pagination.js"></script>
+<script src="../js/filtroDash.js"></script>
+<script src="../js/paginacaoDash.js"></script>
 <script>
 
 		var activeSideBar = document.getElementById("side-bar-active");

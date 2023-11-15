@@ -71,7 +71,7 @@ body {
 /* header fim */
 
 .content {
-    background-image: url(imagens/Datacenter.png);
+    background-image: url(../assets/index/Datacenter.png);
     background-size: cover;
     background-repeat: no-repeat;
     height: 650px;
