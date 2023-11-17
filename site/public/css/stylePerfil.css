@@ -461,12 +461,12 @@ body {
 }
   
 .lista_funcionario::-webkit-scrollbar-track {
-    background-color: #000000;
+    background-color: #000;
     border-radius: 10px;
   }
   
 .lista_funcionario::-webkit-scrollbar-thumb {
-    background: #3349ED;
+    background: #0b1c9c;
     border-radius: 20px;
   }
 

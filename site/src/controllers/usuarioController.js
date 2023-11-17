@@ -28,6 +28,8 @@ function autenticar(req, res) {
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
+                                        idEmpresa: resultadoAutenticar[0].fkEmpresa,
+                                        nomeEmpresa: resultadoAutenticar[0].nomeEmpresa
                                         // sala: resultadoSala
                                     });
                                 } else {

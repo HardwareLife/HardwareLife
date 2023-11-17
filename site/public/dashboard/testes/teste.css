@@ -20,12 +20,12 @@ body {
     background-color: #ddd9ce;
     display: flex;
     align-items: center;
+    height: 8vh;
 }
 
 /* barra lateral */
 .side-bar i{
-    /* display: flex;
-     */
+    margin: 15px 80px 0 0px;
     font-size: 24px;
     color: #3349ED;
     display: flex;
@@ -177,7 +177,7 @@ body {
     color: #ffffff;
 }
 
-/* header logo */
+/* conteudo do cabeçalho */
 .container{
     display: flex;
     justify-content: space-between;
@@ -202,7 +202,7 @@ body {
 }
 
 .container img{
-    width: 75px;
+    width: 45px;
 }
 
 /* .container span{
@@ -216,80 +216,130 @@ body {
 .div_desc {
     color: white;
     display: flex;
-    margin: 15px;
+    margin: 2% 0 0 5%;
+    font-size: 18px;
 }
 
 .dashboard{
     display: flex;
-    flex-direction: column;
+    align-items: center;
     background-color: #ddd9ce;
-    margin-top: 20px;
-    border-radius: 18px;
-    height: 70%;
-    margin: 20px;
+    flex-direction: column;
+    align-content: space-between;
+    margin: 1% 4% 0 4%;
+    padding: 1.5% 0 0 30px;
+    border-radius: 35px 35px 0 0;
+    height: 78.5vh;
 }
 
 .dashboard_titulo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 95%;
-    background-color: #FFFF;
-    border-radius: 20px;
-}
-
-.div_salas{
     display: flex; 
-    /* flex-direction: row-reverse; */
     justify-content: space-around;
     align-items: center;
     width: 100%;
     background-color: #FFFF;
-    border-radius: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
     /* display: flex;
     width: 100%; 
     justify-content: space-between; */
+    /* padding-right: 3%; */
 } 
 
+.dashboard .dash_lista{
+    display: block;
+    flex-direction: column;
+    height: 70.2vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.dash_lista::-webkit-scrollbar {
+    width: 9px;
+}
+  
+.dash_lista::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #000;
+  }
+  
+.dash_lista::-webkit-scrollbar-thumb {
+    background: #3349ED;
+    border-radius: 20px;
+  }
+
+.div_salas{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 98.5%;
+    height: 9vh;
+    border-radius: 15px 15px 7px 7px;
+    cursor: pointer;
+    margin-bottom: 10px;
+} 
+
+.btn_salas, .situacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 50%;
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .btn_salas {
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: bold;
     border-radius: 20px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    /* box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2); */
-    width: 90%;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    /* justify-content: center; */
-    gap: 8px;
-    
+    justify-content: center;
+    gap: 8px; */
+    height: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    outline-style: none;
+    width: 44%;
 }
 
 /* Adiciona um estilo adicional quando o botão está ativo (clicado) */
-.btn_salas:active {
+/* .btn_salas:active {
     box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.2);
     
+} */
+
+.btn_salas img{
+    width: 45px;
 }
+
 
 /* exibição das salas */
 .div_desc_sala {
     color: white;
-    display: flex;
+    display: none;
+    margin: 0 0 1% 0;
+    font-size: 18px;
+    width: 100%;
     justify-content: space-around;
-    margin: 15px;
 }
 
 .dashboard_sala{
-    display: flex;
-    flex-direction: column;
+    display: none;
+    align-items: center;
     background-color: #ddd9ce;
-    margin-top: 20px;
-    border-radius: 18px;
-    height: 70%;
-    margin: 20px;
+    flex-direction: column;
+    align-content: space-between;
+    margin: 1% 4% 0 4%;
+    padding: 1.5% 0 0 30px;
+    border-radius: 35px 35px 0 0;
+    height: 78.5vh;
 }
 
 /* graficos sala - inicio */
@@ -302,6 +352,15 @@ body {
     height: 50%;
     width: 100%;
     margin: 20px;
+}
+
+.div_desc_rack {
+    color: white;
+    display: none;
+    margin: 0 0 1% 0;
+    font-size: 18px;
+    width: 100%;
+    justify-content: space-around;
 }
 
 /* grafico mediçoes */
@@ -353,13 +412,16 @@ body {
     box-shadow: 0px 0px 11px -1px rgba(26,26,26,1);
     background-color: white;
     /* padding: 0 10px; */
+    text-indent: 30px;
 }
 
 .tabela{
     border-spacing: 0px;
+    margin-top: 10px;
     /* margin-right: 23px;
     padding-right: 13px; */
     font-size: 13.5px;
+    height: 100px;
 }
 
  th, td{
@@ -393,20 +455,49 @@ body {
 /* racks */
 .rack_titulo {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     background-color: #FFFF;
     border-radius: 20px;
+    margin: 20px 0 10px 0;
 }
 
 .div_rack {
-    margin: 20px;
+    width: 100%;
+    height: 60vh;
 }
 
+.lista_rack{
+    display: block;
+    flex-direction: column;
+    height: 45vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.lista_rack::-webkit-scrollbar {
+    width: 9px;
+}
+  
+.lista_rack::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #000;
+  }
+  
+.lista_rack::-webkit-scrollbar-thumb {
+    background: #3349ED;
+    border-radius: 20px;
+  }
+
+
 /* tela: racks */
+
+
 .dashboard_rack {
-    display: flex;
+    display: none;
     flex-direction: column;
     /* justify-content: space-between; */
     background-color: #ddd9ce;

@@ -15,7 +15,7 @@
 		<div class="container_sidebar">
 			<span id="side-bar-deactive">X</span>
 			<div class="logo">
-				<img src="logo.svg" alt="Logo HardwareLife">
+				<img src="../../assets/index/logo.svg" alt="Logo HardwareLife">
 				<h1>HardwareLife</h1>
 			</div>
 		</div>
@@ -64,19 +64,25 @@
 		<div class="dashboard_titulo" style="background-color: #ddd9ce;;">
 			<h3>SALA</h3>
 			<h3>SITUAÇÃO</h3>
-		</div> <br>
+		</div>
 
-		<div class="div_salas" style="background-color: rgb(176, 2, 2);">
+		<div class="dash_lista">
+			<div class="div_salas" onclick="chamar_salas()" style="background-color: rgb(176, 2, 2);">
 
-			<button onclick="chamar_salas()" class="btn_salas" style="background-color: rgb(176, 2, 2);">
-				<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
-				Sala 1
-			</button>
+				<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
+					<img src="../../assets/dashboard/door.svg" alt="Relatório">
+					Sala 1
+				</button>
+				<span class="situacao">
+					<p>Estado: Critico</p>
+				</span>
+				
+			</div>
+		</div>
 
-			<p>Estado: Critico</p>
-		</div> <br>
+		
 
-		<div class="div_salas" style="background-color: rgb(176, 2, 2);">
+		<!-- <div class="div_salas" style="background-color: rgb(176, 2, 2);">
 
 			<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
 				<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
@@ -124,7 +130,7 @@
 			</button>
 
 			<p>Estado: Critico</p>
-		</div>
+		</div> -->
 	</div>
 
 	<br>
@@ -204,21 +210,28 @@
 		<!-- lista: rack - situacao -->
 		<div class="div_rack">
 			<div class="rack_titulo" style="background-color: #ddd9ce;">
-				<p>Rack</p>
-				<p>Situação</p>
+				<h3>Rack</h3>
+				<h3>Situação</h3>
 			</div>
 
-			<div class="div_salas" style="background-color: rgb(176, 2, 2);">
+			<div class="lista_rack">
+				<div class="div_salas" style="background-color: rgb(176, 2, 2);">
 
-				<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
-					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
-					Rack 1
-				</button>
+					<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
+						<img src="../../assets/dashboard/circle-alerta.svg" alt="Relatório">
+						Rack 1
+					</button>
+	
+					<span class="situacao">
+						<p>Estado: Critico</p>
+					</span>
+					
+				</div> <br>
+			</div>
 
-				<p>Estado: Critico</p>
-			</div> <br>
+			
 
-			<div class="div_salas" style="background-color: rgb(176, 2, 2);">
+			<!-- <div class="div_salas" style="background-color: rgb(176, 2, 2);">
 
 				<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
 					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
@@ -236,7 +249,7 @@
 				</button>
 
 				<p>Estado: Normal</p>
-			</div> <br>
+			</div> <br> -->
 
 		</div>
 	</div>
@@ -247,7 +260,7 @@
 	</div>
 
 	<!-- visualização do rack selecionado -->
-	<div class="div_desc_sala">
+	<div class="div_desc_rack">
 		<p>Vizualizando Rack 5</p>
 		<p>Estado: Critico</p>
 	</div>
@@ -347,8 +360,8 @@
 	function chamar_salas() {
 		divDesc.style.display = 'none';
 		divDashboard.style.display = 'none';
-		divDescSala.style.display = 'block';
-		dashboardSala.style.display = 'block';
+		divDescSala.style.display = 'flex';
+		dashboardSala.style.display = 'flex';
 	}
 
 	// function chamar_salas() {
