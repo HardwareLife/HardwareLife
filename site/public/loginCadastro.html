@@ -391,7 +391,8 @@
 					sessionStorage.ID_USUARIO = json.idFuncionario;
 					sessionStorage.ID_EMPRESA = json.idEmpresa;
 					sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
-					// sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+					sessionStorage.TIPO_NIVEL = json.tipoNivel;
+					sessionStorage.SALAS = JSON.stringify(json.salas)
 
 					setTimeout(function () {
 						window.location = "./dashboard/dashboard.html";

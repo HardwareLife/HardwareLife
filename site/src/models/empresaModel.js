@@ -7,7 +7,7 @@ function buscarPorId(idEmpresa) {
 }
 
 function listar() {
-  var query = `select * from e mpresa`;
+  var query = `select * from empresa`;
 
   return database.executar(query);
 }
@@ -32,4 +32,4 @@ function cadastrar(cnpj, nome, email, telefone) {
   });
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar};

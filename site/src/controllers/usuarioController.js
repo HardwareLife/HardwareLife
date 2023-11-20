@@ -25,15 +25,16 @@ function autenticar(req, res) {
                                 if (resultadosala.length > 0) {
                                     res.json({
                                         idFuncionario: resultadoAutenticar[0].idFuncionario,
-                                        email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
-                                        idEmpresa: resultadoAutenticar[0].fkEmpresa,
-                                        nomeEmpresa: resultadoAutenticar[0].nomeEmpresa
-                                        // sala: resultadoSala
+                                        email: resultadoAutenticar[0].email,
+                                        idEmpresa: resultadoAutenticar[0].idEmpresa,
+                                        nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
+                                        tipoNivel: resultadoAutenticar[0].tipoNivel,
+                                        salas: resultadosala
                                     });
                                 } else {
-                                    res.status(204).json({ sala: [] });
+                                    res.status(204).json({ salas: [] });
                                 }
                             })
                     } else if (resultadoAutenticar.length == 0) {
