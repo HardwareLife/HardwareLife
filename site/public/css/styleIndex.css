@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web&family=Poppins:wght@100;300;400&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e4e6ef;
+}
+
+/* header inicio */
+.header {
+    background-color: #e4e6ef;
+    position: fixed;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    top: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    color: #3349ED;
+    margin-left: 3px;
+    font-size: 25px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    /* margin: 0 10% 0 10%;*/
+    /* margin: 0 10;*/
+    /* margin: 0 10% 0; */
+}
+
+.container img {
+    width: 75px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    height: fit-content;
+    width: 35%;
+    
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #3349ED;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    color: #76004a;
+    transition: 0.5s;
+}
+/* header fim */
+
+.content {
+    background-image: url(../assets/index/Datacenter.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 650px;
+    margin-top: 70px;;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container2 h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    color: #FFE9E9;
+}
+
+.container2 h6 {
+    font-size: 16px;
+    color: #FFE9E9;
+}
+
+.esfera {
+    width: 100px;
+}
+.imagens{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagens a {
+    color: #FFE9E9;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* orcamento */
+.content-orcamento {
+    height: 350px;
+    background-color: #e4e6ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orcamento {
+    width: 60%;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
+    padding-top: 30px;
+}
+
+.orcamento h2 {
+    color: #3349ED;
+    text-align: center;
+    font-size: 30px;
+}
+
+.orcamento p {
+    font-size: 18;
+    text-align: center;
+}
+.imgs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+.orcamento img {
+    width: 100px;
+}
+
+.orcamento a {
+    text-decoration: none;
+    color: #3349ED;
+    font-size: 18px;
+}
+
+/* contato */
+.content-contato {
+    height: 250px;
+    background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contato {
+    width: 60%;
+    height: 75%;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.404);
+    text-align: center;
+    background-color: #e4e6ef;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-contato {
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.endereco {
+    /*border-radius: 15px;*/
+    margin-right: 8%;
+    flex-direction: row;
+}
+
+.div_inp{
+    border-left: 1px #3349ED solid;
+    padding-left: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+.inp_contato {
+    width: 95%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+} 
+
+.btn-contato {
+  background-color: #3349ED;
+  color: #fff;
+  margin-left: 25%;
+  margin-top: 5px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  width: 50%;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* modal contato */
+.abrirModal:hover {
+    cursor: pointer;
+  }
+  
+.abrirModal {
+    background-color: #3349ED;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+  
+.checkboxModal {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    display: none;
+    /*position: fixed;*/
+    width:60%;
+    height:50%;
+    left: 20%;
+    top: 160px;
+    animation: down 2s;
+    /*background-color: rgba(0,0,0,0.5);*/
+}
+
+@keyframes down {
+    from {
+      transform: translateY(-500px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  } 
+  
+.fecharModal {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.fecharModal label {
+    position: absolute;
+    left: 0;
+    margin-left: 50px;
+}
+
+.modal h3{
+    color: white;
+}
+  
+.fecharModal:hover {
+    cursor: pointer;
+    color: red;
+} 
+  
+.conteudoModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid lighgray;*/ 
+    border-radius: 10px;
+    background-color: #333333;
+}
+
+ /* sobre nos */
+.content-sobre-nos {
+    background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%);
+    height: 600px;
+    padding-top: 30px;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+.sobre-nos {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.567);
+    border-radius: 15px;
+    background-color: #e4e6efda;
+    width: 25%;
+    height: 450px;
+}
+
+.sobre-nos img {
+    margin-top: 25px;
+}
+
+.sobre-nos p {
+    color: black;
+    font-size: 24px;
+    padding: 0 15px;
+}
+
+/* footer */
+.footer {
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid rgb(51, 73, 237);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_itens{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    justify-content: space-around;
+}
+
+#redes_sociais{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#redes_sociais img{
+    width: 25px;
+    margin-top: 17px;
+    padding: 20px;
+}
+
+.logo_footer{
+    width: 70px;
+}
+
+.direitos{
+    display: flex;
+   justify-content: center;
+}

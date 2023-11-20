@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleIndex.css">
+    <title>HardwareLife</title>
+</head>
+
+<body>
+    <div class="modal">
+        <div class="conteudoModal">
+            <div class="fecharModal">
+                <label for="modalExemplo" class="">X</label>
+                <h3>Contato</h3>
+            </div>
+            <form action="" method="post" onsubmit="redirect()">
+                <input type="text" placeholder="Nome" required class="inp_contato">
+                <input type="text" placeholder="Email" required class="inp_contato">
+                <input type="text" placeholder="Como podemos ajudar?" required class="inp_contato"><br>
+
+                <button type="submit" class="btn-contato">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="container">
+
+            <div class="logo">
+                <img src="assets/index/logo.svg" alt="Logo da Empresa">
+                <h1>HardwareLife</h1>
+            </div>
+
+            <ul class="navbar">
+                <li><a href="Calculadora.html">Orçamento</a></li>
+                <li><a href="#sobre">Sobre nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="loginCadastro.html">Login</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container2">
+            <h2>Controle de Temperatura e Umidade em Datacenters</h2>
+            <h6>Onde a precisão encontra o desempenho, mantendo sua infraestrutura na zona de conforto.</h6>
+            <div class="imagens" style="display: flex;">
+                <img class="esfera" src="assets/index/Elipse.png" alt="Esfera">
+                <a href="#sobre">Saiba mais</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-orcamento">
+        <div class="orcamento">
+            <h2>Faça seu orçamento</h2>
+            <p>Veja os recursos necessários para tornar o resfriamento e a <br>
+            desumidificação de seu datacenter mais eficientes e economicos.</p>
+            <div class="imagens">
+                <img class="esfera" src="assets/index/Elipse_Azul.png" alt="Esfera_Azul">
+                <a href="Calculadora.html#calculadora">Orçamento</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-sobre-nos" id="sobre">
+        <h3>Sobre Nós</h3>
+        <div class="imgs">
+            <div class="sobre-nos">
+                <img src="assets/index/International_logo.png" alt="Logo da Sptech" style="width: 120px;">
+                <p>Somos uma empresa de consultoria, formada por alunos da SpTech, dedicada a criar soluções que
+                    transformam o mundo digital.</p>
+            </div>
+
+            <div class="sobre-nos">
+                <img src="assets/index/segurança-hardware.png" alt="Segurança do hardware"
+                    style="width: 75px; margin-top: 15px;">
+                <p>Prezamos pela segurança dos dados armazenados em sua infraestrutura de forma economica e eficiente
+                </p>
+            </div>
+
+            <div class="sobre-nos">
+                <img src="assets/index/economia_icon-PhotoRoom.png-PhotoRoom.png" alt="Segurança do hardware"
+                    style="width: 75px; margin-top: 15px;">
+                <p>Nos preocupamos com seu datacenter, agimos na redução de downtimes e na preservação da vida útil do seu hardware.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-orcamento">
+        <div class="orcamento">
+            <h2>Conheça nosso serviço</h2>
+            <p>Eleve o desempenho do seu datacenter com nossas soluções de tecnologia de ponta.</p>
+            <div class="imagens">
+                <img src="assets/index/Elipse_Azul.png" alt="Esfera_Azul">
+                <a href="Calculadora.html#solucao">Serviços</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-contato" id="contato">
+        <div class="contato">
+            <div class="endereco">
+                hello@sptech.school <br>
+                R. Haddock Lobo, 505 <br>
+                Paulista, São Paulo - SP
+            </div>
+
+            <div class="div_inp">
+                <h2>Quer falar com a gente?</h2><br>
+                <label for="modalExemplo" class="abrirModal">Entre em contato</label>
+                <input type="checkbox" id="modalExemplo" class="checkboxModal" onclick="mostrarModal()">
+            </div>
+        </div>
+    </div>
+
+    <!-- <footer> -->
+    <div class="footer">
+        <div class="footer_itens">
+            <img src="assets/index/logo.svg" class="logo_footer" alt="Logo">
+            <p>SOBRE NÓS</p>
+            <p>CONTATO</p>
+            <p>LOCALIDADE</p>
+        </div>
+        <div class="footer_itens" id="redes_sociais">
+            <a href="#"><img src="assets/index/github.png" alt=""></a>
+            <a href="#"><img src="assets/index/linkedin.png" alt=""></a>
+            <a href="#"><img src="assets/index/instagram.png" alt=""></a>
+        </div>
+    </div>
+    <p class="direitos">&copy; 2023 HardwareLife - Todos os direitos reservados</p>
+    <!-- </footer> -->
+</body>
+<script>
+
+    function mostrarModal() {
+        var checked = modalExemplo.checked;
+        var meuModal = document.querySelector(".modal");
+        if (checked) {
+            meuModal.style.display = `flex`
+        } else {
+            meuModal.style.display = `none`
+        }
+
+    }
+    function redirect() {
+        var checked = modalExemplo.checked;
+        var meuModal = document.querySelector(".modal");
+        meuModal.style.display = `none`
+    }
+
+</script>
+
+</html>

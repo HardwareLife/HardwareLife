@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="../css/dashboardStyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="../js/sessao.js"></script>
+</head>
+
+<body onload=" validarSessao(), exibirSalas()">
+
+	<div class="navbar" id="navbar">
+		<div class="container_sidebar">
+			<span id="side-bar-deactive">X</span>
+			<div class="logo">
+				<img src="../assets/dashboard/logo.svg" alt="Logo HardwareLife">
+				<h1>HardwareLife</h1>
+			</div>
+		</div>
+		<div class="sidebar">
+			<div class='perfil'>
+				<div class="img_perfil"><img src="../assets/perfil/amazon.jfif" alt="profile"></div>
+				<span id="nome_empresa"></span>
+			</div>
+			<div class="link_part">
+				<span class="link">
+					<img src="../assets/dashboard/icon_config.svg" alt="configurações">
+					<a href="perfil/funcionario.html">Funcionários</a>
+				</span>
+				<!-- <span class="link">
+					<img src="../assets/dashboard/icon_dashboard.svg" alt="dashboard">
+					<a href="../dashboard/dashboardNova.html">Dashboard</a>
+				</span> -->
+				<span class="link" onclick="limparSessao()">
+					<img src="../assets/dashboard/icon_logout.svg" alt="logo">
+					<a href="../loginCadastro.html">Sair</a>
+				</span>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="header">
+		<div class="container">
+			<div class="side-bar" id="side-bar-active">
+				<i class="fa fa-align-justify"></i>
+				<div class="logo" id="container">
+					<img src="../assets/dashboard/logo.svg" alt="Logo HardwareLife">
+					<h1>HardwareLife</h1>
+				</div>
+			</div>
+
+			<div class="usuario_perfil">
+				<h1>Olá, <span id="nome_usuario"> </span></h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="div_desc">
+		<p>Aqui você poderá vizualizar todas as salas cadastradas:</p>
+	</div>
+
+	<!-- tela inicial: sala - situação  -->
+	<div class="dashboard">
+		<div class="dashboard_titulo">
+			<h3>SALA</h3>
+			<h3>SITUAÇÃO</h3>
+		</div>
+
+		<div class="dash_lista" id="dash_lista">
+			<!-- <div class="div_salas" onclick="chamar_salas()" id="div_salas"
+				style="background-color: #b00202c0; border: 3px solid #b00202;">
+
+				<button class="btn_salas" style="background-color: rgba(176, 2, 2, 0);">
+					<img src="../assets/dashboard/door.svg" alt="Relatório">
+					Sala 1
+				</button>
+				<span class="situacao">
+					<p>Estado: Critico</p>
+				</span>
+
+			</div> -->
+		</div>
+
+	</div>
+
+	<!-- visualização da sala selecionada -->
+	<div class="div_desc_sala">
+		<p>Vizualizando Sala 5</p>
+		<p>Estado: Critico</p>
+	</div>
+
+	<div class="dashboard_sala">
+
+		<div class="separacao_superior">
+			<div class="botao">
+				<button onclick="voltar_sala()" class="btn_voltar" id="btn_voltar">
+					<img src="../assets/dashboard/botao-voltar.png" alt="">
+				</button>
+			</div>
+			<div class="medidas">
+				<div class="tab_medidas">
+					<div class="legend">
+						<h4>Tabela de medidas</h4>
+
+						<table class="tabela">
+							<thead>
+								<tr class="linha">
+									<th style="border-left: none;">&nbsp;</th>
+									<th class="red">Crítico</th>
+									<th class="orange">Emergência</th>
+									<th class="yellow">Alerta</th>
+									<th colspan="2" class="green">Ideal</th>
+									<!-- <th class="green">Ideal</th> -->
+									<th class="yellow">Alerta</th>
+									<th class="orange">Emergência</th>
+									<th class="red">Crítico</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>Temperatura</td>
+									<td class="red">18°C</td>
+									<td class="orange">19,5°C</td>
+									<td class="yellow">23,8°C</td>
+									<td class="green">24°C</td>
+									<td class="green">27°C</td>
+									<td class="yellow">30°C</td>
+									<td class="orange">34ºC</td>
+									<td class="red">40ºC</td>
+								</tr>
+
+								<tr>
+									<td>Umidade</td>
+									<td class="red">20%</td>
+									<td class="orange">30%</td>
+									<td class="yellow">40%</td>
+									<td class="blue">45%</td>
+									<td class="blue">55%</td>
+									<td class="yellow">60%</td>
+									<td class="orange">70%</td>
+									<td class="red">80%</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- lista: rack - situacao -->
+		<div class="div_rack">
+			<div class="rack_titulo">
+				<h3>Rack</h3>
+				<h3>Situação</h3>
+			</div>
+
+			<div class="lista_rack">
+				<div class="div_salas" onclick="chamar_rack()"
+					style="background-color: #b00202c0; border: 3px solid #b00202;">
+
+					<button class="btn_salas" style="background-color: #b0020200;">
+						<img src="../assets/dashboard/rack-do-servidor.png" alt="Relatório">
+						Rack 1
+					</button>
+
+					<span class="situacao">
+						<p>Estado: Critico</p>
+					</span>
+
+				</div>
+			</div>
+
+
+
+			<!-- <div class="div_salas" style="background-color: rgb(176, 2, 2);">
+
+				<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
+					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
+					Rack 2
+				</button>
+
+				<p>Estado: Critico</p>
+			</div> <br>
+
+			<div class="div_salas" style="background-color: white;">
+
+				<button class="btn_salas" style="background-color: white;">
+					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
+					Rack 3
+				</button>
+
+				<p>Estado: Normal</p>
+			</div> <br> -->
+
+		</div>
+	</div>
+
+	<!-- graficos sala - fim -->
+
+
+	</div>
+
+	<!-- visualização do rack selecionado -->
+	<div class="div_desc_rack">
+		<p>Vizualizando Rack 5</p>
+		<p>Estado: Critico</p>
+	</div>
+
+	<div class="dashboard_rack">
+
+		<div class="titulo_rack">
+			<h3>Rack 1</h3>
+			<!-- <div class="temp_umid">
+				<h3>Temperatura</h3>
+				<h3>Umidade</h3>
+			</div> -->
+			<button onclick="voltar_rack()" class="btn_voltar" id="btn_voltar">
+				<img src="../assets/dashboard/botao-voltar.png" alt=""></button>
+		</div>
+
+		<div id="centroDiv" \>
+
+			<!-- junção dois graficos -->
+			<div class="graficos_direita">
+				<!-- grafico mensal -->
+				<div class="dashboard_chart_line">
+					<canvas id="bar2"></canvas>
+				</div>
+				<!-- grafico tempo real -->
+				<!-- grafico mensal -->
+				<!-- <div class="dashboard_chart_line">
+					<canvas id="bar2"></canvas>
+				</div> -->
+
+				<!-- grafico semanal -->
+				<div class="dashboard_chart_line">
+					<canvas id="bar3"></canvas>
+				</div>
+			</div>
+
+			<!-- junção alerta, status sensores, grafico -->
+			<div class="rack_esquerda">
+
+				<div class="alerta_situacao">
+					<!-- alerta -->
+					<div class="alertas">
+						<div class="alerta_rack">
+							<img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 40px;">
+							<p>Temperatura muito acima do esperado</p>
+						</div>
+						<div class="alerta_umidade">
+							<img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 40px;">
+							<p>Umidade em estado de alerta</p>
+							<!-- </div> -->
+
+						</div>
+					</div>
+
+
+					<!-- status sensores -->
+					<div class="dashboard2" id="paginated-racks">
+						<div class="pagination">
+							<h3>Visualização de cada sensor do rack</h3>
+							<div class="racks">
+								<div class="sensor">
+									<div class="esfera_ideal"></div>
+									<p>Temperatura</p>
+								</div>
+								<div class="sensor">
+									<div class="esfera_ideal"></div>
+									<p>Temperatura</p>
+								</div>
+								<div class="sensor">
+									<div class="esfera_ideal"></div>
+									<p>Temperatura</p>
+								</div>
+								<div class="sensor">
+									<div class="esfera_ideal"></div>
+									<p>Temperatura</p>
+								</div>
+								<div class="sensor">
+									<div class="esfera_ideal"></div>
+									<p>Temperatura</p>
+								</div>
+								<div class="sensor">
+									<div class="esfera_ideal"></div>
+									<p>Temperatura</p>
+								</div>
+								<div class="sensor">
+									<div class="esfera_umidade_ideal"></div>
+									<p>Umidade</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="grafico_chart_line"> -->
+				<div class="dashboard_chart_line">
+					<canvas id="myChart"></canvas>
+				</div>
+
+				<!-- <div class="dashboard_chart_line">
+					<canvas id="bar3"></canvas>
+				</div> -->
+			</div>
+		</div>
+
+
+	</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+
+<!-- SCRIPT ANIMAÇÃO DA BARRA LATERAL -->
+<script>
+	nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+	nome_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
+
+	var activeSideBar = document.getElementById("side-bar-active");
+	var deactiveSideBar = document.getElementById("side-bar-deactive");
+
+	activeSideBar.addEventListener("click", function () {
+		navbar.style.display = "flex";
+		// navbar.style.animation = "abrir 1s";
+		container.style.visibility = "hidden";
+
+	})
+
+	deactiveSideBar.addEventListener("click", function () {
+		navbar.style.display = "none";
+		// navbar.style.animation = "fechar 1s";
+		container.style.visibility = "visible";
+	});
+
+	function exibirSalas() {
+		JSON.parse(sessionStorage.SALAS).forEach(item => {
+			var dashLista = document.getElementById("dash_lista");
+
+			dashLista.innerHTML += `
+			<div class="div_salas" onclick="chamar_salas()" id="div_salas" style="background-color: #b00202c0; border: 3px solid #b00202;">
+
+<button class="btn_salas" style="background-color: rgba(176, 2, 2, 0);">
+	<img src="../assets/dashboard/door.svg" alt="Relatório">
+	Sala ${item.numeroSala}
+</button>
+<span class="situacao">
+	<p>Estado: Critico</p>
+ </span>
+
+</div>
+			`
+		});
+	}
+</script>
+
+<script>
+	var divDesc = document.querySelector('.div_desc');
+	var divDashboard = document.querySelector('.dashboard');
+	var divDescSala = document.querySelector('.div_desc_sala');
+	var dashboardSala = document.querySelector('.dashboard_sala');
+	var divDescRack = document.querySelector('.div_desc_rack');
+	var dashboardRack = document.querySelector('.dashboard_rack');
+
+	function chamar_salas() {
+		divDesc.style.display = 'none';
+		divDashboard.style.display = 'none';
+		divDescSala.style.display = 'flex';
+		dashboardSala.style.display = 'flex';
+	}
+
+	function voltar_sala() {
+		divDesc.style.display = 'flex';
+		divDashboard.style.display = 'flex';
+		divDescSala.style.display = 'none';
+		dashboardSala.style.display = 'none';
+	}
+
+	function chamar_rack() {
+		divDescSala.style.display = 'none';
+		dashboardSala.style.display = 'none';
+		divDescRack.style.display = 'flex';
+		dashboardRack.style.display = 'flex';
+	}
+
+	function voltar_rack() {
+		divDescSala.style.display = 'flex';
+		dashboardSala.style.display = 'flex';
+		divDescRack.style.display = 'none';
+		dashboardRack.style.display = 'none';
+	}
+
+	// SCRIPT DOS GRÁFICOS
+
+	const ctx = document.getElementById("myChart");
+	const bar2 = document.getElementById("bar2");
+	const bar3 = document.getElementById("bar3");
+
+	var myLine = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+			datasets: [
+				{
+					data: [20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55],
+					label: "Temperatura",
+					fontSize: 15,
+					borderColor: "#ffa500",
+					fill: false,
+					fontSize: 160
+				},
+				{
+					data: [60, 70, 80, 50, 50, 40, 30, 40, 30, 90],
+					label: "Umidade",
+					borderColor: "#2eb2ff",
+					fill: false
+				}]
+		},
+		options: {
+			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks: {
+						font: {
+							size: 14
+						}
+					}
+				}
+			},
+			plugins: {
+				title: {
+					display: true,
+					text: 'Medições em tempo real',
+					color: "black",
+					font: {
+						size: 20
+					}
+				}
+			}
+		}
+	});
+
+	var myBar = new Chart(bar2, {
+		type: 'bar',
+		data: {
+			labels: ["Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+			datasets: [
+				{
+					data: [20.5, 23.7, 24.6, 25.7, 27.8, 30.55],
+					label: "Temperatura média",
+					backgroundColor: "#ffa500",
+					fill: false
+				},
+				{
+					data: [55, 50, 45, 40, 40, 50, 70],
+					label: "Umidade Média",
+					backgroundColor: "#2eb2ff",
+					fill: false
+				}
+			]
+		},
+		options: {
+			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks: {
+						font: {
+							size: 14
+						}
+					}
+				}
+			},
+			plugins: {
+				title: {
+					display: true,
+					text: 'Média Mensal',
+					color: "black",
+					font: {
+						size: 20
+					}
+				}
+			}
+		}
+	});
+
+	var myLine2 = new Chart(bar3, {
+		type: 'line',
+		data: {
+			labels: ["23-10-2023", "24-10-2023", "25-10-2023", "26-10-2023", "27-10-2023", "28-10-2023", "29-10-2023"],
+			datasets: [
+				{
+					data: [20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55],
+					label: "Temperatura",
+					borderColor: "#ffa500",
+					backgroundColor: "#ffa500",
+					fill: true
+				},
+				{
+					data: [50, 60, 50, 50, 50, 40, 50, 40, 45, 80],
+					label: "Umidade",
+					borderColor: "#2eb2ff",
+					backgroundColor: "#2eb2ff",
+					fill: true
+				}]
+		},
+		options: {
+			maintainAspectRatio: false,
+			scales: {
+				x: {
+					ticks: {
+						font: {
+							size: 14,
+						}
+					}
+				},
+				y: {
+					ticks: {
+						font: {
+							size: 14
+						}
+					}
+				}
+			},
+			plugins: {
+				title: {
+					display: true,
+					text: 'Média Semanal',
+					color: "black",
+					font: {
+						size: 20
+					}
+				}
+			}
+		}
+	});
+
+</script>

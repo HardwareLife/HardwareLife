@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento</title>
+    <link rel="stylesheet" href="css/styleSimulador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="header">
+        <div class="container_header">
+
+            <div class="logo">
+                <img src="assets/index/logo.svg" alt="Logo da Empresa">
+                <h1>HardwareLife</h1>
+            </div>
+
+            <ul class="navbar">
+                <a href="index.html">Home</a>
+                <!--<li><a href="../Simulador Financeiro/Calculadora.html">Orçamento</a></li>-->
+                <li><a href="loginCadastro.html">Login</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="nossa-solucao" id="solucao">
+            <h1>Nossa Solução</h1>
+            <p>Almejamos reduzir seus custos com energia elétrica em até 30%, reduzir as ocorrências de downtimes e aumentar a vida útil do seu Hardware, principalmente dos servidores, que são o coração do datacenter, através do resfriamento adaptativo, onde nossa solução IOT regulará a potência dos ares-condicionados e dos desumidificadores de forma automática, caso haja alguma falha, iremos notificá-lo automaticamente, e nossa equipe entrará em contato para resolver o problema o mais rápido possível.</p>
+        </div>
+        <div class="calculator_container" id="calculadora">
+        <div class="describe">
+            <h2>Calcule aqui o seu orçamento</h2>
+            <p>Aqui você poderá calcular o valor personalizado do projeto, vendo os recursos necessários para tornar o resfriamento e a desumidificação de seu datacenter mais eficiente e economico.
+            </p>
+            <div class="link-planos">
+                <img src="assets/index/Elipse.png" alt="">
+                <h3><a href="#planos">Conheça também nossos Planos!</a></h3>
+                
+            </div>
+        </div>
+        <div style="padding: 0 0 62px 20%;">
+            <div class="calculator">
+                <div id="parte1" class="parte1">
+                    <label for="quantidade">Digite quantas salas de servidores tem no seu Data Center: </label>
+                    <input type="number" id="quantidade" oninput="gerarInput()"><br>
+                </div>
+                
+                <div id="inputs" class="inputs"></div>
+                <div id="erro" style="color: red;"></div><br>
+                <button id="btnPreco" onclick="precificar()" class="btn" style="margin-top: 5%; height: auto; padding: 10px;">Calcule seu orçamento</button>
+            
+        
+                <div id="resultado" style="display: none;"></div><br>
+                <button id="btnRecalculo" onclick="recalcular()" class="btn" style="display: none; margin-bottom: 2.2%; height: auto; padding: 10px;">Recalcular</button>
+            </div>
+        </div>
+    </div>
+
+    <p id="planos">Nossos Planos</p>
+    <div class="planos">
+        <div class="card">
+            <div class="card_title">
+                <h2>Bronze</h2>
+                <p><b>R</b><i class="fa fa-usd"></i><span>5.000</span>/mês</p>
+            </div>
+            <div class="card_content">
+                <ul>
+                    <li><i class="fa fa-check-circle"></i>Dashboard</li>
+                    <li><i class="fa fa-check-circle"></i>3 Manutenções gratuitas</li>
+                    <li><i class="fa fa-check-circle"></i>Desconto de 10% na taxa instalação</li>
+                    <li><i class="fa fa-check-circle"></i>Desconto de 10% nos sensores e arduinos</li>
+                </ul>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_title">
+                <h2>Silver</h2>
+                <p><b>R</b><i class="fa fa-usd"></i><span>10.000</span>/mês</p>
+            </div>
+            <div class="card_content">
+                <ul>
+                    <li><i class="fa fa-check-circle"></i>Dashboard</li>
+                    <li><i class="fa fa-check-circle"></i>7 Manutenções gratuitas</li>
+                    <li><i class="fa fa-check-circle"></i>Desconto de 30% na taxa instalação</li>
+                    <li><i class="fa fa-check-circle"></i>Desconto de 30% nos sensores</li>
+                </ul>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_title">
+                <h2>Gold</h2>
+                <p><b>R</b><i class="fa fa-usd"></i><span>20.000</span>/mês</p>
+            </div>
+            <div class="card_content">
+                <ul>
+                    <li><i class="fa fa-check-circle"></i>Dashboard</li>
+                    <li><i class="fa fa-check-circle"></i>10 Manutenções gratuitas</li>
+                    <li><i class="fa fa-check-circle"></i>Instalação Gratuita</li>
+                    <li><i class="fa fa-check-circle"></i>Sensores gratuitos</li>
+                </ul>
+                <button>Comprar</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script src="js/indexSimulador.js"></script>
+</html>
