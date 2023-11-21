@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var salaModel = require("../models/salaModel");
+var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -20,21 +20,18 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        salaModel.buscarSalasPorDataCenter(resultadoAutenticar[0].DatacenterID)
-                            .then((resultadosala) => {
-                                if (resultadosala.length > 0) {
+                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
+                            .then((resultadoAquarios) => {
+                                if (resultadoAquarios.length > 0) {
                                     res.json({
-                                        idFuncionario: resultadoAutenticar[0].idFuncionario,
+                                        id: resultadoAutenticar[0].id,
+                                        email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
-                                        email: resultadoAutenticar[0].email,
-                                        idEmpresa: resultadoAutenticar[0].idEmpresa,
-                                        nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
-                                        tipoNivel: resultadoAutenticar[0].tipoNivel,
-                                        salas: resultadosala
+                                        aquarios: resultadoAquarios
                                     });
                                 } else {
-                                    res.status(204).json({ salas: [] });
+                                    res.status(204).json({ aquarios: [] });
                                 }
                             })
                     } else if (resultadoAutenticar.length == 0) {
@@ -57,35 +54,28 @@ function autenticar(req, res) {
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
-    var sobrenome = req.body.sobrenomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var nivel = req.body.nivelServer;
-    var idSuperior = req.body.fkSuperiorServer;
-    var idDataCenter = req.body.fkDataCenterServer;
-    var cpf = req.body.cpfServer;
+    var cpf = req.body.cpfServer
+    var empresaId = req.body.empresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    }else if (sobrenome == undefined) {
-        res.status(400).send("Seu sobrenome está undefined!");
-    }else if (email == undefined) {
+    } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    }else if (senha == undefined) {
-        res.status(400).send("Seu senha está undefined!");
-    }else if (nivel == undefined) {
-        res.status(400).send("Seu tipo Nivel está undefined!");
-    }else if (idSuperior == undefined) {
-        res.status(400).send("Seu ID Superior está undefined!");
-    }else if (idDataCenter == undefined) {
-        res.status(400).send("Seu ID DataCenter está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
     }else if (cpf == undefined) {
-        res.status(400).send("Seu cpf está undefined!");
+        res.status(400).send("Seu CPF está undefined!"); 
+    }else if (empresaId == undefined) {
+        res.status(400).send("Sua empresa está undefined!");
+    }else if (nivel_funcionario == undefined) {
+            res.status(400).send("Seu nivel está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, sobrenome, email, senha, nivel, idSuperior, idDataCenter, cpf)
+        usuarioModel.cadastrar(nome, email, senha, cpf, empresaId, nivel_funcionario)
             .then(
                 function (resultado) {
                     res.json(resultado);
