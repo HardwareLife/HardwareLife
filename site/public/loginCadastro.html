@@ -6,6 +6,7 @@
 	<title>Login e Cadastro</title>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
 	<link rel="stylesheet" href="css/styleLogin.css">
+	<script src="./js/sessao.js"></script>
 
 </head>
 
@@ -45,11 +46,12 @@
 						onblur="validarEmail()">
 					<span class="span-required">Digite um email válido</span>
 
-					<!--<input class="inputs" id="senha_cad" type="password" placeholder="Senha" required>
-						<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>!-->
+					<!-- <input class="inputs" id="senha_cad" type="password" placeholder="Senha" required onblur="ValidarSenha()">
+					<span class="span-required">Senha Inválida</span> -->
+					<!--<input class="inputs" id="confirmar_cad" type="password" placeholder="Confirmar Senha" required>!-->
 
 					<input class="inputs" id="cnpj_cad" type="text" maxlength="18" placeholder="CNPJ" required
-						onblur="ValidarCNPJ()" maxlength="18">
+						 maxlength="18"> 
 					<span class="span-required">O CNPJ deve ter 14 dígitos</Span>
 
 					<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa"
@@ -90,10 +92,10 @@
 					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span class="span-required">Entre com sua conta</span class="span-required">
-				<input type="email" placeholder="Email" id="email" />
-				<input type="password" placeholder="Password" id="senha" />
+				<input type="email" placeholder="Email" id="input_email" />
+				<input type="password" placeholder="Password" id="input_senha" />
 				<a href="#">Esqueceu a senha?</a>
-				<button onclick="autenticar()" class="logar" style="cursor: pointer
+				<button onclick="entrar()" class="logar" style="cursor: pointer
 				;">Entrar</button>
 			</form>
 		</div>
@@ -119,7 +121,7 @@
 	var telefoneValor = document.getElementById("tel_cad");
 
 	cnpjValor.addEventListener('keypress', () => {
-		var tamanho = cnpjValor.value.length;
+		var tamanho = (cnpjValor.value).length;
 
 		if (tamanho === 2 || tamanho === 6) {
 			cnpjValor.value += '.';
@@ -131,7 +133,7 @@
 	})
 
 	telefoneValor.addEventListener('keypress', () => {
-		var tamanho = telefoneValor.value.length;
+		var tamanho = (telefoneValor.value).length;
 
 		if (tamanho === 0) {
 			telefoneValor.value += '(';
@@ -142,26 +144,22 @@
 		}
 	})
 
+	// function autenticar() {
+	// 	var emailUsuario = email.value;
+	// 	var senhaUsuario = senha.value;
+	// 	console.log(emailUsuario, senhaUsuario)
 
+	// 	if (emailUsuario == "amazon.jundiai@hardwarelife.com" && senhaUsuario == "amazon@123") {
+	// 		window.location.href = "../Dashboard/index.html"
+	// 	} else {
+	// 		alert("Usuário ou senha inválidos");
+	// 	}
 
-
-	function autenticar() {
-		var emailUsuario = email.value;
-		var senhaUsuario = senha.value;
-		console.log(emailUsuario, senhaUsuario)
-
-		if (emailUsuario == "amazon.jundiai@hardwarelife.com" && senhaUsuario == "amazon@123") {
-			window.location.href = "../Dashboard/index.html"
-		} else {
-			alert("Usuário ou senha inválidos");
-		}
-
-	}
+	// }
 
 	function signup() {
 		var buttonCadatro = document.getElementById("cadastrar");
 		conectar.classList.add("right-panel-active")
-
 	}
 
 	function signin() {
@@ -202,80 +200,78 @@
 		}
 	}
 
-	function ValidarSenha() {
+	// function ValidarSenha() {
 
-		if (campos[2].value.length < 8) {
-			erro(2);
+	// 	if (campos[2].value.length < 8) {
+	// 		erro(2);
 
-		} else {
-			removerErro(2);
+	// 	} else {
+	// 		removerErro(2);
 
-		}
+	// 	}
 
-	}
+	// }
 
+	// function validarCNPJ(cnpj) {
 
+	// 	cnpjValor = cnpjValor.replace(/[^\d]+/g, '');
 
-	function validarCNPJ(cnpj) {
+	// 	if (cnpjValor == '') return false;
 
-		cnpj = cnpj.replace(/[^\d]+/g, '');
+	// 	if (cnpjValor.length != 14)
+	// 		return false;
 
-		if (cnpj == '') return false;
-
-		if (cnpj.length != 14)
-			return false;
-
-		// Elimina CNPJs invalidos conhecidos
-		if (cnpj == "00000000000000" ||
-			cnpj == "11111111111111" ||
-			cnpj == "22222222222222" ||
-			cnpj == "33333333333333" ||
-			cnpj == "44444444444444" ||
-			cnpj == "55555555555555" ||
-			cnpj == "66666666666666" ||
-			cnpj == "77777777777777" ||
-			cnpj == "88888888888888" ||
-			cnpj == "99999999999999")
-			return false;
+	// 	// Elimina CNPJs invalidos conhecidos
+	// 	if (cnpjValor == "00000000000000" ||
+	// 		cnpjValor == "11111111111111" ||
+	// 		cnpjValor == "22222222222222" ||
+	// 		cnpjValor == "33333333333333" ||
+	// 		cnpjValor == "44444444444444" ||
+	// 		cnpjValor == "55555555555555" ||
+	// 		cnpjValor == "66666666666666" ||
+	// 		cnpjValor == "77777777777777" ||
+	// 		cnpjValor == "88888888888888" ||
+	// 		cnpjValor == "99999999999999")
+	// 		return false;
 
 
-		tamanho = cnpj.length - 2
-		numeros = cnpj.substring(0, tamanho);
-		digitos = cnpj.substring(tamanho);
-		soma = 0;
-		pos = tamanho - 7;
-		for (i = tamanho; i >= 1; i--) {
-			soma += numeros.charAt(tamanho - i) * pos--;
-			if (pos < 2)
-				pos = 9;
-		}
-		resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-		if (resultado != digitos.charAt(0))
-			return false;
+	// 	tamanho = cnpjValor.length - 2
+	// 	numeros = cnpjValor.substring(0, tamanho);
+	// 	digitos = cnpjValor.substring(tamanho);
+	// 	soma = 0;
+	// 	pos = tamanho - 7;
+	// 	for (i = tamanho; i >= 1; i--) {
+	// 		soma += numeros.charAt(tamanho - i) * pos--;
+	// 		if (pos < 2)
+	// 			pos = 9;
+	// 	}
+	// 	resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+	// 	if (resultado != digitos.charAt(0))
+	// 		return false;
 
-		tamanho = tamanho + 1;
-		numeros = cnpj.substring(0, tamanho);
-		soma = 0;
-		pos = tamanho - 7;
-		for (i = tamanho; i >= 1; i--) {
-			soma += numeros.charAt(tamanho - i) * pos--;
-			if (pos < 2)
-				pos = 9;
-		}
-		resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-		if (resultado != digitos.charAt(1))
-			return false;
+	// 	tamanho = tamanho + 1;
+	// 	numeros = cnpj.substring(0, tamanho);
+	// 	soma = 0;
+	// 	pos = tamanho - 7;
+	// 	for (i = tamanho; i >= 1; i--) {
+	// 		soma += numeros.charAt(tamanho - i) * pos--;
+	// 		if (pos < 2)
+	// 			pos = 9;
+	// 	}
+	// 	resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+	// 	if (resultado != digitos.charAt(1))
+	// 		return false;
 
-		return true;
+	// 	return true;
 
-	}
+	// }
 
 	function ValidarTel() {
-		if (Telregex.test(campos[5])) {
-			erro(5);
+		if (Telregex.test(campos[4])) {
+			erro(4);
 
 		} else {
-			removerErro(5);
+			removerErro(4);
 		}
 
 	}
@@ -284,32 +280,149 @@
 		var meuModal = document.querySelector(".modal");
 		var nomeCad = document.getElementById("nome_cad").value;
 		var emailCad = document.getElementById("email_cad").value;
+		// var senhaCad = documento.getElementById("senha_cad").value;
 		var cnpjCad = document.getElementById("cnpj_cad").value;
 		var telCad = document.getElementById("tel_cad").value;
 		var erroMessage = document.getElementById("erroMessage");
 		var successMessage = document.getElementById("successMessage");
+
+		var cnpjSPonto = cnpjCad.replaceAll(".", "");
+		var cnpjSBarra = cnpjSPonto.replace("/", "");
+		var cnpjPuro = cnpjSBarra.replace("-", "");
 
 		if (nomeCad === "" || emailCad === "" || cnpjCad === "" || telCad === "") {
 
 			meuModal.style.display = "flex";
 			successMessage.style.display = "none";
 			erroMessage.style.display = "flex";
-			setInterval(() => {
-				meuModal.style.display = "none";
-			}, 4000);
-
+			// setTimeout(() => {
+			// 	meuModal.style.display = "none";
+			// }, 4000);
+				return false;
 		} else {
 
-			meuModal.style.display = "flex";
-			erroMessage.style.display = "none";
-			successMessage.style.display = "flex";
-			setInterval(() => {
+			// meuModal.style.display = "flex";
+			// erroMessage.style.display = "none";
+			// successMessage.style.display = "flex";
+			setTimeout(() => {
 				meuModal.style.display = "none";
 			}, 6000);
 
 		}
 		//vai impedir de recarregar a página
 		event.preventDefault();
+
+		// Enviando o valor da nova input
+		fetch("/empresas/cadastrar", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				// crie um atributo que recebe o valor recuperado aqui
+				// Agora vá para o arquivo routes/usuario.js
+				nomeServer: nomeCad,
+				emailServer: emailCad,
+				// senhaServer: senhaCad,
+				cnpjServer: cnpjPuro,
+				telefoneServer: telCad
+			}),
+		})
+			.then(function (resposta) {
+				console.log("resposta: ", resposta);
+
+				if (resposta.ok) {
+					meuModal.style.display = "block";
+
+					successMessage.style.display = "block";
+
+					setTimeout(() => { signin() }, "1000");
+
+					// limparFormulario();
+					// finalizarAguardar();
+				} else {
+					throw "Houve um erro ao tentar realizar o cadastro!";
+					meuModal.style.display = "block";
+					erroMessage.style.display = "block";
+					// successMessage.innerHTML = `${json.mensagem}`;
+				}
+			})
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+				// finalizarAguardar();
+			});
+
+		return false;
+	}
+
+	function entrar() {
+		var meuModal = document.querySelector(".modal");
+		var emailVar = input_email.value;
+		var senhaVar = input_senha.value;
+
+		if (emailVar == "" || senhaVar == "") {
+			meuModal.style.display = "block";
+			erroMessage.style.display = "block";
+			mensagem_erro.innerHTML = "Preencha os campos";
+			// finalizarAguardar();
+			return false;
+		}
+		else {
+			setTimeout(() => {
+				meuModal.style.display = "none"
+			}, 3000);
+		}
+
+		console.log("FORM LOGIN: ", emailVar);
+		console.log("FORM SENHA: ", senhaVar);
+
+		fetch("/usuarios/autenticar", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				emailServer: emailVar,
+				senhaServer: senhaVar
+			})
+		}).then(function (resposta) {
+			console.log("ESTOU NO THEN DO entrar()!")
+
+			if (resposta.ok) {
+				console.log(resposta);
+
+				resposta.json().then(json => {
+					console.log(json);
+					console.log(JSON.stringify(json));
+					sessionStorage.EMAIL_USUARIO = json.email;
+					sessionStorage.NOME_USUARIO = json.nome;
+					sessionStorage.ID_USUARIO = json.idFuncionario;
+					sessionStorage.ID_EMPRESA = json.idEmpresa;
+					sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
+					sessionStorage.TIPO_NIVEL = json.tipoNivel;
+					sessionStorage.SALAS = JSON.stringify(json.salas)
+
+					setTimeout(function () {
+						window.location = "./dashboard/dashboard.html";
+					}, 1000); // apenas para exibir o loading
+
+				});
+
+			} else {
+
+				console.log("Houve um erro ao tentar realizar o login!");
+
+				resposta.text().then(texto => {
+					console.error(texto);
+					finalizarAguardar(texto);
+				});
+			}
+
+		}).catch(function (erro) {
+			console.log(erro);
+		})
+
+		return false;
 	}
 
 </script>

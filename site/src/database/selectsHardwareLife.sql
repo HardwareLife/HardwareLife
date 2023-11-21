@@ -1,5 +1,6 @@
 USE HardwareLife;
 
+select * from funcionario;
 -- CONSULTAS QUE SERÃO COMUNS
 
 -- Consulta para o filtro da dashboard (medições de temperatura)

@@ -15,11 +15,12 @@ body{
 
 .header{
     background-color: #ddd9ce;
+    height: 8vh;
 }
 
 /* barra lateral */
 .side-bar i{
-    margin: 25px 15px 0 0px;
+    margin: 15px 80px 0 0px;
     font-size: 24px;
     color: #3349ED;
 }
@@ -173,80 +174,84 @@ body{
 .container{
     display: flex;
     /* justify-content: space-between; */
-    margin: 0 2% 0 4%;
+    margin: 0 2% 0 3%;
 }
 
 .container h1{
     color: #3349ED;
-    margin-top: 20px;
-    font-size: 25px;
+    margin-top: 10px;
+    font-size: 20px;
     /* visibility: visible; */
 }
 
-.container a{
+/* .container a{
     text-decoration: none;
     color: #3349ED;
     font-size: 20px;
-}
+} */
 
 .container .logo{
     display: flex;
 }
 
 .container img{
-    width: 75px;
+    width: 45px;
+    height: 45px;
+    padding-top: 5px;
 }
 
-.container span{
+/* .container span{
     font-size: 30px;
     color: #3349ED;
     margin: 13px 15px 0 15px;
     cursor: pointer;
-}
+} */
 
 /* conteudo do cabeçalho - filtro */
 
 .select{
     display: flex;
-    align-items: center;
-    margin-left: 30%;
-    width: 100%;
+    /* align-items: center; */
+    margin-left: 40%;
+    width: 40%;
     /* border-left: 1px solid #000000;
     border-bottom: 1px solid #000000;
     border-radius: 15px; */
-    padding: 0 20px 5px;
+    padding: 5px 10px 0px 0px;
 }
 
 .select .box{
     display: flex;
     flex-direction: column;
     width: 100%;
-    font-size: 14px;
+    font-size: .800rem;
+    font-weight: 600;
 }
 
 
 .select .box select{
     /* margin-top: 25px; */
-    margin-right: 10px;
+    /* margin-right: 10px; */
     width: 90%;
-    height: 23px;
-    border-radius: 5px;
-    box-shadow: 3px 2px 10px -1px rgba(26,26,26,1);
+    height: 20px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px -1px rgba(26,26,26,1);
 }
 
 .select .btn_filter{
     display: flex;
     justify-content: center;
-    margin-top: 18px;
-    width: 38%;
-    height: 38%;
+    margin-bottom: 10px;
+    width: 10%;
+    height: 10%;
     /* margin-right: 15px; */
     /* border-radius: 20%; */
     /* border: 1px solid #000000; */
 }
 
 .select .btn_filter img{
-    width: 50px;
+    width: 28px;
+    height: 35px;
     cursor: pointer;
 }
 
@@ -257,7 +262,7 @@ body{
     /* display: flex; */
     /* align-self: center; */
     padding: 15px;
-    margin: 3% 2% 0% 2%;
+    margin: 1% 2% 0% 2%;
     background-color: #FFFF;
     border-radius: 18px;
     width: 94%;
@@ -451,7 +456,7 @@ body{
 .esfera_umidade_ideal{
     width: 24px;
     height: 24px;
-    background-image: url(./scr/gota-de-agua.png);
+    background-image: url(../assets/dashboard/gota-de-agua.png);
     border-radius: 50%;
     margin-left: 22px;
     /* margin-top: 0px; */
@@ -460,7 +465,7 @@ body{
 .esfera_umidade_alerta{
     width: 24px;
     height: 24px;
-    background-image: url(./scr/gota-de-agua-alerta.png);
+    background-image: url(../assets/dashboard/gota-de-agua-alerta.png);
     border-radius: 50%;
     margin-left: 22px;
     /* margin-top: 2px; */
@@ -469,7 +474,7 @@ body{
 .esfera_umidade_emergencia{
     width: 24px;
     height: 24px;
-    background-image: url(./scr/gota-de-agua-emer.png);
+    background-image: url(../assets/dashboard/gota-de-agua-emer.png);
     border-radius: 50%;
     margin-left: 22px;
     /* margin-top: 2px; */
@@ -477,7 +482,7 @@ body{
 .esfera_umidade_critico{
     width: 24px;
     height: 24px;
-    background-image: url(./scr/gota-de-agua-critica.png);
+    background-image: url(../assets/dashboard/gota-de-agua-critica.png);
     border-radius: 50%;
     margin-left: 22px;
     /* margin-top: 2px; */

@@ -19,6 +19,7 @@ body {
 
 .header{
     background-color: #E4E6EF;
+    height: 8vh;
 }
 
 .side-bar{
@@ -27,7 +28,7 @@ body {
 }
 
 .side-bar i{
-    margin: 25px 15px 0 0px;
+    margin: 15px 80px 0 0px;
     font-size: 24px;
     color: #3349ED;
 }
@@ -119,7 +120,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 100%;
     margin-top: 15%;
 }
@@ -165,29 +166,37 @@ body {
 .container{
     display: flex;
     justify-content: space-between;
-    margin: 0 2% 0 4%;
-    padding-right: 30px;
+    margin: 0 10% 0 3%;
 }
 
 .container h1{
     color: #3349ED;
-    margin-top: 20px;
-    font-size: 25px;
+    margin-top: 10px;
+    font-size: 20px;
     /* visibility: visible; */
 }
 
-.container a{
+.container h1 > span{
+    color: #3349ED;
+        margin-top: 10px;
+        font-size: 20px;
+        /* visibility: visible; */
+}
+
+/* .container a{
     text-decoration: none;
     color: #3349ED;
     font-size: 20px;
-}
+} */
 
 .container .logo{
     display: flex;
 }
 
 .container img{
-    width: 75px;
+    width: 45px;
+    height: 45px;
+    padding-top: 5px;
 }
 
 .container span{
@@ -214,7 +223,7 @@ body {
     /* overflow: hidden; */
     width: 27%;
     min-width: 110px;
-    height: 85vh;
+    height: 89vh;
     min-height: 70vh;
     box-shadow: rgba(0, 0, 0, 0.35) 
     0px 5px 15px;
@@ -254,7 +263,7 @@ body {
         1.3rem, 2.5vw, 
         2.5rem);
     font-weight: 700;
-    margin-bottom: 10zpx;
+    margin-bottom: 10px;
 }
 
 .content .resum{
@@ -282,11 +291,21 @@ body {
     text-decoration: none;
 } 
 
-.button-perfil{
-    border-radius: 50px;
+.card .button_perfil{
+    border-radius: 10px;
     background-color: white;
-    font-size: 20px;
-    margin:2px;
+    font-size: 18px;
+    margin: 10px;
+    border: 1px solid #000000;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    cursor: pointer;
+}
+
+.card .button_perfil:hover{
+    background-color: #e6e6e6;
 }
 
 .card-secund{
@@ -297,7 +316,7 @@ body {
     background-color: white;
     width: 60%;
     min-width: 320px;
-    height: 84.5vh;
+    height: 88.4vh;
     min-height: 500px;
     box-shadow: rgba(0, 0, 0, 0.35) 
     0px 5px 15px;
@@ -309,8 +328,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 20px 0 20px;
+    padding: 10px 20px 0 20px;
     gap: 20px;
+}
+
+.card-secund .titulo_cadastro{
+    font-weight: 600;
 }
 
 .formulario_cadastro .campos_cadastros{
@@ -329,12 +352,12 @@ body {
 
 .formulario_cadastro .campos_cadastros .campo:nth-child(4){
     width: 49%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .formulario_cadastro .campos_cadastros .campo:nth-child(5){
     width: 49%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .formulario_cadastro .campos_cadastros .campo input{
@@ -348,6 +371,13 @@ body {
 
 .formulario_cadastro .campos_cadastros .campo:nth-child(6){
     display: none;
+}
+
+.formulario_cadastro .campos_cadastros #campo_razao{
+    display: flex;
+    width: 70%;
+    margin-top: 10px;
+    margin-right: 8.5%; 
 }
 
 .formulario_cadastro .campos_cadastros .campo select{
@@ -380,12 +410,24 @@ body {
     cursor: pointer;
 }
 
+.cadastro_perfil{
+    display: block;
+    /* flex-direction: column; */
+    width: 95%;
+    height: 43vh;
+    background-color: #b3d2ee;
+    scroll-snap-align: start;
+    border-radius: 18px 18px 3px 3px;
+    padding: 20px 10px 0 10px;
+    gap: 10px;
+}
+
 .lista_funcionario{
     display: block;
     flex-direction: column;
     width: 95%;
     height: 50vh;
-    background-color: rgb(179, 210, 238);
+    background-color: #b3d2ee;
     scroll-snap-align: start;
     border-radius: 8px 8px 2px 2px;
     padding: 20px 10px 0 10px;
@@ -426,12 +468,12 @@ body {
 }
   
 .lista_funcionario::-webkit-scrollbar-track {
-    background-color: #000000;
+    background-color: #000;
     border-radius: 10px;
   }
   
 .lista_funcionario::-webkit-scrollbar-thumb {
-    background: #3349ED;
+    background: #0b1c9c;
     border-radius: 20px;
   }
 
