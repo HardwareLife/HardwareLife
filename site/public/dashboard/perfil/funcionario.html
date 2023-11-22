@@ -15,7 +15,7 @@
 
 <!-- <body> -->
 
-<body onload=" validarSessao(), validarNivel()">
+<body onload=" validarSessao()">
 
     <div class="navbar" id="navbar">
         <div class="container_sidebar">
@@ -89,7 +89,7 @@
             </div>
         </article>
         <article class="card-secund" id="card_secund">
-            <form action="" class="formulario_cadastro">
+            <form action="" class="formulario_cadastro" onsubmit="return false">
                 <span class="titulo_cadastro" id="titulo_cadastro">Cadastrar Novo Gestor:</span>
                 <span class="campos_cadastros" id="campos_cadastros">
                     <div class="campo">
@@ -112,14 +112,14 @@
                         <label for="nome_funcionario">Senha:</label>
                         <input type="password" id="senha_funcionario" placeholder="Senha Funcionario">
                     </div>
-                    <div class="campo" id="campo_unidade">
+                    <!-- <div class="campo" id="campo_unidade">
                         <label for="unidade">Unidade:</label>
                         <select name="escolha_unidade" id="escolha_unidade">
                             <option value="0"></option>
                             <option value="1">Jundiai</option>
                             <option value="2">Campo</option>
                         </select>
-                    </div>
+                    </div> -->
                 </span>
                 <button class="btn_form_cadastro" onclick="cadastrar()">Cadastrar</button>
             </form>
@@ -168,7 +168,7 @@
                         <label for="razaoSocial">Razão Social da Empresa:</label>
                         <input type="text" id="razaoSocial_empresa" placeholder="Razão Social da Empresa">
                     </div>
-                    <button class="btn_form_cadastro" onclick="cadastrar()">Cadastrar</button>
+                    <button class="btn_form_cadastro" onclick="editarPerfil()">Cadastrar</button>
                 </span>
 
             </form>
@@ -199,7 +199,7 @@
                         <label for="cep">CEP:</label>
                         <input type="text" id="cep_empresa" placeholder="Cep">
                     </div>
-                    <button class="btn_form_cadastro" onclick="cadastrar()">Cadastrar</button>
+                    <button class="btn_form_cadastro" onclick="cadastrarEndereco()">Cadastrar</button>
                 </span>
             </div>
 
@@ -224,12 +224,76 @@
         container.style.visibility = "visible";
     });
 
-    function validarNivel() {
-        if (nivel == "CEO") {
-            campo_unidade.style.display = "flex";
-        }else {
-            card_secund.innerHTML += "Q MENTIRA"
-        }
+    // function validarNivel() {
+    //     if (nivel == "CEO") {
+    //         campo_unidade.style.display = "flex";
+    //     }else {
+    //         card_secund.innerHTML += "Q MENTIRA"
+    //     }
+    // }
+    
+    function cadastrar() {
+            var idUsuario = sessionStorage.ID_USUARIO;
+            var informacaoSala = JSON.parse(sessionStorage.SALAS);
+            var idDatacenter = informacaoSala[0].fkDatacenter;
+            var nomeFunc = nome_funcionario.value;
+            var sobrenomeFunc = nome_funcionario.value;
+            var cpfFunc = cpf_funcionario.value;
+            var emailFunc = email_funcionario.value;
+            var senhaFunc = senha_funcionario.value;
+            console.log(idDatacenter, informacaoSala)
+            if (nomeFunc === "" || sobrenomeFunc === "" || cpfFunc ===  ""
+            || emailFunc === "" || senhaFunc === "") {
+                return false;
+            }else{
+                // setTimeout(() => {
+				// meuModal.style.display = "none";
+			    // }, 6000);
+            }
+
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeFunc,
+                    sobrenomeServer: sobrenomeFunc,
+                    cpfServer: cpfFunc,
+                    emailServer: emailFunc,
+                    senhaServer: senhaFunc,
+                    nivelServer: nivel,
+                    fkSuperiorServer: idUsuario,
+                    fkDataCenterServer:idDatacenter 
+
+                }),
+            })
+
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    //     if (resposta.ok) {
+                    //     // meuModal.style.display = "block";
+
+                    //     successMessage.style.display = "block";
+
+                    //     setTimeout(() => { signin() }, "1000");
+
+                    //     // limparFormulario();
+                    //     // finalizarAguardar();
+				    // } else {
+                    //     throw "Houve um erro ao tentar realizar o cadastro!";
+                    //     // meuModal.style.display = "block";
+                    //     erroMessage.style.display = "block";
+                    //     // successMessage.innerHTML = `${json.mensagem}`;
+				    // }
+
+                })
+                .catch(function (resultado) {
+                    console.log(`#ERRO: ${resultado}`);
+                });
+
+            return false; 
     }
 
     function mudarCard() {
