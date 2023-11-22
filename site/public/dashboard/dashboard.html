@@ -369,7 +369,17 @@
 	var divDescRack = document.querySelector('.div_desc_rack');
 	var dashboardRack = document.querySelector('.dashboard_rack');
 
-	function chamar_salas() {
+
+	// Crir json com as salas como no codigo a cima; Colocar o codigo da rack aqui dentro
+	// JSON.parse(sessionStorage.SALAS).forEach(item)
+	function chamar_salas(sala) {
+		var idSala = sala.getAttribute("value")
+		for(var i = 0; i < salas.length; i++){
+			if(salas[i].idSala == idSala){
+				// racks.innerHTML +=
+				
+			}
+		}
 		divDesc.style.display = 'none';
 		divDashboard.style.display = 'none';
 		divDescSala.style.display = 'flex';
