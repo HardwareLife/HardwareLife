@@ -2,7 +2,9 @@ var database = require("../database/config");
 
 function buscarSalasPorDataCenter(DatacenterID) {
 
-  instrucaoSql = `select * from sala where fkDatacenter = ${DatacenterID}`;
+  instrucaoSql = `select * from sala 
+  join rack on fkSala = idSala 
+  where fkDatacenter = ${DatacenterID}`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
