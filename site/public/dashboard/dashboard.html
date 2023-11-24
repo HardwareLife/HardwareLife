@@ -341,22 +341,26 @@
 	});
 
 	function exibirSalas() {
-		JSON.parse(sessionStorage.SALAS).forEach(item => {
+		var listaSalaUsada = [];
+		JSON.parse(sessionStorage.SALAS).forEach((item, i) => {
 			var dashLista = document.getElementById("dash_lista");
+			
+			if (!listaSalaUsada.includes(item.idSala)) {
+				dashLista.innerHTML += `
+				<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: #b00202c0; border: 3px solid #b00202;" value="${item.idSala}">
 
-			dashLista.innerHTML += `
-			<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: #b00202c0; border: 3px solid #b00202; value="${item.idSala}">
+					<button class="btn_salas" style="background-color: rgba(176, 2, 2, 0);">
+					<img src="../assets/dashboard/door.svg" alt="Relatório" ">
+					Sala ${item.numeroSala}
+					</button>
+					<span class="situacao">
+						<p>Estado: Critico</p>
+					</span>
 
-				<button class="btn_salas" style="background-color: rgba(176, 2, 2, 0);">
-				<img src="../assets/dashboard/door.svg" alt="Relatório" ">
-				Sala ${item.numeroSala}
-				</button>
-				<span class="situacao">
-					<p>Estado: Critico</p>
-				</span>
-
-			</div>
+				</div>
 			`
+			listaSalaUsada.push(item.idSala)
+			}
 		});
 	}
 </script>
@@ -373,18 +377,18 @@
 	// Crir json com as salas como no codigo a cima; Colocar o codigo da rack aqui dentro
 	// JSON.parse(sessionStorage.SALAS).forEach(item)
 	function chamar_salas(sala) {
-		JSON.parse(sessionStorage.SALAS).forEach(salas =>{
+		lista_rack.innerHTML = ""
+		JSON.parse(sessionStorage.SALAS).forEach(salas=>{
 			var idSala = sala.getAttribute("value");
 
-			for(var i = 0; i < salas.length; i++){
-			if(salas[i].idSala == idSala){
+			if(salas.idSala == idSala){
 				lista_rack.innerHTML += `
 				<div class="div_salas" onclick="chamar_rack()"
 					style="background-color: #b00202c0; border: 3px solid #b00202;">
 
 					<button class="btn_salas" style="background-color: #b0020200;">
 						<img src="../assets/dashboard/rack-do-servidor.png" alt="Relatório">
-						Rack ${salas[i].numeroRack}
+						Rack ${salas.numeroRack}
 					</button>
 
 					<span class="situacao">
@@ -395,7 +399,7 @@
 				`
 				
 			}
-		}
+
 		})
 		
 		
