@@ -225,7 +225,12 @@
 
         fetch(`/usuarios/listar/${idDatacenter}`)
         .then(function (resultado) {
-              
+            if(resultado.ok){
+                resultado.json().then(json => {
+                    console.log(json)
+                    funcionarioDataCenter = json
+                })
+            }
         }).catch(function (resultado) {
             
         });
