@@ -31,6 +31,10 @@
 					<img src="../assets/dashboard/icon_config.svg" alt="configurações">
 					<a href="perfil/funcionario.html">Funcionários</a>
 				</span>
+				<span class="link">
+					<img src="../assets/dashboard/relatorio.svg" alt="">
+					<a id="suporte2">Fale Conosco</a>
+				</span>
 				<!-- <span class="link">
 					<img src="../assets/dashboard/icon_dashboard.svg" alt="dashboard">
 					<a href="../dashboard/dashboardNova.html">Dashboard</a>
@@ -62,6 +66,16 @@
 
 	<div class="div_desc">
 		<p>Aqui você poderá vizualizar todas as salas cadastradas:</p>
+	</div>
+
+	<div class="suporte" id="modalSuporte">
+		<div class="suporte_title">
+			<i id="suporte" class="fa fa-window-close"></i>
+		</div>
+		<iframe id="myFrame" width='100%' height='450'
+		src='https://app.pipefy.com/public/form/2Kv8Bdqt?embedded=true'
+		frameborder='0'
+		></iframe>
 	</div>
 
 	<!-- tela inicial: sala - situação  -->
@@ -161,8 +175,8 @@
 				<h3>Situação</h3>
 			</div>
 
-			<div class="lista_rack">
-				<div class="div_salas" onclick="chamar_rack()"
+			<div class="lista_rack" id="lista_rack">
+				<!-- <div class="div_salas" onclick="chamar_rack()"
 					style="background-color: #b00202c0; border: 3px solid #b00202;">
 
 					<button class="btn_salas" style="background-color: #b0020200;">
@@ -174,7 +188,7 @@
 						<p>Estado: Critico</p>
 					</span>
 
-				</div>
+				</div> -->
 			</div>
 
 
@@ -323,6 +337,16 @@
 <script>
 	nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 	nome_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
+	var abrirSuporte = document.getElementById("suporte2");
+	var fecharSuporte = document.getElementById("suporte");
+
+	abrirSuporte.addEventListener('click', () =>{
+		modalSuporte.style.display = `block`
+	})
+
+	fecharSuporte.addEventListener('click', () => {
+		modalSuporte.style.display = `none`
+	})
 
 	var activeSideBar = document.getElementById("side-bar-active");
 	var deactiveSideBar = document.getElementById("side-bar-deactive");
@@ -341,22 +365,27 @@
 	});
 
 	function exibirSalas() {
-		JSON.parse(sessionStorage.SALAS).forEach(item => {
+		var listaSalaUsada = [];
+		JSON.parse(sessionStorage.SALAS).forEach((item, i) => {
 			var dashLista = document.getElementById("dash_lista");
+			
+			if (!listaSalaUsada.includes(item.idSala)) {
+				dashLista.innerHTML += `
+				<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: #b00202c0; border: 3px solid #b00202;" value="${item.idSala}">
 
-			dashLista.innerHTML += `
-			<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: #b00202c0; border: 3px solid #b00202; value="${item.idSala}">
+					<button class="btn_salas" style="background-color: rgba(176, 2, 2, 0);">
+					<img src="../assets/dashboard/door.svg" alt="Relatório" ">
+					Sala ${item.numeroSala}
+					</button>
+					<span class="situacao">
+						<p>Estado: Critico</p>
+					</span>
 
-				<button class="btn_salas" style="background-color: rgba(176, 2, 2, 0);">
-				<img src="../assets/dashboard/door.svg" alt="Relatório" ">
-				Sala ${item.numeroSala}
-				</button>
-				<span class="situacao">
-					<p>Estado: Critico</p>
-				</span>
-
-			</div>
+				</div>
 			`
+			listaSalaUsada.push(item.idSala)
+			}
+			// obterDadosGrafico(item.idRack)
 		});
 	}
 </script>
@@ -369,7 +398,36 @@
 	var divDescRack = document.querySelector('.div_desc_rack');
 	var dashboardRack = document.querySelector('.dashboard_rack');
 
-	function chamar_salas() {
+
+	// Crir json com as salas como no codigo a cima; Colocar o codigo da rack aqui dentro
+	// JSON.parse(sessionStorage.SALAS).forEach(item)
+	function chamar_salas(sala) {
+		lista_rack.innerHTML = ""
+		JSON.parse(sessionStorage.SALAS).forEach(salas=>{
+			var idSala = sala.getAttribute("value");
+
+			if(salas.idSala == idSala){
+				lista_rack.innerHTML += `
+				<div class="div_salas" onclick="chamar_rack(this)" value="${salas.idRack}"
+					style="background-color: #b00202c0; border: 3px solid #b00202;">
+
+					<button class="btn_salas" style="background-color: #b0020200;">
+						<img src="../assets/dashboard/rack-do-servidor.png" alt="Relatório">
+						Rack ${salas.numeroRack}
+					</button>
+
+					<span class="situacao">
+						<p>Estado: Critico</p>
+					</span>
+
+				</div>
+				`
+				
+			}
+
+		})
+		
+		
 		divDesc.style.display = 'none';
 		divDashboard.style.display = 'none';
 		divDescSala.style.display = 'flex';
@@ -383,7 +441,12 @@
 		dashboardSala.style.display = 'none';
 	}
 
-	function chamar_rack() {
+	function chamar_rack(rack) {
+		var idRack = rack.getAttribute("value");
+		console.log(idRack)
+		obterDadosGrafico(idRack)
+		obterGraficoMensal(idRack)
+		obterGraficoSemanal(idRack)
 		divDescSala.style.display = 'none';
 		dashboardSala.style.display = 'none';
 		divDescRack.style.display = 'flex';
@@ -399,6 +462,164 @@
 
 	// SCRIPT DOS GRÁFICOS
 
+	var proximaAtualizacao;
+
+	function obterGraficoMensal(idRack){
+
+		var resultado;
+		myBar.data.labels = []
+		myBar.data.datasets[0].data = []
+		myBar.data.datasets[1].data = []
+
+		fetch(`/medidas/media-mensal/${idRack}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			cache: 'no-store'
+		}).then(data => {
+			if(data.ok){
+				data.json().then(json => {
+					resultado = json
+					console.log(resultado)
+					resultado.reverse()
+					for(var i = 0; i < resultado.length; i++){
+						myBar.data.labels.push(resultado[i].mes)
+						myBar.data.datasets[0].data.push(resultado[i].temperaturaMedia)
+						myBar.data.datasets[1].data.push(resultado[i].umidadeMedia)
+					}
+					myBar.update()
+				})
+			}
+		})
+	}
+
+	function obterGraficoSemanal(idRack){
+
+		var resultado;
+		myLine2.data.labels = []
+		myLine2.data.datasets[0].data = []
+		myLine2.data.datasets[1].data = []
+
+		fetch(`/medidas/media-semanal/${idRack}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			cache: 'no-store'
+		}).then(data => {
+			if(data.ok){
+				data.json().then(json => {
+					resultado = json
+					console.log(resultado)
+					resultado.reverse()
+					for(var i = 0; i < resultado.length; i++){
+						myLine2.data.labels.push(resultado[i].momento_grafico)
+						myLine2.data.datasets[0].data.push(resultado[i].temperaturaMedia)
+						myLine2.data.datasets[1].data.push(resultado[i].umidadeMedia)
+					}
+					myLine2.update()
+				})
+			}
+		})
+		}
+
+	function obterDadosGrafico(idRack) {
+		
+		myLine.data.labels = []
+		myLine.data.datasets[0].data = []
+		myLine.data.datasets[1].data = []
+
+		if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+
+		fetch(`/medidas/ultimas/${idRack}`, { cache: 'no-store' }).then(function (response) {
+			if (response.ok) {
+				response.json().then(function (resposta) {
+					console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+					resposta.reverse();
+
+					plotarGrafico(resposta, idRack);
+
+				});
+			} else {
+				console.error('Nenhum dado encontrado ou erro na API');
+			}
+		})
+			.catch(function (error) {
+				console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+			});
+		}
+
+	function plotarGrafico(resposta, idRack) {
+
+			console.log('----------------------------------------------')
+			console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+			console.log(resposta)
+			
+			// Inserindo valores recebidos em estrutura para plotar o gráfico
+			for (i = 0; i < resposta.length; i++) {
+				var registro = resposta[i];
+				console.log(registro)
+				myLine.data.labels.push(registro.momento_grafico);
+				myLine.data.datasets[0].data.push(registro.temperatura);
+				myLine.data.datasets[1].data.push(registro.umidade);
+			}
+
+			myLine.update()
+
+
+			setTimeout(() => atualizarGrafico(idRack, myLine), 2000);
+}
+
+	function atualizarGrafico(idRack, myLine) {
+
+
+
+	fetch(`/medidas/tempo-real/${idRack}`, { cache: 'no-store' }).then(function (response) {
+		if (response.ok) {
+			response.json().then(function (novoRegistro) {
+
+				console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+				console.log(`Dados atuais do gráfico:`);
+
+				if (novoRegistro[0].momento_grafico == myLine.data.labels[myLine.data.labels.length - 1]) {
+					console.log("---------------------------------------------------------------")
+					console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+					console.log("Horário do novo dado capturado:")
+					console.log(novoRegistro[0].momento_grafico)
+				} else {
+					// tirando e colocando valores no gráfico
+					myLine.data.labels.shift(); // apagar o primeiro
+					myLine.data.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+					myLine.data.datasets[0].data.shift();  // apagar o primeiro de umidade
+					myLine.data.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
+
+					myLine.data.datasets[1].data.shift();  // apagar o primeiro de temperatura
+					myLine.data.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de temperatura
+
+					myLine.update();
+				}
+
+				// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+				proximaAtualizacao = setTimeout(() => atualizarGrafico(idRack, myLine), 2000);
+			});
+		} else {
+			console.error('Nenhum dado encontrado ou erro na API');
+			// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+			proximaAtualizacao = setTimeout(() => atualizarGrafico(idRack, myLine), 2000);
+		}
+	})
+		.catch(function (error) {
+			console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+		});
+
+	}
+
+
 	const ctx = document.getElementById("myChart");
 	const bar2 = document.getElementById("bar2");
 	const bar3 = document.getElementById("bar3");
@@ -406,10 +627,10 @@
 	var myLine = new Chart(ctx, {
 		type: 'line',
 		data: {
-			labels: ["16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30"],
+			labels: [],
 			datasets: [
 				{
-					data: [20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55],
+					data: [],
 					label: "Temperatura",
 					fontSize: 15,
 					borderColor: "#ffa500",
@@ -417,7 +638,7 @@
 					fontSize: 160
 				},
 				{
-					data: [60, 70, 80, 50, 50, 40, 30, 40, 30, 90],
+					data: [],
 					label: "Umidade",
 					borderColor: "#2eb2ff",
 					fill: false
@@ -457,16 +678,16 @@
 	var myBar = new Chart(bar2, {
 		type: 'bar',
 		data: {
-			labels: ["Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+			labels: [],
 			datasets: [
 				{
-					data: [20.5, 23.7, 24.6, 25.7, 27.8, 30.55],
+					data: [],
 					label: "Temperatura média",
 					backgroundColor: "#ffa500",
 					fill: false
 				},
 				{
-					data: [55, 50, 45, 40, 40, 50, 70],
+					data: [],
 					label: "Umidade Média",
 					backgroundColor: "#2eb2ff",
 					fill: false
@@ -507,17 +728,17 @@
 	var myLine2 = new Chart(bar3, {
 		type: 'line',
 		data: {
-			labels: ["23-10-2023", "24-10-2023", "25-10-2023", "26-10-2023", "27-10-2023", "28-10-2023", "29-10-2023"],
+			labels: [],
 			datasets: [
 				{
-					data: [20.5, 23.7, 24.6, 25.7, 27.8, 18.5, 23.5, 27.5, 30.55],
+					data: [],
 					label: "Temperatura",
 					borderColor: "#ffa500",
 					backgroundColor: "#ffa500",
 					fill: true
 				},
 				{
-					data: [50, 60, 50, 50, 50, 40, 50, 40, 45, 80],
+					data: [],
 					label: "Umidade",
 					borderColor: "#2eb2ff",
 					backgroundColor: "#2eb2ff",

@@ -31,9 +31,12 @@
 	</div>
 
 	<div class="container" id="container">
+
 		<div class="form-container sign-up-container">
+
 			<form id="form_cadastro">
 				<h2 style="margin-bottom: 15px;">Cadastre-se</h2>
+
 				<div style="width: 60%;">
 					<input class="inputs" id="nome_cad" type="text" placeholder="Nome da Empresa" required
 						onblur="NomeValidacao()">
@@ -52,15 +55,16 @@
 					<span class="span-required">O CNPJ deve ter 14 dígitos</Span>
 
 					<input class="inputs" id="tel_cad" type="text" maxlength="14" placeholder="Telefone da Empresa"
-						required onblur="ValidarTel()">
+						required onblur="ValidarTel()"0>
 					<span class="span-required">Telefone Inválido</span>
-
 				</div>
 
 				<button onclick="cadastro(event)" style="margin-top: 20px; cursor: pointer;">Cadastro</button>
 
 			</form>
+
 		</div>
+
 		<div class="overlay-container">
 			<div class="overlay">
 
@@ -69,13 +73,16 @@
 					<p>Entre com seu Email e Senha para continuar</p>
 					<button onclick="signin()" id="logar" style="cursor: pointer;">Entrar</button>
 				</div>
+
 				<div class="overlay-panel overlay-right">
 					<h2>Olá, Bem Vindo!</h2>
 					<p>Conecte-se conosco para uma experiência incrível!</p>
 					<button onclick="signup()" id="cadastrar" style="cursor: pointer;">Cadastrar</button>
 				</div>
+
 			</div>
 		</div>
+
 		<div class="form-container entrar">
 			<form onsubmit="return false">
 				<h2>Entrar</h2>
@@ -92,8 +99,9 @@
 				;">Entrar</button>
 			</form>
 		</div>
+
 	</div>
-	</div>
+	<!-- </div> -->
 
 </body>
 

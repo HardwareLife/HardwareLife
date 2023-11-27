@@ -15,7 +15,7 @@
 
 <!-- <body> -->
 
-<body onload=" validarSessao()">
+<body onload=" validarSessao(), listar()">
 
     <div class="navbar" id="navbar">
         <div class="container_sidebar">
@@ -123,19 +123,13 @@
                 </span>
                 <button class="btn_form_cadastro" onclick="cadastrar()">Cadastrar</button>
             </form>
-            <div class="lista_funcionario">
+            
+            <div class="lista_funcionario" id="lista">
                 <div class="legendas">
-                    <p>ID</p>
                     <p>Nome</p>
                     <p>Email</p>
-                    <p>CPF</p>
+                    <p>Nível</p>
                 </div>
-                <span class="lista_item">
-                    <div class="item_id">1</div>
-                    <div class="item_nome">Giovana França</div>
-                    <div class="item_nome">Giovana@hardwarelife.com</div>
-                    <div class="item_nome">678.098.098-98</div>
-                </span>
             </div>
 
         </article>
@@ -208,8 +202,10 @@
 </body>
 <script>
     nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-	nome_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
+    nome_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
     var nivel = sessionStorage.TIPO_NIVEL;
+    var informacaoSala = JSON.parse(sessionStorage.SALAS);
+    var funcionarioDataCenter = []
 
     var activeSideBar = document.getElementById("side-bar-active");
     var deactiveSideBar = document.getElementById("side-bar-deactive");
@@ -224,6 +220,36 @@
         container.style.visibility = "visible";
     });
 
+    function listar() {
+        var idDatacenter = informacaoSala[0].fkDatacenter;
+
+        fetch(`/usuarios/listar/${idDatacenter}`)
+        .then(function (resultado) {
+            if(resultado.ok){
+                resultado.json().then(json => {
+                    console.log(json)
+                    funcionarioDataCenter = json
+                })
+            }
+        }).catch(function (resultado) {
+            
+        });
+    }
+
+    setTimeout(() => {
+        console.log("Entrando no timeout")
+
+        for(var i = 0; i < funcionarioDataCenter.length; i++){
+             
+            lista.innerHTML += `<div class="lista_item">
+                    <div class="item_nome">${funcionarioDataCenter[i].nome}</div>
+                    <div class="item_nome">${funcionarioDataCenter[i].email}</div>
+                    <div class="item_nome">${funcionarioDataCenter[i].tipoNivel}</div>
+                </div>`;
+        }
+
+    }, 500)
+
     // function validarNivel() {
     //     if (nivel == "CEO") {
     //         campo_unidade.style.display = "flex";
@@ -231,69 +257,68 @@
     //         card_secund.innerHTML += "Q MENTIRA"
     //     }
     // }
-    
+
     function cadastrar() {
-            var idUsuario = sessionStorage.ID_USUARIO;
-            var informacaoSala = JSON.parse(sessionStorage.SALAS);
-            var idDatacenter = informacaoSala[0].fkDatacenter;
-            var nomeFunc = nome_funcionario.value;
-            var sobrenomeFunc = nome_funcionario.value;
-            var cpfFunc = cpf_funcionario.value;
-            var emailFunc = email_funcionario.value;
-            var senhaFunc = senha_funcionario.value;
-            console.log(idDatacenter, informacaoSala)
-            if (nomeFunc === "" || sobrenomeFunc === "" || cpfFunc ===  ""
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var idDatacenter = informacaoSala[0].fkDatacenter;
+        var nomeFunc = nome_funcionario.value;
+        var sobrenomeFunc = nome_funcionario.value;
+        var cpfFunc = cpf_funcionario.value;
+        var emailFunc = email_funcionario.value;
+        var senhaFunc = senha_funcionario.value;
+        console.log(idDatacenter, informacaoSala)
+        if (nomeFunc === "" || sobrenomeFunc === "" || cpfFunc === ""
             || emailFunc === "" || senhaFunc === "") {
-                return false;
-            }else{
-                // setTimeout(() => {
-				// meuModal.style.display = "none";
-			    // }, 6000);
-            }
+            return false;
+        } else {
+            // setTimeout(() => {
+            // meuModal.style.display = "none";
+            // }, 6000);
+        }
 
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    nomeServer: nomeFunc,
-                    sobrenomeServer: sobrenomeFunc,
-                    cpfServer: cpfFunc,
-                    emailServer: emailFunc,
-                    senhaServer: senhaFunc,
-                    nivelServer: nivel,
-                    fkSuperiorServer: idUsuario,
-                    fkDataCenterServer:idDatacenter 
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeFunc,
+                sobrenomeServer: sobrenomeFunc,
+                cpfServer: cpfFunc,
+                emailServer: emailFunc,
+                senhaServer: senhaFunc,
+                nivelServer: nivel,
+                fkSuperiorServer: idUsuario,
+                fkDataCenterServer: idDatacenter
 
-                }),
+            }),
+        })
+
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                //     if (resposta.ok) {
+                //     // meuModal.style.display = "block";
+
+                //     successMessage.style.display = "block";
+
+                //     setTimeout(() => { signin() }, "1000");
+
+                //     // limparFormulario();
+                //     // finalizarAguardar();
+                // } else {
+                //     throw "Houve um erro ao tentar realizar o cadastro!";
+                //     // meuModal.style.display = "block";
+                //     erroMessage.style.display = "block";
+                //     // successMessage.innerHTML = `${json.mensagem}`;
+                // }
+
             })
+            .catch(function (resultado) {
+                console.log(`#ERRO: ${resultado}`);
+            });
 
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-
-                    //     if (resposta.ok) {
-                    //     // meuModal.style.display = "block";
-
-                    //     successMessage.style.display = "block";
-
-                    //     setTimeout(() => { signin() }, "1000");
-
-                    //     // limparFormulario();
-                    //     // finalizarAguardar();
-				    // } else {
-                    //     throw "Houve um erro ao tentar realizar o cadastro!";
-                    //     // meuModal.style.display = "block";
-                    //     erroMessage.style.display = "block";
-                    //     // successMessage.innerHTML = `${json.mensagem}`;
-				    // }
-
-                })
-                .catch(function (resultado) {
-                    console.log(`#ERRO: ${resultado}`);
-                });
-
-            return false; 
+        return false;
     }
 
     function mudarCard() {
@@ -312,7 +337,7 @@
         botao_voltar.style.display = "none";
     }
 
-    
+
 </script>
 
 </html>

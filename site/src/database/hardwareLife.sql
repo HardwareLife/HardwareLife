@@ -85,7 +85,7 @@ CREATE TABLE dados(
     constraint fkRackDados foreign key (fkRack) references sensor (fkRack)
 );
 
-DROP DATABASE hardwarelife;
+-- DROP DATABASE hardwarelife;
 -- GRANT ALL PRIVILEGES ON HardwareLife.* TO 'ceo'@'localhost';
 -- GRANT SELECT, UPDATE, INSERT, DELETE ON HardwareLife.* TO 'gestor'@'localhost';
 -- GRANT SELECT ON HardwareLife.* TO 'funcionario'@'localhost';

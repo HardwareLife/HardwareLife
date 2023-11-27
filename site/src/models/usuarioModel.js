@@ -25,7 +25,19 @@ function cadastrar(nome, sobrenome, email, senha, tipoNivel, idSuperior, idDataC
     return database.executar(instrucao);
 }
 
+function listarPorDatacenter(idDatacenter) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorDatacenter()");
+    var instrucao = `
+        SELECT idFuncionario, nome, email, tipoNivel FROM funcionario
+            JOIN datacenter ON fkDatacenter = idDatacenter
+                    WHERE fkDatacenter = ${idDatacenter};
+        `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     autenticar,
+    listarPorDatacenter,
     cadastrar
 };

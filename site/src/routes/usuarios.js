@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.get("/listar/:idDatacenter", function(req, res) {
+    usuarioController.listarFuncionario(req, res);
+});
+
 module.exports = router;

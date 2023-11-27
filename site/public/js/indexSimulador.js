@@ -69,22 +69,22 @@ var quantidadeSala = 0;
             somatorioServidores += eval("servidor_sala" + (i+1));
             somatorioRacks += eval("racks_sala" + (i+1));
             somatorioFuncionarios += eval("funcionario_sala" + (i+1));
-            // if(eval("area_sala" + (i+1)) == ''){
-            //     erro.innerHTML = `O valor da área da sala ${i+1} não pode ser vazio`;
-            //     return
-            // }
-            // if(eval("racks_sala" + (i+1)) == ''){
-            //     erro.innerHTML = `O valor da quantidade de racks da sala ${i+1} não pode ser vazio`;
-            //     return 
-            // }
-            // if(eval("servidor_sala" + (i+1)) == ''){
-            //     erro.innerHTML = `O valor da quantidade de servidores da sala ${i+1} não pode ser vazio`;
-            //     return
-            // }
-            // if(eval("funcionario_sala" + (i+1)) == ''){
-            //     erro.innerHTML = `O número de funcionários que frequentam a sala ${i+1} não pode ser vazio`;
-            //     return
-            // }
+            if(eval("area_sala" + (i+1)) == ''){
+                erro.innerHTML = `O valor da área da sala ${i+1} não pode ser vazio`;
+                return
+            }
+            if(eval("racks_sala" + (i+1)) == ''){
+                erro.innerHTML = `O valor da quantidade de racks da sala ${i+1} não pode ser vazio`;
+                return 
+            }
+            if(eval("servidor_sala" + (i+1)) == ''){
+                erro.innerHTML = `O valor da quantidade de servidores da sala ${i+1} não pode ser vazio`;
+                return
+            }
+            if(eval("funcionario_sala" + (i+1)) == ''){
+                erro.innerHTML = `O número de funcionários que frequentam a sala ${i+1} não pode ser vazio`;
+                return
+            }
         }
         
         // erro.innerHTML = ``
