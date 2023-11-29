@@ -19,7 +19,7 @@ const poolBancoDados = mysql.createPool(
 
 const inserirDadosSensor = async (temperatura, umidade, u , i) => {
     await poolBancoDados.execute(
-        'INSERT INTO dados (temperatura, umidade, fk_sensor, fkRack) VALUES (?, ?)',
+        'INSERT INTO dados (temperatura, umidade, fk_sensor, fkRack) VALUES (?, ?, ?, ?)',
         [temperatura, umidade, u, i]
     );
 }
@@ -86,3 +86,7 @@ arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', as
     app.listen(SERVIDOR_PORTA, () => {
         console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
     });
+
+    (async () => {
+        await serialport()
+    })

@@ -40,7 +40,7 @@ function buscarMedidasEmTempoReal(idRack) {
                     order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT d.temperatura, d.umidade, DATE_FORMAT(d.dataHora,'%H:%i:%s') as 'momento_grafico'
+        instrucaoSql = `SELECT d.temperatura, d.umidade, idSensor, DATE_FORMAT(d.dataHora,'%H:%i:%s') as 'momento_grafico'
         FROM dados as d JOIN sensor as s ON d.fk_sensor = s.idSensor JOIN rack as r ON s.fkRack = r.idRack 
         WHERE s.fkRack = ${idRack} order by idDados desc limit 2;`;
     } else {
