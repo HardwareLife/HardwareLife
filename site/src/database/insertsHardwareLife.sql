@@ -1,5 +1,10 @@
 USE HardwareLife;
 
+INSERT INTO dados(temperatura, umidade, fk_sensor, fkRack) VALUES (33,null, 7, 5),(null,55,6,5);
+
+SELECT d.temperatura, d.umidade, idSensor, DATE_FORMAT(d.dataHora,'%H:%i:%s') as 'momento_grafico'
+        FROM dados as d JOIN sensor as s ON d.fk_sensor = s.idSensor JOIN rack as r ON s.fkRack = r.idRack 
+        WHERE s.fkRack = 5 order by idDados desc limit 2;
 INSERT INTO empresa VALUES
 (null, '06.990.590/0001-23' ,'Google Brasil','Google Brasil Internet LTDA','GOOGLEBRASIL@GOOGLE.COM', '(11)2395-8400'),
 (null, '00.623.904/0001-73','Apple Brasil','Apple Computer Brasil Ltda.','FISCAL@APPLE.COM','(11)5503-0000');
@@ -10,26 +15,25 @@ INSERT INTO datacenter VALUES
 
 INSERT INTO funcionario VALUES
 (null, 'Leonardo', 'Arakaki', '12345678910123', 'leonardo.arakaki@hardwarelife.com','123', 'CEO' , null, 1),
-(null, 'Willians', 'Vinicius', '12345768910123', 'willians.vinicius@hardwarelife.com','123', 'CEO', null, 2);
+(null, 'Willians', 'Vinicius', '12345768910123', 'willians.vinicius@hardwarelife.com','123', 'CEO', null, 1);
 INSERT INTO funcionario VALUES
-(null, 'Giovanna', 'Franca', '12354678910123', 'giovanna.franca@hardwarelife.com','123', 'Gestor', 2, 2),
+(null, 'Giovanna', 'Franca', '12354678910123', 'giovanna.franca@hardwarelife.com','123', 'Gestor', 2, 1),
 (null, 'Ian', 'Silva', '12254678910133', 'ian.silva@hardwarelife.com','123', 'Gestor', 1, 1),
-(null, 'Julia', 'Camargo', '12345678911123', 'julia.camargo@hardwarelife.com','123', 'Funcionario', 3, 2),
+(null, 'Julia', 'Camargo', '12345678911123', 'julia.camargo@hardwarelife.com','123', 'Funcionario', 3, 1),
 (null, 'Ana', 'Beatriz', '12354768910123', 'ana.beatriz@hardwarelife.com','123', 'Funcionario', 4, 1);
 
 
 INSERT INTO sala VALUES 
 (null, 1, 1), 
-(null, 1, 2), 
 (null, 2, 1), 
-(null, 2, 2);
+(null, 3, 1), 
+(null, 4, 1);
 
 INSERT INTO rack VALUES 
 (null, 1, 1), (null, 2, 1),
 (null, 1, 2), (null, 2, 2),
 (null, 1, 3), (null, 2, 3),
 (null, 1, 4), (null, 2, 4);
-
 INSERT INTO sensor VALUES
 (1, 'LM35', 'Temperatura', 1, 1, 1, 1), (2, 'LM35','Temperatura', 1, 2, 1, 1), (3, 'LM35','Temperatura',1, 1, 2, 1), (4, 'LM35','Temperatura',1, 2, 2, 1), (5, 'LM35','Temperatura',1, 1, 3, 1),(6, 'LM35','Temperatura',1, 2, 3, 1),(7, 'DHT11', 'Umidade',1,1,4, 1),
 
@@ -575,6 +579,8 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,1,1),
 (null, '2023-11-23 10:04:00', 27.7,null,1,1),
 (null, '2023-11-23 10:05:00', 27.3,null,1,1),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,1),
+
 
 (null, '2023-11-23 10:00:00', 27.3,null,2,1),
 (null, '2023-11-23 10:01:00', 28.1,null,2,1),
@@ -582,6 +588,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,2,1),
 (null, '2023-11-23 10:04:00', 27.7,null,2,1),
 (null, '2023-11-23 10:05:00', 27.3,null,2,1),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,1),
 
 (null, '2023-11-23 10:00:00', 27.3,null,3,1),
 (null, '2023-11-23 10:01:00', 28.1,null,3,1),
@@ -589,6 +596,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,3,1),
 (null, '2023-11-23 10:04:00', 27.7,null,3,1),
 (null, '2023-11-23 10:05:00',  27.3,null,3,1),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,1),
 
 (null, '2023-11-23 10:00:00', 27.3, null,1,2),
 (null, '2023-11-23 10:01:00',  28.1,null,1,2),
@@ -596,6 +604,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,1,2),
 (null, '2023-11-23 10:04:00', 27.7,null,1,2),
 (null, '2023-11-23 10:05:00', 27.3,null,1,2),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,2),
 
 (null, '2023-11-23 10:00:00', 27.3,null,2,2),
 (null, '2023-11-23 10:01:00', 28.1,null,2,2),
@@ -603,6 +612,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,2,2),
 (null, '2023-11-23 10:04:00', 27.7,null,2,2),
 (null, '2023-11-23 10:05:00', 27.3,null,2,2),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,2),
 
 (null, '2023-11-23 10:00:00', 27.3,null,3,2),
 (null, '2023-11-23 10:01:00', 28.1,null,3,2),
@@ -610,6 +620,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,3,2),
 (null, '2023-11-23 10:04:00', 27.7,null,3,2),
 (null, '2023-11-23 10:05:00',  27.3,null,3,2),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,2),
 
 (null, '2023-11-23 10:00:00', 27.3, null,1,3),
 (null, '2023-11-23 10:01:00',  28.1,null,1,3),
@@ -624,6 +635,8 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,2,3),
 (null, '2023-11-23 10:04:00', 27.7,null,2,3),
 (null, '2023-11-23 10:05:00', 27.3,null,2,3),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,3),
+
 
 (null, '2023-11-23 10:00:00', 27.3,null,3,3),
 (null, '2023-11-23 10:01:00', 28.1,null,3,3),
@@ -631,6 +644,8 @@ INSERT INTO dados VALUES
 (null, '2023-11-23 10:03:00', 28.0,null,3,3),
 (null, '2023-11-23 10:04:00', 27.7,null,3,3),
 (null, '2023-11-23 10:05:00',  27.3,null,3,3),
+(null, '2023-11-23 10:06:00', null, 50.0, 7,3),
+
 
 (null, '2023-11-23 10:00:00', 27.3, null,1,4),
 (null, '2023-11-23 10:01:00',  28.1,null,2,4),
@@ -678,7 +693,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-24 10:03:00', 28.0,null,4,1),
 (null, '2023-11-24 10:04:00', 27.7,null,5,1),
 (null, '2023-11-24 10:05:00', 27.3,null,6,1),
-(null, '2023-11-25 10:06:00', null, 48.6, 7,1),
+(null, '2023-11-24 10:06:00', null, 48.6, 7,1),
 
 (null, '2023-11-24 10:00:00', 27.3,null,1,2),
 (null, '2023-11-24 10:01:00', 28.1,null,2,2),
@@ -686,7 +701,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-24 10:03:00', 28.0,null,4,2),
 (null, '2023-11-24 10:04:00', 27.7,null,5,2),
 (null, '2023-11-24 10:05:00', 27.3,null,6,2),
-(null, '2023-11-25 10:06:00', null, 48.6, 7,2),
+(null, '2023-11-24 10:06:00', null, 48.6, 7,2),
 
 (null, '2023-11-24 10:00:00', 27.3,null,1,3),
 (null, '2023-11-24 10:01:00', 28.1,null,2,3),
@@ -694,7 +709,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-24 10:03:00', 28.0,null,4,3),
 (null, '2023-11-24 10:04:00', 27.7,null,5,3),
 (null, '2023-11-24 10:05:00',  27.3,null,6,3),
-(null, '2023-11-25 10:06:00', null, 48.6, 7,3),
+(null, '2023-11-24 10:06:00', null, 48.6, 7,3),
 
 (null, '2023-11-24 10:00:00', 27.3, null,1,4),
 (null, '2023-11-24 10:01:00',  28.1,null,2,4),
@@ -854,7 +869,7 @@ INSERT INTO dados VALUES
 (null, '2023-11-26 10:03:00', 28.0,null,4,7),
 (null, '2023-11-26 10:04:00', 27.7,null,5,7),
 (null, '2023-11-26 10:05:00',  27.3,null,6,7),
-(null, '2023-11-25 10:06:00', null, 45.6, 7,7),
+(null, '2023-11-26 10:06:00', null, 45.6, 7,7),
 
 (null, '2023-11-26 10:00:00', 35.7,null,1,8),
 (null, '2023-11-26 10:01:00', 35.9,null,2,8),

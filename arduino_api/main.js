@@ -6,6 +6,7 @@ const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3000;
 const HABILITAR_OPERACAO_INSERIR = true;
 
+const serial = async () => {
 const poolBancoDados = mysql.createPool(
     {
         host: 'localhost',
@@ -27,9 +28,9 @@ const salvarDados = (temperatura, umidade) => {
      
     if (HABILITAR_OPERACAO_INSERIR) {
         for(var i = 1; i <= 8; i++){
-            let temperaturaSensor = temperatura
-            let umidadeSensor = umidade
             for(var u = 1; u <= 7; u++){
+                let temperaturaSensor = temperatura
+                let umidadeSensor = umidade
                 if(u == 1 && u < 7){
                     if(i == 1 || i == 2){
                         temperaturaSensor * 1.60
@@ -80,7 +81,7 @@ arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', as
     arduino.on('error', (mensagem) => {
         console.error(`Erro no arduino (Mensagem: ${mensagem}`)
     });
-
+}
     const app = express();
     app.listen(SERVIDOR_PORTA, () => {
         console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
