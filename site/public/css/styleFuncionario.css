@@ -433,34 +433,46 @@ body {
     padding: 20px 10px 0 10px;
     gap: 10px;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
 }
 
 .lista_funcionario .legendas{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 100px 0 50px;
+    padding: 0 10% 0 10%;
 }
 
-.lista_funcionario .legendas p:first-child{
+/* .lista_funcionario .legendas p:first-child{
     margin-right: -75px;
 }
 
 .lista_funcionario .legendas p:nth-child(3){
     margin-right: 50px;
-}
+} */
 
 .lista_funcionario .lista_item{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    /* justify-content: space-between; */
     background-color: #E4E6EF;
     height: 40px;
     max-height: 40px;
-    border-radius: 10px 10px 0 0 ;
+    border-radius: 10px 10px 0 0;
     scroll-snap-align: start;
     margin-bottom: 10px;
+    /* padding: 0 5%; */
+    gap: 5%;
+}
+
+.lista_item .item_nome{
+    display: flex;
+    justify-content: center;
+    /* align-self: center; */
+    width: 25%;
+}
+
+.lista_item .item_nome:nth-child(2){
+    width: 40%;
 }
 
 .lista_funcionario::-webkit-scrollbar {
