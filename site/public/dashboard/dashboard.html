@@ -8,10 +8,15 @@
 	<link rel="stylesheet" href="../css/dashboardStyle.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="../js/sessao.js"></script>
+	<script src="../js/alerta.js"></script>
 </head>
 
 <!-- <body> -->
 <body onload=" validarSessao(), exibirSalas()">
+
+	<div class="card-alerta" id="card_alerta">
+		
+	</div>
 
 	<div class="navbar" id="navbar">
 		<div class="container_sidebar">
@@ -607,11 +612,11 @@
 						umidadeSensor = umidadeSensor * 0.8
 					}
 
-					temperaturaSensor2 = Math.random() * 0.05 + temperaturaSensor
-					temperaturaSensor3 = Math.random() * 0.04 + temperaturaSensor
-					temperaturaSensor4 = Math.random() * 0.03 + temperaturaSensor
-					temperaturaSensor5 = Math.random() * -0.03 + temperaturaSensor
-					temperaturaSensor6 = Math.random() * -0.04 + temperaturaSensor
+					temperaturaSensor2 = Math.random() * 0.5 + temperaturaSensor
+					temperaturaSensor3 = Math.random() * 0.4 + temperaturaSensor
+					temperaturaSensor4 = Math.random() * 0.3 + temperaturaSensor
+					temperaturaSensor5 = Math.random() * -0.3 + temperaturaSensor
+					temperaturaSensor6 = Math.random() * -0.4 + temperaturaSensor
 					
 					myLine.data.labels.shift();
 					myLine.data.labels.push(novoRegistro[0].momento_grafico);
@@ -629,6 +634,8 @@
 					// console.log("Sensor 4", temperaturaSensor4)
 					// console.log("Sensor 5", temperaturaSensor5)
 					// console.log("Sensor 6", temperaturaSensor6)
+
+					alertar(temperaturaSensor, umidadeSensor, idRack)
 				}
 
 				// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
