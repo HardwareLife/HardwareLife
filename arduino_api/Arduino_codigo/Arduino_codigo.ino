@@ -1,7 +1,7 @@
 #include <DHT.h>
 
-#define DHTPIN A1
-#define LM35PIN A0
+#define DHTPIN A4
+#define LM35PIN A1
 
 DHT dht(DHTPIN, DHT11);
 

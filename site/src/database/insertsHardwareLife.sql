@@ -1,7 +1,5 @@
 USE HardwareLife;
 
-INSERT INTO dados(temperatura, umidade, fk_sensor, fkRack) VALUES (33,null, 7, 5),(null,55,6,5);
-
 SELECT d.temperatura, d.umidade, idSensor, DATE_FORMAT(d.dataHora,'%H:%i:%s') as 'momento_grafico'
         FROM dados as d JOIN sensor as s ON d.fk_sensor = s.idSensor JOIN rack as r ON s.fkRack = r.idRack 
         WHERE s.fkRack = 5 order by idDados desc limit 2;

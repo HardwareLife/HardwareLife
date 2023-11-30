@@ -13,7 +13,7 @@ const poolBancoDados = mysql.createPool(
         port: 3306,
         user: 'aluno',
         password: 'sptech',
-        database: 'metricas'
+        database: 'hardwarelife'
     }
 ).promise();
 
@@ -29,26 +29,12 @@ const salvarDados = (temperatura, umidade) => {
     if (HABILITAR_OPERACAO_INSERIR) {
         for(var i = 1; i <= 8; i++){
             for(var u = 1; u <= 7; u++){
-                let temperaturaSensor = temperatura
-                let umidadeSensor = umidade
-                if(u == 1 && u < 7){
-                    if(i == 1 || i == 2){
-                        temperaturaSensor * 1.60
-                    }else if(i <= 4){
-                        temperaturaSensor * 1.45
-                    }else if(i > 6){
-                        temperaturaSensor * 0.8
-                    }
-                    inserirDadosSensor(temperaturaSensor, null, u, i);
+                if(u >= 1 && u < 7){
+                    console.log("Inserindo temperatura", temperatura)
+                    inserirDadosSensor(temperatura, null, u, i);
                 }else{
-                    if(i == 1 || i == 2){
-                        umidadeSensor * 1.60
-                    }else if(i <= 4){
-                        umidadeSensor * 1.45
-                    }else if(i > 6){
-                        umidadeSensor * 0.8
-                    }
-                    inserirDadosSensor(null, umidadeSensor, u, i);
+                    console.log("Inserindo Umidade", umidade)
+                    inserirDadosSensor(null, umidade, u, i);
                 }
             }
         }
@@ -88,5 +74,5 @@ arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', as
     });
 
     (async () => {
-        await serialport()
-    })
+        await serial()
+    })()

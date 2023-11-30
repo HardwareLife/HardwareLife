@@ -579,9 +579,8 @@
 }
 
 	function atualizarGrafico(idRack, myLine) {
-		idRack != 5 && idRack != 6 ?  sensoresSimulados(idRack, myLine)
-		:
-	 fetch(`/medidas/tempo-real/${idRack}`, { cache: 'no-store' }).then(function (response) {
+	
+		fetch(`/medidas/tempo-real/${idRack}`, { cache: 'no-store' }).then(function (response) {
 		if (response.ok) {
 			response.json().then(function (novoRegistro) {
 
@@ -598,11 +597,22 @@
 					temperaturaSensor = novoRegistro[1].temperatura;
 					umidadeSensor = novoRegistro[0].umidade;
 
-					temperaturaSensor2 = novoRegistro[1].temperatura * 0.05 + temperaturaSensor
-					temperaturaSensor3 = novoRegistro[1].temperatura * 0.04 + temperaturaSensor
-					temperaturaSensor4 = novoRegistro[1].temperatura * 0.03 + temperaturaSensor
-					temperaturaSensor5 = novoRegistro[1].temperatura * -0.03 + temperaturaSensor
-					temperaturaSensor6 = novoRegistro[1].temperatura * -0.04 + temperaturaSensor
+					if(idRack == 1 || idRack == 2){
+						temperaturaSensor = temperaturaSensor * 1.6
+						umidadeSensor = umidadeSensor * 1.6
+					}else if(idRack == 3 || idRack == 4){
+						temperaturaSensor = temperaturaSensor * 1.2
+						umidadeSensor = umidadeSensor * 1.2
+					}else if(idRack == 7 || idRack == 8){
+						temperaturaSensor = temperaturaSensor * 0.6
+						umidadeSensor = umidadeSensor * 0.8
+					}
+
+					temperaturaSensor2 = Math.random() * 0.05 + temperaturaSensor
+					temperaturaSensor3 = Math.random() * 0.04 + temperaturaSensor
+					temperaturaSensor4 = Math.random() * 0.03 + temperaturaSensor
+					temperaturaSensor5 = Math.random() * -0.03 + temperaturaSensor
+					temperaturaSensor6 = Math.random() * -0.04 + temperaturaSensor
 					
 					myLine.data.labels.shift();
 					myLine.data.labels.push(novoRegistro[0].momento_grafico);
@@ -614,12 +624,12 @@
 					myLine.data.datasets[1].data.push(umidadeSensor);
 
 					myLine.update();
-					console.log(temperaturaSensor, umidadeSensor)
-					console.log("Sensor 2", temperaturaSensor2)
-					console.log("Sensor 3", temperaturaSensor3)
-					console.log("Sensor 4", temperaturaSensor4)
-					console.log("Sensor 5", temperaturaSensor5)
-					console.log("Sensor 6", temperaturaSensor6)
+					// console.log(temperaturaSensor, umidadeSensor)
+					// console.log("Sensor 2", temperaturaSensor2)
+					// console.log("Sensor 3", temperaturaSensor3)
+					// console.log("Sensor 4", temperaturaSensor4)
+					// console.log("Sensor 5", temperaturaSensor5)
+					// console.log("Sensor 6", temperaturaSensor6)
 				}
 
 				// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
@@ -634,77 +644,6 @@
 		.catch(function (error) {
 			console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
 		});
-
-	}
-
-	function sensoresSimulados(idRack, myLine){
-		var temperaturaSimulada1;
-		var umidadeSimulada;
-		var temperaturaSimulada2;
-		var temperaturaSimulada2;
-		var temperaturaSimulada3;
-		var temperaturaSimulada4;
-		var temperaturaSimulada5;
-		var temperaturaSimulada6;
-
-		if(idRack == 1 || idRack == 2){
-			temperaturaSimulada1 = temperaturaSimulada2 = temperaturaSimulada3 = temperaturaSimulada4 = temperaturaSimulada5 = temperaturaSimulada6 = 43
-			umidadeSimulada = 84
-		}else if(idRack == 3 || idRack == 4){
-			temperaturaSimulada1 = temperaturaSimulada2 = temperaturaSimulada3 = temperaturaSimulada4 = temperaturaSimulada5 = temperaturaSimulada6 = 37
-			umidadeSimulada = 75
-		}else if(idRack == 7 || idRack == 8){
-			temperaturaSimulada1 = temperaturaSimulada2 = temperaturaSimulada3 = temperaturaSimulada4 = temperaturaSimulada5 = temperaturaSimulada6 = 21
-			umidadeSimulada = 34
-		}
-		var numeroAleatorio = Math.floor(Math.random() * 100 +1);
-		if(numeroAleatorio % 2 == 0){
-			t1 = Math.random() *  -0.5 + temperaturaSimulada1
-			u1 = Math.random() * -0.5 + umidadeSimulada
-			t2 = Math.random() * -0.5 + temperaturaSimulada2
-			t3 = Math.random() * -0.5 + temperaturaSimulada3
-			t4 = Math.random() * -0.5 + temperaturaSimulada4
-			t5 = Math.random() * -0.5 + temperaturaSimulada5
-			t6 = Math.random() * -0.5 + temperaturaSimulada6
-			
-			temperaturaSimulada1 = t1;
-			umidadeSimulada1 = u1;
-		}else{
-			t1 = Math.random() * 0.5 + temperaturaSimulada1
-			u1 = Math.random() * 0.5 + umidadeSimulada;
-			t2 = Math.random() * 0.5 + temperaturaSimulada2
-			t3 = Math.random() * 0.5 + temperaturaSimulada3
-			t4 = Math.random() * 0.5 + temperaturaSimulada4
-			t5 = Math.random() * 0.5 + temperaturaSimulada5
-			t6 = Math.random() * 0.5 + temperaturaSimulada6
-			
-			temperaturaSimulada1 = t1;
-			umidadeSimulada1 = u1;
-		}
-
-		let dataAtual = new Date();
-
-		console.log(`${dataAtual.getHours()}:${dataAtual.getMinutes()}:${dataAtual.getSeconds()}`)
-		console.log("Sensor 1:", t1)
-		console.log("Sensor 2:", t2)
-		console.log("Sensor 3:", t3)
-		console.log("Sensor 3:", t3)
-		console.log("Sensor 5:", t5)
-		console.log("Sensor 6:", t6)
-		console.log("Sensor 7:", u1)
-
-		myLine.data.labels.shift(); // apagar o primeiro
-		myLine.data.labels.push(`${dataAtual.getHours()}:${dataAtual.getMinutes()}:${dataAtual.getSeconds()}`); // incluir um novo momento
-
-		myLine.data.datasets[0].data.shift();  // apagar o primeiro de umidade
-		myLine.data.datasets[0].data.push(temperaturaSimulada1); // incluir uma nova medida de umidade
-
-		myLine.data.datasets[1].data.shift();  // apagar o primeiro de temperatura
-		myLine.data.datasets[1].data.push(umidadeSimulada1); // incluir uma nova medida de temperatura
-
-		myLine.update();
-
-		atualizacaoSimulada = setTimeout(() => atualizarGrafico(idRack, myLine), 1000);
 
 	}
 
