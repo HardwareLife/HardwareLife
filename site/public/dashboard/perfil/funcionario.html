@@ -81,16 +81,16 @@
                     <span><img src="../../assets/perfil/location.svg" alt="icone">Jundiai - São Paulo</span>
                     <span><img src="../../assets/perfil/phone.svg" alt="icone">(11) 4296-2589</span>
                     <span><img src="../../assets/perfil/emai.svg" alt="icone">amazon@hardwarelife.com</span>
-                    <button class="button_perfil" onclick="mudarCard()" id="botao_perfil">Editar Perfil</button>
+                    <!-- <button class="button_perfil" onclick="mudarCard()" id="botao_perfil">Editar Perfil</button>
                     <button class="button_perfil" onclick="voltarCard()" id="botao_voltar"
-                        style="display: none;">Voltar</button>
+                        style="display: none;">Voltar</button> -->
                 </div>
 
             </div>
         </article>
         <article class="card-secund" id="card_secund">
             <form action="" class="formulario_cadastro" onsubmit="return false">
-                <span class="titulo_cadastro" id="titulo_cadastro">Cadastrar Novo Gestor:</span>
+                <span class="titulo_cadastro" id="titulo_cadastro">Cadastrar Novo Funcionário:</span>
                 <span class="campos_cadastros" id="campos_cadastros">
                     <div class="campo">
                         <label for="nome_funcionario">Nome:</label>
@@ -134,7 +134,7 @@
 
         </article>
 
-        <article class="card-secund" id="card_endereco" style="display: none;">
+        <!-- <article class="card-secund" id="card_endereco" style="display: none;">
             <form action="" class="formulario_cadastro cadastro_perfil">
                 <span class="titulo_cadastro" id="titulo_cadastro">Cadastrar Informações do Perfil:</span>
                 <span class="campos_cadastros" id="campos_cadastros">
@@ -197,10 +197,11 @@
                 </span>
             </div>
 
-        </article>
+        </article> -->
     </div>
 </body>
 <script>
+    var idUsuario = sessionStorage.ID_USUARIO;
     nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     nome_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
     var nivel = sessionStorage.TIPO_NIVEL;
@@ -240,12 +241,15 @@
         console.log("Entrando no timeout")
 
         for(var i = 0; i < funcionarioDataCenter.length; i++){
-             
-            lista.innerHTML += `<div class="lista_item">
+
+            if (funcionarioDataCenter[i].idFuncionario != idUsuario) {
+                lista.innerHTML += `
+            <div class="lista_item">
                     <div class="item_nome">${funcionarioDataCenter[i].nome}</div>
                     <div class="item_nome">${funcionarioDataCenter[i].email}</div>
                     <div class="item_nome">${funcionarioDataCenter[i].tipoNivel}</div>
                 </div>`;
+            }   
         }
 
     }, 500)
@@ -321,21 +325,21 @@
         return false;
     }
 
-    function mudarCard() {
-        card_secund.style.display = "none";
-        // card_endereco.style.transition = "2s";
-        card_endereco.style.display = "flex";
-        botao_perfil.style.display = "none";
-        botao_voltar.style.display = "flex";
-    }
+    // function mudarCard() {
+    //     card_secund.style.display = "none";
+    //     // card_endereco.style.transition = "2s";
+    //     card_endereco.style.display = "flex";
+    //     botao_perfil.style.display = "none";
+    //     botao_voltar.style.display = "flex";
+    // }
 
-    function voltarCard() {
-        card_secund.style.display = "flex";
-        // card_endereco.style.transition = "2s";
-        card_endereco.style.display = "none";
-        botao_perfil.style.display = "flex";
-        botao_voltar.style.display = "none";
-    }
+    // function voltarCard() {
+    //     card_secund.style.display = "flex";
+    //     // card_endereco.style.transition = "2s";
+    //     card_endereco.style.display = "none";
+    //     botao_perfil.style.display = "flex";
+    //     botao_voltar.style.display = "none";
+    // }
 
 
 </script>

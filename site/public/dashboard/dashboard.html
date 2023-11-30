@@ -579,8 +579,7 @@
 }
 
 	function atualizarGrafico(idRack, myLine) {
-	
-		fetch(`/medidas/tempo-real/${idRack}`, { cache: 'no-store' }).then(function (response) {
+	 fetch(`/medidas/tempo-real/${idRack}`, { cache: 'no-store' }).then(function (response) {
 		if (response.ok) {
 			response.json().then(function (novoRegistro) {
 
