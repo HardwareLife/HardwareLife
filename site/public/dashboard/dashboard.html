@@ -15,7 +15,7 @@
 <body onload=" validarSessao(), exibirSalas()">
 
 	<div class="card_alerta" id="card_alerta">
-		
+	
 	</div>
 
 	<div class="navbar" id="navbar">
@@ -69,11 +69,11 @@
 		</div>
 	</div>
 
-	<div class="div_desc" style="display: none;">
+	<div class="div_desc" >
 		<p>Aqui você poderá vizualizar todas as salas cadastradas:</p>
 	</div>
 
-	<div class="suporte" id="modalSuporte">
+	<!-- <div class="suporte" id="modalSuporte">
 		<div class="suporte_title">
 			<i id="suporte" class="fa fa-window-close"></i>
 		</div>
@@ -81,7 +81,7 @@
 		src='https://app.pipefy.com/public/form/2Kv8Bdqt?embedded=true'
 		frameborder='0'
 		></iframe>
-	</div>
+	</div> -->
 
 	<!-- tela inicial: sala - situação  -->
 	<div class="dashboard">
@@ -112,7 +112,7 @@
 		<p>Estado: Critico</p>
 	</div>
 
-	<div class="dashboard_sala" style="display: flex;">
+	<div class="dashboard_sala">
 
 		<div class="separacao_superior">
 			<div class="botao">
@@ -306,31 +306,31 @@
 							<h3>Visualização de cada sensor do rack</h3>
 							<div class="racks">
 								<div class="sensor">
-									<div class="esfera_ideal"></div>
+									<div class="esfera_ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal"></div>
+									<div class="esfera_ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal"></div>
+									<div class="esfera_ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal"></div>
+									<div class="esfera_ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal"></div>
+									<div class="esfera_ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal"></div>
+									<div class="esfera_ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_umidade_ideal"></div>
+									<div class="esfera_umidade_ideal umidade"></div>
 									<p>Umidade</p>
 								</div>
 							</div>
@@ -424,7 +424,7 @@
 	// Crir json com as salas como no codigo a cima; Colocar o codigo da rack aqui dentro
 	// JSON.parse(sessionStorage.SALAS).forEach(item)
 	function chamar_salas(sala) {
-		lista_rack.innerHTML = ""
+		
 		JSON.parse(sessionStorage.SALAS).forEach(salas=>{
 			var idSala = sala.getAttribute("value");
 
@@ -444,7 +444,7 @@
 
 				</div>
 				`
-				
+				// obterDadosGrafico(salas.idRack)
 			}
 
 		})
@@ -652,7 +652,7 @@
 					// console.log("Sensor 5", temperaturaSensor5)
 					// console.log("Sensor 6", temperaturaSensor6)
 
-					alertar(temperaturaSensor, umidadeSensor, idRack)
+					alertar(temperaturaSensor, idRack)
 				}
 
 				// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar

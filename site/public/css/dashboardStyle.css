@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Istok+Web&family=Poppins:wght@100;300;400&display=swap');
+:root{
+    --critico_qt: #ff0000;
+    --emergencia_qt: #ffa600;
+    --alerta_qt: #cfcf0b;
+    --ideal: #008000;
+    --alerta_fr: #19e5e6;
+    --emergencia_fr: #10b8d6;
+    --critico_fr: #191970;
+}
 
 *{
     padding: 0;
@@ -7,11 +16,53 @@
 }
 
 body {  
+    display: grid;
     height: 100vh;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(155deg, rgb(5, 0, 90) 8%, rgb(51, 73, 237) 50%, rgb(6, 0, 110) 100%) 
     /*no-repeat*/;
+}
+
+/* Notificação */
+
+.card_alerta{
+    position: fixed;
+    display: flex;
+    width: 30%;
+    height: 15%;
+    justify-self: end;
+    margin: 1% 2% 0 0;
+    border-radius: 20px;
+}
+
+
+.critico_qt{
+    background-color: var(--critico_qt);
+}
+
+.emergencia_qt{
+    background-color: var(--emergencia_qt);
+}
+
+.alerta_qt{
+    background-color: var(--alerta_qt);
+}
+
+.ideal{
+    background-color: var(--ideal);
+}
+
+.alerta_fr{
+    background-color: var(--alerta_fr);
+}
+
+.emergencia_fr{
+    background-color: var(--emergencia_fr);
+}
+
+.critico_fr{
+    background-color: var(--critico_fr);
 }
 
 /* cabeçalho */
@@ -486,32 +537,33 @@ body {
 }
 
 .red {
-    color: red;
+    color: var(--critico_qt);
 }
 
 .orange{
-    color: rgb(255, 166, 0);
+    color: var(--emergencia_qt);
 }
 
 .yellow{
-    color: rgb(207, 207, 11);
+    color: var(--alerta_qt);
 }
 
 .green{
-    color: green;
+    color: var(--ideal);
 }
 
 .ciano{
-    color: #19e5e6;
+    color: var(--alerta_fr);
 }
 
 .blue{
-    color: rgb(16, 184, 214)
+    color: var(--emergencia_fr);
 }
 
 .blueStrong{
-    color: #191970;
+    color: var(--critico_fr);
 }
+
 /* graficos sala - fim */
 
 /* racks */
@@ -721,59 +773,33 @@ body {
 
 /* Bolinhas sensores */
 
-.esfera_ideal{
+.esfera{
     width: 20px;
     height: 20px;
-    background-color: green;
     border-radius: 50%;
     margin-top: 2px;
 }
 
-.esfera_irregular{
-    width: 20px;
-    height: 20px;
-    background-color: rgb(243, 197, 14);
-    border-radius: 50%;
-    margin-top: 2px;
-}
-
-.esfera_critica{
-    width: 20px;
-    height: 20px;
-    background-color: rgb(176, 2, 2);
-    border-radius: 50%;
-    margin-top: 2px;
-}
-
-.esfera_umidade_ideal{
+.umidade{
     width: 24px;
     height: 24px;
-    background-image: url(../assets/dashboard/gota-de-agua.png);
     border-radius: 50%;
     /* margin-top: 0px; */
 }
 
+.esfera_umidade_ideal{
+    background-image: url(../assets/dashboard/gota-de-agua.png);
+}
+
 .esfera_umidade_alerta{
-    width: 24px;
-    height: 24px;
     background-image: url(../assets/dashboard/gota-de-agua-alerta.png);
-    border-radius: 50%;
-    /* margin-top: 2px; */
 }
 
 .esfera_umidade_emergencia{
-    width: 24px;
-    height: 24px;
     background-image: url(../assets/dashboard/gota-de-agua-emer.png);
-    border-radius: 50%;
-    /* margin-top: 2px; */
 }
 .esfera_umidade_critico{
-    width: 24px;
-    height: 24px;
     background-image: url(../assets/dashboard/gota-de-agua-critica.png);
-    border-radius: 50%;
-    /* margin-top: 2px; */
 }
 
 .rack_esquerda {

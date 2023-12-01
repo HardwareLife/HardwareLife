@@ -34,46 +34,46 @@ function alertar(temperaturaSensor, idRack) {
         critico_frio: 18
     };
 
-    var classe_temperatura = 'esfera_ideal';
+    var classe_temperatura = 'ideal';
 
     if (temp >= limites.critico_quente) {
-        classe_temperatura = 'esfera_critica';
+        classe_temperatura = 'critico_qt';
         grauDeAviso = 'Temperaturas muito elevadas'
-        grauDeAvisoCor = 'esfera_critica'
+        grauDeAvisoCor = 'critico_qt'
         exibirAlerta(temp, idRack, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp < limites.critico_quente && temp >= limites.emer_quente) {
-        classe_temperatura = 'esfera_emer';
+        classe_temperatura = 'emergencia_qt';
         grauDeAviso = 'Temperaturas elevadas'
-        grauDeAvisoCor = 'esfera_emer'
+        grauDeAvisoCor = 'emergencia_qt'
         exibirAlerta(temp, idRack, grauDeAviso, grauDeAvisoCor)
     }
     else if(temp < limites.emer_quente && temp >= limites.alert_quente){
-        classe_temperatura = 'esfera_irregular';
+        classe_temperatura = 'alerta_qt';
         grauDeAviso = 'Temperaturas estão ficando elevadas'
-        grauDeAvisoCor = 'esfera_irregular'
+        grauDeAvisoCor = 'alerta_qt'
         exibirAlerta(temp, idRack, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp < limites.alert_quente && temp > limites.alert_frio) {
-        classe_temperatura = 'esfera_ideal';
+        classe_temperatura = 'ideal';
         removerAlerta(idRack);
 
     }else if(temp < limites.alert_frio && temp > limites.emer_frio){
-        classe_temperatura = 'esfera_irregular';
+        classe_temperatura = 'alerta_fr';
         grauDeAviso = 'Temperaturas estão ficando abaixo do esperado'
-        grauDeAvisoCor = 'esfera_emer'
+        grauDeAvisoCor = 'alerta_fr'
         exibirAlerta(temp, idRack, grauDeAviso, grauDeAvisoCor)
     }
-    else if (temp <= emer_frio && temp > limites.critico_frio) {
-        classe_temperatura = 'esfera_emer';
+    else if (temp <= limites.emer_frio && temp > limites.critico_frio) {
+        classe_temperatura = 'emergencia_fr';
         grauDeAviso = 'Temperaturas estão ficando baixas'
-        grauDeAvisoCor = 'esfera_irregular'
+        grauDeAvisoCor = 'emergencia_fr'
         exibirAlerta(temp, idRack, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp <= limites.critico_frio) {
-        classe_temperatura = 'esfera_critica';
+        classe_temperatura = 'critico_fr';
         grauDeAviso = 'Temperaturas muito baixas'
-        grauDeAvisoCor = 'esfera_critica'
+        grauDeAvisoCor = 'critico_fr'
         exibirAlerta(temp, idRack, grauDeAviso, grauDeAvisoCor)
     }
 
@@ -115,15 +115,19 @@ function exibirCards() {
     }
 }
 
-function transformarEmDiv({ idRack, temp, grauDeAviso, grauDeAvisoCor }) {
+function transformarEmDiv(mensagem) {
 
-    var descricao = JSON.parse(sessionStorage.SALAS).find(item => item.idRack == idRack).numeroSala;
+    var descricao = JSON.parse(sessionStorage.SALAS).filter(item => {
+        return item.idRack == mensagem.idRack
+    })
+    console.log(descricao)
+
     return `
     <div class="mensagem-alarme">
         <div class="informacao">
             <div class="${grauDeAvisoCor}"></div> 
-            <h3>${descricao} está em estado de ${grauDeAviso}!</h3>
-            <small>Temperatura ${temp}.</small>   
+            <h3>${descricao[0].numeroRack} está em estado de ${mensagem.grauDeAviso}!</h3>
+            <small>Temperatura ${mensagem.temp}.</small>   
         </div>
         <div class="alarme-sino"></div>
     </div>
