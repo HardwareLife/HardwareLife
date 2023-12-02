@@ -244,10 +244,10 @@
 	</div>
 
 	<!-- visualização do rack selecionado -->
-	<div class="div_desc_rack">
+	<!-- <div class="div_desc_rack">
 		<p>Vizualizando Rack 5</p>
 		<p>Estado: Critico</p>
-	</div>
+	</div> -->
 
 	<div class="dashboard_rack">
 
@@ -306,27 +306,27 @@
 							<h3>Visualização de cada sensor do rack</h3>
 							<div class="racks">
 								<div class="sensor">
-									<div class="esfera_ideal esfera"></div>
+									<div class="ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal esfera"></div>
+									<div class="ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal esfera"></div>
+									<div class="ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal esfera"></div>
+									<div class="ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal esfera"></div>
+									<div class="ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
-									<div class="esfera_ideal esfera"></div>
+									<div class="ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
 								<div class="sensor">
@@ -417,7 +417,6 @@
 	var divDashboard = document.querySelector('.dashboard');
 	var divDescSala = document.querySelector('.div_desc_sala');
 	var dashboardSala = document.querySelector('.dashboard_sala');
-	var divDescRack = document.querySelector('.div_desc_rack');
 	var dashboardRack = document.querySelector('.dashboard_rack');
 
 
@@ -471,14 +470,12 @@
 		obterGraficoSemanal(idRack)
 		divDescSala.style.display = 'none';
 		dashboardSala.style.display = 'none';
-		divDescRack.style.display = 'flex';
 		dashboardRack.style.display = 'flex';
 	}
 
 	function voltar_rack() {
 		divDescSala.style.display = 'flex';
 		dashboardSala.style.display = 'flex';
-		divDescRack.style.display = 'none';
 		dashboardRack.style.display = 'none';
 	}
 

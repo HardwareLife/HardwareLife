@@ -123,14 +123,13 @@ function transformarEmDiv(mensagem) {
     console.log(descricao)
 
     return `
-    <div class="mensagem-alarme">
-        <div class="informacao">
-            <div class="${grauDeAvisoCor}"></div> 
-            <h3>${descricao[0].numeroRack} está em estado de ${mensagem.grauDeAviso}!</h3>
-            <small>Temperatura ${mensagem.temp}.</small>   
-        </div>
-        <div class="alarme-sino"></div>
-    </div>
+     <div class="${grauDeAvisoCor} informacao">
+			<img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 30px;">
+			<div class="mensagem-alarme">
+				<h3>Rack ${descricao[0].numeroRack} da Sala ${descricao[0].numeroSala} está com ${mensagem.grauDeAviso}!</h3>
+				<small>Temperatura ${mensagem.temp}.</small>
+			</div>
+		</div>
     `;
 }
 
