@@ -186,6 +186,14 @@ body {
     /*align-items: center;*/
 }
 
+.form_contato{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 65%;
+    justify-content: center;
+    align-items: center;
+}
 .endereco {
     /*border-radius: 15px;*/
     margin-right: 8%;
@@ -203,22 +211,27 @@ body {
 
 .inp_contato {
     width: 95%;
-    margin-bottom: 20px;
+    height: 15%;
+    margin-bottom: 2%;
     border: 1px solid #ccc;
     border-radius: 10px;
+    text-indent: 5%;
 } 
 
 .btn-contato {
-  background-color: #3349ED;
-  color: #fff;
-  margin-left: 25%;
-  margin-top: 5px;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 25px;
-  width: 50%;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+    display: flex;
+    background-color: #3349ED;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-top: 5px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    width: 50%;
+    cursor: pointer;
+    height: 20%;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -245,15 +258,19 @@ body {
 }
 
 .modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* justify-items: center; */
     position: fixed;
     display: none;
-    /*position: fixed;*/
-    width:60%;
-    height:50%;
-    left: 20%;
-    top: 160px;
+    /* position: fixed; */
+    width: 100%;
+    height: 100vh;
+    /* left: 20%; */
+    /* top: 160px; */
     animation: down 2s;
-    /*background-color: rgba(0,0,0,0.5);*/
 }
 
 @keyframes down {
@@ -269,15 +286,15 @@ body {
     color: white;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    gap: 42%;
+    width: 80%;
+    margin-bottom: 3%;
 }
 
-.fecharModal label {
-    position: absolute;
+/* .fecharModal label {
     left: 0;
-    margin-left: 50px;
-}
+} */
 
 .modal h3{
     color: white;
@@ -293,9 +310,8 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
-    /*border: 1px solid lighgray;*/ 
+    width: 50%;
+    height: 50%;
     border-radius: 10px;
     background-color: #333333;
 }

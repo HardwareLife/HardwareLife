@@ -15,7 +15,7 @@
 <body onload=" validarSessao(), exibirSalas()">
 
 	<div class="card_alerta" id="card_alerta">
-	
+		
 	</div>
 
 	<div class="navbar" id="navbar">
@@ -429,10 +429,10 @@
 
 			if(salas.idSala == idSala){
 				lista_rack.innerHTML += `
-				<div class="div_salas" onclick="chamar_rack(this)" value="${salas.idRack}"
+				<div class="div_salas" id="div_salas" onclick="chamar_rack(this)" value="${salas.idRack}"
 					style="background-color: #b00202c0; border: 3px solid #b00202;">
 
-					<button class="btn_salas" style="background-color: #b0020200;">
+					<button class="btn_salas" style="opacity: #b0020200;">
 						<img src="../assets/dashboard/rack-do-servidor.png" alt="Relatório">
 						Rack ${salas.numeroRack}
 					</button>
@@ -639,7 +639,7 @@
 					myLine.data.datasets[0].data.push(temperaturaSensor);
 
 					myLine.data.datasets[1].data.shift();
-					myLine.data.datasets[1].data.push(umidadeSensor);
+					myLine.data.datasets[1].data.push( );
 
 					myLine.update();
 					// console.log(temperaturaSensor, umidadeSensor)
@@ -649,7 +649,7 @@
 					// console.log("Sensor 5", temperaturaSensor5)
 					// console.log("Sensor 6", temperaturaSensor6)
 
-					alertar(temperaturaSensor, idRack)
+					obterdados(temperaturaSensor, umidadeSensor, idRack)
 				}
 
 				// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar

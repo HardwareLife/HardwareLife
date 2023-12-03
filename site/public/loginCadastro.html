@@ -84,7 +84,7 @@
 		</div>
 
 		<div class="form-container entrar">
-			<form onsubmit="return false">
+			<form onsubmit="return false" style="width: 80%;">
 				<h2>Entrar</h2>
 				<div class="social-container">
 					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -294,9 +294,9 @@
 			meuModal.style.display = "flex";
 			successMessage.style.display = "none";
 			erroMessage.style.display = "flex";
-			// setTimeout(() => {
-			// 	meuModal.style.display = "none";
-			// }, 4000);
+			setTimeout(() => {
+				meuModal.style.display = "none";
+			}, 4000);
 				return false;
 		} else {
 
@@ -331,9 +331,9 @@
 				console.log("resposta: ", resposta);
 
 				if (resposta.ok) {
-					meuModal.style.display = "block";
+					meuModal.style.display = "flex";
 
-					successMessage.style.display = "block";
+					successMessage.style.display = "flex";
 
 					setTimeout(() => { signin() }, "1000");
 
@@ -341,8 +341,8 @@
 					// finalizarAguardar();
 				} else {
 					throw "Houve um erro ao tentar realizar o cadastro!";
-					meuModal.style.display = "block";
-					erroMessage.style.display = "block";
+					meuModal.style.display = "flex";
+					erroMessage.style.display = "flex";
 					// successMessage.innerHTML = `${json.mensagem}`;
 				}
 			})
@@ -360,16 +360,19 @@
 		var senhaVar = input_senha.value;
 
 		if (emailVar == "" || senhaVar == "") {
-			meuModal.style.display = "block";
-			erroMessage.style.display = "block";
+			meuModal.style.display = "flex";
+			erroMessage.style.display = "flex";
 			mensagem_erro.innerHTML = "Preencha os campos";
 			// finalizarAguardar();
+			setTimeout(() => {
+				meuModal.style.display = "none"
+			}, 5000);
 			return false;
 		}
 		else {
 			setTimeout(() => {
 				meuModal.style.display = "none"
-			}, 3000);
+			}, 5000);
 		}
 
 		console.log("FORM LOGIN: ", emailVar);
