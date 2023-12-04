@@ -39,7 +39,7 @@ CREATE TABLE funcionario (
 	idFuncionario int primary key auto_increment,
     nome varchar(50),
     sobrenome varchar(50),
-    cpf char(14),
+    cpf char(11),
     email varchar(50),
     senha varchar(40),
     tipoNivel varchar(45),
