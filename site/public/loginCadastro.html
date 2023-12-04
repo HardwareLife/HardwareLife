@@ -25,7 +25,10 @@
 				Cadastro feito com sucesso, em breve entraremos em contato!
 			</div>
 			<div class="message" id="erroMessage" style="display: none;">
-				Preencha todos os campos antes de cadastrar.
+				Preencha todos os campos.
+			</div>
+			<div class="message" id="erroLogMessage" style="display: none;">
+				
 			</div>
 		</div>
 	</div>
@@ -65,9 +68,10 @@
 
 		</div>
 
+		
+
 		<div class="overlay-container">
 			<div class="overlay">
-
 				<div class="overlay-panel overlay-left">
 					<h2>Bem Vindo!</h2>
 					<p>Entre com seu Email e Senha para continuar</p>
@@ -83,7 +87,14 @@
 			</div>
 		</div>
 
+		
+
 		<div class="form-container entrar">
+
+			<div id="div_aguardar" class="loading-div">
+				<img src="./assets/circle-loading.gif" id="loading-gif">
+			</div>
+
 			<form onsubmit="return false" style="width: 80%;">
 				<h2>Entrar</h2>
 				<div class="social-container">
@@ -98,6 +109,7 @@
 				<button onclick="entrar()" class="logar" style="cursor: pointer
 				;">Entrar</button>
 			</form>
+		
 		</div>
 
 	</div>
@@ -284,6 +296,7 @@
 		var telCad = document.getElementById("tel_cad").value;
 		var erroMessage = document.getElementById("erroMessage");
 		var successMessage = document.getElementById("successMessage");
+		var erroLogMessage = Documen.getElementById("erroLogMessage").value;
 
 		var cnpjSPonto = cnpjCad.replaceAll(".", "");
 		var cnpjSBarra = cnpjSPonto.replace("/", "");
@@ -355,6 +368,7 @@
 	}
 
 	function entrar() {
+		aguardar()
 		var meuModal = document.querySelector(".modal");
 		var emailVar = input_email.value;
 		var senhaVar = input_senha.value;
@@ -404,15 +418,24 @@
 					sessionStorage.TIPO_NIVEL = json.tipoNivel;
 					sessionStorage.SALAS = JSON.stringify(json.salas)
 
+					meuModal.style.display = "flex";
+					erroLogMessage.style.display = "flex";
+					erroLogMessage.innerHTML = "Você está sendo redirecionado...";
+
 					setTimeout(function () {
 						window.location = "./dashboard/dashboard.html";
-					}, 1000); // apenas para exibir o loading
+						finalizarAguardar();
+					}, 2000); // apenas para exibir o loading
 
 				});
 
 			} else {
 
 				console.log("Houve um erro ao tentar realizar o login!");
+
+				meuModal.style.display = "flex";
+				erroLogMessage.style.display = "flex";
+				erroLogMessage.innerHTML = "Não foi possivel se conectar. \n Email/senha incorretos";
 
 				resposta.text().then(texto => {
 					console.error(texto);

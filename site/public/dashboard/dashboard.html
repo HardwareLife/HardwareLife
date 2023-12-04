@@ -12,7 +12,7 @@
 </head>
 
 <!-- <body> -->
-<body onload=" validarSessao(), exibirSalas()">
+<body onload=" validarSessao(), exibirSalas(), atualizacaoPeriodica()">
 
 	<div class="card_alerta" id="card_alerta">
 		
@@ -73,7 +73,7 @@
 		<p>Aqui você poderá vizualizar todas as salas cadastradas:</p>
 	</div>
 
-	<!-- <div class="suporte" id="modalSuporte">
+	<div class="suporte" id="modalSuporte">
 		<div class="suporte_title">
 			<i id="suporte" class="fa fa-window-close"></i>
 		</div>
@@ -81,7 +81,7 @@
 		src='https://app.pipefy.com/public/form/2Kv8Bdqt?embedded=true'
 		frameborder='0'
 		></iframe>
-	</div> -->
+	</div>
 
 	<!-- tela inicial: sala - situação  -->
 	<div class="dashboard">
@@ -387,15 +387,16 @@
 	});
 
 	function exibirSalas() {
+
 		var listaSalaUsada = [];
 		JSON.parse(sessionStorage.SALAS).forEach((item, i) => {
 			var dashLista = document.getElementById("dash_lista");
 			
 			if (!listaSalaUsada.includes(item.idSala)) {
 				dashLista.innerHTML += `
-				<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: #b00202c0; border: 3px solid #b00202;" value="${item.idSala}">
+				<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: #008000;" valueSala="${item.idSala}">
 
-					<button class="btn_salas" style="background-color: rgba(176, 2, 2, 0);">
+					<button class="btn_salas" >
 					<img src="../assets/dashboard/door.svg" alt="Relatório" ">
 					Sala ${item.numeroSala}
 					</button>
@@ -409,6 +410,9 @@
 			}
 			// obterDadosGrafico(item.idRack)
 		});
+
+		// var elemento = document.querySelector("[valueSala='1']")
+		// console.log(elemento.style)
 	}
 </script>
 
@@ -423,14 +427,13 @@
 	// Crir json com as salas como no codigo a cima; Colocar o codigo da rack aqui dentro
 	// JSON.parse(sessionStorage.SALAS).forEach(item)
 	function chamar_salas(sala) {
-		
+		lista_rack.innerHTML = "";
 		JSON.parse(sessionStorage.SALAS).forEach(salas=>{
-			var idSala = sala.getAttribute("value");
+			var idSala = sala.getAttribute("valueSala");
 
 			if(salas.idSala == idSala){
 				lista_rack.innerHTML += `
-				<div class="div_salas" id="div_salas" onclick="chamar_rack(this)" value="${salas.idRack}"
-					style="background-color: #b00202c0; border: 3px solid #b00202;">
+				<div class="div_salas" id="div_salas" onclick="chamar_rack(this)" valueRack="${salas.idRack}" style="background-color: #008000;">
 
 					<button class="btn_salas" style="opacity: #b0020200;">
 						<img src="../assets/dashboard/rack-do-servidor.png" alt="Relatório">
@@ -463,7 +466,7 @@
 	}
 
 	function chamar_rack(rack) {
-		var idRack = rack.getAttribute("value");
+		var idRack = rack.getAttribute("valueRack");
 		console.log(idRack)
 		obterDadosGrafico(idRack)
 		obterGraficoMensal(idRack)
@@ -615,22 +618,6 @@
 					temperaturaSensor = novoRegistro[1].temperatura;
 					umidadeSensor = novoRegistro[0].umidade;
 
-					if(idRack == 1 || idRack == 2){
-						temperaturaSensor = temperaturaSensor * 1.6
-						umidadeSensor = umidadeSensor * 1.6
-					}else if(idRack == 3 || idRack == 4){
-						temperaturaSensor = temperaturaSensor * 1.2
-						umidadeSensor = umidadeSensor * 1.2
-					}else if(idRack == 7 || idRack == 8){
-						temperaturaSensor = temperaturaSensor * 0.6
-						umidadeSensor = umidadeSensor * 0.8
-					}
-
-					temperaturaSensor2 = Math.random() * 0.5 + temperaturaSensor
-					temperaturaSensor3 = Math.random() * 0.4 + temperaturaSensor
-					temperaturaSensor4 = Math.random() * 0.3 + temperaturaSensor
-					temperaturaSensor5 = Math.random() * -0.3 + temperaturaSensor
-					temperaturaSensor6 = Math.random() * -0.4 + temperaturaSensor
 					
 					myLine.data.labels.shift();
 					myLine.data.labels.push(novoRegistro[0].momento_grafico);
@@ -649,7 +636,8 @@
 					// console.log("Sensor 5", temperaturaSensor5)
 					// console.log("Sensor 6", temperaturaSensor6)
 
-					obterdados(temperaturaSensor, umidadeSensor, idRack)
+					// obterdados(temperaturaSensor, umidadeSensor, idRack)
+					// alertar(temperaturaSensor, umidadeSensor, idRack);
 				}
 
 				// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
