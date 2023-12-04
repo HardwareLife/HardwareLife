@@ -14,7 +14,7 @@
 <!-- <body> -->
 <body onload=" validarSessao(), exibirSalas(), atualizacaoPeriodica()">
 
-	<div class="card_alerta" id="card_alerta">
+	<div class="notificacao" id="card_alerta">
 		
 	</div>
 
@@ -212,29 +212,6 @@
 
 				</div> -->
 			</div>
-
-
-
-			<!-- <div class="div_salas" style="background-color: rgb(176, 2, 2);">
-
-				<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
-					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
-					Rack 2
-				</button>
-
-				<p>Estado: Critico</p>
-			</div> <br>
-
-			<div class="div_salas" style="background-color: white;">
-
-				<button class="btn_salas" style="background-color: white;">
-					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
-					Rack 3
-				</button>
-
-				<p>Estado: Normal</p>
-			</div> <br> -->
-
 		</div>
 	</div>
 
@@ -458,6 +435,10 @@
 		dashboardSala.style.display = 'flex';
 	}
 
+	function mostrarListaRack(params) {
+		
+	}
+
 	function voltar_sala() {
 		divDesc.style.display = 'flex';
 		divDashboard.style.display = 'flex';
@@ -621,7 +602,7 @@
 					myLine.data.datasets[0].data.push(temperaturaSensor);
 
 					myLine.data.datasets[1].data.shift();
-					myLine.data.datasets[1].data.push( );
+					myLine.data.datasets[1].data.push(umidadeSensor);
 
 					myLine.update();
 					// console.log(temperaturaSensor, umidadeSensor)
