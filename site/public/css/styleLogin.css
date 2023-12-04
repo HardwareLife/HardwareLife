@@ -296,3 +296,17 @@ input {
     background-color: #e0e0e0;
 	font-size: 16px;
 }
+
+.loading-div {
+	position: fixed;
+    display: flex;
+    margin-top: 82%;
+    width: 50px;
+    display: none;
+  }
+  
+  .loading-div img {
+	height: 50px;
+	width: 50px;
+  }
+  

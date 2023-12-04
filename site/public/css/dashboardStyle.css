@@ -397,29 +397,27 @@ body {
     border-radius: 15px 15px 7px 7px;
     cursor: pointer;
     margin-bottom: 10px;
+    color: #fff;
     /* animation: none; */
-    animation: div_salas 1s infinite;
 } 
+
+.animacao{
+    animation: div_salas 1s infinite;
+}
 
 @keyframes div_salas {
     0% {
     opacity: 1;
     }
     50%{
-    background-color: #b00202ee;
+    opacity: 0.8;
     }
     100% {
     opacity: 1;
     }
-
-    /* 0% {
-        opacity: 0.9;
-        transform: scale(0.9);
-        }
-        100% {
-        opacity: 1;
-        } */
   }
+
+
 
 .btn_salas, .situacao{
     display: flex;
@@ -432,21 +430,14 @@ body {
 }
 
 .btn_salas {
-    /* font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 20px;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; */
     height: 100%;
     border-radius: 15px;
     cursor: pointer;
     border: none;
     outline-style: none;
     width: 44%;
+    background-color: #b0020200;
+    color: #FFF;
 }
 
 /* Adiciona um estilo adicional quando o botão está ativo (clicado) */

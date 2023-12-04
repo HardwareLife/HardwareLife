@@ -32,6 +32,7 @@ INSERT INTO rack VALUES
 (null, 1, 2), (null, 2, 2),
 (null, 1, 3), (null, 2, 3),
 (null, 1, 4), (null, 2, 4);
+
 INSERT INTO sensor VALUES
 (1, 'LM35', 'Temperatura', 1, 1, 1, 1), (2, 'LM35','Temperatura', 1, 2, 1, 1), (3, 'LM35','Temperatura',1, 1, 2, 1), (4, 'LM35','Temperatura',1, 2, 2, 1), (5, 'LM35','Temperatura',1, 1, 3, 1),(6, 'LM35','Temperatura',1, 2, 3, 1),(7, 'DHT11', 'Umidade',1,1,4, 1),
 
@@ -873,6 +874,6 @@ INSERT INTO dados VALUES
 (null, '2023-11-26 10:01:00', 35.9,null,2,8),
 (null, '2023-11-26 10:02:00',  36.3,null,3,8),
 (null, '2023-11-26 10:03:00',  37,null,4,8),
-(null, '2023-11-26 10:04:00',  36.2,null,5,8),
+(null, '2023-11-26 10:04:00',  60.2,null,5,8),
 (null, '2023-11-26 10:05:00',  35.7,null,6,8),
-(null, '2023-11-26 10:15:00',null, 46.2, 7,8);
+(null, '2023-11-26 10:15:00',null, 80, 7,8);

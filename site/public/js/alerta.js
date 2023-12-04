@@ -1,30 +1,54 @@
 var alertas = [];
 
-function obterdados(temperaturaSensor, umidadeSensor, idRack) {
-    var temperatura = temperaturaSensor;
-    var umidade = umidadeSensor
-    // fetch(`/medidas/tempo-real/${idRack}`)
-    //     .then(resposta => {
-            // if (resposta.status == 200) {
-            //     resposta.json().then(resposta => {
+function obterdados(idRack) {
+   fetch(`/medidas/ultimas/${idRack}`)
+        .then(resposta => {
+             if (resposta.status == 200) {
+                resposta.json().then(resposta => {
 
-            //         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                   console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    alertar(temperatura, umidade, idRack);
-        //         });
-        //     } else {
-        //         console.error(`Nenhum dado encontrado para o id ${idAquario} ou erro na API`);
-        //     }
-        // // })
-        // .catch(function (error) {
-        //     console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
-        // });
+                   var temperaturaSensor = resposta[0].temperatura;
+                   var umidadeSensor = resposta[0].umidade;
+
+                   if(idRack == 1 || idRack == 2){
+                    temperaturaSensor = temperaturaSensor * 1.6
+                    umidadeSensor = umidadeSensor * 1.6
+                    }else if(idRack == 3 || idRack == 4){
+                        temperaturaSensor = temperaturaSensor * 1.2
+                        umidadeSensor = umidadeSensor * 1.2
+                    }else if(idRack == 7 || idRack == 8){
+                        temperaturaSensor = temperaturaSensor * 0.6
+                        umidadeSensor = umidadeSensor * 0.8
+                    }
+
+                temperaturaSensor2 = Math.random() * 0.5 + temperaturaSensor
+                temperaturaSensor3 = Math.random() * 0.4 + temperaturaSensor
+                temperaturaSensor4 = Math.random() * 0.3 + temperaturaSensor
+                temperaturaSensor5 = Math.random() * -0.3 + temperaturaSensor
+                temperaturaSensor6 = Math.random() * -0.4 + temperaturaSensor
+
+                    sensores(temperaturaSensor2, temperaturaSensor3, temperaturaSensor4, temperaturaSensor5, temperaturaSensor6, umidadeSensor, idRack);
+                    alertar(temperaturaSensor, umidadeSensor, idRack);
+                 });
+             } else {
+                 console.error(`Nenhum dado encontrado para o id ${idRack} ou erro na API`);
+             }
+          })
+         .catch(function (error) {
+             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+         });
 }
 
-function alertar(temperatura, umidade, idRack) {
-    var temp= temperatura;
-    var umid = umidade;
+// function sensores(temperaturaSensor2, temperaturaSensor3, temperaturaSensor4, temperaturaSensor5, temperaturaSensor6, umidadeSensor, idRack) {
+    
+// }
+
+function alertar(temperaturaSensor, umidadeSensor, idRack) {
+    var temp = temperaturaSensor;
+    var umid = umidadeSensor;
     var caso;
+    var corSala;
 
     var grauDeAviso = '';
 
@@ -56,47 +80,60 @@ function alertar(temperatura, umidade, idRack) {
         classe_temperatura = 'critico_qt';
         grauDeAviso = 'Temperaturas muito elevadas';
         grauDeAvisoCor = 'critico_qt';
-        caso = temp;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor);
+        caso = 'temperatura';
+        corSala = '#ff0000';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, temp);
     }
     else if (temp < limites.critico_quente && temp >= limites.emer_quente) {
         classe_temperatura = 'emergencia_qt';
         grauDeAviso = 'Temperaturas elevadas'
         grauDeAvisoCor = 'emergencia_qt'
-        caso = temp;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'temperatura';
+        corSala = '#ff4600';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, temp)
     }
     else if(temp < limites.emer_quente && temp >= limites.alert_quente){
         classe_temperatura = 'alerta_qt';
         grauDeAviso = 'Temperaturas estão ficando elevadas'
         grauDeAvisoCor = 'alerta_qt'
-        caso = temp;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'temperatura';
+        corSala = '#ffa500';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, temp)
     }
     else if (temp < limites.alert_quente && temp > limites.alert_frio) {
         classe_temperatura = 'ideal';
+        corSala = '#008000';
         removerAlerta(idRack);
 
     }else if(temp < limites.alert_frio && temp > limites.emer_frio){
         classe_temperatura = 'alerta_fr';
         grauDeAviso = 'Temperaturas estão ficando abaixo do indicado'
         grauDeAvisoCor = 'alerta_fr'
-        caso = temp;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'temperatura';
+        corSala = '#19e5e6';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, temp)
     }
     else if (temp <= limites.emer_frio && temp > limites.critico_frio) {
         classe_temperatura = 'emergencia_fr';
         grauDeAviso = 'Temperaturas estão ficando baixas'
         grauDeAvisoCor = 'emergencia_fr'
-        caso = temp;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'temperatura';
+        corSala = '#10b8d6';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, temp)
     }
     else if (temp <= limites.critico_frio) {
         classe_temperatura = 'critico_fr';
         grauDeAviso = 'Temperaturas muito baixas'
         grauDeAvisoCor = 'critico_fr'
-        caso = temp;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'temperatura';
+        corSala = '#191970';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, temp)
     }
 
     // UMIDADE
@@ -105,68 +142,81 @@ function alertar(temperatura, umidade, idRack) {
         classe_temperatura = 'critico_qt';
         grauDeAviso = 'Nível de umidade muito elevado'
         grauDeAvisoCor = 'critico_qt'
-        caso = umid;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'umidade';
+        corSala = '#ff0000';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, umid)
     }
     else if (umid < limitesUmid.critico_quente && umid >= limitesUmid.emer_quente) {
         classe_temperatura = 'emergencia_qt';
         grauDeAviso = 'Nível de umidade elevado'
         grauDeAvisoCor = 'emergencia_qt'
-        caso = umid;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'umidade';
+        corSala = '#ff4600';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, umid)
     }
     else if(umid < limitesUmid.emer_quente && umid >= limitesUmid.alert_quente){
         classe_temperatura = 'alerta_qt';
         grauDeAviso = 'Os niveis de umidade estão ficando elevados'
         grauDeAvisoCor = 'alerta_qt'
-        caso = umid;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'umidade';
+        corSala = '#ffa500';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, umid)
     }
     else if (umid < limitesUmid.alert_quente && umid > limitesUmid.alert_frio) {
         classe_temperatura = 'ideal';
+        corSala = '#008000';
         removerAlerta(idRack);
 
     }else if(umid < limitesUmid.alert_frio && umid > limitesUmid.emer_frio){
         classe_temperatura = 'alerta_fr';
         grauDeAviso = 'Niveis de umidade estão ficando abaixo do indicado'
         grauDeAvisoCor = 'alerta_fr'
-        caso = umid;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'umidade';
+        corSala = '#19e5e6';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, umid)
     }
     else if (umid <= limitesUmid.emer_frio && umid > limitesUmid.critico_frio) {
         classe_temperatura = 'emergencia_fr';
         grauDeAviso = 'Os niveis de umidade estão ficando baixos'
         grauDeAvisoCor = 'emergencia_fr'
-        caso = umid;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'umidade';
+        corSala = '#10b8d6';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, umid)
     }
     else if (umid <= limitesUmid.critico_frio) {
         classe_temperatura = 'critico_fr';
         grauDeAviso = 'Niveis de umidade muito baixos'
         grauDeAvisoCor = 'critico_fr'
-        caso = umid;
-        exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor)
+        caso = 'umidade';
+        corSala = '#191970';
+        nomeClasse = 'animacao'
+        exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, umid)
     }
 
-    var card;
+    // var card;
 
-    if (document.getElementById(`temp_aquario_${idAquario}`) != null) {
-        document.getElementById(`temp_aquario_${idAquario}`).innerHTML = temp + "°C";
-    }
+    // if (document.getElementById(`temp_aquario_${idAquario}`) != null) {
+    //     document.getElementById(`temp_aquario_${idAquario}`).innerHTML = temp + "°C";
+    // }
 
-    if (document.getElementById(`card_${idRack}`)) {
-        card = document.getElementById(`card_${idRack}`)
-        card.className = classe_temperatura;
-    }
+    // if (document.getElementById(`card_${idRack}`)) {
+    //     card = document.getElementById(`card_${idRack}`)
+    //     card.className = classe_temperatura;
+    // }
 }
 
-function exibirAlerta(caso, idRack, grauDeAviso, grauDeAvisoCor) {
+function exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, valor) {
     var indice = alertas.findIndex(item => item.idRack == idRack);
 
     if (indice >= 0) {
-        alertas[indice] = { idRack, caso, grauDeAviso, grauDeAvisoCor }
+        alertas[indice] = { idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor }
     } else {
-        alertas.push({ idRack, caso, grauDeAviso, grauDeAvisoCor });
+        alertas.push({ idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor });
     }
 
     exibirCards();
@@ -193,20 +243,51 @@ function transformarEmDiv(mensagem) {
     })
     console.log(descricao)
 
-    return `
+    // MUDAR CORES DOS CARDS DAS SALAS
+    if (nomeClasse == undefined) {
+        nomeClasse = "";
+    }
+
+    var sala = document.querySelector(`[valueSala = '${descricao[0].idSala}']`);
+    sala.style.backgroundColor = `${mensagem.corSala}`;
+    sala.className = `div_salas ${mensagem.nomeClasse}`;
+
+    console.log(sala.childNodes);
+
+    // MUDAR CORES DOS CARDS DOS RACKS
+
+    var rack = document.querySelector(`[valueRack = '${descricao[0].idRack}']`);
+    rack.style.backgroundColor = `${mensagem.corSala}`;
+    rack.className = `div_salas ${mensagem.nomeClasse}`;
+
+     
+    if (mensagem.caso == 'temperatura') {
+            return `
+        <div class="${grauDeAvisoCor} informacao">
+                <img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 30px;">
+                <div class="mensagem-alarme">
+                    <h3>Rack ${descricao[0].numeroRack} da Sala ${descricao[0].numeroSala} está com ${mensagem.grauDeAviso}!</h3>
+                    <small>Temperatura ${mensagem.valor}.</small>
+                </div>
+            </div>
+        `;
+    }else{
+        return `
      <div class="${grauDeAvisoCor} informacao">
 			<img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 30px;">
 			<div class="mensagem-alarme">
 				<h3>Rack ${descricao[0].numeroRack} da Sala ${descricao[0].numeroSala} está com ${mensagem.grauDeAviso}!</h3>
-				<small>Temperatura ${mensagem.caso}.</small>
+				<small>Umidade ${mensagem.valor}.</small>
 			</div>
 		</div>
     `;
+    }
+ 
 }
 
-// function atualizacaoPeriodica() {
-//     JSON.parse(sessionStorage.SALAS).forEach(item => {
-//         obterdados(item.id)
-//     });
-//     setTimeout(atualizacaoPeriodica, 5000);
-// }
+function atualizacaoPeriodica() {
+    JSON.parse(sessionStorage.SALAS).forEach(item => {
+        obterdados(item.idRack)
+    });
+    setTimeout(atualizacaoPeriodica, 5000);
+}
