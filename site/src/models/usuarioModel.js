@@ -36,8 +36,17 @@ function listarPorDatacenter(idDatacenter) {
     return database.executar(instrucao);
 }
 
+const deletarFuncionario = (idFuncionario) => {
+
+    var instrucao = `DELETE FROM funcionario WHERE idFuncionario = ${idFuncionario}`
+
+    return database.executar(instrucao)
+
+}
+
 module.exports = {
     autenticar,
     listarPorDatacenter,
-    cadastrar
+    cadastrar,
+    deletarFuncionario
 };

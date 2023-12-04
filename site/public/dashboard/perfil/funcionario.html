@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../../css/styleFuncionario.css">
     <script src="../../js/sessao.js"></script>
 </head>
@@ -94,23 +94,38 @@
                 <span class="campos_cadastros" id="campos_cadastros">
                     <div class="campo">
                         <label for="nome_funcionario">Nome:</label>
-                        <input type="text" id="nome_funcionario" placeholder="Nome Funcionario">
+                        <input type="text" id="nome_funcionario" placeholder="Nome Funcionario" onblur="validarNome(this)">
+                        <span id="nomeInvalido" style="display: none;">O nome precisa ter no mínimo 3 letras</span>
                     </div>
                     <div class="campo">
                         <label for="nome_funcionario">Sobrenome:</label>
-                        <input type="text" id="sobrenome_funcionario" placeholder="Sobrenome Funcionario">
+                        <input type="text" id="sobrenome_funcionario" placeholder="Sobrenome Funcionario" onblur="validarSobrenome(this)">
+                        <span id="sobrenomeInvalido" style="display: none;">O sobrenome precisa ter no mínimo 3 letras</span>
                     </div>
                     <div class="campo">
                         <label for="nome_funcionario">CPF:</label>
-                        <input type="text" id="cpf_funcionario" placeholder="Cpf Funcionario">
+                        <input type="text" id="cpf_funcionario" placeholder="Cpf Funcionario" onblur="validarCpf(this)">
+                        <span id="cpfInvalido" style="display: none;">O cpf deve ter apenas 11 digitos e todos devem ser numéricos</span>
                     </div>
                     <div class="campo">
                         <label for="nome_funcionario">Email:</label>
-                        <input type="email" id="email_funcionario" placeholder="Email Funcionario">
+                        <input type="email" id="email_funcionario" placeholder="Email Funcionario" onblur="validarEmail(this)">
+                        <span id="emailInvalido" style="display: none;">Email com formato inválido</span>
                     </div>
                     <div class="campo">
                         <label for="nome_funcionario">Senha:</label>
-                        <input type="password" id="senha_funcionario" placeholder="Senha Funcionario">
+                        <input type="password" id="senha_funcionario" placeholder="Senha Funcionario" onblur="validarSenha(this)">
+                        <span id="senhaInvalida" style="display: none;"></span>
+                    </div><br><br>
+                    <div class="campo">
+                        <label for="confirmarSenha_funcionario">Confime sua senha:</label>
+                        <input type="password" id="confirmarSenha_funcionario" placeholder="Confirme sua senha" onblur="confirmarSenha(this)">
+                        <span id="confirmarSenha_func" style="display: none;">As senhas não estão iguais</span>
+                    </div>
+                    <div class="campo">
+                        <label for="cargo_funcionario">Cargo</label>
+                        <select name="cargo_funcionario" id="cargo_funcionario">
+                        </select>
                     </div>
                     <!-- <div class="campo" id="campo_unidade">
                         <label for="unidade">Unidade:</label>
@@ -200,6 +215,7 @@
         </article> -->
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     var idUsuario = sessionStorage.ID_USUARIO;
     nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -221,6 +237,32 @@
         container.style.visibility = "visible";
     });
 
+    const cadastroInvalido = () =>{
+        Swal.fire({
+        icon: "error",
+        title: "Cadastro não funcionou",
+        text: "Verifique se os campos foram preenchidos corretamente",
+        confirmButtonColor: "#11128D"
+    });
+    }
+
+    const cadastroValido = () => {
+        Swal.fire({
+        title: "Cadastro Realizado com Sucesso",    
+        icon: "success",
+        confirmButtonColor: "#11128D"
+    }).then(() => window.location = `/dashboard/perfil/funcionario.html`);
+    }
+
+    const mensagemDeletar = () => {
+        Swal.fire({
+        title: "Funcionário Deletado com Sucesso",    
+        icon: "success",
+        confirmButtonColor: "#11128D"
+    }).then(() => window.location = `/dashboard/perfil/funcionario.html`);
+    }
+
+
     function listar() {
         var idDatacenter = informacaoSala[0].fkDatacenter;
 
@@ -238,21 +280,48 @@
     }
 
     setTimeout(() => {
-        console.log("Entrando no timeout")
 
-        for(var i = 0; i < funcionarioDataCenter.length; i++){
+        cargo_funcionario.innerHTML = ""
 
-            if (funcionarioDataCenter[i].idFuncionario != idUsuario) {
+        if(nivel == "CEO"){
+            cargo_funcionario.innerHTML += `<option value="Gestor">Gestor</option>`
+            cargo_funcionario.innerHTML += `<option value="Funcionario">Funcionário</option>`;
+            var mostrarFuncionario = funcionarioDataCenter.filter(func => func.tipoNivel != nivel)
+        }else if(nivel == "Gestor"){
+            cargo_funcionario.innerHTML += `<option value="Funcionario">Funcionário</option>`
+            var mostrarFuncionario = funcionarioDataCenter.filter(func => func.tipoNivel != nivel && func.tipoNivel != "CEO")
+        }
+
+        for(var i = 0; i < mostrarFuncionario.length; i++){
+
                 lista.innerHTML += `
             <div class="lista_item">
-                    <div class="item_nome">${funcionarioDataCenter[i].nome}</div>
-                    <div class="item_nome">${funcionarioDataCenter[i].email}</div>
-                    <div class="item_nome">${funcionarioDataCenter[i].tipoNivel}</div>
+                    <div class="item_nome">${mostrarFuncionario[i].nome}</div>
+                    <div class="item_nome">${mostrarFuncionario[i].email}</div>
+                    <div class="item_nome">${mostrarFuncionario[i].tipoNivel}</div>
+                    <span class="material-symbols-outlined delete" style="margin-left: -10%; cursor: pointer;" onclick="deletarFuncionario(this)" value="${mostrarFuncionario[i].idFuncionario}">delete</span>
                 </div>`;
-            }   
         }
 
     }, 500)
+
+    const deletarFuncionario = (funcionario) => {
+
+        var idFuncionario = funcionario.getAttribute("value")
+
+        fetch(`/usuarios/deletar/${idFuncionario}`, {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "DELETE",
+            cache: 'no-store'
+        }).then(resposta => {
+            if(resposta.ok){
+                mensagemDeletar()
+            }
+        })
+
+        }
 
     // function validarNivel() {
     //     if (nivel == "CEO") {
@@ -262,7 +331,177 @@
     //     }
     // }
 
+    var nomeValido = false
+    var sobrenomeValido = false
+    var emailValido = false
+    var cpfValido = false
+    var senhaValida = false
+    var confirmarSenhaValida = false
+
+    function validarNome(nomeFunc){
+            if(nomeFunc.value.length >= 1 && nomeFunc.value.length < 3){
+                nomeInvalido.style.display = `block`
+                nomeInvalido.style.color = `red` 
+                nome_funcionario.style.borderColor = `red`
+                nome_funcionario.style.color = `red`
+                nomeValido = false
+            }else if(nomeFunc.value.length == 0){
+                nomeInvalido.style.display = `none`
+                nome_funcionario.style.borderColor = `black`
+                nome_funcionario.style.color = `black`
+                nomeValido == false
+            }else{
+                nomeInvalido.style.display = `none`
+                nome_funcionario.style.borderColor = `black`
+                nome_funcionario.style.color = `black`
+                nomeValido = true
+            }
+    }
+    function validarSobrenome(sobrenome){
+        if(sobrenome.value.length >= 1 && sobrenome.value.length < 3){
+            sobrenomeInvalido.style.display = `block`
+            sobrenomeInvalido.style.color = `red`
+            sobrenome_funcionario.style.borderColor = `red`
+            sobrenome_funcionario.style.color = `red` 
+            sobrenomeValido = false
+        }else if(sobrenome.value.length == 0){
+            sobrenomeInvalido.style.display = `none`;
+            sobrenome_funcionario.style.borderColor = `black`;
+            sobrenome_funcionario.style.color = `black`;
+            sobrenomeValido = false
+        }else{
+            sobrenomeInvalido.style.display = `none`;
+            sobrenome_funcionario.style.borderColor = `black`;
+            sobrenome_funcionario.style.color = `black`;
+            sobrenomeValido = true
+        }
+    }
+
+    const hasUpper = (str) => /[A-Z]/.test(str)
+
+    const validarEmail = (emailUser) => {
+
+    if(emailUser.value.length >= 1 && (!emailUser.value.includes("@") || !emailUser.value.includes("."))){
+      email_funcionario.style.border = `1px solid red`;
+      email_funcionario.style.color = `red`;
+      emailInvalido.style.display = `block`;
+      emailInvalido.style.color = `red`
+      emailValido = false
+    }else if(emailUser.value.length == 0){
+      email_funcionario.style.border = `1px solid black`;
+      email_funcionario.style.color = `black`;
+      emailInvalido.style.display = `none`;
+      emailInvalido.style.color = `black`
+      emailValido = false
+    }else{
+        email_funcionario.style.border = `1px solid black`;
+        email_funcionario.style.color = `black`;
+        emailInvalido.style.display = `none`;
+        emailInvalido.style.color = `black`
+        emailValido = true
+    }
+
+  }
+
+  const validarCpf = (cpf) => {
+
+    if(cpf.value.length >= 1  && cpf.value.length < 11){
+        cpf_funcionario.style.borderColor = `red`
+        cpf_funcionario.style.color = `red`
+        cpfInvalido.style.display = `block`
+        cpfInvalido.style.color = `red`
+        cpfValido = false
+    }else if(cpf.value.length == 0){
+        cpf_funcionario.style.borderColor = `black`
+        cpf_funcionario.style.color = `black`
+        cpfInvalido.style.display = `none`
+        cpfValido = false
+    }else{
+        cpf_funcionario.style.borderColor = `black`
+        cpf_funcionario.style.color = `black`
+        cpfInvalido.style.display = `none`
+        cpfValido = true
+    }
+
+
+  }
+
+  const validarSenha = (senhaUsuario) => {
+    if(senhaUsuario.value.length < 6  || !senhaUsuario.value.includes("@", "#", "!", "$", "%", "&", "*") || !hasUpper(senhaUsuario.value)){
+
+      if(senhaUsuario.value.length < 6 && senhaUsuario.value.length >=1 ){
+        senha_funcionario.style.border = `1px solid red`
+        senha_funcionario.style.color = `red`
+        senhaInvalida.style.display = `block`
+        senhaInvalida.style.color = `red`
+        senhaInvalida.innerHTML = `A senha deve ter mais de 6 caracteres`
+        senhaValida = false
+      }else if(!senhaUsuario.value.includes("@", "#", "!", "$", "%", "&", "*") && senhaUsuario.value.length >=1){
+        senha_funcionario.style.border = `1px solid red`
+        senha_funcionario.style.color = `red`
+        senhaInvalida.style.display = `block`
+        senhaInvalida.style.color = `red`
+        senhaInvalida.innerHTML = `A senha precisa ter pelo menos um caracter especial (@, #, &)`
+        senhaValida = false
+    }else if(!hasUpper(senhaUsuario.value) && senhaUsuario.value.length >=1){
+        console.log(senhaUsuario.value)
+        senha_funcionario.style.border = `1px solid red`
+        senha_funcionario.style.color = `red`
+        senhaInvalida.style.display = `block`
+        senhaInvalida.style.color = `red`
+        senhaInvalida.innerHTML = `A senha precisa ter pelo menos um caracter maiúsculo`
+        senhaValida = false
+    }else{
+        senha_funcionario.style.border = `1px solid black`
+        senha_funcionario.style.color= `black`
+        senhaInvalida.style.display = `none`
+        senhaInvalida.style.color = `black`
+        senhaValida = false
+    }
+
+    }else{
+        senha_funcionario.style.border = `1px solid black`
+        senha_funcionario.style.color = `black`
+        senhaInvalida.style.display = `none`
+        senhaInvalida.style.color = `black`
+        senhaValida = true
+    }
+  }
+
+  function confirmarSenha(confirmarSenha){
+    if(confirmarSenha.value != senha_funcionario.value && confirmarSenha.value.length >= 1){
+        senha_funcionario.style.border = `1px solid red`
+        senha_funcionario.style.color = `red`
+        senhaInvalida.style.color = `red`
+
+        confirmarSenha_funcionario.style.border = `1px solid red`
+        confirmarSenha_funcionario.style.color = `red`
+        confirmarSenha_func.style.display = `block`
+        confirmarSenha_func.style.color = `red`
+        confirmarSenhaValida = false
+      }else if(confirmarSenha.value.length == 0){
+          confirmarSenha_funcionario.style.border = `1px solid black`
+          confirmarSenha_funcionario.style.color = `black`
+          confirmarSenha_func.style.display = `none`
+          confirmarSenha_func.style.color = `black`
+          confirmarSenhaValida = false
+      }else{
+        validarSenha(confirmarSenha)
+        confirmarSenhaValida = true
+        confirmarSenha_funcionario.style.border = `1px solid black`
+        confirmarSenha_funcionario.style.color = `black`
+        confirmarSenha_func.style.display = `none`
+        confirmarSenha_func.style.color = `black`
+      }
+  }
+
     function cadastrar() {
+
+        if(nomeValido == false || sobrenomeValido == false || emailValido == false || cpfValido == false || senhaValida == false || confirmarSenhaValida == false){
+            cadastroInvalido()
+            return false
+        }
+
         var idUsuario = sessionStorage.ID_USUARIO;
         var idDatacenter = informacaoSala[0].fkDatacenter;
         var nomeFunc = nome_funcionario.value;
@@ -270,7 +509,10 @@
         var cpfFunc = cpf_funcionario.value;
         var emailFunc = email_funcionario.value;
         var senhaFunc = senha_funcionario.value;
+        var nivelFunc = cargo_funcionario.value;
+
         console.log(idDatacenter, informacaoSala)
+
         if (nomeFunc === "" || sobrenomeFunc === "" || cpfFunc === ""
             || emailFunc === "" || senhaFunc === "") {
             return false;
@@ -291,7 +533,7 @@
                 cpfServer: cpfFunc,
                 emailServer: emailFunc,
                 senhaServer: senhaFunc,
-                nivelServer: nivel,
+                nivelServer: nivelFunc,
                 fkSuperiorServer: idUsuario,
                 fkDataCenterServer: idDatacenter
 
@@ -300,6 +542,7 @@
 
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
+                cadastroValido()
 
                 //     if (resposta.ok) {
                 //     // meuModal.style.display = "block";

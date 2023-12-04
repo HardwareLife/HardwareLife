@@ -77,10 +77,10 @@
 		<div class="suporte_title">
 			<i id="suporte" class="fa fa-window-close"></i>
 		</div>
-		<iframe id="myFrame" width='100%' height='450'
+		<iframe width='100%' height='450'
 		src='https://app.pipefy.com/public/form/2Kv8Bdqt?embedded=true'
 		frameborder='0'
-		></iframe>
+	  ></iframe>
 	</div>
 
 	<!-- tela inicial: sala - situação  -->
@@ -108,7 +108,7 @@
 
 	<!-- visualização da sala selecionada -->
 	<div class="div_desc_sala" >
-		<p>Vizualizando Sala 5</p>
+		<p id="visualizandoSala"></p>
 		<p>Estado: Critico</p>
 	</div>
 
@@ -252,7 +252,7 @@
 	<div class="dashboard_rack">
 
 		<div class="titulo_rack">
-			<h3>Rack 1</h3>
+			<h3 id="visualizandoRack"></h3>
 			<!-- <div class="temp_umid">
 				<h3>Temperatura</h3>
 				<h3>Umidade</h3>
@@ -433,7 +433,7 @@
 
 			if(salas.idSala == idSala){
 				lista_rack.innerHTML += `
-				<div class="div_salas" id="div_salas" onclick="chamar_rack(this)" valueRack="${salas.idRack}" style="background-color: #008000;">
+				<div class="div_salas" id="div_salas" onclick="chamar_rack(this, ${salas.numeroRack})" valueRack="${salas.idRack}" style="background-color: #008000;">
 
 					<button class="btn_salas" style="opacity: #b0020200;">
 						<img src="../assets/dashboard/rack-do-servidor.png" alt="Relatório">
@@ -447,8 +447,8 @@
 				</div>
 				`
 				// obterDadosGrafico(salas.idRack)
+				visualizandoSala.innerHTML = `Visualizando a Sala ${salas.numeroSala}`
 			}
-
 		})
 		
 		
@@ -465,7 +465,7 @@
 		dashboardSala.style.display = 'none';
 	}
 
-	function chamar_rack(rack) {
+	function chamar_rack(rack, numeroRack) {
 		var idRack = rack.getAttribute("valueRack");
 		console.log(idRack)
 		obterDadosGrafico(idRack)
@@ -474,6 +474,7 @@
 		divDescSala.style.display = 'none';
 		dashboardSala.style.display = 'none';
 		dashboardRack.style.display = 'flex';
+		visualizandoRack.innerHTML = `Rack ${numeroRack}`;
 	}
 
 	function voltar_rack() {
@@ -485,7 +486,6 @@
 	// SCRIPT DOS GRÁFICOS
 
 	var proximaAtualizacao;
-	var atualizacaoSimulada
 
 	function obterGraficoMensal(idRack){
 
@@ -505,7 +505,6 @@
 				data.json().then(json => {
 					resultado = json
 					console.log(resultado)
-					resultado.reverse()
 					for(var i = 0; i < resultado.length; i++){
 						myBar.data.labels.push(resultado[i].mes)
 						myBar.data.datasets[0].data.push(resultado[i].temperaturaMedia)
@@ -535,7 +534,6 @@
 				data.json().then(json => {
 					resultado = json
 					console.log(resultado)
-					resultado.reverse()
 					for(var i = 0; i < resultado.length; i++){
 						myLine2.data.labels.push(resultado[i].momento_grafico)
 						myLine2.data.datasets[0].data.push(resultado[i].temperaturaMedia)
@@ -556,9 +554,6 @@
 		if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
-		if(atualizacaoSimulada != undefined){
-			clearTimeout(atualizacaoSimulada)
-		}
 
 
 		fetch(`/medidas/ultimas/${idRack}`, { cache: 'no-store' }).then(function (response) {

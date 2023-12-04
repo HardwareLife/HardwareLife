@@ -1,8 +1,8 @@
 USE HardwareLife;
 
-SELECT d.temperatura, d.umidade, idSensor, DATE_FORMAT(d.dataHora,'%H:%i:%s') as 'momento_grafico'
-        FROM dados as d JOIN sensor as s ON d.fk_sensor = s.idSensor JOIN rack as r ON s.fkRack = r.idRack 
-        WHERE s.fkRack = 1 order by idDados desc limit 7;
+SELECT distinct DATE_FORMAT(dataHora, '%d-%m-%Y') as 'momento_grafico', round(avg(temperatura),1) as 'temperaturaMedia', 
+    round(avg(umidade), 1) as 'umidadeMedia' FROM dados WHERE fkRack = 1 AND dataHora BETWEEN TIMESTAMP(DATE_SUB(NOW(), INTERVAL 7 day)) 
+    AND NOW() GROUP BY momento_grafico limit 6;
 
 select * from funcionario;
 -- CONSULTAS QUE SERÃO COMUNS

@@ -128,8 +128,21 @@ function listarFuncionario(req, res) {
     );
 }
 
+function deletarFuncionario(req, res){
+
+    var idFuncionario = req.params.idFuncionario
+
+    usuarioModel.deletarFuncionario(idFuncionario).then(data => {
+        if(data.affectedRows == 1){
+            res.status(204).send("Funcionário deletado com sucesso.")
+        }
+    })
+
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    listarFuncionario
+    listarFuncionario,
+    deletarFuncionario
 }

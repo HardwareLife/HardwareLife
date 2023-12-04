@@ -15,8 +15,8 @@ function buscarUltimasMedidas(idRack, limite_linhas) {
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT d.temperatura, d.umidade, DATE_FORMAT(d.dataHora,'%H:%i:%s') as 'momento_grafico'
-        FROM dados as d JOIN sensor as s ON d.fk_sensor = s.idSensor JOIN rack as r ON s.fkRack = r.idRack 
-        WHERE s.fkRack = ${idRack} order by idDados desc limit 7;`;
+        FROM dados as d JOIN rack as r ON d.fkRack = r.idRack 
+        WHERE d.fkRack = ${idRack} order by idDados desc limit 7;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -70,7 +70,7 @@ function buscarMediaMensal(idRack){
         END AS mes,
     round(avg(temperatura),2) as temperaturaMedia,
     round(avg(umidade),2) as umidadeMedia
-    FROM dados WHERE fkRack = ${idRack} GROUP BY mes ORDER BY mes DESC limit 6;`;
+    FROM dados WHERE fkRack = ${idRack} GROUP BY mes limit 6;`;
 
     return database.executar(instrucao)
 
@@ -80,7 +80,7 @@ function buscarMediaSemanal(idRack){
 
     var instrucao = `SELECT distinct DATE_FORMAT(dataHora, '%d-%m-%Y') as 'momento_grafico', round(avg(temperatura),1) as 'temperaturaMedia', 
     round(avg(umidade), 1) as 'umidadeMedia' FROM dados WHERE fkRack = ${idRack} AND dataHora BETWEEN TIMESTAMP(DATE_SUB(NOW(), INTERVAL 7 day)) 
-    AND NOW() GROUP BY momento_grafico ORDER BY momento_grafico DESC limit 6;`;
+    AND NOW() GROUP BY momento_grafico limit 6;`;
 
     return database.executar(instrucao);
 }

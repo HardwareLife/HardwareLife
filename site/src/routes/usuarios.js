@@ -16,4 +16,8 @@ router.get("/listar/:idDatacenter", function(req, res) {
     usuarioController.listarFuncionario(req, res);
 });
 
+router.delete("/deletar/:idFuncionario", (req, res) => {
+    usuarioController.deletarFuncionario(req, res)
+})
+
 module.exports = router;
