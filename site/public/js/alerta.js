@@ -28,6 +28,10 @@ function obterdados(idRack) {
                     temperaturaSensor5 = Math.random() * -0.3 + temperaturaSensor
                     temperaturaSensor6 = Math.random() * -0.4 + temperaturaSensor
 
+                    var listaSensores = [temperaturaSensor2, temperaturaSensor3, temperaturaSensor4, temperaturaSensor5, temperaturaSensor6, umidadeSensor];
+
+                    sensores(listaSensores, idRack);
+
                     alertar(temperaturaSensor, umidadeSensor, idRack);
                  });
              } else {
@@ -39,9 +43,106 @@ function obterdados(idRack) {
          });
 }
 
-// function sensores(temperaturaSensor2, temperaturaSensor3, temperaturaSensor4, temperaturaSensor5, temperaturaSensor6, umidadeSensor, idRack) {
+function sensores(listaSensores, idRack) {
+
+    console.log(listaSensores)
+
+    var dashRack = document.querySelector('.racks');
+    console.log(dashRack)
+
+    var limites = {
+        critico_quente: 40,
+        emer_quente: 34,
+        alert_quente: 30,
+        ideal: 24,
+        alert_frio: 23.8,
+        emer_frio: 19.5,
+        critico_frio: 18
+    };
+
+    var limitesUmid = {
+        critico_alta: 80,
+        emer_alta: 70,
+        alert_alta: 60,
+        ideal: 45,
+        alert_baixa: 40,
+        emer_baixa: 30,
+        critico_baixa: 20
+    }
     
-// }
+    for(var i = 0; i < listaSensores.length; i++){
+
+        if (i == listaSensores.length-1) {
+
+            if (listaSensores[i] >= limitesUmid.critico_alta) {
+                nomeClasse = 'esfera_umidade_criticoA'
+                // exibirSensores(idRack, nomeClasse)
+            }
+            else if (listaSensores[i] < limitesUmid.critico_alta && listaSensores[i] >= limitesUmid.emer_alta) {
+                nomeClasse = 'esfera_umidade_emerA'
+                // exibirSensores(idRack, nomeClasse)
+            }
+            else if(listaSensores[i] < limitesUmid.emer_alta && listaSensores[i] >= limitesUmid.alert_alta){
+                nomeClasse = 'esfera_umidade_alertA'
+                // exibirSensores(idRack, nomeClasse)
+            }
+            else if (listaSensores[i] < limitesUmid.alert_alta && listaSensores[i] > limitesUmid.alert_baixa) {
+                nomeClasse = 'esfera_umidade_ideal'
+                // exibirSensores(idRack, nomeClasse)
+        
+            }else if(listaSensores[i] < limitesUmid.alert_baixa && listaSensores[i] > limitesUmid.emer_baixa){
+                nomeClasse = 'esfera_umidade_alerta'
+                // exibirSensores(idRack, nomeClasse)
+            }
+            else if (listaSensores[i] <= limitesUmid.emer_baixa && listaSensores[i] > limitesUmid.critico_baixa) {
+                nomeClasse = 'esfera_umidade_emergencia'
+                // exibirSensores(idRack, nomeClasse)
+            }
+            else if (listaSensores[i] <= limitesUmid.critico_baixa) {
+                nomeClasse = 'esfera_umidade_critico'
+                // exibirSensores(idRack, nomeClasse)
+            }
+            
+        }else{
+
+            if (listaSensores[i] >= limites.critico_quente) {
+                nomeClasse = 'critico_qt'
+                // exibirSensores(idRack, nomeClasse);
+            }
+            else if (listaSensores[i] < limites.critico_quente && listaSensores[i] >= limites.emer_quente) {
+                nomeClasse = 'emergencia_qt'
+                // exibirSensores(idRack, nomeClasse);
+            }
+            else if(listaSensores[i] < limites.emer_quente && listaSensores[i] >= limites.alert_quente){
+                nomeClasse = 'alerta_qt'
+                // exibirSensores(idRack, nomeClasse);
+            }
+            else if (listaSensores[i] < limites.alert_quente && listaSensores[i] > limites.alert_frio) {
+                nomeClasse = 'ideal'
+                // exibirSensores(idRack, nomeClasse);
+        
+            }else if(listaSensores[i] <= limites.alert_frio && listaSensores[i] > limites.emer_frio){
+                nomeClasse = 'alerta_fr'
+                // exibirSensores(idRack, nomeClasse);
+            }
+            else if (listaSensores[i] <= limites.emer_frio && listaSensores[i] > limites.critico_frio) {
+                nomeClasse = 'emergencia_fr'
+                // exibirSensores(idRack, nomeClasse);
+            }
+            else if (listaSensores[i] <= limites.critico_frio) {
+                nomeClasse = 'critico_fr'
+                // exibirSensores(idRack, nomeClasse);
+            }
+        }
+
+        dashRack.innerHTML += `
+        <div class="sensor">
+            <div class="${nomeClasse} esfera"></div>
+            <p>Temperatura</p>
+        </div>
+        `
+    }
+}
 
 function alertar(temperaturaSensor, umidadeSensor, idRack) {
     var temp = temperaturaSensor;
@@ -237,10 +338,7 @@ function exibirCards() {
             card_alerta.innerHTML += transformarEmDiv(mensagem);
     }
 }
-
-function sensores() {
-    
-}
+   
 
 function transformarEmDiv(mensagem) {
 
@@ -252,17 +350,17 @@ function transformarEmDiv(mensagem) {
     console.log(mensagem.caso)
     if (mensagem.caso == 'temperatura') {
         return `
-        <div class="${grauDeAvisoCor} card_alerta" style = "display: flex">
+        <div class="${grauDeAvisoCor} card_alerta" style="display: flex;">
                 <img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 30px;">
                 <div class="mensagem-alarme">
                     <h3>Rack ${descricao[0].numeroRack} da Sala ${descricao[0].numeroSala} está com ${mensagem.grauDeAviso}!</h3>
-                    <small>Temperatura ${(mensagem.valor).toFixed(2)}.</small>
+                    <small>Temperatura ${mensagem.valor}.</small>
                 </div>
             </div>
         `;
     }else if(mensagem.caso == 'umidade'){
         return `
-        <div class="${grauDeAvisoCor} card_alerta" style = "display: flex">
+        <div class="${grauDeAvisoCor} card_alerta" style="display: flex;">
                 <img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 30px;">
                 <div class="mensagem-alarme">
                     <h3>Rack ${descricao[0].numeroRack} da Sala ${descricao[0].numeroSala} está com ${mensagem.grauDeAviso}!</h3>
