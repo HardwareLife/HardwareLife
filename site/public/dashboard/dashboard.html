@@ -14,7 +14,7 @@
 <!-- <body> -->
 <body onload=" validarSessao(), exibirSalas(), atualizacaoPeriodica()">
 
-	<div class="card_alerta" id="card_alerta">
+	<div class="notificacao" id="card_alerta">
 		
 	</div>
 
@@ -212,29 +212,6 @@
 
 				</div> -->
 			</div>
-
-
-
-			<!-- <div class="div_salas" style="background-color: rgb(176, 2, 2);">
-
-				<button class="btn_salas" style="background-color: rgb(176, 2, 2);">
-					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
-					Rack 2
-				</button>
-
-				<p>Estado: Critico</p>
-			</div> <br>
-
-			<div class="div_salas" style="background-color: white;">
-
-				<button class="btn_salas" style="background-color: white;">
-					<img src="scr/door.svg" alt="Relatório" style="width: 2%;">
-					Rack 3
-				</button>
-
-				<p>Estado: Normal</p>
-			</div> <br> -->
-
 		</div>
 	</div>
 
@@ -286,7 +263,7 @@
 
 				<div class="alerta_situacao">
 					<!-- alerta -->
-					<div class="alertas">
+					<!-- <div class="alertas">
 						<div class="alerta_rack">
 							<img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 40px;">
 							<p>Temperatura muito acima do esperado</p>
@@ -294,10 +271,10 @@
 						<div class="alerta_umidade">
 							<img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 40px;">
 							<p>Umidade em estado de alerta</p>
-							<!-- </div> -->
+							 </div>
 
 						</div>
-					</div>
+					</div> -->
 
 
 					<!-- status sensores -->
@@ -305,7 +282,7 @@
 						<div class="pagination">
 							<h3>Visualização de cada sensor do rack</h3>
 							<div class="racks">
-								<div class="sensor">
+								<!-- <div class="sensor">
 									<div class="ideal esfera"></div>
 									<p>Temperatura</p>
 								</div>
@@ -332,7 +309,7 @@
 								<div class="sensor">
 									<div class="esfera_umidade_ideal umidade"></div>
 									<p>Umidade</p>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -456,6 +433,10 @@
 		divDashboard.style.display = 'none';
 		divDescSala.style.display = 'flex';
 		dashboardSala.style.display = 'flex';
+	}
+
+	function mostrarListaRack(params) {
+		
 	}
 
 	function voltar_sala() {
@@ -621,7 +602,7 @@
 					myLine.data.datasets[0].data.push(temperaturaSensor);
 
 					myLine.data.datasets[1].data.shift();
-					myLine.data.datasets[1].data.push( );
+					myLine.data.datasets[1].data.push(umidadeSensor);
 
 					myLine.update();
 					// console.log(temperaturaSensor, umidadeSensor)
