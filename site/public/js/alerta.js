@@ -1,4 +1,8 @@
 var alertas = [];
+var alertasUmidade = [];
+
+var sensor = [];
+var sensorUmid = [];
 
 function obterdados(idRack) {
    fetch(`/medidas/ultimas/${idRack}`)
@@ -8,31 +12,38 @@ function obterdados(idRack) {
 
                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                   var temperaturaSensor = resposta[0].temperatura;
-                   var umidadeSensor = resposta[0].umidade;
+                   for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                    if(registro.umidade == null){
+                        var temperatura = registro.temperatura
+                    }else if(registro.temperatura == null){
+                        var umidade = registro.umidade
+                    }
+                }
 
-                   if(idRack == 1 || idRack == 2){
-                    temperaturaSensor = temperaturaSensor * 1.6
-                    umidadeSensor = umidadeSensor * 1.6
-                    }else if(idRack == 3 || idRack == 4){
-                        temperaturaSensor = temperaturaSensor * 1.2
-                        umidadeSensor = umidadeSensor * 1.2
-                    }else if(idRack == 7 || idRack == 8){
-                        temperaturaSensor = temperaturaSensor * 0.6
-                        umidadeSensor = umidadeSensor * 0.8
+
+                   if(idRack == 1){
+                    temperatura = temperatura * 1.6
+                    umidade = umidade * 1.6
+                    }else if(idRack == 8){
+                        temperatura = temperatura * 0.6
+                        umidade = umidade * 0.8
                     }
 
-                    temperaturaSensor2 = Math.random() * 0.5 + temperaturaSensor
-                    temperaturaSensor3 = Math.random() * 0.4 + temperaturaSensor
-                    temperaturaSensor4 = Math.random() * 0.3 + temperaturaSensor
-                    temperaturaSensor5 = Math.random() * -0.3 + temperaturaSensor
-                    temperaturaSensor6 = Math.random() * -0.4 + temperaturaSensor
+                    temperaturaSensor2 = Math.random() * 0.5 + temperatura
+                    temperaturaSensor3 = Math.random() * 0.4 + temperatura
+                    temperaturaSensor4 = Math.random() * 0.3 + temperatura
+                    temperaturaSensor5 = Math.random() * -0.3 + temperatura
+                    temperaturaSensor6 = Math.random() * -0.4 + temperatura
 
-                    var listaSensores = [temperaturaSensor2, temperaturaSensor3, temperaturaSensor4, temperaturaSensor5, temperaturaSensor6, umidadeSensor];
-
-                    sensores(listaSensores, idRack);
-
-                    alertar(temperaturaSensor, umidadeSensor, idRack);
+                    var listaSensores = [temperatura, temperaturaSensor2, temperaturaSensor3, temperaturaSensor4, temperaturaSensor5, temperaturaSensor6, umidade];
+                    if(temperatura != null && umidade != null){
+                        console.log(temperatura, umidade)
+                        sensores(listaSensores, idRack);
+    
+                        alertar(temperatura, umidade, idRack);
+                    }
+                    
                  });
              } else {
                  console.error(`Nenhum dado encontrado para o id ${idRack} ou erro na API`);
@@ -44,11 +55,12 @@ function obterdados(idRack) {
 }
 
 function sensores(listaSensores, idRack) {
-
+    // var dashRack = document.querySelector('.racks');
+    
     console.log(listaSensores)
 
-    var dashRack = document.querySelector('.racks');
-    console.log(dashRack)
+    // dashRack.innerHTML = "";
+    // console.log(dashRack)
 
     var limites = {
         critico_quente: 40,
@@ -72,82 +84,157 @@ function sensores(listaSensores, idRack) {
     
     for(var i = 0; i < listaSensores.length; i++){
 
+        console.log(listaSensores.length)
         if (i == listaSensores.length-1) {
 
             if (listaSensores[i] >= limitesUmid.critico_alta) {
-                nomeClasse = 'esfera_umidade_criticoA'
-                // exibirSensores(idRack, nomeClasse)
+                desc = 'Umidade'
+                nomeClasse = 'esfera_umidade_criticoA';
+                exibirSensores(idRack, desc, nomeClasse,(i+1))
             }
             else if (listaSensores[i] < limitesUmid.critico_alta && listaSensores[i] >= limitesUmid.emer_alta) {
+                desc = 'Umidade'
                 nomeClasse = 'esfera_umidade_emerA'
-                // exibirSensores(idRack, nomeClasse)
+                exibirSensores(idRack, desc, nomeClasse,(i+1))
             }
             else if(listaSensores[i] < limitesUmid.emer_alta && listaSensores[i] >= limitesUmid.alert_alta){
+                desc = 'Umidade'
                 nomeClasse = 'esfera_umidade_alertA'
-                // exibirSensores(idRack, nomeClasse)
+                exibirSensores(idRack, desc, nomeClasse,(i+1))
             }
             else if (listaSensores[i] < limitesUmid.alert_alta && listaSensores[i] > limitesUmid.alert_baixa) {
+                desc = 'Umidade'
                 nomeClasse = 'esfera_umidade_ideal'
-                // exibirSensores(idRack, nomeClasse)
+                exibirSensores(idRack, desc, nomeClasse,(i+1))
         
             }else if(listaSensores[i] < limitesUmid.alert_baixa && listaSensores[i] > limitesUmid.emer_baixa){
+                desc = 'Umidade'
                 nomeClasse = 'esfera_umidade_alerta'
-                // exibirSensores(idRack, nomeClasse)
+                exibirSensores(idRack, desc, nomeClasse,(i+1))
             }
             else if (listaSensores[i] <= limitesUmid.emer_baixa && listaSensores[i] > limitesUmid.critico_baixa) {
+                desc = 'Umidade'
                 nomeClasse = 'esfera_umidade_emergencia'
-                // exibirSensores(idRack, nomeClasse)
+                exibirSensores(idRack, desc, nomeClasse,(i+1))
             }
             else if (listaSensores[i] <= limitesUmid.critico_baixa) {
+                desc = 'Umidade'
                 nomeClasse = 'esfera_umidade_critico'
-                // exibirSensores(idRack, nomeClasse)
+                exibirSensores(idRack, desc, nomeClasse,(i+1))
             }
             
         }else{
 
             if (listaSensores[i] >= limites.critico_quente) {
+                desc = 'Temperatura'
                 nomeClasse = 'critico_qt'
-                // exibirSensores(idRack, nomeClasse);
+                exibirSensores(idRack, desc, nomeClasse,(i+1));
             }
             else if (listaSensores[i] < limites.critico_quente && listaSensores[i] >= limites.emer_quente) {
+                desc = 'Temperatura'
                 nomeClasse = 'emergencia_qt'
-                // exibirSensores(idRack, nomeClasse);
+                exibirSensores(idRack, desc, nomeClasse,(i+1));
             }
             else if(listaSensores[i] < limites.emer_quente && listaSensores[i] >= limites.alert_quente){
+                desc = 'Temperatura'
                 nomeClasse = 'alerta_qt'
-                // exibirSensores(idRack, nomeClasse);
+                exibirSensores(idRack, desc, nomeClasse,(i+1));
             }
             else if (listaSensores[i] < limites.alert_quente && listaSensores[i] > limites.alert_frio) {
+                desc = 'Temperatura'
                 nomeClasse = 'ideal'
-                // exibirSensores(idRack, nomeClasse);
+                exibirSensores(idRack, desc, nomeClasse,(i+1));
         
             }else if(listaSensores[i] <= limites.alert_frio && listaSensores[i] > limites.emer_frio){
+                desc = 'Temperatura'
                 nomeClasse = 'alerta_fr'
-                // exibirSensores(idRack, nomeClasse);
+                exibirSensores(idRack, desc, nomeClasse,(i+1));
             }
             else if (listaSensores[i] <= limites.emer_frio && listaSensores[i] > limites.critico_frio) {
+                desc = 'Temperatura'
                 nomeClasse = 'emergencia_fr'
-                // exibirSensores(idRack, nomeClasse);
+                exibirSensores(idRack, desc, nomeClasse,(i+1));
             }
             else if (listaSensores[i] <= limites.critico_frio) {
+                desc = 'Temperatura'
                 nomeClasse = 'critico_fr'
-                // exibirSensores(idRack, nomeClasse);
+                exibirSensores(idRack, desc, nomeClasse,(i+1));
             }
         }
-
-        dashRack.innerHTML += `
-        <div class="sensor">
-            <div class="${nomeClasse} esfera"></div>
-            <p>Temperatura</p>
-        </div>
-        `
     }
+}
+
+function exibirSensores(idRack, desc, nomeClasse, idSensor) {
+    var indice = sensor.findIndex(item => item.idRack == idRack && item.idSensor == idSensor);
+    var indiceUmidade = sensorUmid.findIndex(item => item.idRack == idRack && item.idSensor == idSensor)
+
+    if(desc == "Temperatura"){
+        if (indice >= 0) {
+            sensor[indice] = {idRack, desc, nomeClasse, idSensor}
+        } else {
+            sensor.push({idRack, desc, nomeClasse, idSensor});
+        }
+    }
+    if(desc == "Umidade"){
+        if (indiceUmidade >= 0) {
+            sensorUmid[indiceUmidade] = { idRack, desc, nomeClasse, idSensor}
+        } else {
+            sensorUmid.push({ idRack, desc, nomeClasse, idSensor});
+        }
+    }
+
+    exibir(idRack);
+}
+
+function exibir(idRack) {
+    var dashRack = document.querySelector('.racks');
+    dashRack.innerHTML = '';
+
+    filtroSensor = sensor.filter(item => item.desc == 'Temperatura' && item.idRack == idRack)
+    filtroSensorUmidade = sensorUmid.filter(item => item.desc == 'Umidade' && item.idRack == idRack)
+
+    console.log(filtroSensor, filtroSensorUmidade)
+
+    for (var i = 0; i < filtroSensor.length; i++) {
+            var mensagem = filtroSensor[i];
+            dashRack.innerHTML += transformarEmBolinha(mensagem);
+    }
+
+    for(var i = 0; i < filtroSensorUmidade.length; i++){
+            var mensagem = filtroSensorUmidade[i]
+            dashRack.innerHTML += transformarEmBolinha(mensagem)
+    }
+}
+
+function transformarEmBolinha(mensagem) {
+
+    var descricao = JSON.parse(sessionStorage.SALAS).filter(item => {
+        return item.idRack == mensagem.idRack
+    })
+    console.log(descricao)
+
+    console.log(mensagem)
+    if (mensagem.desc == 'Temperatura') {
+        return `
+            <div class="sensor">
+                <div class="${mensagem.nomeClasse} esfera"></div>
+                <p>${mensagem.desc}</p>
+            </div>
+        `;
+    }else if(mensagem.desc == 'Umidade'){
+        return `
+        <div class="sensor">
+                <div class="${mensagem.nomeClasse} esfera"></div>
+                <p>${mensagem.desc}</p>
+            </div>
+        `;
+    }
+    
 }
 
 function alertar(temperaturaSensor, umidadeSensor, idRack) {
     var temp = temperaturaSensor;
     var umid = umidadeSensor;
-    var caso;
     var corSala;
 
     var grauDeAviso = '';
@@ -314,11 +401,21 @@ function alertar(temperaturaSensor, umidadeSensor, idRack) {
 
 function exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeClasse, valor) {
     var indice = alertas.findIndex(item => item.idRack == idRack);
+    var indiceUmidade = alertasUmidade.findIndex(item => item.idRack == idRack)
 
-    if (indice >= 0) {
-        alertas[indice] = { idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor }
-    } else {
-        alertas.push({ idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor });
+    if(caso == "temperatura"){
+        if (indice >= 0) {
+            alertas[indice] = { idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor }
+        } else {
+            alertas.push({ idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor });
+        }
+    }
+    if(caso == "umidade"){
+        if (indiceUmidade >= 0) {
+            alertasUmidade[indiceUmidade] = { idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor }
+        } else {
+            alertasUmidade.push({ idRack, caso, grauDeAviso, grauDeAvisoCor, corSala, nomeClasse, valor });
+        }
     }
 
     exibirCards();
@@ -326,16 +423,22 @@ function exibirAlerta(idRack, grauDeAviso, grauDeAvisoCor, caso, corSala, nomeCl
 
 function removerAlerta(idRack) {
     alertas = alertas.filter(item => item.idRack != idRack);
+    alertasUmidade = alertasUmidade.filter(item => item.idRack != idRack)
     exibirCards();
 }
 
 function exibirCards() {
     card_alerta.innerHTML = '';
     // var mensagemUtilizada = [];
-
+    console.log(alertas)
     for (var i = 0; i < alertas.length; i++) {
             var mensagem = alertas[i];
             card_alerta.innerHTML += transformarEmDiv(mensagem);
+    }
+
+    for(var i = 0; i < alertasUmidade.length; i++){
+            var mensagem = alertasUmidade[i]
+            card_alerta.innerHTML += transformarEmDiv(mensagem)
     }
 }
    
@@ -347,20 +450,20 @@ function transformarEmDiv(mensagem) {
     })
     console.log(descricao)
 
-    console.log(mensagem.caso)
+    console.log(mensagem)
     if (mensagem.caso == 'temperatura') {
         return `
-        <div class="${grauDeAvisoCor} card_alerta" style="display: flex;">
+        <div class="${mensagem.grauDeAvisoCor} card_alerta" style="display: flex;">
                 <img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 30px;">
                 <div class="mensagem-alarme">
                     <h3>Rack ${descricao[0].numeroRack} da Sala ${descricao[0].numeroSala} está com ${mensagem.grauDeAviso}!</h3>
-                    <small>Temperatura ${mensagem.valor}.</small>
+                    <small>Temperatura ${(mensagem.valor).toFixed(2)}.</small>
                 </div>
             </div>
         `;
     }else if(mensagem.caso == 'umidade'){
         return `
-        <div class="${grauDeAvisoCor} card_alerta" style="display: flex;">
+        <div class="${mensagem.grauDeAvisoCor} card_alerta" style="display: flex;">
                 <img src="../assets/dashboard/triangle-alerta.svg" alt="" style="width: 30px;">
                 <div class="mensagem-alarme">
                     <h3>Rack ${descricao[0].numeroRack} da Sala ${descricao[0].numeroSala} está com ${mensagem.grauDeAviso}!</h3>
@@ -377,5 +480,5 @@ function atualizacaoPeriodica() {
     JSON.parse(sessionStorage.SALAS).forEach(item => {
         obterdados(item.idRack)
     });
-    setTimeout(atualizacaoPeriodica, 5000);
+    setTimeout(atualizacaoPeriodica, 8000);
 }

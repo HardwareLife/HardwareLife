@@ -28,14 +28,16 @@ body {
 
 body .notificacao{
     position: fixed;
-    width: 25%;
-    height: 15vh;
+    display: flex;
+    width: 78%;
+    left: 10%;
+    height: 16vh;
     justify-self: end;
-    margin: 2% 2% 0 0;
+    margin: 3% 1% 0 0;
     border-radius: 20px;
     background-color: #ffffff00; 
     color: #fff;
-    gap: 20px;
+    gap: 8px;
 }
 
 .notificacao .card_alerta{
@@ -118,21 +120,16 @@ body .notificacao{
   
   .card_alerta h3 {
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     margin: 0;
   }
   
-  .card_alerta .informacao {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    width: 100%;
-    gap: 10%;
-  }
 
   .card_alerta .mensagem-alarme{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 60%;
   }
 

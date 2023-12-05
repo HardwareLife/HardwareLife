@@ -87,7 +87,7 @@
 	<div class="dashboard">
 		<div class="dashboard_titulo">
 			<h3>SALA</h3>
-			<h3>SITUAÇÃO</h3>
+			<h3 style="display: none;">SITUAÇÃO</h3>
 		</div>
 
 		<div class="dash_lista" id="dash_lista">
@@ -109,7 +109,7 @@
 	<!-- visualização da sala selecionada -->
 	<div class="div_desc_sala" >
 		<p id="visualizandoSala"></p>
-		<p>Estado: Critico</p>
+		<p style="display: none;">Estado: Critico</p>
 	</div>
 
 	<div class="dashboard_sala">
@@ -194,7 +194,7 @@
 		<div class="div_rack">
 			<div class="rack_titulo">
 				<h3>Rack</h3>
-				<h3>Situação</h3>
+				<h3 style="display: none;">Situação</h3>
 			</div>
 
 			<div class="lista_rack" id="lista_rack">
@@ -371,14 +371,14 @@
 			
 			if (!listaSalaUsada.includes(item.idSala)) {
 				dashLista.innerHTML += `
-				<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: #008000;" valueSala="${item.idSala}">
+				<div class="div_salas" onclick="chamar_salas(this)" id="div_salas" style="background-color: rgb(105 117 212); border: 2px solid #000" valueSala="${item.idSala}">
 
 					<button class="btn_salas" >
 					<img src="../assets/dashboard/door.svg" alt="Relatório" ">
 					Sala ${item.numeroSala}
 					</button>
-					<span class="situacao">
-						<p>Estado: Critico</p>
+					<span class="situacao" style="display: none">
+						<p style="display: none;">Estado: Critico</p>
 					</span>
 
 				</div>
@@ -410,7 +410,7 @@
 
 			if(salas.idSala == idSala){
 				lista_rack.innerHTML += `
-				<div class="div_salas" id="div_salas" onclick="chamar_rack(this, ${salas.numeroRack})" valueRack="${salas.idRack}" style="background-color: #008000;">
+				<div class="div_salas" id="div_salas" onclick="chamar_rack(this, ${salas.numeroRack})" valueRack="${salas.idRack}" style="background-color: rgb(105 117 212); border: 2px solid #000">
 
 					<button class="btn_salas" style="opacity: #b0020200;">
 						<img src="../assets/dashboard/rack-do-servidor.png" alt="Relatório">
@@ -418,7 +418,7 @@
 					</button>
 
 					<span class="situacao">
-						<p>Estado: Critico</p>
+						<p style="display: none;">Estado: Critico</p>
 					</span>
 
 				</div>
@@ -560,19 +560,35 @@
 			console.log('----------------------------------------------')
 			console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
 			console.log(resposta)
-			
 			// Inserindo valores recebidos em estrutura para plotar o gráfico
 			for (i = 0; i < resposta.length; i++) {
 				var registro = resposta[i];
-				console.log(registro)
+				if(registro.umidade == null){
+					var temperatura = registro.temperatura
+				}else if(registro.temperatura == null){
+					var umidade = registro.umidade
+				}
+				if(idRack == 1){
 				myLine.data.labels.push(registro.momento_grafico);
-				myLine.data.datasets[0].data.push(registro.temperatura);
-				myLine.data.datasets[1].data.push(registro.umidade);
+				myLine.data.datasets[0].data.push(temperatura * 1.6);
+				myLine.data.datasets[1].data.push(umidade * 1.6);
+
+				myLine.update()
+				}else if(idRack == 8){
+					myLine.data.labels.push(registro.momento_grafico);
+					myLine.data.datasets[0].data.push(temperatura * 0.8);
+					myLine.data.datasets[1].data.push(umidade * 0.8);
+
+					myLine.update()
+				}else{
+					console.log(registro)
+					myLine.data.labels.push(registro.momento_grafico);
+					myLine.data.datasets[0].data.push(temperatura);
+					myLine.data.datasets[1].data.push(umidade);
+	
+					myLine.update()
+				}
 			}
-
-			myLine.update()
-
-
 			setTimeout(() => atualizarGrafico(idRack, myLine), 2000);
 }
 
@@ -591,20 +607,37 @@
 					console.log(novoRegistro[0].momento_grafico)
 				} else {
 
-					temperaturaSensor = novoRegistro[1].temperatura;
-					umidadeSensor = novoRegistro[0].umidade;
+					for (i = 0; i < novoRegistro.length; i++) {
+						var registro = novoRegistro[i];
+						if(registro.umidade == null){
+							var temperatura = registro.temperatura
+						}else if(registro.temperatura == null){
+							var umidade = registro.umidade
+						}
+					}
+					if(temperatura != null && umidade != null){
+						if(idRack == 1 || idRack == 2){
+						temperatura = temperatura * 1.6
+						umidade = umidade * 1.6
+						}else if(idRack == 7 || idRack == 8){
+							temperatura = temperatura * 0.6
+							umidade = umidade * 0.8
+						}
+					}
 
-					
-					myLine.data.labels.shift();
-					myLine.data.labels.push(novoRegistro[0].momento_grafico);
 
-					myLine.data.datasets[0].data.shift();
-					myLine.data.datasets[0].data.push(temperaturaSensor);
-
-					myLine.data.datasets[1].data.shift();
-					myLine.data.datasets[1].data.push(umidadeSensor);
-
-					myLine.update();
+					if(temperatura != null && umidade != null){
+						myLine.data.labels.shift();
+						myLine.data.labels.push(novoRegistro[0].momento_grafico);
+						
+						myLine.data.datasets[0].data.shift();
+						myLine.data.datasets[0].data.push(temperatura);
+	
+						myLine.data.datasets[1].data.shift();
+						myLine.data.datasets[1].data.push(umidade);
+	
+						myLine.update();
+					}
 					// console.log(temperaturaSensor, umidadeSensor)
 					// console.log("Sensor 2", temperaturaSensor2)
 					// console.log("Sensor 3", temperaturaSensor3)
